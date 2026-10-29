@@ -253,6 +253,23 @@ export const THEME_FAVICONS: Record<ThemeId, string> = {
   <rect x="8" y="8" width="3" height="3" fill="#01cdfe" />
   <rect x="4" y="11" width="3" height="2" fill="#ffe700" />
   <rect x="8" y="11" width="3" height="2" fill="#05ffa1" />
+</svg>`,
+
+  pipboy: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges">
+  <!-- Pip-Boy 3000 Phosphor CRT Obsidian Screen -->
+  <rect width="16" height="16" fill="#040d07" />
+  <!-- CRT Screen Bezel & Tube Lines -->
+  <rect x="1" y="1" width="14" height="14" fill="none" stroke="#14532d" stroke-width="1" />
+  <!-- Vault-Tec Nuclear Radiation Trefoil Blades -->
+  <polygon points="6,3 10,3 9,7 7,7" fill="#1aff59" />
+  <polygon points="3,11 5,8 8,10 6,13" fill="#1aff59" />
+  <polygon points="13,11 11,8 8,10 10,13" fill="#1aff59" />
+  <!-- Central Nuclear Core Shield -->
+  <circle cx="8" cy="8" r="1.5" fill="#040d07" />
+  <circle cx="8" cy="8" r="0.8" fill="#1aff59" />
+  <!-- Corner Geiger Scan Indicator (Amber Rad Alert) -->
+  <rect x="2" y="2" width="2" height="1" fill="#ffb900" />
+  <rect x="12" y="13" width="2" height="1" fill="#1bf5e6" />
 </svg>`
 };
 

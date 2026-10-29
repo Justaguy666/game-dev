@@ -309,6 +309,33 @@ class SoundEngine {
       plastic.start(now);
       click.stop(now + 0.025);
       plastic.stop(now + 0.04);
+    } else if (this.currentTheme === 'pipboy') {
+      // Pip-Boy 3000: Heavy Rotary Dial Notch & High-Voltage CRT Pulse
+      const notch = ctx.createOscillator();
+      const notchGain = ctx.createGain();
+      notch.type = 'triangle';
+      notch.frequency.setValueAtTime(260, now);
+      notch.frequency.exponentialRampToValueAtTime(70, now + 0.03);
+
+      notchGain.gain.setValueAtTime(0.35 * vol, now);
+      notchGain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
+
+      const crt = ctx.createOscillator();
+      const crtGain = ctx.createGain();
+      crt.type = 'square';
+      crt.frequency.setValueAtTime(2400, now);
+      crt.frequency.exponentialRampToValueAtTime(800, now + 0.015);
+      crtGain.gain.setValueAtTime(0.18 * vol, now);
+      crtGain.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
+
+      notch.connect(notchGain);
+      crt.connect(crtGain);
+      notchGain.connect(ctx.destination);
+      crtGain.connect(ctx.destination);
+      notch.start(now);
+      crt.start(now);
+      notch.stop(now + 0.04);
+      crt.stop(now + 0.025);
     } else {
       // Fantasy: Resonant wooden snap
       const osc = ctx.createOscillator();
@@ -336,8 +363,8 @@ class SoundEngine {
 
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
-    osc.type = this.currentTheme === 'vaporwave' ? 'square' : (this.currentTheme === 'ukiyoe' ? 'sine' : (this.currentTheme === 'persona' ? 'sine' : (this.currentTheme === 'psx' ? 'triangle' : (this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'gothic' || this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'fantasy' || this.currentTheme === 'inkwell' ? 'sine' : 'triangle')))))));
-    osc.frequency.setValueAtTime(this.currentTheme === 'vaporwave' ? 1200 : (this.currentTheme === 'ukiyoe' ? 1567.98 : (this.currentTheme === 'persona' ? 987.77 : (this.currentTheme === 'psx' ? 1200 : (this.currentTheme === 'ghibli' ? 880 : (this.currentTheme === 'blueprint' ? 1046.50 : (this.currentTheme === 'gothic' ? 146.83 : (this.currentTheme === 'synthwave' ? 740 : (this.currentTheme === 'cyber' ? 880 : (this.currentTheme === 'inkwell' ? 620 : 330))))))))), now);
+    osc.type = this.currentTheme === 'pipboy' ? 'sawtooth' : (this.currentTheme === 'vaporwave' ? 'square' : (this.currentTheme === 'ukiyoe' ? 'sine' : (this.currentTheme === 'persona' ? 'sine' : (this.currentTheme === 'psx' ? 'triangle' : (this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'gothic' || this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'fantasy' || this.currentTheme === 'inkwell' ? 'sine' : 'triangle'))))))));
+    osc.frequency.setValueAtTime(this.currentTheme === 'pipboy' ? 1760 : (this.currentTheme === 'vaporwave' ? 1200 : (this.currentTheme === 'ukiyoe' ? 1567.98 : (this.currentTheme === 'persona' ? 987.77 : (this.currentTheme === 'psx' ? 1200 : (this.currentTheme === 'ghibli' ? 880 : (this.currentTheme === 'blueprint' ? 1046.50 : (this.currentTheme === 'gothic' ? 146.83 : (this.currentTheme === 'synthwave' ? 740 : (this.currentTheme === 'cyber' ? 880 : (this.currentTheme === 'inkwell' ? 620 : 330)))))))))), now);
 
     gain.gain.setValueAtTime(0.1 * vol, now);
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
@@ -355,32 +382,34 @@ class SoundEngine {
     const now = ctx.currentTime;
     const vol = this.volume;
 
-    const notes = this.currentTheme === 'vaporwave'
-      ? [369.99, 554.37, 622.25, 830.61, 932.33, 1396.91] // Windows 95 Brian Eno Startup Sound / FM Synth chime (F#3, C#4, D#4, G#4, A#4, F5)
-      : (this.currentTheme === 'ukiyoe'
-        ? [293.66, 311.13, 392.00, 440.00, 466.16, 587.33] // In-sen Sakura traditional Koto pentatonic sweep (D4, Eb4, G4, A4, Bb4, D5)
-        : (this.currentTheme === 'persona'
-          ? [349.23, 415.30, 523.25, 622.25, 783.99] // Persona Acid Funk Brass / Electric Organ 9th chord (F4, Ab4, C5, Eb5, G5)
-          : (this.currentTheme === 'psx'
-            ? [220.00, 440.00, 659.25, 880.00, 1318.51] // PS1 BIOS celestial ambient overtone chime
-            : (this.currentTheme === 'ghibli'
-              ? [523.25, 587.33, 659.25, 783.99, 880.00] // Joe Hisaishi C Major Pentatonic music box arpeggio (C5, D5, E5, G5, A5)
-              : (this.currentTheme === 'blueprint'
-                ? [440.00, 554.37, 659.25, 880.00] // Pure harmonic blueprint chime (A4, C#5, E5, A5)
-                : (this.currentTheme === 'gothic'
-                  ? [146.83, 220.00, 261.63, 349.23] // D minor cathedral bell chime / organ toll (D3, A3, C4, F4)
-                  : (this.currentTheme === 'synthwave'
-                    ? [293.66, 369.99, 440.00, 554.37] // 80s D Major 7th synthwave chord (D4, F#4, A4, C#5)
-                    : (this.currentTheme === 'cyber' 
-                      ? [600, 900, 1200]
-                      : (this.currentTheme === 'fantasy' 
-                          ? [330, 440, 550] 
-                          : (this.currentTheme === 'inkwell' ? [440, 554, 659, 880] : [523, 659, 784]))))))))));
+    const notes = this.currentTheme === 'pipboy'
+      ? [587.33, 880.00, 1174.66, 1760.00] // RobCo Terminal / V.A.T.S. Tactical Selection Chirp (D5, A5, D6, A6)
+      : (this.currentTheme === 'vaporwave'
+        ? [369.99, 554.37, 622.25, 830.61, 932.33, 1396.91] // Windows 95 Brian Eno Startup Sound / FM Synth chime (F#3, C#4, D#4, G#4, A#4, F5)
+        : (this.currentTheme === 'ukiyoe'
+          ? [293.66, 311.13, 392.00, 440.00, 466.16, 587.33] // In-sen Sakura traditional Koto pentatonic sweep (D4, Eb4, G4, A4, Bb4, D5)
+          : (this.currentTheme === 'persona'
+            ? [349.23, 415.30, 523.25, 622.25, 783.99] // Persona Acid Funk Brass / Electric Organ 9th chord (F4, Ab4, C5, Eb5, G5)
+            : (this.currentTheme === 'psx'
+              ? [220.00, 440.00, 659.25, 880.00, 1318.51] // PS1 BIOS celestial ambient overtone chime
+              : (this.currentTheme === 'ghibli'
+                ? [523.25, 587.33, 659.25, 783.99, 880.00] // Joe Hisaishi C Major Pentatonic music box arpeggio (C5, D5, E5, G5, A5)
+                : (this.currentTheme === 'blueprint'
+                  ? [440.00, 554.37, 659.25, 880.00] // Pure harmonic blueprint chime (A4, C#5, E5, A5)
+                  : (this.currentTheme === 'gothic'
+                    ? [146.83, 220.00, 261.63, 349.23] // D minor cathedral bell chime / organ toll (D3, A3, C4, F4)
+                    : (this.currentTheme === 'synthwave'
+                      ? [293.66, 369.99, 440.00, 554.37] // 80s D Major 7th synthwave chord (D4, F#4, A4, C#5)
+                      : (this.currentTheme === 'cyber' 
+                        ? [600, 900, 1200]
+                        : (this.currentTheme === 'fantasy' 
+                            ? [330, 440, 550] 
+                            : (this.currentTheme === 'inkwell' ? [440, 554, 659, 880] : [523, 659, 784])))))))))));
 
     notes.forEach((freq, idx) => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-      osc.type = this.currentTheme === 'vaporwave' ? 'sine' : (this.currentTheme === 'ukiyoe' ? 'triangle' : (this.currentTheme === 'persona' ? 'sawtooth' : (this.currentTheme === 'psx' ? 'sine' : (this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'gothic' ? 'triangle' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'arcade' ? 'square' : 'triangle'))))))));
+      osc.type = this.currentTheme === 'pipboy' ? 'square' : (this.currentTheme === 'vaporwave' ? 'sine' : (this.currentTheme === 'ukiyoe' ? 'triangle' : (this.currentTheme === 'persona' ? 'sawtooth' : (this.currentTheme === 'psx' ? 'sine' : (this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'gothic' ? 'triangle' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'arcade' ? 'square' : 'triangle')))))))));
       osc.frequency.setValueAtTime(freq, now + idx * 0.04);
 
       gain.gain.setValueAtTime(0.2 * vol, now + idx * 0.04);
@@ -393,7 +422,7 @@ class SoundEngine {
     });
   }
 
-  // 4. Quest Completed / Task Check (13 Unique Themed Rewards)
+  // 4. Quest Completed / Task Check (14 Unique Themed Rewards)
   public playQuestComplete() {
     const ctx = this.getContext();
     if (!ctx) return;
@@ -624,6 +653,35 @@ class SoundEngine {
         osc.start(now + idx * 0.04);
         osc.stop(now + idx * 0.04 + 0.38);
       });
+    } else if (this.currentTheme === 'pipboy') {
+      // Pip-Boy 3000: Vault-Tec "Quest Completed" Perk Fanfare & Bottle Cap Jingle
+      const caps = [3520, 2793, 4186];
+      caps.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.03);
+        gain.gain.setValueAtTime(0.25 * vol, now + idx * 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.03 + 0.12);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + idx * 0.03);
+        osc.stop(now + idx * 0.03 + 0.14);
+      });
+
+      const organ = [523.25, 659.25, 783.99, 1046.50];
+      organ.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + 0.08 + idx * 0.05);
+        gain.gain.setValueAtTime(0.22 * vol, now + 0.08 + idx * 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08 + idx * 0.05 + 0.35);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + 0.08 + idx * 0.05);
+        osc.stop(now + 0.08 + idx * 0.05 + 0.38);
+      });
     } else {
       // Ukiyo-e Sumi-e: Zen Kagura Shinto temple bell ring & lingering bronze chime
       const bowl = ctx.createOscillator();
@@ -651,7 +709,7 @@ class SoundEngine {
     }
   }
 
-  // 5. Level Up Fanfare (13 Distinct Art Style Victory Anthems)
+  // 5. Level Up Fanfare (14 Distinct Art Style Victory Anthems)
   public playLevelUp() {
     const ctx = this.getContext();
     if (!ctx) return;
@@ -722,6 +780,11 @@ class SoundEngine {
       notes = [392.00, 523.25, 659.25, 783.99, 1046.50, 1318.51, 1567.98]; // G4, C5, E5, G5, C6, E6, G6
       oscType = 'sawtooth';
       stepTime = 0.055;
+    } else if (this.currentTheme === 'pipboy') {
+      // Pip-Boy 3000: Vault Boy Post-War Radio Trumpet Fanfare
+      notes = [392.00, 523.25, 659.25, 783.99, 1046.50, 1318.51]; // G4, C5, E5, G5, C6, E6
+      oscType = 'triangle';
+      stepTime = 0.06;
     } else {
       // Ukiyo-e Sumi-e: Imperial Gagaku Koto & Ryuteki flute flourish
       notes = [293.66, 392.00, 440.00, 466.16, 587.33, 783.99];
@@ -747,7 +810,7 @@ class SoundEngine {
     });
   }
 
-  // 6. Save / Checkpoint (13 Unique Themed Confirmations)
+  // 6. Save / Checkpoint (14 Unique Themed Confirmations)
   public playSave() {
     const ctx = this.getContext();
     if (!ctx) return;
@@ -1027,6 +1090,34 @@ class SoundEngine {
       motor.stop(now + 0.3);
       seek1.stop(now + 0.1);
       seek2.stop(now + 0.2);
+    } else if (this.currentTheme === 'pipboy') {
+      // Pip-Boy 3000: RobCo Holotape Insert & Geiger Radiation Burst
+      const tape = ctx.createOscillator();
+      const tapeGain = ctx.createGain();
+      tape.type = 'triangle';
+      tape.frequency.setValueAtTime(480, now);
+      tape.frequency.exponentialRampToValueAtTime(120, now + 0.06);
+      tapeGain.gain.setValueAtTime(0.35 * vol, now);
+      tapeGain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+
+      tape.connect(tapeGain);
+      tapeGain.connect(ctx.destination);
+      tape.start(now);
+      tape.stop(now + 0.09);
+
+      [0.05, 0.09, 0.14, 0.18].forEach(t => {
+        const geiger = ctx.createOscillator();
+        const geigerGain = ctx.createGain();
+        geiger.type = 'square';
+        geiger.frequency.setValueAtTime(2800, now + t);
+        geiger.frequency.exponentialRampToValueAtTime(600, now + t + 0.02);
+        geigerGain.gain.setValueAtTime(0.22 * vol, now + t);
+        geigerGain.gain.exponentialRampToValueAtTime(0.001, now + t + 0.025);
+        geiger.connect(geigerGain);
+        geigerGain.connect(ctx.destination);
+        geiger.start(now + t);
+        geiger.stop(now + t + 0.03);
+      });
     } else {
       // Ukiyo-e Sumi-e: Vermilion seal stamp on washi scroll & temple bell resonance
       const stamp = ctx.createOscillator();
@@ -1055,7 +1146,7 @@ class SoundEngine {
     }
   }
 
-  // 7. Tab Switch (13 Distinct Navigation Gestures)
+  // 7. Tab Switch (14 Distinct Navigation Gestures)
   public playTab() {
     const ctx = this.getContext();
     if (!ctx) return;
@@ -1149,6 +1240,13 @@ class SoundEngine {
       osc.frequency.exponentialRampToValueAtTime(400, now + 0.025);
       gain.gain.setValueAtTime(0.26 * vol, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+    } else if (this.currentTheme === 'pipboy') {
+      // Pip-Boy 3000: STAT/INV/DATA Rotary Switch Clunk
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(750, now);
+      osc.frequency.exponentialRampToValueAtTime(250, now + 0.03);
+      gain.gain.setValueAtTime(0.25 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
     } else {
       // Ukiyo-e Shoji screen paper slide
       osc.type = 'triangle';

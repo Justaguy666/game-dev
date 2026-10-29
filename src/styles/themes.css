@@ -671,6 +671,57 @@
 }
 
 /* --------------------------------------------------------------------------
+   14. THEME: PIP-BOY 3000 / POST-NUCLEAR PHOSPHOR CRT (FALLOUT & ROBCO TERMINAL)
+   -------------------------------------------------------------------------- */
+.theme-pipboy.mode-dark {
+  --bg-app: #040d07;
+  --bg-surface: #0a1c10;
+  --bg-card: #0f2617;
+  --border-color: #14532d;
+  --border-highlight: #1aff59;
+  --text-main: #1aff59;
+  --text-muted: #86efac;
+  --text-dim: #22c55e;
+  
+  --accent-gold: #ffb900;
+  --accent-cyan: #1bf5e6;
+  --accent-green: #1aff59;
+  --accent-red: #ff3838;
+  --accent-purple: #c084fc;
+  
+  --font-display: 'Share Tech Mono', 'VT323', monospace;
+  --font-mono: 'Share Tech Mono', 'JetBrains Mono', monospace;
+  --card-shadow: 0 0 10px rgba(26, 255, 89, 0.25), 0 4px 14px rgba(0, 0, 0, 0.8);
+  --glow-primary: 0 0 14px rgba(26, 255, 89, 0.65), 0 0 26px rgba(26, 255, 89, 0.3);
+  --btn-active-bg: #1aff59;
+  --btn-active-text: #040d07;
+}
+
+.theme-pipboy.mode-light {
+  --bg-app: #ded9c3;
+  --bg-surface: #eae5d1;
+  --bg-card: #f4efe0;
+  --border-color: #1b4329;
+  --border-highlight: #0f331d;
+  --text-main: #0c2414;
+  --text-muted: #1e3a24;
+  --text-dim: #3e5a45;
+  
+  --accent-gold: #b45309;
+  --accent-cyan: #0369a1;
+  --accent-green: #15803d;
+  --accent-red: #b91c1c;
+  --accent-purple: #7e22ce;
+  
+  --font-display: 'Share Tech Mono', monospace;
+  --font-mono: 'Share Tech Mono', 'JetBrains Mono', monospace;
+  --card-shadow: 3px 3px 0px #1b4329, 0 4px 10px rgba(0, 0, 0, 0.08);
+  --glow-primary: 0 0 10px rgba(21, 128, 61, 0.35);
+  --btn-active-bg: #15803d;
+  --btn-active-text: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
    GLOBAL LAYOUT & CRT SCANLINES
    -------------------------------------------------------------------------- */
 * {
@@ -1217,6 +1268,59 @@ body.theme-vaporwave .node-card-title {
   line-height: 1.30 !important;
   letter-spacing: 0.03em;
   font-weight: 700;
+}
+
+body.theme-pipboy .node-card {
+  border-radius: 2px;
+  border-width: 1.5px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+}
+
+body.theme-pipboy.mode-dark .node-card {
+  border-color: #14532d;
+  box-shadow: 0 0 10px rgba(26, 255, 89, 0.18), inset 0 0 12px rgba(26, 255, 89, 0.05);
+}
+
+body.theme-pipboy.mode-dark .node-card:hover {
+  transform: translateY(-2px);
+  border-color: #1aff59 !important;
+  box-shadow: 0 0 18px rgba(26, 255, 89, 0.55), inset 0 0 16px rgba(26, 255, 89, 0.12);
+}
+
+body.theme-pipboy.mode-light .node-card {
+  border-color: #1b4329;
+  box-shadow: 3px 3px 0px #1b4329;
+}
+
+body.theme-pipboy.mode-light .node-card:hover {
+  transform: translateY(-2px);
+  border-color: #15803d !important;
+  box-shadow: 4px 4px 0px #15803d, 0 0 10px rgba(21, 128, 61, 0.25);
+}
+
+body.theme-pipboy .domain-banner {
+  border-radius: 2px;
+  border-width: 1.5px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+body.theme-pipboy.mode-dark .domain-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(26, 255, 89, 0.5) !important;
+}
+
+body.theme-pipboy.mode-light .domain-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0px #15803d !important;
+}
+
+body.theme-pipboy .node-card-title {
+  font-family: var(--font-display);
+  font-size: 1.12em !important;
+  line-height: 1.30 !important;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 /* Markdown body across all themes with comfortable reading typography */

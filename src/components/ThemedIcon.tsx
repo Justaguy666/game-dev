@@ -4021,6 +4021,366 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
     }
   }
 
+  // =========================================================================
+  // 14. PIP-BOY 3000 / POST-NUCLEAR PHOSPHOR CRT (FALLOUT & ROBCO TERMINAL)
+  // =========================================================================
+  if (theme === 'pipboy') {
+    switch (name) {
+      case 'tree': // Pip-Boy Perk Tree & S.P.E.C.I.A.L. Hierarchy
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="10" y="3" width="4" height="4" fill={color} />
+            <line x1="12" y1="7" x2="12" y2="12" stroke={color} strokeWidth="1.5" />
+            <line x1="6" y1="12" x2="18" y2="12" stroke={color} strokeWidth="1.5" />
+            <line x1="6" y1="12" x2="6" y2="16" stroke={color} strokeWidth="1.5" />
+            <line x1="18" y1="12" x2="18" y2="16" stroke={color} strokeWidth="1.5" />
+            <rect x="4" y="16" width="4" height="4" fill={color} />
+            <rect x="16" y="16" width="4" height="4" fill={color} />
+            <rect x="10" y="14" width="4" height="4" fill="none" stroke={color} strokeWidth="1.5" />
+            <line x1="12" y1="12" x2="12" y2="14" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'docs': // RobCo Terminal Holotape Data Log
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="4" y="3" width="16" height="18" fill="none" stroke={color} strokeWidth="1.5" />
+            <rect x="6" y="5" width="12" height="3" fill={color} opacity="0.3" stroke={color} strokeWidth="1" />
+            <circle cx="9" cy="6.5" r="0.8" fill={color} />
+            <circle cx="15" cy="6.5" r="0.8" fill={color} />
+            <line x1="7" y1="11" x2="17" y2="11" stroke={color} strokeWidth="1.5" />
+            <line x1="7" y1="14" x2="17" y2="14" stroke={color} strokeWidth="1.5" />
+            <line x1="7" y1="17" x2="13" y2="17" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'quests': // Vault Boy Thumbs-Up / Pip-Boy Quest Marker
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="7" r="3.5" stroke={color} strokeWidth="1.6" fill="none" />
+            <path d="M12 10.5v5.5M8 13.5l4-2M12 16l-3 5M12 16l3 5" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+            {/* Vault Boy Thumbs up arm */}
+            <path d="M12 12h5v-3.5h-1.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <circle cx="15.5" cy="8" r="0.8" fill={color} />
+          </svg>
+        );
+      case 'sun': // Atomic Mushroom Cloud / Radiant Nuclear Sun
+        return (
+          <svg {...commonSvgProps}>
+            {/* Mushroom Cloud Cap */}
+            <path d="M7 10C5 10 3 8 4 6c1-2 4-3 8-3s7 1 8 3c1 2-1 4-3 4" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="12" cy="5.5" r="2" fill={color} opacity="0.4" />
+            {/* Mushroom Stem */}
+            <path d="M10 10c1 3-1 6-2 9h8c-1-3-3-6-2-9" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="3" y1="20" x2="21" y2="20" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'moon': // Rad-Storm Toxic Night Moon
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M15 3.5a8.5 8.5 0 00-1.5 17 8.5 8.5 0 007.5-5.5 8.5 8.5 0 01-6-11.5z" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="6" cy="8" r="1" fill={color} />
+            <circle cx="4" cy="14" r="0.8" fill={color} />
+            <circle cx="9" cy="18" r="1.2" fill={color} />
+            <line x1="2" y1="12" x2="5" y2="12" stroke={color} strokeWidth="1" strokeDasharray="1 2" />
+          </svg>
+        );
+      case 'tv': // Pip-Boy 3000 Wrist Unit & CRT Screen
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="3" y="4" width="15" height="14" rx="2" fill="none" stroke={color} strokeWidth="1.6" />
+            <rect x="5" y="6" width="11" height="10" fill={color} opacity="0.25" stroke={color} strokeWidth="1" />
+            {/* Top RobCo logo bar */}
+            <line x1="5" y1="8" x2="16" y2="8" stroke={color} strokeWidth="1" />
+            {/* Rotary Selector Knobs on Right */}
+            <rect x="19" y="6" width="3" height="3" fill={color} />
+            <rect x="19" y="11" width="3" height="3" fill={color} />
+            <rect x="19" y="15" width="2" height="2" fill={color} />
+            {/* Bottom Casing Bolts */}
+            <rect x="4" y="19" width="3" height="2" fill={color} />
+            <rect x="13" y="19" width="3" height="2" fill={color} />
+          </svg>
+        );
+      case 'volume': // RobCo Terminal Audio Broadcast
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <polygon points="4,9 8,9 13,5 13,19 8,15 4,15" fill={color} />
+            <path d="M16 8c1.5 2 1.5 6 0 8" stroke={color} strokeWidth="1.6" fill="none" />
+            <path d="M19 5c3 4 3 10 0 14" stroke={color} strokeWidth="1.6" fill="none" />
+          </svg>
+        );
+      case 'mute': // Muted Terminal Speaker with Hazard Slash
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <polygon points="4,9 8,9 13,5 13,19 8,15 4,15" fill={color} />
+            <line x1="16" y1="8" x2="22" y2="16" stroke={color} strokeWidth="1.8" />
+            <line x1="22" y1="8" x2="16" y2="16" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'globe': // Wasteland Radar Scanner & Compass Reticle
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="8.5" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="12" cy="12" r="4.5" stroke={color} strokeWidth="1.2" strokeDasharray="2 2" fill="none" />
+            <line x1="12" y1="3.5" x2="12" y2="20.5" stroke={color} strokeWidth="1.4" />
+            <line x1="3.5" y1="12" x2="20.5" y2="12" stroke={color} strokeWidth="1.4" />
+            <circle cx="15" cy="9" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'mastered': // Vault-Tec Gold Star Perk / Bottle Cap Stash
+        return (
+          <svg {...commonSvgProps}>
+            {/* Serrated Bottle Cap Edge */}
+            <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="1.6" strokeDasharray="3 1.5" fill="none" />
+            {/* Center Perk Star */}
+            <polygon points="12,6 13.8,9.8 18,10.2 14.8,13 15.8,17.2 12,15 8.2,17.2 9.2,13 6,10.2 10.2,9.8" fill={color} />
+          </svg>
+        );
+      case 'learning': // Geiger Counter Radiation Needle Gauge
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M4 16a8.5 8.5 0 0116 0" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <line x1="4" y1="16" x2="20" y2="16" stroke={color} strokeWidth="1.5" />
+            <circle cx="12" cy="16" r="2" fill={color} />
+            <line x1="12" y1="16" x2="17" y2="9" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <circle cx="18" cy="7" r="1" fill={color} />
+            {/* Rad Tick Marks */}
+            <line x1="6.5" y1="11" x2="8" y2="12" stroke={color} strokeWidth="1.2" />
+            <line x1="12" y1="7.5" x2="12" y2="9.5" stroke={color} strokeWidth="1.2" />
+          </svg>
+        );
+      case 'locked': // RobCo Terminal Lock / Password Screen
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="5" y="10" width="14" height="11" fill="none" stroke={color} strokeWidth="1.6" />
+            <path d="M8 10V6.5a4 4 0 018 0V10" stroke={color} strokeWidth="1.8" fill="none" />
+            <rect x="10" y="13" width="4" height="3" fill={color} />
+            <line x1="12" y1="16" x2="12" y2="19" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'edit': // Wasteland Maintenance Wrench & Screwdriver
+        return (
+          <svg {...commonSvgProps}>
+            {/* Pipe Wrench */}
+            <path d="M14.5 4a3.5 3.5 0 00-4.5 4.5l-6 6a1.5 1.5 0 002.1 2.1l6-6A3.5 3.5 0 0016.6 6" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            {/* Cross Screwdriver */}
+            <line x1="5" y1="4" x2="19" y2="18" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="17" y1="20" x2="20" y2="17" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'save': // RobCo Holotape Cartridge with Twin Spools
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="3" y="4" width="18" height="16" rx="1" fill="none" stroke={color} strokeWidth="1.6" />
+            {/* Spool Viewing Window */}
+            <rect x="6" y="7" width="12" height="7" fill={color} opacity="0.3" stroke={color} strokeWidth="1" />
+            <circle cx="9" cy="10.5" r="1.5" stroke={color} strokeWidth="1.2" fill="none" />
+            <circle cx="15" cy="10.5" r="1.5" stroke={color} strokeWidth="1.2" fill="none" />
+            {/* Tape Path */}
+            <line x1="9" y1="12" x2="15" y2="12" stroke={color} strokeWidth="1" />
+            <rect x="6" y="16" width="12" height="2" fill={color} />
+          </svg>
+        );
+      case 'download': // Vault-Tec Satellite Uplink / Data Download
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M4 14a8 8 0 0116 0" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M7 14a5 5 0 0110 0" stroke={color} strokeWidth="1.4" fill="none" />
+            <circle cx="12" cy="14" r="1.5" fill={color} />
+            <line x1="12" y1="14" x2="12" y2="21" stroke={color} strokeWidth="1.8" />
+            <polygon points="9,7 12,3 15,7" fill={color} />
+          </svg>
+        );
+      case 'close': // RobCo Terminal [QUIT] Hazard Button
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="3" y="3" width="18" height="18" fill="none" stroke={color} strokeWidth="1.6" />
+            <line x1="7" y1="7" x2="17" y2="17" stroke={color} strokeWidth="2.2" strokeLinecap="square" />
+            <line x1="17" y1="7" x2="7" y2="17" stroke={color} strokeWidth="2.2" strokeLinecap="square" />
+          </svg>
+        );
+      case 'search': // V.A.T.S. Tactical Targeter Reticle
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="7.5" stroke={color} strokeWidth="1.6" strokeDasharray="3 2" fill="none" />
+            <line x1="12" y1="3" x2="12" y2="7" stroke={color} strokeWidth="1.8" />
+            <line x1="12" y1="17" x2="12" y2="21" stroke={color} strokeWidth="1.8" />
+            <line x1="3" y1="12" x2="7" y2="12" stroke={color} strokeWidth="1.8" />
+            <line x1="17" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.8" />
+            <rect x="11" y="11" width="2" height="2" fill={color} />
+          </svg>
+        );
+      case 'zoomIn': // V.A.T.S. Zoom [+]
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="11" y1="7.5" x2="11" y2="14.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="7.5" y1="11" x2="14.5" y2="11" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomOut': // V.A.T.S. Zoom [-]
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="7.5" y1="11" x2="14.5" y2="11" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'reset': // Vault-Tec Cogwheel Gear / Reboot Cycle
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M4 12a8 8 0 0114.5-4.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <polygon points="19,3.5 20,8.5 15,8" fill={color} />
+            <path d="M20 12a8 8 0 01-14.5 4.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <polygon points="5,20.5 4,15.5 9,16" fill={color} />
+            <circle cx="12" cy="12" r="2.5" fill={color} />
+          </svg>
+        );
+      case 'brand': // Nuclear Radiation Trefoil Warning Hazard Symbol
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <polygon points="8,4 16,4 14,9 10,9" fill={color} />
+            <polygon points="4,17 7,12 11,14 8,19" fill={color} />
+            <polygon points="20,17 17,12 13,14 16,19" fill={color} />
+            <circle cx="12" cy="12" r="2" fill="#040d07" />
+            <circle cx="12" cy="12" r="1.2" fill={color} />
+          </svg>
+        );
+      case 'design': // T-51b Power Armor Helmet Blueprint
+        return (
+          <svg {...commonSvgProps}>
+            {/* T-51b Helmet Outer Visor */}
+            <path d="M6 7c1-3 11-3 12 0v7c0 4-3 7-6 7s-6-3-6-7V7z" stroke={color} strokeWidth="1.8" fill="none" />
+            {/* Horizontal T-slit Eye Visor */}
+            <rect x="8" y="9" width="8" height="2" fill={color} />
+            <line x1="12" y1="11" x2="12" y2="15" stroke={color} strokeWidth="2" />
+            {/* Round Air Filters */}
+            <circle cx="8" cy="16" r="1.5" fill={color} />
+            <circle cx="16" cy="16" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'code': // RobCo Terminal Command Prompt ROBCO C:\>
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="3" y="4" width="18" height="16" fill="none" stroke={color} strokeWidth="1.6" />
+            <rect x="3" y="4" width="18" height="3" fill={color} />
+            <polyline points="6,11 9,13.5 6,16" stroke={color} strokeWidth="1.8" strokeLinecap="square" fill="none" />
+            <rect x="11" y="15" width="4" height="1.8" fill={color} />
+          </svg>
+        );
+      case 'qa': // Rad Hazard Warning [RADS / !]
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <polygon points="12,3 22,20 2,20" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="8" x2="12" y2="14" stroke={color} strokeWidth="2" strokeLinecap="square" />
+            <rect x="11" y="16.5" width="2" height="2" fill={color} />
+          </svg>
+        );
+      case 'art': // Vault Boy Bobblehead Silhouette
+        return (
+          <svg {...commonSvgProps}>
+            {/* Big Bobblehead */}
+            <circle cx="12" cy="7.5" r="5" stroke={color} strokeWidth="1.8" fill="none" />
+            {/* Smile and Eye */}
+            <path d="M10 9c1 1 3 1 4 0" stroke={color} strokeWidth="1.2" strokeLinecap="round" fill="none" />
+            <circle cx="14" cy="7" r="0.8" fill={color} />
+            {/* Spring neck */}
+            <path d="M11 12.5h2M10.5 13.5h3" stroke={color} strokeWidth="1.4" />
+            {/* Bobblehead Pedestal Base */}
+            <path d="M9 15h6v4H9z" fill={color} opacity="0.4" stroke={color} strokeWidth="1.2" />
+            <rect x="7" y="19" width="10" height="2" fill={color} />
+          </svg>
+        );
+      case 'audio': // Diamond City Post-War Radio & Vacuum Tube
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="4" y="6" width="16" height="14" rx="2" fill="none" stroke={color} strokeWidth="1.6" />
+            {/* Vacuum Tube Glass / Tuning Dial */}
+            <circle cx="9" cy="13" r="3.5" stroke={color} strokeWidth="1.4" fill="none" />
+            <circle cx="9" cy="13" r="1.2" fill={color} />
+            {/* Radio Speaker Grille Lines */}
+            <line x1="14" y1="10" x2="18" y2="10" stroke={color} strokeWidth="1.4" />
+            <line x1="14" y1="13" x2="18" y2="13" stroke={color} strokeWidth="1.4" />
+            <line x1="14" y1="16" x2="18" y2="16" stroke={color} strokeWidth="1.4" />
+            {/* Radio Antenna */}
+            <line x1="7" y1="6" x2="3" y2="2" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'boss': // Glowing One Nuclear Ghoul Skull / Deathclaw
+        return (
+          <svg {...commonSvgProps}>
+            {/* Irradiated Skull Contour */}
+            <path d="M6 10c0-4 2.5-6 6-6s6 2 6 6c0 3-2 5-3 6v3h-6v-3c-1-1-3-3-3-6z" stroke={color} strokeWidth="1.8" fill="none" />
+            {/* Glowing Eye Sockets */}
+            <circle cx="9.5" cy="10" r="1.5" fill={color} />
+            <circle cx="14.5" cy="10" r="1.5" fill={color} />
+            {/* Radiation Teeth */}
+            <line x1="10" y1="17" x2="10" y2="19" stroke={color} strokeWidth="1.4" />
+            <line x1="12" y1="17" x2="12" y2="19" stroke={color} strokeWidth="1.4" />
+            <line x1="14" y1="17" x2="14" y2="19" stroke={color} strokeWidth="1.4" />
+            {/* Radioactivity Halo Waves */}
+            <path d="M3 10c0-5 4-9 9-9s9 4 9 9" stroke={color} strokeWidth="1.2" strokeDasharray="2 2" fill="none" />
+          </svg>
+        );
+      case 'production': // RobCo Industries Factory Gear & Atomic Atom
+        return (
+          <svg {...commonSvgProps}>
+            {/* Central Atomic Core */}
+            <circle cx="12" cy="12" r="2.5" fill={color} />
+            {/* Orbiting Atomic Rings */}
+            <ellipse cx="12" cy="12" rx="8" ry="3.5" stroke={color} strokeWidth="1.4" fill="none" />
+            <ellipse cx="12" cy="12" rx="3.5" ry="8" stroke={color} strokeWidth="1.4" fill="none" />
+            <circle cx="17.5" cy="10" r="1" fill={color} />
+            <circle cx="9" cy="17.5" r="1" fill={color} />
+          </svg>
+        );
+      case 'drag': // Pip-Boy 4-Way Compass Navigation Reticle
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <polyline points="10,4 12,2 14,4" stroke={color} strokeWidth="1.5" fill="none" />
+            <polyline points="10,20 12,22 14,20" stroke={color} strokeWidth="1.5" fill="none" />
+            <polyline points="4,10 2,12 4,14" stroke={color} strokeWidth="1.5" fill="none" />
+            <polyline points="20,10 22,12 20,14" stroke={color} strokeWidth="1.5" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="22" stroke={color} strokeWidth="1.5" />
+            <line x1="2" y1="12" x2="22" y2="12" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'open': // RobCo Holotape Reader Open Deck
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="3" y="5" width="18" height="14" rx="1" fill="none" stroke={color} strokeWidth="1.5" />
+            <polygon points="5,11 19,11 17,17 7,17" fill={color} opacity="0.3" stroke={color} strokeWidth="1.4" />
+            <line x1="7" y1="8" x2="17" y2="8" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'font': // Pip-Boy Terminal Typography [PIP]
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="3" y="6" width="6" height="12" fill="none" stroke={color} strokeWidth="1.5" />
+            <rect x="3" y="6" width="6" height="6" fill={color} />
+            <line x1="12" y1="6" x2="12" y2="18" stroke={color} strokeWidth="2" />
+            <rect x="15" y="6" width="6" height="12" fill="none" stroke={color} strokeWidth="1.5" />
+            <rect x="15" y="6" width="6" height="6" fill={color} />
+          </svg>
+        );
+      case 'langVi': // VN Flag Star on Radiation Shield
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,3 20,7 20,13 12,21 4,13 4,7" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <polygon points="12,7 13.5,10.5 17,10.7 14.3,12.7 15.3,16 12,14 8.7,16 9.7,12.7 7,10.7 10.5,10.5" fill={color} />
+          </svg>
+        );
+      case 'langEn': // Global Wasteland Radar Compass
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="1.6" fill="none" />
+            <ellipse cx="12" cy="12" rx="3.5" ry="8" stroke={color} strokeWidth="1.2" fill="none" />
+            <line x1="4" y1="12" x2="20" y2="12" stroke={color} strokeWidth="1.4" />
+            <path d="M5.5 8c2-1 11-1 13 0M5.5 16c2 1 11 1 13 0" stroke={color} strokeWidth="1.2" fill="none" />
+          </svg>
+        );
+    }
+  }
+
 // Fallback
   return (
     <svg {...commonSvgProps}>

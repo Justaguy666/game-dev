@@ -472,6 +472,35 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
+  // 11. PIP-BOY 3000 / POST-NUCLEAR PHOSPHOR CRT (Fallout & RobCo Terminal)
+  if (theme === 'pipboy') {
+    if (mode === 'light') {
+      switch (domainId) {
+        case 'root': return '#15803d'; // Deep Radiation Olive Green
+        case 'design': return '#b45309'; // Wasteland Rust Amber
+        case 'tech': return '#0369a1'; // Vault-Tec Jumpsuit Blue
+        case 'qa': return '#b91c1c'; // Critical Hazard Crimson
+        case 'art': return '#7e22ce'; // Quantum Violet
+        case 'audio': return '#047857'; // Radio Tower Pine
+        case 'boss':
+        case 'production': return '#c2410c'; // Nuclear Fallout Rust
+        default: return '#15803d';
+      }
+    } else {
+      switch (domainId) {
+        case 'root': return '#1aff59'; // Pure Phosphor Green
+        case 'design': return '#ffb900'; // Pip-Boy Amber Rad Meter
+        case 'tech': return '#1bf5e6'; // V.A.T.S. Tactical Target Cyan
+        case 'qa': return '#ff4141'; // Critical Radiation Hazard Red
+        case 'art': return '#c084fc'; // Stealth-Boy Ultraviolet
+        case 'audio': return '#39ff14'; // Geiger Frequency Neon Mint
+        case 'boss':
+        case 'production': return '#ffa500'; // Glowing One Nuclear Amber
+        default: return '#1aff59';
+      }
+    }
+  }
+
   // 3. LIGHT MODE (Arcade, Cyber, Fantasy)
   // Clean, high-contrast accessible jewel tones (> 4.5:1)
   if (mode === 'light') {
