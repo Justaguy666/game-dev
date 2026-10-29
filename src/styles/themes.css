@@ -212,6 +212,34 @@ body {
   min-height: 100vh;
 }
 
+/* Game Boy 1989 Font Scale Enhancement (Crisp & Legible Pixel Sizing) */
+body.theme-gameboy {
+  font-size: 1.26rem;
+  letter-spacing: 0.035em;
+}
+
+body.theme-gameboy h1,
+body.theme-gameboy h2,
+body.theme-gameboy h3,
+body.theme-gameboy h4 {
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+body.theme-gameboy button,
+body.theme-gameboy input,
+body.theme-gameboy select,
+body.theme-gameboy textarea {
+  font-family: var(--font-mono);
+  font-size: 1.18rem;
+  letter-spacing: 0.03em;
+}
+
+body.theme-gameboy .markdown-body {
+  font-size: 1.25rem;
+  line-height: 1.5;
+}
+
 /* CRT Scanlines Overlay (Toggleable) */
 .crt-enabled::before {
   content: " ";

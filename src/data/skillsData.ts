@@ -7,8 +7,8 @@ export const INITIAL_SKILLS: SkillNode[] = [
   {
     id: 'root-game-dev',
     title: {
-      vi: '🌟 Khởi Nguyên: Game Development',
-      en: '🌟 Nexus: Game Dev Foundations'
+      vi: 'Khởi Nguyên: Game Development',
+      en: 'Nexus: Game Dev Foundations'
     },
     category: 'root',
     tier: 0,
@@ -23,7 +23,7 @@ export const INITIAL_SKILLS: SkillNode[] = [
       en: 'The interdisciplinary nexus of game creation: Design experience, Software engineering, Quality assurance, Visual arts, and Audio architecture.'
     },
     content: {
-      vi: `# 🌟 Khởi Nguyên: Nền Tảng Phát Triển Game (Game Development Foundations)
+      vi: `# Khởi Nguyên: Nền Tảng Phát Triển Game (Game Development Foundations)
 
 > "Làm game là sự giao thoa tối thượng giữa tư duy logic toán học chặt chẽ và cảm xúc nghệ thuật tương tác sống động."
 
@@ -32,13 +32,13 @@ Nghiên cứu phát triển game **không bao giờ bị bó buộc bởi bất 
 ---
 
 ### 5 Đại Trụ Cột Tri Thức Cốt Lõi:
-1. 🎮 **Game Design & Mechanics**: Bản chất của niềm vui, động lực người chơi, vòng lặp tương tác, cân bằng hệ thống và nhịp độ không gian.
-2. 💻 **Game Programming & Software Architecture**: Vòng lặp trò chơi DeltaTime, toán học vector/động lực học, các mẫu thiết kế (FSM, Component/ECS, Event Bus) và AI tương tác.
-3. 🔍 **Testing, QA & Optimization**: Vòng đời bug, kiểm thử biên, mô phỏng tự động headless bot, profiling CPU/GPU và phương pháp đo lường UX thực nghiệm.
-4. 🎨 **Visual Arts & Technical Art**: Ngôn ngữ thị giác, độ tương phản hình chiếu (silhouette), 12 nguyên lý diễn hoạt tương tác và shader đồ họa.
-5. 🔊 **Audio & Sound Architecture**: Ký hiệu học âm thanh, hệ thống âm thanh thích ứng theo trạng thái trò chơi (adaptive audio) và không gian hóa 3D.
-6. 🚀 **Production & Climax Capstones**: Kiến trúc trận đánh Boss đa giai đoạn và quy trình quản lý phạm vi (scope), hoàn thiện (polish) và phát hành.`,
-      en: `# 🌟 Nexus: Game Development Core Foundations
+1. **Game Design & Mechanics**: Bản chất của niềm vui, động lực người chơi, vòng lặp tương tác, cân bằng hệ thống và nhịp độ không gian.
+2. **Game Programming & Software Architecture**: Vòng lặp trò chơi DeltaTime, toán học vector/động lực học, các mẫu thiết kế (FSM, Component/ECS, Event Bus) và AI tương tác.
+3. **Testing, QA & Optimization**: Vòng đời bug, kiểm thử biên, mô phỏng tự động headless bot, profiling CPU/GPU và phương pháp đo lường UX thực nghiệm.
+4. **Visual Arts & Technical Art**: Ngôn ngữ thị giác, độ tương phản hình chiếu (silhouette), 12 nguyên lý diễn hoạt tương tác và shader đồ họa.
+5. **Audio & Sound Architecture**: Ký hiệu học âm thanh, hệ thống âm thanh thích ứng theo trạng thái trò chơi (adaptive audio) và không gian hóa 3D.
+6. **Production & Climax Capstones**: Kiến trúc trận đánh Boss đa giai đoạn và quy trình quản lý phạm vi (scope), hoàn thiện (polish) và phát hành.`,
+      en: `# Nexus: Game Development Core Foundations
 
 > "Game development represents the ultimate convergence of rigorous computational logic and interactive artistic expression."
 
@@ -47,12 +47,12 @@ The study of game creation **must never be shackled to any single commercial too
 ---
 
 ### The 5 Architectural Pillars:
-1. 🎮 **Game Design & Mechanics**: Player psychology, interaction loops, systems balancing, game feel, and spatial level pacing.
-2. 💻 **Game Programming & Architecture**: Game loops & DeltaTime, Euclidean kinematics, architectural patterns (FSM, Component/ECS, Event Bus), and AI behavior models.
-3. 🔍 **Testing, QA & Optimization**: Bug lifecycle taxonomy, boundary testing, automated headless simulation, performance profiling, and empirical UX telemetry.
-4. 🎨 **Visual Arts & Technical Art**: Visual readability, silhouette hierarchy, interactive animation principles, and shader graphics pipelines.
-5. 🔊 **Audio & Sound Architecture**: Audio semiotics, adaptive sound systems, dynamic layering, and 3D spatial acoustic propagation.
-6. 🚀 **Production & Climax Capstones**: Multi-phase Boss battle architecture and the disciplined scope, polish, and release pipeline.`
+1. **Game Design & Mechanics**: Player psychology, interaction loops, systems balancing, game feel, and spatial level pacing.
+2. **Game Programming & Architecture**: Game loops & DeltaTime, Euclidean kinematics, architectural patterns (FSM, Component/ECS, Event Bus), and AI behavior models.
+3. **Testing, QA & Optimization**: Bug lifecycle taxonomy, boundary testing, automated headless simulation, performance profiling, and empirical UX telemetry.
+4. **Visual Arts & Technical Art**: Visual readability, silhouette hierarchy, interactive animation principles, and shader graphics pipelines.
+5. **Audio & Sound Architecture**: Audio semiotics, adaptive sound systems, dynamic layering, and 3D spatial acoustic propagation.
+6. **Production & Climax Capstones**: Multi-phase Boss battle architecture and the disciplined scope, polish, and release pipeline.`
     },
     objectives: [
       {
@@ -80,8 +80,8 @@ The study of game creation **must never be shackled to any single commercial too
   {
     id: 'design-core-loop',
     title: {
-      vi: '🔄 Vòng Lặp Trò Chơi (Core Loop)',
-      en: '🔄 Core Gameplay Loop'
+      vi: 'Vòng Lặp Trò Chơi (Core Loop)',
+      en: 'Core Gameplay Loop'
     },
     category: 'design',
     tier: 1,
@@ -97,7 +97,7 @@ The study of game creation **must never be shackled to any single commercial too
       en: 'The MDA framework, 30-second interaction cycle, and feedback loops driving player engagement.'
     },
     content: {
-      vi: `# 🔄 Vòng Lặp Trò Chơi & Mô Hình MDA (Core Gameplay Loop)
+      vi: `# Vòng Lặp Trò Chơi & Mô Hình MDA (Core Gameplay Loop)
 
 ## 1. Mô hình MDA (Mechanics - Dynamics - Aesthetics)
 * **Mechanics (Cơ chế):** Quy tắc toán học, luật chơi và thuật toán cơ sở (ví dụ: nhảy cao 3 mét, đạn tiêu tốn 1 mana).
@@ -118,7 +118,7 @@ The study of game creation **must never be shackled to any single commercial too
 ## 3. Feedback Loops (Vòng lặp phản hồi)
 * **Positive Feedback Loop (Tuyết lăn):** Thành công mang lại lợi thế lớn hơn (thắng nhặt được trang bị mạnh -> càng dễ thắng). Cần kiểm soát để tránh làm vỡ tính cân bằng!
 * **Negative Feedback Loop (Cân bằng động):** Thua cuộc được hỗ trợ nhẹ hoặc kẻ dẫn đầu chịu thêm áp lực (giúp trận đấu gay cấn đến phút cuối).`,
-      en: `# 🔄 Core Gameplay Loop & The MDA Framework
+      en: `# Core Gameplay Loop & The MDA Framework
 
 ## 1. The MDA Framework (Mechanics - Dynamics - Aesthetics)
 * **Mechanics:** The formal rules, calculations, and inputs defining the system (e.g., jump velocity = 12m/s, spell costs 15 MP).
@@ -163,8 +163,8 @@ The study of game creation **must never be shackled to any single commercial too
   {
     id: 'design-level-spatial',
     title: {
-      vi: '🗺️ Thiết Kế Màn Chơi (Level Design)',
-      en: '🗺️ Level Design & Spatial Pacing'
+      vi: 'Thiết Kế Màn Chơi (Level Design)',
+      en: 'Level Design & Spatial Pacing'
     },
     category: 'design',
     tier: 2,
@@ -180,7 +180,7 @@ The study of game creation **must never be shackled to any single commercial too
       en: 'Subconscious player guidance, Pinch & Release spatial pacing, and environmental affordance.'
     },
     content: {
-      vi: `# 🗺️ Thiết Kế Màn Chơi & Nhịp Độ Không Gian (Level Design & Spatial Pacing)
+      vi: `# Thiết Kế Màn Chơi & Nhịp Độ Không Gian (Level Design & Spatial Pacing)
 
 ## 1. Nghệ Thuật Dẫn Đường Tiềm Thức (Visual Leading Lines)
 Không cần mũi tên chỉ đường thô kệch trên màn hình, một màn chơi xuất sắc dẫn dắt người chơi bằng bản năng:
@@ -195,7 +195,7 @@ Không cần mũi tên chỉ đường thô kệch trên màn hình, một màn 
 ## 3. Nguyên Tắc Thiết Kế Đấu Trường (Combat Arena Design)
 * Phải có ít nhất 2 tuyến đường di chuyển tuần hoàn (Loops) để tránh việc người chơi bị dồn vào ngõ cụt.
 * Bố trí vật chắn che chở (Cover) có thể bị phá hủy hoặc yêu cầu di chuyển liên tục.`,
-      en: `# 🗺️ Level Design & Spatial Pacing
+      en: `# Level Design & Spatial Pacing
 
 ## 1. Subconscious Visual Guidance
 A well-architected level directs players intuitively without relying on intrusive UI arrows:
@@ -234,8 +234,8 @@ A well-architected level directs players intuitively without relying on intrusiv
   {
     id: 'design-game-feel',
     title: {
-      vi: '✨ Cảm Giác Chơi & "Juice"',
-      en: '✨ Game Feel & Responsiveness'
+      vi: 'Cảm Giác Chơi & "Juice"',
+      en: 'Game Feel & Responsiveness'
     },
     category: 'design',
     tier: 3,
@@ -251,7 +251,7 @@ A well-architected level directs players intuitively without relying on intrusiv
       en: 'Input ergonomics, forgiving window tolerances (Coyote time, Buffering), and tactile visceral juice.'
     },
     content: {
-      vi: `# ✨ Cảm Giác Chơi & Kỹ Thuật "Juice" (Game Feel & Polish)
+      vi: `# Cảm Giác Chơi & Kỹ Thuật "Juice" (Game Feel & Polish)
 
 ## 1. Thiết Kế Điều Khiển Vị Tha (Forgiving Player Input)
 Người chơi thường ấn phím sớm hơn hoặc muộn hơn vài mili-giây so với thực tế vật lý. Trò chơi xuất sắc luôn "bao dung" cho sai số của con người:
@@ -263,7 +263,7 @@ Người chơi thường ấn phím sớm hơn hoặc muộn hơn vài mili-giâ
 * **Hit-Stop / Freeze Frame (Dừng hình 0.03s - 0.08s):** Tạm ngừng hoạt ảnh của cả người đánh lẫn mục tiêu trong tích tắc va chạm để não bộ cảm nhận được sức nặng cú đánh.
 * **Camera Trauma & Screen Shake:** Rung màn hình với suy giảm bậc 2 (\`trauma^2\`) theo hướng phản lực đòn đánh.
 * **Scale Squash & Stretch:** Co giãn sprite/model khi tiếp đất hoặc khi bật nhảy để thể hiện tính đàn hồi vật lý.`,
-      en: `# ✨ Game Feel & Tactile Responsiveness ("Juice")
+      en: `# Game Feel & Tactile Responsiveness ("Juice")
 
 ## 1. Forgiving Input Architecture
 Human reaction times carry microsecond variances. Great games quietly forgive mechanical imperfections:
@@ -299,8 +299,8 @@ Human reaction times carry microsecond variances. Great games quietly forgive me
   {
     id: 'design-economy-balance',
     title: {
-      vi: '⚖️ Cân Bằng Hệ Thống & Kinh Tế',
-      en: '⚖️ Systems Balancing & Economy'
+      vi: 'Cân Bằng Hệ Thống & Kinh Tế',
+      en: 'Systems Balancing & Economy'
     },
     category: 'design',
     tier: 4,
@@ -316,7 +316,7 @@ Human reaction times carry microsecond variances. Great games quietly forgive me
       en: 'Taps & Sinks resource models, mathematical progression curves, and risk vs reward equilibrium.'
     },
     content: {
-      vi: `# ⚖️ Cân Bằng Hệ Thống & Kinh Tế Trò Chơi (Systems Balancing)
+      vi: `# Cân Bằng Hệ Thống & Kinh Tế Trò Chơi (Systems Balancing)
 
 ## 1. Mô Hình Bồn Nước: Taps, Sinks & Reservoirs
 * **Taps (Nguồn cung):** Tiền vàng rơi từ quái, phần thưởng nhiệm vụ, tài nguyên tái tạo theo thời gian.
@@ -331,7 +331,7 @@ Human reaction times carry microsecond variances. Great games quietly forgive me
 
 ## 3. Ma Trận Đánh Đổi Rủi Ro / Phần Thưởng (Risk vs Reward)
 Một quyết định chiến thuật chỉ có ý nghĩa nếu có sự đánh đổi: Vũ khí sát thương cực lớn nhưng thời gian ra đòn chậm; hoặc kỹ năng lướt trúng địch hồi chiêu lập tức nhưng nếu hụt thì bị choáng.`,
-      en: `# ⚖️ Systems Balancing & In-Game Economy
+      en: `# Systems Balancing & In-Game Economy
 
 ## 1. The Hydraulic Economy Model: Taps, Sinks, and Reservoirs
 * **Taps (Inflow):** Enemy loot drops, quest payouts, passive generation.
@@ -373,8 +373,8 @@ Meaningful gameplay emerges from trade-offs: massive burst damage balanced by he
   {
     id: 'prog-game-loop',
     title: {
-      vi: '⚙️ Game Loop & DeltaTime',
-      en: '⚙️ Game Loop & DeltaTime'
+      vi: 'Game Loop & DeltaTime',
+      en: 'Game Loop & DeltaTime'
     },
     category: 'tech',
     tier: 1,
@@ -390,7 +390,7 @@ Meaningful gameplay emerges from trade-offs: massive burst damage balanced by he
       en: 'Core game loop architecture, Fixed Timestep, Accumulator patterns, and framerate independence.'
     },
     content: {
-      vi: `# ⚙️ Kiến Trúc Game Loop & Quản Lý Thời Gian Chuẩn Xác
+      vi: `# Kiến Trúc Game Loop & Quản Lý Thời Gian Chuẩn Xác
 
 ## 1. Trái Tim Của Mọi Game Engine
 Một game engine thực chất là một vòng lặp vô tận thực hiện 3 bước liên tục:
@@ -428,7 +428,7 @@ while (gameIsRunning) {
     Render(alpha);
 }
 \`\`\``,
-      en: `# ⚙️ Game Loop Architecture & Precise Timestep Management
+      en: `# Game Loop Architecture & Precise Timestep Management
 
 ## 1. The Anatomy of an Engine Loop
 Every game engine is at its core an infinite simulation cycle executing three serial phases:
@@ -488,8 +488,8 @@ while (gameIsRunning) {
   {
     id: 'prog-math-physics',
     title: {
-      vi: '📐 Toán Vector & Động Lực Học',
-      en: '📐 Game Math & Kinematics'
+      vi: 'Toán Vector & Động Lực Học',
+      en: 'Game Math & Kinematics'
     },
     category: 'tech',
     tier: 2,
@@ -505,7 +505,7 @@ while (gameIsRunning) {
       en: 'Euclidean vector math, Dot product FOV cones, surface reflection normals, and AABB collisions.'
     },
     content: {
-      vi: `# 📐 Toán Vector & Động Lực Học Cho Game Developer
+      vi: `# Toán Vector & Động Lực Học Cho Game Developer
 
 ## 1. Chuẩn Hóa Vector (Normalization)
 Khi bấm phím W và D cùng lúc, vector hướng là \`(1, 1)\` có độ dài \`sqrt(1^2 + 1^2) ≈ 1.414\`. Nhân vật sẽ chạy chéo nhanh hơn 41%!
@@ -531,7 +531,7 @@ bool CheckAABB(const Box& a, const Box& b) {
            (a.min.y <= b.max.y && a.max.y >= b.min.y);
 }
 \`\`\``,
-      en: `# 📐 Vector Mathematics & Kinematic Physics
+      en: `# Vector Mathematics & Kinematic Physics
 
 ## 1. Vector Normalization
 Pressing diagonal inputs yields direction \`(1, 1)\` with magnitude \`sqrt(2) ≈ 1.414\`. Entities would illegally move 41% faster diagonally without normalization:
@@ -581,8 +581,8 @@ bool CheckAABBCollision(const Rect& a, const Rect& b) {
   {
     id: 'prog-architecture-patterns',
     title: {
-      vi: '🏗️ Kiến Trúc & Design Patterns',
-      en: '🏗️ Game Architecture & Patterns'
+      vi: 'Kiến Trúc & Design Patterns',
+      en: 'Game Architecture & Patterns'
     },
     category: 'tech',
     tier: 3,
@@ -598,7 +598,7 @@ bool CheckAABBCollision(const Rect& a, const Rect& b) {
       en: 'Finite State Machines, Component/ECS paradigms, Decoupled Event Buses, and Object Pooling.'
     },
     content: {
-      vi: `# 🏗️ Kiến Trúc Phần Mềm & Các Mẫu Thiết Kế Trò Chơi (Game Design Patterns)
+      vi: `# Kiến Trúc Phần Mềm & Các Mẫu Thiết Kế Trò Chơi (Game Design Patterns)
 
 ## 1. Finite State Machine (Cỗ Máy Trạng Thái Hữu Hạn - FSM)
 Giải quyết triệt để lỗi "mì tôm spaghetti" khi dùng hàng chục câu lệnh \`if-else\` lồng nhau:
@@ -613,7 +613,7 @@ Giải quyết triệt để lỗi "mì tôm spaghetti" khi dùng hàng chục c
 Việc liên tục \`new Bullet()\` rồi \`destroy(bullet)\` kích hoạt trình gom rác (Garbage Collector) gây giật lag (frame drops) định kỳ:
 * Khởi tạo sẵn một mảng 200 viên đạn ngay từ đầu game.
 * Khi bắn -> Lấy đạn từ Pool ra kích hoạt. Khi đạn bay hết tầm -> Ẩn đi và trả lại về Pool. Không bao giờ cấp phát lại bộ nhớ trong vòng lặp game!`,
-      en: `# 🏗️ Game Architecture & Canonical Design Patterns
+      en: `# Game Architecture & Canonical Design Patterns
 
 ## 1. Finite State Machine (FSM)
 Replaces tangled, error-prone nested boolean flags with modular state contracts:
@@ -653,8 +653,8 @@ Instantiating and discarding hundreds of projectiles per minute triggers catastr
   {
     id: 'prog-ai-behaviors',
     title: {
-      vi: '🧠 Trí Tuệ Nhân Tạo (Game AI)',
-      en: '🧠 Game AI & Decision Making'
+      vi: 'Trí Tuệ Nhân Tạo (Game AI)',
+      en: 'Game AI & Decision Making'
     },
     category: 'tech',
     tier: 4,
@@ -670,7 +670,7 @@ Instantiating and discarding hundreds of projectiles per minute triggers catastr
       en: 'A* Pathfinding, Craig Reynolds steering behaviors (Seek, Flee, Arrive), and Behavior Trees.'
     },
     content: {
-      vi: `# 🧠 Trí Tuệ Nhân Tạo Trong Game (Game AI & Decision Making)
+      vi: `# Trí Tuệ Nhân Tạo Trong Game (Game AI & Decision Making)
 
 ## 1. Hành Vi Lái (Craig Reynolds Steering Behaviors)
 Tạo ra chuyển động tự nhiên như sinh vật sống thay vì di chuyển giật cục theo đường thẳng:
@@ -690,7 +690,7 @@ Cấu trúc tiêu chuẩn cho AI hiện đại, bao gồm:
   * \`Selector\` (Chọn nhánh thành công đầu tiên - dùng để xét ưu tiên: Trốn chạy -> Tấn công -> Đi tuần).
   * \`Sequence\` (Thực hiện tuần tự: Tìm mục tiêu -> Tiến lại gần -> Tung đòn).
 * **Decorators:** Đảo ngược kết quả, lặp lại hành động, hoặc đặt điều kiện thời gian.`,
-      en: `# 🧠 Game AI & Behavioral Simulation
+      en: `# Game AI & Behavioral Simulation
 
 ## 1. Craig Reynolds Steering Behaviors
 Generates organic, lifelike movement without rigid grid snapping:
@@ -732,8 +732,8 @@ The modular industry standard for hierarchical AI decision-making:
   {
     id: 'boss-state-machine',
     title: {
-      vi: '👹 Kiến Trúc Trận Đánh Boss',
-      en: '👹 Boss Battle Architecture'
+      vi: 'Kiến Trúc Trận Đánh Boss',
+      en: 'Boss Battle Architecture'
     },
     category: 'boss',
     tier: 5,
@@ -749,7 +749,7 @@ The modular industry standard for hierarchical AI decision-making:
       en: 'The capstone integration: Multi-phase State Machines, legible telegraphing, and adaptive climax design.'
     },
     content: {
-      vi: `# 👹 Thiết Kế & Kiến Trúc Trận Đánh Boss Đa Giai Đoạn (Boss Climax Architecture)
+      vi: `# Thiết Kế & Kiến Trúc Trận Đánh Boss Đa Giai Đoạn (Boss Climax Architecture)
 
 ## 1. Cấu Trúc State Machine Đa Giai Đoạn (Multi-Phase FSM)
 Trận đánh Boss là bài kiểm tra toàn diện mọi kỹ năng người chơi đã học:
@@ -764,7 +764,7 @@ Trận đánh Boss là bài kiểm tra toàn diện mọi kỹ năng người ch
 ## 2. Định Luật Báo Hiệu Đòn Đánh (The Telegraphing Law)
 Mọi đòn đánh sát thương cao bắt buộc phải có hiệu ứng báo hiệu (Telegraph) rõ ràng từ 0.3s - 0.6s (ánh mắt lóe sáng, vung kiếm lấy đà, vệt đỏ cảnh báo trên mặt đất).
 > "Thất bại của người chơi phải xuất phát từ việc phán đoán sai, không bao giờ được xuất phát từ đòn đánh bất ngờ không thể né tránh!"`,
-      en: `# 👹 Multi-Phase Boss Battle Architecture
+      en: `# Multi-Phase Boss Battle Architecture
 
 ## 1. The Climax Dance: Multi-Phase State Progression
 A great boss battle serves as the ultimate examination of player mastery:
@@ -806,8 +806,8 @@ Devastating strikes must feature distinct 300ms - 600ms visual/auditory wind-up 
   {
     id: 'test-foundations-qa',
     title: {
-      vi: '🔍 Nền Tảng Kiểm Thử (QA Foundations)',
-      en: '🔍 QA Foundations & Bug Taxonomy'
+      vi: 'Nền Tảng Kiểm Thử (QA Foundations)',
+      en: 'QA Foundations & Bug Taxonomy'
     },
     category: 'qa',
     tier: 1,
@@ -823,7 +823,7 @@ Devastating strikes must feature distinct 300ms - 600ms visual/auditory wind-up 
       en: 'Bug severity vs priority taxonomy, boundary value analysis, and deterministic reproduction protocols.'
     },
     content: {
-      vi: `# 🔍 Nền Tảng Kiểm Thử & Quản Lý Chất Lượng Game (QA Foundations)
+      vi: `# Nền Tảng Kiểm Thử & Quản Lý Chất Lượng Game (QA Foundations)
 
 ## 1. Ma Trận Phân Loại Bug (Severity vs Priority)
 * **Blocker / Crash (P1 - S1):** Game bị sập, treo máy, hỏng file lưu game (Save corruption). Bắt buộc sửa ngay lập tức trước mọi tính năng mới.
@@ -840,7 +840,7 @@ Bug game hầu hết luôn ẩn náu ở các đường ranh giới:
 
 ## 3. Quy Trình 3 Bước Tái Hiện Bug Chuẩn Xác
 Mọi báo cáo lỗi phải có: **Các bước tái hiện (Steps to Reproduce)**, **Kết quả thực tế (Actual Result)**, và **Kết quả kỳ vọng (Expected Result)**.`,
-      en: `# 🔍 QA Foundations & Bug Severity Taxonomy
+      en: `# QA Foundations & Bug Severity Taxonomy
 
 ## 1. Severity vs Priority Matrix
 * **Blocker (Severity 1 / Priority 1):** Engine crash, infinite lock, corrupt save data. Blocks all builds immediately.
@@ -881,8 +881,8 @@ Every actionable bug report must document: **Steps to Reproduce (100% determinis
   {
     id: 'test-automated-headless',
     title: {
-      vi: '🤖 Kiểm Thử Tự Động & Headless',
-      en: '🤖 Automated & Headless Testing'
+      vi: 'Kiểm Thử Tự Động & Headless',
+      en: 'Automated & Headless Testing'
     },
     category: 'qa',
     tier: 2,
@@ -898,7 +898,7 @@ Every actionable bug report must document: **Steps to Reproduce (100% determinis
       en: 'Headless simulation runners, deterministic rule unit tests, and Monte Carlo balancing bots.'
     },
     content: {
-      vi: `# 🤖 Kiểm Thử Tự Động & Chạy Mô Phỏng Headless (Automated Testing)
+      vi: `# Kiểm Thử Tự Động & Chạy Mô Phỏng Headless (Automated Testing)
 
 ## 1. Tách Rời Logic Khỏi Render Để Chạy Headless
 Nếu game bắt buộc phải mở cửa sổ đồ họa và có người ngồi bấm tay thì việc kiểm thử rất chậm chạp.
@@ -927,7 +927,7 @@ describe('Damage & Armor Calculation', () => {
 
 ## 3. Bot Mô Phỏng Monte Carlo Cân Bằng Game
 Viết một con bot tự động chơi 10,000 ván đấu trong 2 phút để thống kê: Vũ khí nào có tỷ lệ thắng 85% (quá bá đạo) hoặc nhân vật nào chỉ có 15% tỷ lệ thắng (quá phế).`,
-      en: `# 🤖 Automated Game Testing & Headless Simulation
+      en: `# Automated Game Testing & Headless Simulation
 
 ## 1. Headless Architecture
 Decoupling the computational simulation from the graphics rendering pipeline allows running game logic **headless** at 100x realtime execution speed.
@@ -979,8 +979,8 @@ Deploy lightweight headless AI bots to simulate 10,000 matches in minutes. Analy
   {
     id: 'test-profiling-perf',
     title: {
-      vi: '📊 Đo Lường & Tối Ưu Hiệu Năng',
-      en: '📊 Performance Profiling'
+      vi: 'Đo Lường & Tối Ưu Hiệu Năng',
+      en: 'Performance Profiling'
     },
     category: 'qa',
     tier: 3,
@@ -996,7 +996,7 @@ Deploy lightweight headless AI bots to simulate 10,000 matches in minutes. Analy
       en: 'The 16.6ms frame budget, CPU/GPU bottleneck diagnosis, Draw Call batching, and memory profiling.'
     },
     content: {
-      vi: `# 📊 Đo Lường & Tối Ưu Hóa Hiệu Năng (Performance Profiling)
+      vi: `# Đo Lường & Tối Ưu Hóa Hiệu Năng (Performance Profiling)
 
 ## 1. Định Mức Thời Gian 1 Khung Hình (The 16.6ms Budget)
 Để đạt chuẩn mượt mà 60 FPS, toàn bộ logic, vật lý và vẽ đồ họa của 1 khung hình phải hoàn thành trong **16.6 mili-giây** (với 120 FPS là **8.3ms**):
@@ -1013,7 +1013,7 @@ Nếu bất kỳ khâu nào vượt quá giới hạn -> Người chơi sẽ c�
 
 ## 3. Tối Ưu Số Lệnh Vẽ (Draw Call Batching)
 Gửi 1000 lệnh vẽ riêng lẻ từng tảng đá sẽ làm tê liệt CPU. Gộp 1000 tảng đá dùng chung 1 bức ảnh Texture vào **1 mẻ duy nhất (Dynamic/Static Batching)** sẽ tăng vọt hiệu năng!`,
-      en: `# 📊 Performance Profiling & Frame Budget Management
+      en: `# Performance Profiling & Frame Budget Management
 
 ## 1. The 16.6ms Frame Budget (60 FPS)
 To maintain an uncompromised 60 frames per second, the total time budget per frame is strictly **16.6 milliseconds** (or **8.3ms** for 120 FPS):
@@ -1054,8 +1054,8 @@ Issuing individual draw commands for 500 foliage sprites chokes the CPU-GPU bus.
   {
     id: 'test-playtesting-ux',
     title: {
-      vi: '👥 Kiểm Thử Người Dùng (Playtesting & UX)',
-      en: '👥 Empirical Playtesting & UX'
+      vi: 'Kiểm Thử Người Dùng (Playtesting & UX)',
+      en: 'Empirical Playtesting & UX'
     },
     category: 'qa',
     tier: 4,
@@ -1071,7 +1071,7 @@ Issuing individual draw commands for 500 foliage sprites chokes the CPU-GPU bus.
       en: 'Blind playtesting protocols, eliminating observer bias, and telemetry death heatmap analysis.'
     },
     content: {
-      vi: `# 👥 Kiểm Thử Người Dùng & Dữ Liệu Thực Nghiệm (Empirical Playtesting & UX)
+      vi: `# Kiểm Thử Người Dùng & Dữ Liệu Thực Nghiệm (Empirical Playtesting & UX)
 
 ## 1. Quy Tắc Thép Trong Blind Playtesting
 Khi cho một người chơi lạ trải nghiệm bản thử nghiệm của bạn:
@@ -1086,7 +1086,7 @@ Số liệu không bao giờ nói dối:
 ## 3. Lắng Nghe Vấn Đề, Đừng Nghe Giải Pháp
 Người chơi rất giỏi trong việc cảm nhận thấy có **vấn đề** ("Đoạn này ức chế quá", "Khẩu súng này bắn chán ngắt").
 Nhưng giải pháp họ đề xuất thường không đúng bản chất. Nhiệm vụ của nhà phát triển là tìm ra nguyên nhân gốc rễ phía sau cảm xúc đó.`,
-      en: `# 👥 Empirical Playtesting & Telemetry Analytics
+      en: `# Empirical Playtesting & Telemetry Analytics
 
 ## 1. The Cardinal Laws of Blind Playtesting
 When evaluating unprompted players with your latest build:
@@ -1124,8 +1124,8 @@ However, their proposed solutions are rarely aligned with systemic design. It is
   {
     id: 'prod-scope-polish',
     title: {
-      vi: '🚀 Sản Xuất & Hoàn Thiện Game',
-      en: '🚀 Production Scope & Polish'
+      vi: 'Sản Xuất & Hoàn Thiện Game',
+      en: 'Production Scope & Polish'
     },
     category: 'production',
     tier: 5,
@@ -1141,7 +1141,7 @@ However, their proposed solutions are rarely aligned with systemic design. It is
       en: 'Feature creep elimination, Vertical Slice milestones, and the 80/20 rule of game polish.'
     },
     content: {
-      vi: `# 🚀 Quản Lý Sản Xuất & Quy Trình Hoàn Thiện Game (Production & Polish Pipeline)
+      vi: `# Quản Lý Sản Xuất & Quy Trình Hoàn Thiện Game (Production & Polish Pipeline)
 
 ## 1. Kẻ Thù Số Một: Phình Tính Năng (Feature Creep)
 Hàng ngàn tựa game chết yểu vì nhà phát triển liên tục nảy sinh ý tưởng mới giữa chừng: *"Thêm câu cá nhé?", "Thêm chế tạo đồ nhé?", "Thêm thế giới mở nhé?"*.
@@ -1157,7 +1157,7 @@ Giai đoạn biến tựa game từ "chơi được" thành "xuất sắc" nằm
 * Âm thanh phản hồi khi trỏ chuột vào nút bấm.
 * Chuyển cảnh mượt mà giữa các màn chơi.
 * Tự động lưu game thông minh và hỗ trợ đa dạng cấu hình máy tính.`,
-      en: `# 🚀 Production Discipline, Scope Control & Polish Pipeline
+      en: `# Production Discipline, Scope Control & Polish Pipeline
 
 ## 1. The Fatal Trap: Feature Creep
 Countless promising projects collapse into development purgatory because teams incessantly append side ideas mid-production (*"Let's add fishing!", "Let's add crafting!", "Let's make it open-world!"*).
@@ -1200,8 +1200,8 @@ The transformative difference between a mediocre prototype and an unforgettable 
   {
     id: 'art-visual-principles',
     title: {
-      vi: '👁️ Giao Tiếp Thị Giác (Visual Readability)',
-      en: '👁️ Visual Readability & Silhouettes'
+      vi: 'Giao Tiếp Thị Giác (Visual Readability)',
+      en: 'Visual Readability & Silhouettes'
     },
     category: 'art',
     tier: 1,
@@ -1217,7 +1217,7 @@ The transformative difference between a mediocre prototype and an unforgettable 
       en: 'Silhouette recognition, value structure hierarchies, and color theory for interactive readability.'
     },
     content: {
-      vi: `# 👁️ Giao Tiếp Thị Giác & Độ Rõ Nét Trong Game (Visual Readability)
+      vi: `# Giao Tiếp Thị Giác & Độ Rõ Nét Trong Game (Visual Readability)
 
 ## 1. Thử Thách Hình Chiếu Đen (The Silhouette Test)
 Trong chiến trận hỗn loạn, người chơi phải nhận diện kẻ địch trong vòng 0.1 giây:
@@ -1233,7 +1233,7 @@ Trong chiến trận hỗn loạn, người chơi phải nhận diện kẻ đ�
 
 ## 3. Lý Thuyết Màu Sắc Dẫn Đường
 Sử dụng các cặp màu tương phản bổ túc (Cam - Xanh dương, Đỏ - Xanh lá) để làm nổi bật ngay lập tức các chi tiết then chốt (như điểm yếu của quái vật hoặc vật phẩm nhặt được).`,
-      en: `# 👁️ Visual Communication & Silhouette Readability
+      en: `# Visual Communication & Silhouette Readability
 
 ## 1. The Pure Silhouette Test
 Amid dynamic visual chaos, a player must identify threats within 100 milliseconds:
@@ -1273,8 +1273,8 @@ Deploy complementary color contrasts (Warm amber vs cool cyan) to immediately hi
   {
     id: 'art-animation-dynamics',
     title: {
-      vi: '🏃 Diễn Hoạt Tương Tác (Game Animation)',
-      en: '🏃 Interactive Animation Principles'
+      vi: 'Diễn Hoạt Tương Tác (Game Animation)',
+      en: 'Interactive Animation Principles'
     },
     category: 'art',
     tier: 2,
@@ -1290,7 +1290,7 @@ Deploy complementary color contrasts (Warm amber vs cool cyan) to immediately hi
       en: 'The 12 animation principles adapted for games: Anticipation, Squash & Stretch, and input frame canceling.'
     },
     content: {
-      vi: `# 🏃 Diễn Hoạt Cho Game: Cân Bằng Giữa Đẹp Mắt & Độ Nhạy (Interactive Animation)
+      vi: `# Diễn Hoạt Cho Game: Cân Bằng Giữa Đẹp Mắt & Độ Nhạy (Interactive Animation)
 
 ## 1. Hoạt Hình Phim Ảnh Khác Hoạt Hình Game Như Thế Nào?
 * Trong phim: Động tác có thể chuẩn bị lấy đà (Anticipation) dài 1 giây để trông rất chân thực.
@@ -1304,7 +1304,7 @@ Deploy complementary color contrasts (Warm amber vs cool cyan) to immediately hi
 
 ## 3. Kỹ Thuật Frame Canceling
 Cho phép hủy bỏ các khung hình khôi phục (Recovery Frames) bằng thao tác Dash hoặc Nhảy để người chơi có thể tạo ra các chuỗi combo điêu luyện.`,
-      en: `# 🏃 Interactive Animation: Balancing Aesthetics with Mechanical Snappiness
+      en: `# Interactive Animation: Balancing Aesthetics with Mechanical Snappiness
 
 ## 1. The Linear Film vs Interactive Game Divergence
 * In cinema: Anticipation can linger for 40 frames to maximize realistic kinetic momentum.
@@ -1342,8 +1342,8 @@ Allows skilled players to cancel lengthy recovery frames with timely Dash or Par
   {
     id: 'art-shaders-tech-art',
     title: {
-      vi: '🔮 Shaders & Kỹ Thuật Đồ Họa',
-      en: '🔮 Shaders & Technical Art'
+      vi: 'Shaders & Kỹ Thuật Đồ Họa',
+      en: 'Shaders & Technical Art'
     },
     category: 'art',
     tier: 3,
@@ -1359,7 +1359,7 @@ Allows skilled players to cancel lengthy recovery frames with timely Dash or Par
       en: 'The programmable graphics pipeline, Vertex/Fragment shaders, UV distortion, and Post-processing effects.'
     },
     content: {
-      vi: `# 🔮 Shaders & Kỹ Thuật Đồ Họa (Shaders & Technical Art)
+      vi: `# Shaders & Kỹ Thuật Đồ Họa (Shaders & Technical Art)
 
 ## 1. Đường Ống Đồ Họa Lập Trình Được (Programmable Pipeline)
 Mỗi điểm ảnh xuất hiện trên màn hình đều đi qua 2 bộ lọc shader cốt lõi:
@@ -1374,7 +1374,7 @@ Thay vì vẽ từng khung hình hoạt ảnh nước chảy hoặc lửa cháy 
 ## 3. Hiệu Ứng Hậu Kỳ Tạo Phong Cách (Stylized Post-Processing)
 * **Color Grading & LUT:** Cân chỉnh tông màu điện ảnh cho toàn bộ khung hình.
 * **Vignette & Chromatic Aberration:** Làm tối 4 góc màn hình và tạo quang sai thấu kính khi nhân vật sắp hết máu.`,
-      en: `# 🔮 Shaders & The Technical Art Pipeline
+      en: `# Shaders & The Technical Art Pipeline
 
 ## 1. The Programmable GPU Pipeline
 Every rendered pixel traverses two primary programmable stages:
@@ -1413,8 +1413,8 @@ Rather than hand-drawing hundreds of frames for flowing water, portals, or energ
   {
     id: 'art-ui-ux-design',
     title: {
-      vi: '🖥️ Giao Diện UI/UX Trong Game',
-      en: '🖥️ Game UI/UX & Diegetic Systems'
+      vi: 'Giao Diện UI/UX Trong Game',
+      en: 'Game UI/UX & Diegetic Systems'
     },
     category: 'art',
     tier: 4,
@@ -1430,7 +1430,7 @@ Rather than hand-drawing hundreds of frames for flowing water, portals, or energ
       en: 'The 4 UI quadrants: Diegetic, Spatial, Non-Diegetic, and Meta. Cognitive load and accessibility.'
     },
     content: {
-      vi: `# 🖥️ Kiến Trúc Giao Diện UI/UX Trò Chơi (Game UI/UX)
+      vi: `# Kiến Trúc Giao Diện UI/UX Trò Chơi (Game UI/UX)
 
 ## 1. 4 Mô Hình Giao Diện Trong Game
 * **Diegetic (Nhập vai thực tế):** Tồn tại cả trong thế giới game và nhân vật nhìn thấy được (ví dụ: Đồng hồ đo máu trên lưng áo nhân vật trong Dead Space, đồng hồ la bàn trên cổ tay).
@@ -1444,7 +1444,7 @@ Chỉ hiển thị thanh máu khi nhân vật chịu sát thương; ẩn thanh t
 
 ## 3. Tiêu Chuẩn Tiếp Cận Hiện Đại (Game Accessibility)
 Hỗ trợ chế độ mù màu (Protanopia, Deuteranopia), cho phép tùy chỉnh cỡ chữ và tái gán toàn bộ phím bấm.`,
-      en: `# 🖥️ Game UI/UX Architecture & Diegetic Modalities
+      en: `# Game UI/UX Architecture & Diegetic Modalities
 
 ## 1. The 4 UI Quadrants
 * **Diegetic:** Exists natively inside the game world geometry; perceptible to both player and avatar (e.g., Dead Space spine health rig, in-cockpit gauge dials).
@@ -1484,8 +1484,8 @@ Provide robust colorblind filter modes (Protanopia, Deuteranopia, Tritanopia), s
   {
     id: 'audio-sound-principles',
     title: {
-      vi: '🔊 Ký Hiệu Học Âm Thanh (Sound Semiotics)',
-      en: '🔊 Sound Design Semiotics'
+      vi: 'Ký Hiệu Học Âm Thanh (Sound Semiotics)',
+      en: 'Sound Design Semiotics'
     },
     category: 'audio',
     tier: 1,
@@ -1501,7 +1501,7 @@ Provide robust colorblind filter modes (Protanopia, Deuteranopia, Tritanopia), s
       en: 'Audio feedback taxonomy, spectral frequency carve-outs, and dynamic loudness range.'
     },
     content: {
-      vi: `# 🔊 Ký Hiệu Học Âm Thanh & Phản Hồi Thính Giác (Sound Design Semiotics)
+      vi: `# Ký Hiệu Học Âm Thanh & Phản Hồi Thính Giác (Sound Design Semiotics)
 
 ## 1. 4 Tầng Phản Hồi Âm Thanh Cốt Lõi
 Âm thanh truyền tải thông tin vào não bộ nhanh hơn thị giác tới 20%:
@@ -1515,7 +1515,7 @@ Tránh để âm thanh bị đục (muddy) khi nhiều tiếng nổ cùng vang l
 * Tiếng bước chân và tiếng nhặt đồ: Dành khoảng tần số trung cao (2 kHz - 5 kHz).
 * Tiếng sấm chớp, tiếng va chạm nặng: Dành khoảng âm trầm (50 Hz - 250 Hz).
 * Khoét rãnh tần số (EQ notch) trên nhạc nền để giọng nói nhân vật và tiếng vũ khí luôn trong trẻo và dễ nghe.`,
-      en: `# 🔊 Sound Design Semiotics & Psychoacoustics
+      en: `# Sound Design Semiotics & Psychoacoustics
 
 ## 1. The 4 Auditory Feedback Tiers
 The human auditory cortex processes sonic stimuli up to 20% faster than visual light cues:
@@ -1553,8 +1553,8 @@ Prevents acoustic muddiness during chaotic combat engagements:
   {
     id: 'audio-interactive-systems',
     title: {
-      vi: '🎛️ Âm Thanh Tương Tác (Adaptive Audio)',
-      en: '🎛️ Interactive & Adaptive Audio'
+      vi: 'Âm Thanh Tương Tác (Adaptive Audio)',
+      en: 'Interactive & Adaptive Audio'
     },
     category: 'audio',
     tier: 2,
@@ -1570,7 +1570,7 @@ Prevents acoustic muddiness during chaotic combat engagements:
       en: 'Vertical stem layering, horizontal re-sequencing, and micro-pitch randomization.'
     },
     content: {
-      vi: `# 🎛️ Kiến Trúc Âm Thanh Tương Tác & Thích Ứng (Adaptive Audio)
+      vi: `# Kiến Trúc Âm Thanh Tương Tác & Thích Ứng (Adaptive Audio)
 
 ## 1. Kỹ Thuật Đa Tầng Dọc (Vertical Stem Layering)
 Nhạc nền không phải là một file MP3 đơn lẻ lặp đi lặp lại. Nó được chia thành 4 lớp stem chạy song song cùng nhịp độ (BPM):
@@ -1584,7 +1584,7 @@ Nếu tiếng súng bắn hoặc tiếng bước chân giống nhau 100% trong 5
 * Mỗi lần phát âm thanh -> Ngẫu nhiên hóa cao độ: \`Pitch = Random(0.95, 1.05)\`.
 * Ngẫu nhiên hóa nhẹ âm lượng: \`Volume = Random(0.90, 1.00)\`.
 * Chuẩn bị sẵn 3 - 5 biến thể file âm thanh khác nhau cho cùng một hành động bước chân.`,
-      en: `# 🎛️ Interactive & Adaptive Audio Architecture
+      en: `# Interactive & Adaptive Audio Architecture
 
 ## 1. Vertical Stem Layering
 Dynamic soundtracks are never static, looping files. They are composed of parallel, synchronized stems sharing an identical BPM grid:
@@ -1622,8 +1622,8 @@ Hearing an identical audio sample 4,000 times during a play session causes acute
   {
     id: 'audio-spatial-mixing',
     title: {
-      vi: '🎧 Âm Thanh Không Gian & Hòa Âm',
-      en: '🎧 3D Spatial Audio & Mixing'
+      vi: 'Âm Thanh Không Gian & Hòa Âm',
+      en: '3D Spatial Audio & Mixing'
     },
     category: 'audio',
     tier: 3,
@@ -1639,7 +1639,7 @@ Hearing an identical audio sample 4,000 times during a play session causes acute
       en: '3D spatial attenuation curves, wall occlusion filtering, and dynamic dialogue ducking.'
     },
     content: {
-      vi: `# 🎧 Âm Thanh Không Gian 3D & Kỹ Thuật Hòa Âm Động (Spatial Audio & Mixing)
+      vi: `# Âm Thanh Không Gian 3D & Kỹ Thuật Hòa Âm Động (Spatial Audio & Mixing)
 
 ## 1. Không Gian Hóa 3D & Đường Cong Suy Giảm (Distance Attenuation)
 * **Panning trái / phải:** Giúp người chơi nhắm mắt cũng biết kẻ địch đang rình rập ở hướng nào.
@@ -1654,7 +1654,7 @@ Khi kẻ địch đứng sau một bức tường bê tông dày:
 Khi nhân vật trò chuyện hoặc có thông báo vô tuyến quan trọng:
 * Hệ thống tự động giảm âm lượng nhạc nền và tiếng môi trường xuống 6dB - 8dB.
 * Ngay khi câu thoại kết thúc, nhạc nền tự động dâng trở lại mượt mà, giúp người chơi không bao giờ bị bỏ lỡ lời thoại.`,
-      en: `# 🎧 3D Spatial Audio, Occlusion & Dynamic Mixing
+      en: `# 3D Spatial Audio, Occlusion & Dynamic Mixing
 
 ## 1. 3D Spatial Attenuation Curves
 * **Binaural / Stereo Panning:** Enables players to localize adversary positions purely through acoustic telemetry.

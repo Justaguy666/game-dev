@@ -1,16 +1,17 @@
 import React, { useState, useRef } from 'react';
 import { SkillNode, Language, ThemeId } from '../types';
 import { sound } from '../soundEngine';
-import { ThemedIcon } from './ThemedIcon';
+import { ThemedIcon, IconName } from './ThemedIcon';
 
 interface SkillTreeViewProps {
   skills: SkillNode[];
   onSelectSkill: (skill: SkillNode) => void;
+  onCloseDetail?: () => void;
   lang: Language;
   currentTheme: ThemeId;
 }
 
-export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSkill, lang, currentTheme }) => {
+export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSkill, onCloseDetail, lang, currentTheme }) => {
   const [zoom, setZoom] = useState<number>(0.85);
   const [pan, setPan] = useState<{ x: number; y: number }>({ x: -500, y: 30 });
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -18,15 +19,51 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
 
   const containerRef = useRef<HTMLDivElement>(null);
 
+  // Mouse wheel zoom towards cursor
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    if (!containerRef.current) return;
+    const rect = containerRef.current.getBoundingClientRect();
+    const mouseX = e.clientX - rect.left;
+    const mouseY = e.clientY - rect.top;
+
+    const zoomDelta = e.deltaY < 0 ? 1.08 : 0.92;
+    setZoom(prevZoom => {
+      const nextZoom = Math.min(2.2, Math.max(0.35, prevZoom * zoomDelta));
+      if (nextZoom === prevZoom) return prevZoom;
+
+      setPan(prevPan => ({
+        x: mouseX - (mouseX - prevPan.x) * (nextZoom / prevZoom),
+        y: mouseY - (mouseY - prevPan.y) * (nextZoom / prevZoom)
+      }));
+
+      return nextZoom;
+    });
+  };
+
   // Mouse drag handlers for panning
   const handleMouseDown = (e: React.MouseEvent) => {
     if (e.button !== 0) return; // only left click
+    
+    // Close detail panel when clicking directly on canvas background
+    const target = e.target as HTMLElement;
+    if (target === containerRef.current || target.tagName === 'svg' || target.tagName === 'path') {
+      onCloseDetail?.();
+    }
+
     setIsDragging(true);
     setDragStart({ x: e.clientX - pan.x, y: e.clientY - pan.y });
   };
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!isDragging) return;
+    const dx = Math.abs(e.clientX - (dragStart.x + pan.x));
+    const dy = Math.abs(e.clientY - (dragStart.y + pan.y));
+    // If panning actively, close detail card so view is clean
+    if (dx > 12 || dy > 12) {
+      onCloseDetail?.();
+    }
+
     setPan({
       x: e.clientX - dragStart.x,
       y: e.clientY - dragStart.y
@@ -41,6 +78,20 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
     sound.playClick();
     setZoom(0.85);
     setPan({ x: -500, y: 30 });
+  };
+
+  const getCategoryIcon = (category: string): IconName => {
+    switch (category) {
+      case 'root': return 'brand';
+      case 'design': return 'design';
+      case 'tech': return 'code';
+      case 'qa': return 'qa';
+      case 'art': return 'art';
+      case 'audio': return 'volume';
+      case 'boss': return 'boss';
+      case 'production': return 'production';
+      default: return 'tree';
+    }
   };
 
   // Find connections
@@ -61,6 +112,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
   return (
     <div
       ref={containerRef}
+      onWheel={handleWheel}
       onMouseDown={handleMouseDown}
       onMouseMove={handleMouseMove}
       onMouseUp={handleMouseUp}
@@ -145,8 +197,16 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
         zIndex: 50,
         boxShadow: 'var(--card-shadow)'
       }}>
-        <div style={{ fontWeight: 800, color: 'var(--accent-gold)', marginBottom: '2px' }}>
-          {lang === 'vi' ? '📜 TRẠNG THÁI KỸ NĂNG' : '📜 SKILL TREE LEGEND'}
+        <div style={{
+          fontWeight: 800,
+          color: 'var(--accent-gold)',
+          marginBottom: '2px',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px'
+        }}>
+          <ThemedIcon name="docs" theme={currentTheme} size={13} color="var(--accent-gold)" />
+          <span>{lang === 'vi' ? 'TRẠNG THÁI KỸ NĂNG' : 'SKILL TREE LEGEND'}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
           <ThemedIcon name="mastered" theme={currentTheme} size={14} color="var(--accent-green)" />
@@ -266,9 +326,13 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
                 fontWeight: 800,
                 color: 'var(--text-main)',
                 marginBottom: '6px',
-                lineHeight: 1.3
+                lineHeight: 1.3,
+                display: 'flex',
+                alignItems: 'center',
+                gap: '8px'
               }}>
-                {skill.title[lang]}
+                <ThemedIcon name={getCategoryIcon(skill.category)} theme={currentTheme} size={15} color="var(--accent-gold)" />
+                <span>{skill.title[lang]}</span>
               </h3>
 
               {/* Summary */}

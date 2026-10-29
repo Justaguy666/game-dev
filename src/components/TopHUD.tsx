@@ -45,10 +45,10 @@ export const TopHUD: React.FC<TopHUDProps> = ({
   const progressPercent = Math.min(100, Math.round((currentLevelExp / 180) * 100));
 
   const themesList: { id: ThemeId; name: { vi: string; en: string } }[] = [
-    { id: 'arcade', name: { vi: '🕹️ 16-Bit Arcade', en: '🕹️ 16-Bit Arcade' } },
-    { id: 'gameboy', name: { vi: '👾 Game Boy DMG', en: '👾 Game Boy 1989' } },
-    { id: 'cyber', name: { vi: '🤖 Cyber Mecha', en: '🤖 Cyber Mecha' } },
-    { id: 'fantasy', name: { vi: '⚔️ Dark Fantasy', en: '⚔️ Dark Fantasy' } }
+    { id: 'arcade', name: { vi: '16-Bit Arcade', en: '16-Bit Arcade' } },
+    { id: 'gameboy', name: { vi: 'Game Boy DMG', en: 'Game Boy 1989' } },
+    { id: 'cyber', name: { vi: 'Cyber Mecha', en: 'Cyber Mecha' } },
+    { id: 'fantasy', name: { vi: 'Dark Fantasy', en: 'Dark Fantasy' } }
   ];
 
   return (
@@ -71,13 +71,13 @@ export const TopHUD: React.FC<TopHUDProps> = ({
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '8px',
+          gap: '10px',
           fontFamily: 'var(--font-display)',
           fontSize: '0.9em',
           color: 'var(--accent-gold)',
           letterSpacing: '0.04em'
         }}>
-          <span style={{ fontSize: '1.4em' }}>🕹️</span>
+          <ThemedIcon name="brand" theme={currentTheme} size={22} color="var(--accent-gold)" />
           <span>GAME DEV STUDIO</span>
         </div>
 

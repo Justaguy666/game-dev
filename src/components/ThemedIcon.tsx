@@ -21,7 +21,17 @@ export type IconName =
   | 'search' 
   | 'zoomIn' 
   | 'zoomOut' 
-  | 'reset';
+  | 'reset'
+  | 'brand'
+  | 'design'
+  | 'code'
+  | 'qa'
+  | 'art'
+  | 'audio'
+  | 'boss'
+  | 'production'
+  | 'drag'
+  | 'open';
 
 interface ThemedIconProps {
   name: IconName;
@@ -211,6 +221,91 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
             <rect x="9" y="9" width="6" height="6" fill={color} />
           </svg>
         );
+      case 'brand':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="9" y="3" width="6" height="6" fill={color} />
+            <rect x="11" y="9" width="2" height="6" fill={color} />
+            <rect x="4" y="15" width="16" height="6" fill="none" stroke={color} strokeWidth="2" />
+            <rect x="6" y="17" width="3" height="2" fill={color} />
+          </svg>
+        );
+      case 'design':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="4" y="4" width="16" height="16" fill="none" stroke={color} strokeWidth="2" strokeDasharray="4 2" />
+            <rect x="16" y="2" width="4" height="4" fill={color} />
+            <rect x="4" y="18" width="4" height="4" fill={color} />
+          </svg>
+        );
+      case 'code':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <path d="M7 8l-4 4 4 4M17 8l4 4-4 4M13 6l-2 12" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'qa':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="3" y="3" width="18" height="18" fill="none" stroke={color} strokeWidth="2" />
+            <rect x="11" y="7" width="2" height="10" fill={color} />
+            <rect x="7" y="11" width="10" height="2" fill={color} />
+            <rect x="10" y="10" width="4" height="4" fill={color} />
+          </svg>
+        );
+      case 'art':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="3" y="3" width="14" height="14" fill="none" stroke={color} strokeWidth="2" />
+            <rect x="6" y="6" width="2" height="2" fill={color} />
+            <rect x="11" y="6" width="2" height="2" fill={color} />
+            <rect x="6" y="11" width="2" height="2" fill={color} />
+            <path d="M14 14l7 7" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'audio':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="3" y="8" width="5" height="8" fill={color} />
+            <path d="M8 8l7-5v18l-7-5H8z" fill={color} />
+            <rect x="18" y="7" width="2" height="10" fill={color} />
+          </svg>
+        );
+      case 'boss':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="5" y="4" width="14" height="11" fill="none" stroke={color} strokeWidth="2" />
+            <rect x="7" y="7" width="3" height="3" fill={color} />
+            <rect x="14" y="7" width="3" height="3" fill={color} />
+            <rect x="8" y="15" width="8" height="5" fill="none" stroke={color} strokeWidth="2" />
+            <rect x="10" y="17" width="4" height="2" fill={color} />
+          </svg>
+        );
+      case 'production':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <path d="M12 2l4 6v8l-4 2-4-2V8l4-6z" fill="none" stroke={color} strokeWidth="2" />
+            <rect x="11" y="9" width="2" height="3" fill={color} />
+            <path d="M6 16l-2 4h4M18 16l2 4h-4" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'drag':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="8" y="6" width="2" height="2" fill={color} />
+            <rect x="14" y="6" width="2" height="2" fill={color} />
+            <rect x="8" y="11" width="2" height="2" fill={color} />
+            <rect x="14" y="11" width="2" height="2" fill={color} />
+            <rect x="8" y="16" width="2" height="2" fill={color} />
+            <rect x="14" y="16" width="2" height="2" fill={color} />
+          </svg>
+        );
+      case 'open':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <path d="M14 3h7v7M21 3l-9 9M5 5H3v16h16v-2" stroke={color} strokeWidth="2" fill="none" />
+          </svg>
+        );
     }
   }
 
@@ -355,6 +450,77 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
         return (
           <svg {...commonSvgProps}>
             <path d="M4 12a8 8 0 108-8H4m0 0l4-4M4 4l4 4" stroke={color} strokeWidth="2" fill="none" />
+          </svg>
+        );
+      case 'brand':
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="5" y="2" width="14" height="20" rx="2" fill="none" stroke={color} strokeWidth="2" />
+            <rect x="8" y="5" width="8" height="6" fill={color} />
+            <path d="M7 15h4M9 13v4M15 15h1.5M14 17h1.5" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'design':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="7" stroke={color} strokeWidth="2" strokeDasharray="3 3" fill="none" />
+            <rect x="11" y="3" width="2" height="4" fill={color} />
+            <rect x="17" y="11" width="4" height="2" fill={color} />
+          </svg>
+        );
+      case 'code':
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="6" y="6" width="12" height="12" fill="none" stroke={color} strokeWidth="2" />
+            <path d="M3 9h3M3 15h3M18 9h3M18 15h3M9 3v3M15 3v3M9 18v3M15 18v3" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'qa':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="3" fill={color} />
+            <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'art':
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="4" y="4" width="16" height="16" fill="none" stroke={color} strokeWidth="2" />
+            <path d="M4 9h16M4 15h16M9 4v16M15 4v16" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'audio':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M4 9h4l5-5v16l-5-5H4V9z" fill="none" stroke={color} strokeWidth="2" />
+            <circle cx="17" cy="12" r="2" fill={color} />
+          </svg>
+        );
+      case 'boss':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M8 4h8v2H8zM6 6h12v4H6zM4 10h16v6H4zM6 16h3v4H6zM15 16h3v4h-3zM8 12h2v2H8zM14 12h2v2h-2z" fill={color} />
+          </svg>
+        );
+      case 'production':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M5 3h12l2 2v16H5V3z" fill="none" stroke={color} strokeWidth="2" />
+            <rect x="8" y="7" width="8" height="8" fill={color} />
+            <path d="M8 18h8" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'drag':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M6 8h12M6 12h12M6 16h12" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'open':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M12 4h8v8M20 4l-9 9M4 8v12h12" stroke={color} strokeWidth="2" fill="none" />
           </svg>
         );
     }
@@ -513,6 +679,83 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
             <circle cx="12" cy="12" r="3" fill={color} />
           </svg>
         );
+      case 'brand':
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,2 21,7 21,17 12,22 3,17 3,7" fill="none" stroke={color} strokeWidth="1.8" />
+            <circle cx="12" cy="12" r="4" fill="none" stroke={color} strokeWidth="1.8" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'design':
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,3 20,8 20,16 12,21 4,16 4,8" fill="none" stroke={color} strokeWidth="1.5" />
+            <circle cx="12" cy="12" r="3" fill={color} />
+            <line x1="12" y1="3" x2="12" y2="9" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'code':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M8 6L3 12l5 6M16 6l5 6-5 6M14 4l-4 16" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
+          </svg>
+        );
+      case 'qa':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="1.5" strokeDasharray="4 2" fill="none" />
+            <path d="M4 12h5M15 12h5M12 4v5M12 15v5" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'art':
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,3 21,9 17,21 7,21 3,9" fill="none" stroke={color} strokeWidth="1.5" />
+            <line x1="12" y1="3" x2="12" y2="21" stroke={color} strokeWidth="1.2" />
+            <line x1="3" y1="9" x2="17" y2="21" stroke={color} strokeWidth="1.2" />
+            <line x1="21" y1="9" x2="7" y2="21" stroke={color} strokeWidth="1.2" />
+          </svg>
+        );
+      case 'audio':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M3 9h5l5-5v16l-5-5H3V9z" fill="none" stroke={color} strokeWidth="1.8" />
+            <path d="M17 7a6 6 0 010 10M20 4a10 10 0 010 16" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'boss':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M5 4l7-2 7 2v8l-4 8H9L5 12V4z" fill="none" stroke={color} strokeWidth="1.8" />
+            <rect x="8" y="8" width="8" height="3" fill={color} />
+            <path d="M10 15h4" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'production':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M12 2l5 6-2 10-3 2-3-2-2-10 5-6z" fill="none" stroke={color} strokeWidth="1.8" />
+            <path d="M5 15l-3 4 3 1M19 15l3 4-3 1M12 10v4" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'drag':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="9" cy="8" r="1.5" fill={color} />
+            <circle cx="15" cy="8" r="1.5" fill={color} />
+            <circle cx="9" cy="12" r="1.5" fill={color} />
+            <circle cx="15" cy="12" r="1.5" fill={color} />
+            <circle cx="9" cy="16" r="1.5" fill={color} />
+            <circle cx="15" cy="16" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'open':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M13 3h8v8M21 3l-10 10M5 7H3v14h14v-2" stroke={color} strokeWidth="1.8" fill="none" />
+          </svg>
+        );
     }
   }
 
@@ -659,6 +902,78 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
           <svg {...commonSvgProps}>
             <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="2" fill="none" />
             <circle cx="12" cy="12" r="2" fill={color} />
+          </svg>
+        );
+      case 'brand':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M12 2l8 3v7c0 6-8 10-8 10S4 18 4 12V5l8-3z" fill="none" stroke={color} strokeWidth="2" />
+            <path d="M12 7v10M8 11h8" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'design':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M12 4v4M12 16v4M4 12h4M16 12h4M12 12l4-4" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'code':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M6 4h12M12 4v16M7 10l5 5 5-5M9 20h6" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'qa':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" fill="none" stroke={color} strokeWidth="2" />
+            <circle cx="12" cy="12" r="3" fill={color} />
+          </svg>
+        );
+      case 'art':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M19 3C14 4 11 8 10 12l-5 7 2 2 7-5c4-1 8-4 9-9-4 0-4-4-4-4z" fill="none" stroke={color} strokeWidth="1.8" />
+            <path d="M5 21l3-1" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'audio':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M4 10h4l6-6v16l-6-6H4v-4z" fill="none" stroke={color} strokeWidth="2" />
+            <path d="M17 9c1.5 1 2 2 2 3s-.5 2-2 3" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'boss':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M4 7l4 3 4-6 4 6 4-3v11H4V7z" fill="none" stroke={color} strokeWidth="2" strokeLinejoin="round" />
+            <circle cx="12" cy="13" r="2" fill={color} />
+          </svg>
+        );
+      case 'production':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M3 8l4 4 5-7 5 7 4-4v10H3V8z" fill="none" stroke={color} strokeWidth="2" strokeLinejoin="round" />
+            <path d="M3 18h18" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'drag':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="8" cy="8" r="1.5" stroke={color} strokeWidth="1.5" fill="none" />
+            <circle cx="16" cy="8" r="1.5" stroke={color} strokeWidth="1.5" fill="none" />
+            <circle cx="8" cy="12" r="1.5" stroke={color} strokeWidth="1.5" fill="none" />
+            <circle cx="16" cy="12" r="1.5" stroke={color} strokeWidth="1.5" fill="none" />
+            <circle cx="8" cy="16" r="1.5" stroke={color} strokeWidth="1.5" fill="none" />
+            <circle cx="16" cy="16" r="1.5" stroke={color} strokeWidth="1.5" fill="none" />
+          </svg>
+        );
+      case 'open':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M7 21V7a5 5 0 0110 0v14M12 11v4" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
           </svg>
         );
     }

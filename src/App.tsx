@@ -4,11 +4,11 @@ import { INITIAL_SKILLS } from './data/skillsData';
 import { sound } from './soundEngine';
 import { TopHUD } from './components/TopHUD';
 import { SkillTreeView } from './components/SkillTreeView';
-import { DocumentEditor } from './components/DocumentEditor';
+import { SkillOutlineModal } from './components/SkillOutlineModal';
 import { DocumentReaderView } from './components/DocumentReaderView';
 import { QuestsView } from './components/QuestsView';
 
-const DATA_VERSION = 'v2_tool_agnostic_curriculum';
+const DATA_VERSION = 'v5_tool_agnostic_22_nodes_no_emojis';
 
 export const App: React.FC = () => {
   // 1. Persistent State
@@ -35,13 +35,17 @@ export const App: React.FC = () => {
       const saved = localStorage.getItem('gamedev_skills_data');
       if (saved) {
         try {
-          return JSON.parse(saved);
+          const parsed = JSON.parse(saved);
+          if (Array.isArray(parsed) && parsed.length >= 15) {
+            return parsed;
+          }
         } catch (e) {
           console.error('Failed to parse saved skills', e);
         }
       }
     }
     localStorage.setItem('gamedev_data_version', DATA_VERSION);
+    localStorage.setItem('gamedev_skills_data', JSON.stringify(INITIAL_SKILLS));
     return INITIAL_SKILLS;
   });
 
@@ -132,7 +136,10 @@ export const App: React.FC = () => {
         isCrtOn={isCrtOn}
         onCrtToggle={() => setIsCrtOn(c => !c)}
         activeView={activeView}
-        onViewChange={setActiveView}
+        onViewChange={(view) => {
+          setActiveDrawerSkill(null);
+          setActiveView(view);
+        }}
         totalExp={totalExp}
         maxExp={maxExp}
       />
@@ -143,6 +150,7 @@ export const App: React.FC = () => {
           <SkillTreeView
             skills={skills}
             onSelectSkill={(skill) => setActiveDrawerSkill(skill)}
+            onCloseDetail={() => setActiveDrawerSkill(null)}
             lang={lang}
             currentTheme={currentTheme}
           />
@@ -165,6 +173,7 @@ export const App: React.FC = () => {
             onToggleObjective={handleToggleObjective}
             onOpenSkill={(skill) => {
               setSelectedReaderSkillId(skill.id);
+              setActiveDrawerSkill(null);
               setActiveView('editor');
             }}
             lang={lang}
@@ -172,12 +181,17 @@ export const App: React.FC = () => {
           />
         )}
 
-        {/* Slide-out Drawer for Skill Details when on Tree view */}
-        {activeDrawerSkill && (
-          <DocumentEditor
+        {/* Compact Draggable Outline Modal when on Tree view */}
+        {activeDrawerSkill && activeView === 'tree' && (
+          <SkillOutlineModal
             skill={activeDrawerSkill}
             onClose={() => setActiveDrawerSkill(null)}
-            onUpdateSkill={handleUpdateSkill}
+            onToggleObjective={handleToggleObjective}
+            onOpenFullDoc={(skillId) => {
+              setSelectedReaderSkillId(skillId);
+              setActiveDrawerSkill(null);
+              setActiveView('editor');
+            }}
             lang={lang}
             currentTheme={currentTheme}
           />
