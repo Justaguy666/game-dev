@@ -1703,6 +1703,326 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
     }
   }
 
+  // =========================================================================
+  // 7. GOTHIC ELDRITCH / BLOOD & IRON (Bloodborne & Cosmic Horror)
+  // =========================================================================
+  if (theme === 'gothic') {
+    switch (name) {
+      case 'tree':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Sprawling Gothic Spire & Spiked Iron Cross */}
+            <line x1="12" y1="2" x2="12" y2="22" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="5" y1="8" x2="19" y2="8" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <path d="M5 8l3 3M19 8l-3 3M12 2l-3 4h6l-3-4z" stroke={color} strokeWidth="1.5" strokeLinejoin="round" fill={color} />
+            <path d="M6 18c3-3 6-3 6 0M12 18c0-3 3-3 6 0" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="12" cy="8" r="2" fill={color} />
+          </svg>
+        );
+      case 'docs':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Cursed Grimoire Tome with Iron Clasp */}
+            <path d="M4 3h13a3 3 0 013 3v14a2 2 0 01-2 2H5a3 3 0 01-3-3V5a2 2 0 012-2z" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="7" y1="3" x2="7" y2="22" stroke={color} strokeWidth="1.8" />
+            <path d="M11 8h5M11 12h4M11 16h5" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <polygon points="17,10 20,12 17,14" fill={color} />
+          </svg>
+        );
+      case 'quests':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Gothic Blood Chalice / Holy Grail */}
+            <path d="M6 3h12v6c0 3.5-2.5 6-6 6s-6-2.5-6-6V3z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="15" x2="12" y2="20" stroke={color} strokeWidth="2.2" />
+            <path d="M7 21h10" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <circle cx="12" cy="8" r="2" fill={color} />
+            <path d="M6 3c2 2 4 1 6 1s4-1 6-1" stroke={color} strokeWidth="1.5" fill="none" />
+          </svg>
+        );
+      case 'sun':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Cursed Blood Moon Eclipse with Thorny Corona */}
+            <circle cx="12" cy="12" r="5" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M12 2v3M12 19v3M2 12h3M19 12h3" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <path d="M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <path d="M9 12a3 3 0 003 3" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'moon':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Horned Eldritch Crescent Moon with Dripping Blood */}
+            <path d="M15 3a9 9 0 00-3 17.5 9 9 0 009-4.5 9 9 0 01-9-13" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="17" r="1.5" fill={color} />
+            <path d="M12 18.5v2" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+        );
+      case 'tv':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Gothic Lancet Stained-Glass Window Shrine */}
+            <path d="M4 21V9a8 8 0 0116 0v12H4z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="21" stroke={color} strokeWidth="1.8" />
+            <line x1="4" y1="13" x2="20" y2="13" stroke={color} strokeWidth="1.8" />
+            <path d="M8 9a4 4 0 018 0" stroke={color} strokeWidth="1.5" fill="none" />
+          </svg>
+        );
+      case 'volume':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Gothic Cathedral Bell Toll */}
+            <path d="M6 16h12l-2-7a4 4 0 00-8 0l-2 7z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="4" y1="16" x2="20" y2="16" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <circle cx="12" cy="19" r="1.8" fill={color} />
+            <path d="M10 4a2 2 0 014 0" stroke={color} strokeWidth="2" fill="none" />
+          </svg>
+        );
+      case 'mute':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Silenced Bell with Iron Impaling Spike */}
+            <path d="M6 16h12l-2-7a4 4 0 00-8 0l-2 7z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="4" y1="16" x2="20" y2="16" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="4" y1="4" x2="20" y2="20" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+          </svg>
+        );
+      case 'globe':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Armillary Astrolabe with Eldritch Tentacles */}
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <ellipse cx="12" cy="12" rx="3.5" ry="9" stroke={color} strokeWidth="1.6" fill="none" />
+            <ellipse cx="12" cy="12" rx="9" ry="4" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="12" cy="12" r="2" fill={color} />
+          </svg>
+        );
+      case 'mastered':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Hunter's Mark / Bloodborne Brand Rune */}
+            <line x1="12" y1="2" x2="12" y2="22" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <path d="M5 8c4 3 7 3 7 8M19 8c-4 3-7 3-7 8" stroke={color} strokeWidth="2.2" strokeLinecap="round" fill="none" />
+            <circle cx="12" cy="4" r="2" fill={color} />
+          </svg>
+        );
+      case 'learning':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Cyclopean Eldritch Eye Opening */}
+            <path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7-10-7-10-7z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="12" r="3.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="12" y1="9.5" x2="12" y2="14.5" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'locked':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Heavy Forged Iron Padlock with Spikes */}
+            <rect x="5" y="11" width="14" height="10" rx="1" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M8 11V7a4 4 0 018 0v4" stroke={color} strokeWidth="2.2" fill="none" />
+            <line x1="12" y1="14" x2="12" y2="17" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <circle cx="12" cy="14" r="1.5" fill={color} />
+            <polygon points="12,2 14,5 10,5" fill={color} />
+          </svg>
+        );
+      case 'edit':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Bone Quill / Blood Scalpel */}
+            <path d="M19 3a2.5 2.5 0 00-3.5 0L4 14.5V20h5.5L21 8.5A2.5 2.5 0 0019 3z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="14" y1="5.5" x2="18.5" y2="10" stroke={color} strokeWidth="1.8" />
+            <line x1="7" y1="17.5" x2="10" y2="14.5" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'save':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Gothic Blood Vial Flask */}
+            <rect x="9" y="2" width="6" height="4" rx="1" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M7 6h10l2 6v8a2 2 0 01-2 2H7a2 2 0 01-2-2v-8l2-6z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="6" y1="15" x2="18" y2="15" stroke={color} strokeWidth="1.5" />
+            <circle cx="12" cy="18" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'download':
+        return (
+          <svg {...commonSvgProps}>
+            <line x1="12" y1="2" x2="12" y2="15" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <path d="M6 10l6 6 6-6" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <path d="M4 19h16" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+          </svg>
+        );
+      case 'close':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Crossed Spiked Executioner Blades */}
+            <line x1="5" y1="5" x2="19" y2="19" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="19" y1="5" x2="5" y2="19" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <circle cx="12" cy="12" r="2" fill={color} />
+          </svg>
+        );
+      case 'search':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Divination Glass / Occult Eye */}
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16.5" y1="16.5" x2="22" y2="22" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <circle cx="11" cy="11" r="2.5" fill={color} />
+          </svg>
+        );
+      case 'zoomIn':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="11" y1="8" x2="11" y2="14" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="8" y1="11" x2="14" y2="11" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomOut':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="8" y1="11" x2="14" y2="11" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'reset':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Ouroboros Serpent Ring */}
+            <path d="M21 12a9 9 0 11-2.6-6.4L21 8" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <polygon points="21,3 21,8 16,8" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill={color} />
+          </svg>
+        );
+      case 'brand':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Eldritch Plague Doctor Crow Mask / Great One Skull */}
+            <path d="M6 7a6 6 0 0112 0c0 5-6 13-6 13S6 12 6 7z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <circle cx="10" cy="8" r="1.8" fill={color} />
+            <circle cx="14" cy="8" r="1.8" fill={color} />
+            <path d="M12 10v7" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'design':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Barbed Gothic Drafting Calipers */}
+            <circle cx="12" cy="4" r="2" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="12" y1="6" x2="5" y2="21" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="12" y1="6" x2="19" y2="21" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <path d="M8 15h8" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'code':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Eldritch Runic Sigil / Arcane Glyph */}
+            <polygon points="12,2 21,12 12,22 3,12" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="6" x2="12" y2="18" stroke={color} strokeWidth="1.8" />
+            <line x1="6" y1="12" x2="18" y2="12" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'qa':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Abyssal Gargoyle Spider / Crypt Parasite */}
+            <ellipse cx="12" cy="14" rx="4" ry="5" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="7" r="2.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M3 10l5 3M21 10l-5 3M3 16l5-1M21 16l-5-1M4 21l4-4M20 21l-4-4" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'art':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Stained-Glass Rose Window / Gothic Relic */}
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="3.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M12 3v5M12 16v5M3 12h5M16 12h5" stroke={color} strokeWidth="1.6" />
+          </svg>
+        );
+      case 'audio':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Grand Cathedral Organ Pipes */}
+            <rect x="4" y="6" width="3" height="15" stroke={color} strokeWidth="1.8" fill="none" />
+            <rect x="8.5" y="3" width="3" height="18" stroke={color} strokeWidth="1.8" fill="none" />
+            <rect x="13" y="2" width="3" height="19" stroke={color} strokeWidth="1.8" fill="none" />
+            <rect x="17.5" y="8" width="3" height="13" stroke={color} strokeWidth="1.8" fill="none" />
+          </svg>
+        );
+      case 'boss':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Crowned Eldritch Skull / Blood Lord */}
+            <path d="M5 4l3.5 3L12 2l3.5 5L19 4v4H5V4z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill={color} />
+            <circle cx="12" cy="14" r="6" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="10" cy="13" r="1.5" fill={color} />
+            <circle cx="14" cy="13" r="1.5" fill={color} />
+            <line x1="10" y1="18" x2="14" y2="18" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'production':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Blacksmith Anvil & Hammer */}
+            <path d="M4 11h16c-2 0-3 3-3 5H7c0-2-1-5-3-5z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <rect x="6" y="16" width="12" height="4" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="8" y1="5" x2="16" y2="5" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="12" y1="5" x2="12" y2="10" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'drag':
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="8,7 9,9 7,9" fill={color} />
+            <polygon points="16,7 17,9 15,9" fill={color} />
+            <polygon points="8,11 9,13 7,13" fill={color} />
+            <polygon points="16,11 17,13 15,13" fill={color} />
+            <polygon points="8,15 9,17 7,17" fill={color} />
+            <polygon points="16,15 17,17 15,17" fill={color} />
+          </svg>
+        );
+      case 'open':
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="4,20 12,17 12,4 4,4" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="12" y1="4" x2="20" y2="4" stroke={color} strokeWidth="2" />
+            <line x1="20" y1="4" x2="20" y2="20" stroke={color} strokeWidth="2" />
+            <line x1="12" y1="17" x2="20" y2="20" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'font':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Ornate Blackletter Gothic Capital A */}
+            <path d="M12 2l7 20h-3.5l-2-6h-3l-2 6H5l7-20z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="8.5" y1="14" x2="15.5" y2="14" stroke={color} strokeWidth="2" />
+            <path d="M12 2v6" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'langVi':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <polygon points="12,5 14,9.5 18.5,10 15,13.5 16,18 12,15.5 8,18 9,13.5 5.5,10 10,9.5" fill={color} />
+          </svg>
+        );
+      case 'langEn':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="12" y1="3" x2="12" y2="21" stroke={color} strokeWidth="1.6" />
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.6" />
+            <circle cx="12" cy="12" r="4.5" stroke={color} strokeWidth="1.4" fill="none" />
+          </svg>
+        );
+    }
+  }
+
   // Fallback
   return (
     <svg {...commonSvgProps}>

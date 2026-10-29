@@ -119,6 +119,25 @@ export const THEME_FAVICONS: Record<ThemeId, string> = {
   <rect x="12" y="5" width="3" height="1" fill="#ff2a85" />
   <rect x="11" y="6" width="1" height="1" fill="#ff2a85" />
   <rect x="15" y="6" width="1" height="1" fill="#ff2a85" />
+</svg>`,
+
+  gothic: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges">
+  <!-- Abyssal Obsidian Void -->
+  <rect width="16" height="16" fill="#0b090a" />
+  <!-- Thorny Wrought Iron Spikes -->
+  <rect x="7" y="1" width="2" height="14" fill="#94a3b8" />
+  <rect x="3" y="5" width="10" height="2" fill="#94a3b8" />
+  <rect x="2" y="4" width="1" height="4" fill="#443137" />
+  <rect x="13" y="4" width="1" height="4" fill="#443137" />
+  <!-- Blood Moon Relic Crimson Heart -->
+  <rect x="5" y="4" width="6" height="6" fill="#dc2626" />
+  <rect x="6" y="3" width="4" height="8" fill="#b91c1c" />
+  <!-- Eldritch Cosmic Slit Eye -->
+  <rect x="7" y="5" width="2" height="4" fill="#22d3ee" />
+  <rect x="7" y="6" width="2" height="2" fill="#f1ede4" />
+  <!-- Dripping Blood Drops -->
+  <rect x="7" y="11" width="2" height="2" fill="#dc2626" />
+  <rect x="7" y="14" width="2" height="2" fill="#991b1b" />
 </svg>`
 };
 

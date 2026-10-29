@@ -314,6 +314,57 @@
 }
 
 /* --------------------------------------------------------------------------
+   7. THEME: GOTHIC ELDRITCH / BLOOD & IRON (BLOODBORNE & COSMIC HORROR)
+   -------------------------------------------------------------------------- */
+.theme-gothic.mode-dark {
+  --bg-app: #0b090a;
+  --bg-surface: #161113;
+  --bg-card: #20171b;
+  --border-color: #443137;
+  --border-highlight: #b91c1c;
+  --text-main: #f1ede4;
+  --text-muted: #b8a89c;
+  --text-dim: #7a6b65;
+  
+  --accent-gold: #c28834;
+  --accent-cyan: #22d3ee;
+  --accent-green: #2dd4bf;
+  --accent-red: #dc2626;
+  --accent-purple: #c084fc;
+  
+  --font-display: 'Pirata One', 'Almendra', 'Cinzel', serif;
+  --font-mono: 'JetBrains Mono', serif;
+  --card-shadow: 4px 4px 14px rgba(0, 0, 0, 0.9), 0 0 12px rgba(185, 28, 28, 0.25);
+  --glow-primary: 0 0 14px rgba(220, 38, 38, 0.65), 0 0 25px rgba(0, 0, 0, 0.9);
+  --btn-active-bg: #991b1b;
+  --btn-active-text: #f1ede4;
+}
+
+.theme-gothic.mode-light {
+  --bg-app: #f4eee9;
+  --bg-surface: #ffffff;
+  --bg-card: #fbf7f4;
+  --border-color: #3b181d;
+  --border-highlight: #991b1b;
+  --text-main: #190e11;
+  --text-muted: #4e3238;
+  --text-dim: #735158;
+  
+  --accent-gold: #925c12;
+  --accent-cyan: #0891b2;
+  --accent-green: #0f766e;
+  --accent-red: #991b1b;
+  --accent-purple: #701a75;
+  
+  --font-display: 'Pirata One', 'Almendra', 'Cinzel', serif;
+  --font-mono: 'JetBrains Mono', serif;
+  --card-shadow: 4px 4px 0px rgba(59, 24, 29, 0.35);
+  --glow-primary: 0 0 10px rgba(153, 27, 27, 0.35);
+  --btn-active-bg: #991b1b;
+  --btn-active-text: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
    GLOBAL LAYOUT & CRT SCANLINES
    -------------------------------------------------------------------------- */
 * {
@@ -388,6 +439,19 @@ body.theme-synthwave h3 {
   font-family: var(--font-display);
   letter-spacing: 0.04em;
   text-shadow: 0 0 8px rgba(255, 42, 133, 0.45);
+}
+
+body.theme-gothic {
+  /* 'Pirata One' / 'Almendra' / 'JetBrains Mono' Gothic Blood & Iron */
+  font-size: 1.25rem;
+  letter-spacing: 0.025em;
+}
+
+body.theme-gothic h1,
+body.theme-gothic h2,
+body.theme-gothic h3 {
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
 }
 
 /* Headings across all themes */
@@ -570,6 +634,35 @@ body.theme-synthwave .node-card-title {
   font-size: 1.02em !important;
   line-height: 1.35 !important;
   letter-spacing: 0.03em;
+}
+
+body.theme-gothic .node-card {
+  border-radius: 1px;
+  border-width: 2px;
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+body.theme-gothic .node-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 18px rgba(185, 28, 28, 0.5), 0 8px 24px rgba(0, 0, 0, 0.8);
+  border-color: #b91c1c !important;
+}
+
+body.theme-gothic .domain-banner {
+  border-radius: 1px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.theme-gothic .domain-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(185, 28, 28, 0.6) !important;
+}
+
+body.theme-gothic .node-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15em !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0.04em;
 }
 
 /* Markdown body across all themes with comfortable reading typography */

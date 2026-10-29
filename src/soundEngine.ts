@@ -129,6 +129,34 @@ class SoundEngine {
       gain.connect(ctx.destination);
       osc.start(now);
       osc.stop(now + 0.08);
+    } else if (this.currentTheme === 'gothic') {
+      // Gothic Eldritch: Heavy iron latch snap & guillotine clank
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(180, now);
+      osc.frequency.exponentialRampToValueAtTime(45, now + 0.08);
+
+      gain.gain.setValueAtTime(0.35 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
+
+      // Cold metallic clink overtone
+      const clink = ctx.createOscillator();
+      const clinkGain = ctx.createGain();
+      clink.type = 'sine';
+      clink.frequency.setValueAtTime(1850, now);
+      clink.frequency.exponentialRampToValueAtTime(800, now + 0.03);
+      clinkGain.gain.setValueAtTime(0.18 * vol, now);
+      clinkGain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
+
+      osc.connect(gain);
+      clink.connect(clinkGain);
+      gain.connect(ctx.destination);
+      clinkGain.connect(ctx.destination);
+      osc.start(now);
+      clink.start(now);
+      osc.stop(now + 0.1);
+      clink.stop(now + 0.04);
     } else {
       // Fantasy: Resonant wooden snap
       const osc = ctx.createOscillator();
@@ -156,8 +184,8 @@ class SoundEngine {
 
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
-    osc.type = this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'fantasy' || this.currentTheme === 'inkwell' ? 'sine' : 'triangle');
-    osc.frequency.setValueAtTime(this.currentTheme === 'synthwave' ? 740 : (this.currentTheme === 'cyber' ? 880 : (this.currentTheme === 'inkwell' ? 620 : 330)), now);
+    osc.type = this.currentTheme === 'gothic' ? 'sine' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'fantasy' || this.currentTheme === 'inkwell' ? 'sine' : 'triangle'));
+    osc.frequency.setValueAtTime(this.currentTheme === 'gothic' ? 146.83 : (this.currentTheme === 'synthwave' ? 740 : (this.currentTheme === 'cyber' ? 880 : (this.currentTheme === 'inkwell' ? 620 : 330))), now);
 
     gain.gain.setValueAtTime(0.1 * vol, now);
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
@@ -175,18 +203,20 @@ class SoundEngine {
     const now = ctx.currentTime;
     const vol = this.volume;
 
-    const notes = this.currentTheme === 'synthwave'
-      ? [293.66, 369.99, 440.00, 554.37] // 80s D Major 7th synthwave chord (D4, F#4, A4, C#5)
-      : (this.currentTheme === 'cyber' 
-        ? [600, 900, 1200]
-        : (this.currentTheme === 'fantasy' 
-            ? [330, 440, 550] 
-            : (this.currentTheme === 'inkwell' ? [440, 554, 659, 880] : [523, 659, 784])));
+    const notes = this.currentTheme === 'gothic'
+      ? [146.83, 220.00, 261.63, 349.23] // D minor cathedral bell chime / organ toll (D3, A3, C4, F4)
+      : (this.currentTheme === 'synthwave'
+        ? [293.66, 369.99, 440.00, 554.37] // 80s D Major 7th synthwave chord (D4, F#4, A4, C#5)
+        : (this.currentTheme === 'cyber' 
+          ? [600, 900, 1200]
+          : (this.currentTheme === 'fantasy' 
+              ? [330, 440, 550] 
+              : (this.currentTheme === 'inkwell' ? [440, 554, 659, 880] : [523, 659, 784]))));
 
     notes.forEach((freq, idx) => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-      osc.type = this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'arcade' ? 'square' : 'triangle');
+      osc.type = this.currentTheme === 'gothic' ? 'triangle' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'arcade' ? 'square' : 'triangle'));
       osc.frequency.setValueAtTime(freq, now + idx * 0.04);
 
       gain.gain.setValueAtTime(0.2 * vol, now + idx * 0.04);

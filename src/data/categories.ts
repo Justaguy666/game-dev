@@ -269,6 +269,35 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
+  // 4. GOTHIC ELDRITCH / BLOOD & IRON PALETTE (Bloodborne, Cursed Relics & Cosmic Void)
+  if (theme === 'gothic') {
+    if (mode === 'light') {
+      switch (domainId) {
+        case 'root': return '#78350f'; // Consecrated Holy Gold
+        case 'design': return '#991b1b'; // Arterial Blood Crimson
+        case 'tech': return '#334155'; // Cold Wrought Iron Slate
+        case 'qa': return '#581c87'; // Eldritch Void Deep Violet
+        case 'art': return '#831843'; // Dried Rose Sanguine
+        case 'audio': return '#115e59'; // Abyssal Cold Cyan-Teal
+        case 'boss':
+        case 'production': return '#7f1d1d'; // The Old Blood Scarlet
+        default: return '#78350f';
+      }
+    } else {
+      switch (domainId) {
+        case 'root': return '#f59e0b'; // Relic Gold Flame
+        case 'design': return '#ef4444'; // Blood Moon Crimson Scarlet
+        case 'tech': return '#94a3b8'; // Quicksilver / Cold Wrought Steel
+        case 'qa': return '#c084fc'; // Eldritch Cosmic Amethyst
+        case 'art': return '#fb7185'; // Coagulated Blood Rose
+        case 'audio': return '#2dd4bf'; // Abyssal Ghostly Phosphor
+        case 'boss':
+        case 'production': return '#dc2626'; // The Old Blood Crimson
+        default: return '#f59e0b';
+      }
+    }
+  }
+
   // 3. LIGHT MODE (Arcade, Cyber, Fantasy)
   // Clean, high-contrast accessible jewel tones (> 4.5:1)
   if (mode === 'light') {
