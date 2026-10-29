@@ -443,6 +443,35 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
+  // 10. VAPORWAVE WINDOWS 95 / Y2K MILLENNIUM (1995 Desktop & Cyber Neon Aesthetics)
+  if (theme === 'vaporwave') {
+    if (mode === 'light') {
+      switch (domainId) {
+        case 'root': return '#000080'; // Active Window Navy Blue
+        case 'design': return '#c026d3'; // Hot Magenta
+        case 'tech': return '#0284c7'; // Internet Explorer Cyan-Blue
+        case 'qa': return '#b91c1c'; // Critical Error Crimson
+        case 'art': return '#7e22ce'; // Media Player Violet
+        case 'audio': return '#008080'; // Desktop Teal
+        case 'boss':
+        case 'production': return '#c2410c'; // Setup Wizard Amber
+        default: return '#000080';
+      }
+    } else {
+      switch (domainId) {
+        case 'root': return '#ffe700'; // Vaporwave Sun Gold
+        case 'design': return '#ff71ce'; // Neon Bubblegum Pink
+        case 'tech': return '#01cdfe'; // Electric Glitch Cyan
+        case 'qa': return '#f43f5e'; // Y2K Coral Pink
+        case 'art': return '#b967ff'; // Aesthetic Lilac Purple
+        case 'audio': return '#05ffa1'; // Neon Mint Green
+        case 'boss':
+        case 'production': return '#fb923c'; // Sunset Horizon Orange
+        default: return '#ffe700';
+      }
+    }
+  }
+
   // 3. LIGHT MODE (Arcade, Cyber, Fantasy)
   // Clean, high-contrast accessible jewel tones (> 4.5:1)
   if (mode === 'light') {

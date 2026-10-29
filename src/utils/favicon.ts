@@ -230,6 +230,29 @@ export const THEME_FAVICONS: Record<ThemeId, string> = {
   <!-- Sakura Flower Blossom Drift -->
   <rect x="1" y="9" width="1" height="1" fill="#fbcfe8" />
   <rect x="14" y="11" width="1" height="1" fill="#fbcfe8" />
+</svg>`,
+
+  vaporwave: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges">
+  <!-- Classic Win95 Teal Desktop or Cyber Night -->
+  <rect width="16" height="16" fill="#008080" />
+  <!-- 3D Window Frame -->
+  <rect x="1" y="1" width="14" height="14" fill="#c0c0c0" />
+  <rect x="1" y="1" width="13" height="1" fill="#ffffff" />
+  <rect x="1" y="1" width="1" height="13" fill="#ffffff" />
+  <rect x="14" y="2" width="1" height="13" fill="#000000" />
+  <rect x="2" y="14" width="13" height="1" fill="#000000" />
+  <rect x="13" y="2" width="1" height="12" fill="#808080" />
+  <rect x="2" y="13" width="11" height="1" fill="#808080" />
+  <!-- Active Navy Blue Title Bar -->
+  <rect x="3" y="3" width="10" height="3" fill="#000080" />
+  <!-- Close Button [X] -->
+  <rect x="11" y="3" width="2" height="2" fill="#c0c0c0" />
+  <rect x="11" y="3" width="1" height="1" fill="#000000" />
+  <!-- Classic 4-color Windows Flag / Vaporwave Quad -->
+  <rect x="4" y="8" width="3" height="3" fill="#ff71ce" />
+  <rect x="8" y="8" width="3" height="3" fill="#01cdfe" />
+  <rect x="4" y="11" width="3" height="2" fill="#ffe700" />
+  <rect x="8" y="11" width="3" height="2" fill="#05ffa1" />
 </svg>`
 };
 

@@ -620,6 +620,57 @@
 }
 
 /* --------------------------------------------------------------------------
+   13. THEME: VAPORWAVE WINDOWS 95 / Y2K MILLENNIUM (DESKTOP 1995 & GLITCH AESTHETIC)
+   -------------------------------------------------------------------------- */
+.theme-vaporwave.mode-dark {
+  --bg-app: #120e26;
+  --bg-surface: #1e183a;
+  --bg-card: #261f47;
+  --border-color: #ff71ce;
+  --border-highlight: #01cdfe;
+  --text-main: #ffffff;
+  --text-muted: #d8b4e2;
+  --text-dim: #9d8abf;
+  
+  --accent-gold: #ffe700;
+  --accent-cyan: #01cdfe;
+  --accent-green: #05ffa1;
+  --accent-red: #ff71ce;
+  --accent-purple: #b967ff;
+  
+  --font-display: 'Pixelify Sans', 'VT323', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 4px 4px 0px #01cdfe, 0 0 16px rgba(255, 113, 206, 0.4);
+  --glow-primary: 0 0 14px rgba(255, 113, 206, 0.6), 0 0 20px rgba(1, 205, 254, 0.4);
+  --btn-active-bg: #ff71ce;
+  --btn-active-text: #120e26;
+}
+
+.theme-vaporwave.mode-light {
+  --bg-app: #008080;
+  --bg-surface: #c0c0c0;
+  --bg-card: #d4d0c8;
+  --border-color: #000000;
+  --border-highlight: #000080;
+  --text-main: #000000;
+  --text-muted: #222222;
+  --text-dim: #444444;
+  
+  --accent-gold: #b45309;
+  --accent-cyan: #000080;
+  --accent-green: #15803d;
+  --accent-red: #c026d3;
+  --accent-purple: #7e22ce;
+  
+  --font-display: 'Pixelify Sans', 'VT323', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: inset 1px 1px 0px #ffffff, inset -1px -1px 0px #808080, 2px 2px 0px #000000;
+  --glow-primary: 0 0 10px rgba(0, 0, 128, 0.4);
+  --btn-active-bg: #000080;
+  --btn-active-text: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
    GLOBAL LAYOUT & CRT SCANLINES
    -------------------------------------------------------------------------- */
 * {
@@ -1112,6 +1163,57 @@ body.theme-ukiyoe .domain-banner:hover {
 body.theme-ukiyoe .node-card-title {
   font-family: var(--font-display);
   font-size: 1.12em !important;
+  line-height: 1.30 !important;
+  letter-spacing: 0.03em;
+  font-weight: 700;
+}
+
+body.theme-vaporwave .node-card {
+  border-radius: 0px;
+  border-width: 2px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+body.theme-vaporwave.mode-light .node-card {
+  border-style: outset;
+  border-color: #ffffff #808080 #808080 #ffffff;
+  box-shadow: 2px 2px 0px #000000;
+}
+
+body.theme-vaporwave.mode-light .node-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0px #000000, 0 0 10px rgba(0, 0, 128, 0.35);
+}
+
+body.theme-vaporwave.mode-dark .node-card {
+  border-color: #ff71ce;
+  box-shadow: 3px 3px 0px #01cdfe, 0 0 12px rgba(255, 113, 206, 0.3);
+}
+
+body.theme-vaporwave.mode-dark .node-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: #01cdfe !important;
+  box-shadow: 4px 4px 0px #ff71ce, 0 0 20px rgba(1, 205, 254, 0.6);
+}
+
+body.theme-vaporwave .domain-banner {
+  border-radius: 0px;
+  border-width: 2px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+body.theme-vaporwave.mode-light .domain-banner {
+  border-style: outset;
+  border-color: #ffffff #808080 #808080 #ffffff;
+}
+
+body.theme-vaporwave.mode-dark .domain-banner {
+  border-color: #01cdfe;
+}
+
+body.theme-vaporwave .node-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15em !important;
   line-height: 1.30 !important;
   letter-spacing: 0.03em;
   font-weight: 700;

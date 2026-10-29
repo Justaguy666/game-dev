@@ -3696,7 +3696,332 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
     }
   }
 
-  // Fallback
+    // =========================================================================
+  // 13. VAPORWAVE WINDOWS 95 / Y2K MILLENNIUM (1995 Desktop & Glitch Aesthetic)
+  // =========================================================================
+  if (theme === 'vaporwave') {
+    switch (name) {
+      case 'tree': // Windows Explorer Folder Tree Hierarchy
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <line x1="5" y1="5" x2="5" y2="19" stroke={color} strokeWidth="1.5" />
+            <line x1="5" y1="10" x2="9" y2="10" stroke={color} strokeWidth="1.5" />
+            <line x1="5" y1="17" x2="9" y2="17" stroke={color} strokeWidth="1.5" />
+            <rect x="9" y="8" width="10" height="5" fill="none" stroke={color} strokeWidth="1.5" />
+            <rect x="9" y="15" width="10" height="5" fill="none" stroke={color} strokeWidth="1.5" />
+            <rect x="3" y="3" width="5" height="5" fill={color} />
+          </svg>
+        );
+      case 'docs': // Notepad.exe Text Document with Titlebar
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="5" y="3" width="14" height="18" fill="none" stroke={color} strokeWidth="1.5" />
+            <rect x="5" y="3" width="14" height="4" fill={color} />
+            <line x1="8" y1="10" x2="16" y2="10" stroke={color} strokeWidth="1.5" />
+            <line x1="8" y1="13" x2="16" y2="13" stroke={color} strokeWidth="1.5" />
+            <line x1="8" y1="16" x2="13" y2="16" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'quests': // Win95 Taskbar / Checklist Dialog
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="3" y="4" width="18" height="16" fill="none" stroke={color} strokeWidth="1.5" />
+            <rect x="3" y="4" width="18" height="3" fill={color} />
+            <rect x="6" y="9" width="3" height="3" fill="none" stroke={color} strokeWidth="1" />
+            <polyline points="6,10 7.5,12 11,8" stroke={color} strokeWidth="1.5" fill="none" />
+            <line x1="12" y1="10" x2="17" y2="10" stroke={color} strokeWidth="1.5" />
+            <rect x="6" y="14" width="3" height="3" fill="none" stroke={color} strokeWidth="1" />
+            <polyline points="6,15 7.5,17 11,13" stroke={color} strokeWidth="1.5" fill="none" />
+            <line x1="12" y1="15" x2="17" y2="15" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'sun': // Sliced Vaporwave Neon Horizon Sun
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="7" y="3" width="10" height="2" fill={color} />
+            <rect x="5" y="6" width="14" height="2" fill={color} />
+            <rect x="4" y="9" width="16" height="2" fill={color} />
+            <rect x="4" y="12" width="16" height="1.5" fill={color} />
+            <rect x="5" y="15" width="14" height="1" fill={color} />
+            <rect x="7" y="17" width="10" height="1" fill={color} />
+            <line x1="2" y1="19" x2="22" y2="19" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'moon': // Y2K Millennium Liquid Chrome Crescent Moon
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M16 3a9 9 0 00-2 18 9 9 0 008-5.5 8 8 0 01-6-12.5z" stroke={color} strokeWidth="1.8" fill="none" strokeLinejoin="round" />
+            <circle cx="8" cy="12" r="1.5" fill={color} />
+            <circle cx="12" cy="7" r="1" fill={color} />
+            <line x1="3" y1="12" x2="6" y2="12" stroke={color} strokeWidth="1" />
+            <line x1="10" y1="19" x2="14" y2="19" stroke={color} strokeWidth="1" />
+          </svg>
+        );
+      case 'tv': // 386 CRT Monitor / My Computer
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="4" y="4" width="16" height="12" fill="none" stroke={color} strokeWidth="1.5" />
+            <rect x="6" y="6" width="12" height="8" fill={color} opacity="0.3" stroke={color} strokeWidth="1" />
+            <rect x="8" y="16" width="8" height="2" fill={color} />
+            <rect x="6" y="18" width="12" height="2" fill={color} />
+            <rect x="17" y="14" width="1.5" height="1.5" fill={color} />
+          </svg>
+        );
+      case 'volume': // Sound Blaster 16 PC Speaker
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <polygon points="4,9 8,9 13,5 13,19 8,15 4,15" fill={color} />
+            <path d="M16 8c1.5 2 1.5 6 0 8" stroke={color} strokeWidth="1.5" fill="none" />
+            <path d="M19 5c3 4 3 10 0 14" stroke={color} strokeWidth="1.5" fill="none" />
+          </svg>
+        );
+      case 'mute': // Muted PC Speaker
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <polygon points="4,9 8,9 13,5 13,19 8,15 4,15" fill={color} />
+            <line x1="16" y1="9" x2="21" y2="15" stroke={color} strokeWidth="1.8" />
+            <line x1="21" y1="9" x2="16" y2="15" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'globe': // Internet Explorer 3.0 World Globe
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="1.6" fill="none" />
+            <ellipse cx="12" cy="12" rx="4" ry="8" stroke={color} strokeWidth="1.4" fill="none" />
+            <line x1="4" y1="12" x2="20" y2="12" stroke={color} strokeWidth="1.4" />
+            <path d="M5.5 8c2-1 11-1 13 0M5.5 16c2 1 11 1 13 0" stroke={color} strokeWidth="1.2" fill="none" />
+          </svg>
+        );
+      case 'mastered': // 1995 Trophy / Gold Quest Complete
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="6" y="4" width="12" height="6" fill={color} />
+            <polygon points="6,10 12,14 18,10" fill={color} />
+            <rect x="4" y="5" width="2" height="4" fill="none" stroke={color} strokeWidth="1" />
+            <rect x="18" y="5" width="2" height="4" fill="none" stroke={color} strokeWidth="1" />
+            <rect x="11" y="14" width="2" height="4" fill={color} />
+            <rect x="7" y="18" width="10" height="2" fill={color} />
+          </svg>
+        );
+      case 'learning': // Windows 95 Hourglass Wait Cursor
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="7" y="3" width="10" height="2" fill={color} />
+            <rect x="7" y="19" width="10" height="2" fill={color} />
+            <polygon points="8,5 16,5 12,12" stroke={color} strokeWidth="1" fill="none" />
+            <polygon points="12,12 16,19 8,19" stroke={color} strokeWidth="1" fill="none" />
+            <circle cx="12" cy="8" r="1.5" fill={color} />
+            <rect x="10.5" y="16" width="3" height="2" fill={color} />
+          </svg>
+        );
+      case 'locked': // Windows Security Keyhole & Padlock
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="6" y="10" width="12" height="10" fill="none" stroke={color} strokeWidth="1.6" />
+            <path d="M8 10V7a4 4 0 018 0v3" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="12" cy="14" r="1.5" fill={color} />
+            <line x1="12" y1="15.5" x2="12" y2="18" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'edit': // MS Paint Pencil & Brush
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <polygon points="15,4 20,9 8,21 3,21 3,16" stroke={color} strokeWidth="1.5" fill="none" />
+            <line x1="13" y1="6" x2="18" y2="11" stroke={color} strokeWidth="1.5" />
+            <polygon points="3,21 4,17 7,20" fill={color} />
+          </svg>
+        );
+      case 'save': // 3.5-inch Floppy Diskette 1.44MB
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="4" y="3" width="16" height="18" fill="none" stroke={color} strokeWidth="1.5" />
+            <rect x="7" y="3" width="10" height="6" fill={color} />
+            <rect x="9" y="4" width="2" height="4" fill="#ffffff" />
+            <rect x="7" y="13" width="10" height="8" fill="none" stroke={color} strokeWidth="1.5" />
+            <line x1="9" y1="16" x2="15" y2="16" stroke={color} strokeWidth="1" />
+          </svg>
+        );
+      case 'download': // Dial-up Packet Transfer / Download to Disk
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="4" y="16" width="16" height="5" fill="none" stroke={color} strokeWidth="1.5" />
+            <circle cx="16" cy="18.5" r="1" fill={color} />
+            <line x1="12" y1="3" x2="12" y2="13" stroke={color} strokeWidth="2" />
+            <polygon points="8,10 12,14 16,10" fill={color} />
+          </svg>
+        );
+      case 'close': // Win95 3D Beveled [X] Titlebar Button
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="3" y="3" width="18" height="18" fill="none" stroke={color} strokeWidth="1.5" />
+            <line x1="7" y1="7" x2="17" y2="17" stroke={color} strokeWidth="2" />
+            <line x1="17" y1="7" x2="7" y2="17" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'search': // Windows Find Files & Folders Magnifier
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="10" cy="10" r="6" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="14.5" y1="14.5" x2="20" y2="20" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <circle cx="10" cy="10" r="3" stroke={color} strokeWidth="1" strokeDasharray="2 2" fill="none" />
+          </svg>
+        );
+      case 'zoomIn': // Magnifier [+]
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <circle cx="10" cy="10" r="6" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="14.5" y1="14.5" x2="20" y2="20" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="10" y1="7" x2="10" y2="13" stroke={color} strokeWidth="1.8" />
+            <line x1="7" y1="10" x2="13" y2="10" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'zoomOut': // Magnifier [-]
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <circle cx="10" cy="10" r="6" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="14.5" y1="14.5" x2="20" y2="20" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="7" y1="10" x2="13" y2="10" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'reset': // Win95 Restart Computer Circular Arrows
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M4 12a8 8 0 0114.9-4" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <polygon points="19,4 20,9 15,8" fill={color} />
+            <path d="M20 12a8 8 0 01-14.9 4" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <polygon points="5,20 4,15 9,16" fill={color} />
+          </svg>
+        );
+      case 'brand': // Classic 4-color Windows Flag / Y2K Millennium Quad
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="4" y="4" width="7" height="7" fill={color} />
+            <rect x="13" y="4" width="7" height="7" fill={color} opacity="0.8" />
+            <rect x="4" y="13" width="7" height="7" fill={color} opacity="0.6" />
+            <rect x="13" y="13" width="7" height="7" fill={color} opacity="0.9" />
+          </svg>
+        );
+      case 'design': // OpenGL 3D Wireframe Polygon Cube
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,3 21,8 12,13 3,8" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polygon points="3,8 12,13 12,21 3,16" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polygon points="21,8 12,13 12,21 21,16" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="13" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'code': // MS-DOS Command Prompt C:\> Console
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="3" y="4" width="18" height="16" fill="none" stroke={color} strokeWidth="1.5" />
+            <rect x="3" y="4" width="18" height="3" fill={color} />
+            <polyline points="6,11 9,13.5 6,16" stroke={color} strokeWidth="1.8" strokeLinecap="square" fill="none" />
+            <rect x="11" y="15" width="5" height="1.5" fill={color} />
+          </svg>
+        );
+      case 'qa': // Win95 Critical Error Dialog Alert [!]
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <polygon points="12,3 22,20 2,20" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="9" x2="12" y2="14" stroke={color} strokeWidth="2" strokeLinecap="square" />
+            <rect x="11" y="16.5" width="2" height="2" fill={color} />
+          </svg>
+        );
+      case 'art': // MS Paintbrush & Paint Palette
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M12 3a9 9 0 00-3 17.5c.8.4 1.5-.2 1.5-.9v-1.1c0-1.2 1-2.2 2.2-2.2h1.8c2.5 0 4.5-2 4.5-4.5 0-4.8-3.1-8.8-7-8.8z" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="7.5" cy="10" r="1.3" fill={color} />
+            <circle cx="10.5" cy="7" r="1.3" fill={color} />
+            <circle cx="14.5" cy="7.5" r="1.3" fill={color} />
+            <circle cx="16.5" cy="11.5" r="1.3" fill={color} />
+          </svg>
+        );
+      case 'audio': // CD-ROM Compact Disc with Laser Hologram
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="8.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="12" cy="12" r="3" stroke={color} strokeWidth="1.5" fill="none" />
+            <circle cx="12" cy="12" r="1" fill={color} />
+            <path d="M12 3.5a8.5 8.5 0 016 2.5l-3.5 3.5a3 3 0 00-2.5-.5V3.5z" fill={color} opacity="0.35" />
+            <path d="M12 20.5a8.5 8.5 0 01-6-2.5l3.5-3.5a3 3 0 002.5.5v5.5z" fill={color} opacity="0.35" />
+          </svg>
+        );
+      case 'boss': // Y2K Millennium Bug / Cyber Gremlin
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="7" y="6" width="10" height="12" fill="none" stroke={color} strokeWidth="1.6" />
+            <rect x="9" y="8" width="2" height="3" fill={color} />
+            <rect x="13" y="8" width="2" height="3" fill={color} />
+            <line x1="4" y1="8" x2="7" y2="10" stroke={color} strokeWidth="1.5" />
+            <line x1="20" y1="8" x2="17" y2="10" stroke={color} strokeWidth="1.5" />
+            <line x1="3" y1="12" x2="7" y2="12" stroke={color} strokeWidth="1.5" />
+            <line x1="21" y1="12" x2="17" y2="12" stroke={color} strokeWidth="1.5" />
+            <line x1="4" y1="16" x2="7" y2="14" stroke={color} strokeWidth="1.5" />
+            <line x1="20" y1="16" x2="17" y2="14" stroke={color} strokeWidth="1.5" />
+            <line x1="9" y1="3" x2="7" y2="6" stroke={color} strokeWidth="1.5" />
+            <line x1="15" y1="3" x2="17" y2="6" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'production': // Setup.exe Installer Wizard with Flying Page
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="4" y="7" width="16" height="13" fill="none" stroke={color} strokeWidth="1.5" />
+            <rect x="4" y="7" width="16" height="3" fill={color} />
+            <polygon points="12,2 17,6 10,6" fill={color} />
+            <line x1="7" y1="13" x2="17" y2="13" stroke={color} strokeWidth="1.5" />
+            <line x1="7" y1="16" x2="13" y2="16" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'drag': // Windows 95 4-Way Move Cursor
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <polyline points="10,4 12,2 14,4" stroke={color} strokeWidth="1.5" fill="none" />
+            <polyline points="10,20 12,22 14,20" stroke={color} strokeWidth="1.5" fill="none" />
+            <polyline points="4,10 2,12 4,14" stroke={color} strokeWidth="1.5" fill="none" />
+            <polyline points="20,10 22,12 20,14" stroke={color} strokeWidth="1.5" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="22" stroke={color} strokeWidth="1.5" />
+            <line x1="2" y1="12" x2="22" y2="12" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'open': // Open Folder Dialog with Paper Sheet
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <path d="M3 6h6l2 2h10v10H3V6z" stroke={color} strokeWidth="1.5" fill="none" />
+            <polygon points="2,12 6,19 22,19 18,12" fill={color} opacity="0.3" stroke={color} strokeWidth="1.5" />
+            <line x1="8" y1="10" x2="14" y2="10" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'font': // Windows TrueType [TT] Logo
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="3" y="5" width="8" height="2" fill={color} />
+            <rect x="6" y="7" width="2" height="12" fill={color} />
+            <rect x="11" y="8" width="10" height="2" fill={color} />
+            <rect x="15" y="10" width="2" height="9" fill={color} />
+          </svg>
+        );
+      case 'langVi': // VN Flag Star on CRT Screen
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="3" y="4" width="18" height="14" fill="none" stroke={color} strokeWidth="1.5" />
+            <polygon points="12,7 13.5,10.5 17,10.7 14.3,12.7 15.3,16 12,14 8.7,16 9.7,12.7 7,10.7 10.5,10.5" fill={color} />
+            <rect x="7" y="18" width="10" height="2" fill={color} />
+          </svg>
+        );
+      case 'langEn': // World Network IE / English Globe
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="1.6" fill="none" />
+            <ellipse cx="12" cy="12" rx="3.5" ry="8" stroke={color} strokeWidth="1.2" fill="none" />
+            <line x1="4" y1="12" x2="20" y2="12" stroke={color} strokeWidth="1.4" />
+            <path d="M6 7c2-1 10-1 12 0" stroke={color} strokeWidth="1.2" fill="none" />
+          </svg>
+        );
+    }
+  }
+
+// Fallback
   return (
     <svg {...commonSvgProps}>
       <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />

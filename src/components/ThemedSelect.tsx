@@ -92,6 +92,12 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
       name: { vi: 'Ukiyo-e Thủy Mặc', en: 'Ukiyo-e Sumi-e' },
       iconName: 'art',
       palette: ['#dc2626', '#d97706', '#1d4ed8', '#15803d']
+    },
+    {
+      id: 'vaporwave',
+      name: { vi: 'Vaporwave Win95', en: 'Vaporwave Win95' },
+      iconName: 'tv',
+      palette: ['#008080', '#ff71ce', '#01cdfe', '#000080']
     }
   ];
 
@@ -282,7 +288,7 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
               border: '1px solid var(--border-color)',
               color: 'var(--accent-gold)'
             }}>
-              12 STYLES
+              13 STYLES
             </span>
           </div>
 
