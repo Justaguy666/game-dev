@@ -240,6 +240,35 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
+  // 3. OUTRUN 1984 / SYNTHWAVE NEON PALETTE (Retrowave Sunset Grids & Electric Neon)
+  if (theme === 'synthwave') {
+    if (mode === 'light') {
+      switch (domainId) {
+        case 'root': return '#b45309'; // Sunset Chrome Amber
+        case 'design': return '#be123c'; // Hot Miami Rose Pink
+        case 'tech': return '#0369a1'; // Electric Ocean Cyan
+        case 'qa': return '#b91c1c'; // Laser Crimson
+        case 'art': return '#7e22ce'; // Neon Violet
+        case 'audio': return '#047857'; // Laser Mint Green
+        case 'boss':
+        case 'production': return '#9f1239'; // Deep Synth Rose
+        default: return '#b45309';
+      }
+    } else {
+      switch (domainId) {
+        case 'root': return '#ffb703'; // Sunset Chrome Gold
+        case 'design': return '#ff2a85'; // Hot Synth Magenta Pink
+        case 'tech': return '#00f0ff'; // Laser Electric Cyan
+        case 'qa': return '#ff3366'; // Neon Coral / Laser Crimson
+        case 'art': return '#c084fc'; // Ultraviolet Orchid
+        case 'audio': return '#39ff14'; // Radical Laser Lime
+        case 'boss':
+        case 'production': return '#f43f5e'; // Electric Rose
+        default: return '#ffb703';
+      }
+    }
+  }
+
   // 3. LIGHT MODE (Arcade, Cyber, Fantasy)
   // Clean, high-contrast accessible jewel tones (> 4.5:1)
   if (mode === 'light') {

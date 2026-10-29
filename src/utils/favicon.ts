@@ -94,6 +94,31 @@ export const THEME_FAVICONS: Record<ThemeId, string> = {
   <rect x="5" y="11" width="2" height="3" fill="#c84337" />
   <rect x="9" y="11" width="2" height="3" fill="#c84337" />
   <rect x="7" y="12" width="2" height="1" fill="#f5edd8" />
+</svg>`,
+
+  synthwave: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges">
+  <!-- Outrun 1984 / Synthwave Neon Sunset & Wireframe Grid -->
+  <rect width="16" height="16" fill="#120924" />
+  <!-- Sliced Neon Sunset Sun -->
+  <rect x="5" y="2" width="6" height="2" fill="#ff2a85" />
+  <rect x="4" y="4" width="8" height="1" fill="#ff2a85" />
+  <rect x="3" y="6" width="10" height="1" fill="#ff5e00" />
+  <rect x="3" y="8" width="10" height="1" fill="#ffb703" />
+  <!-- Cyan Laser Horizon Line -->
+  <rect x="0" y="10" width="16" height="1" fill="#00f0ff" />
+  <!-- 80s Wireframe Grid (Perspective Lines) -->
+  <rect x="0" y="11" width="16" height="5" fill="#1c1038" />
+  <rect x="0" y="13" width="16" height="1" fill="#00f0ff" opacity="0.6" />
+  <rect x="0" y="15" width="16" height="1" fill="#00f0ff" />
+  <rect x="3" y="11" width="1" height="5" fill="#00f0ff" opacity="0.7" />
+  <rect x="7" y="11" width="1" height="5" fill="#00f0ff" opacity="0.9" />
+  <rect x="8" y="11" width="1" height="5" fill="#00f0ff" opacity="0.9" />
+  <rect x="12" y="11" width="1" height="5" fill="#00f0ff" opacity="0.7" />
+  <!-- Palm Tree Silhouette (Right Corner) -->
+  <rect x="13" y="6" width="1" height="5" fill="#ff2a85" />
+  <rect x="12" y="5" width="3" height="1" fill="#ff2a85" />
+  <rect x="11" y="6" width="1" height="1" fill="#ff2a85" />
+  <rect x="15" y="6" width="1" height="1" fill="#ff2a85" />
 </svg>`
 };
 

@@ -263,6 +263,57 @@
 }
 
 /* --------------------------------------------------------------------------
+   6. THEME: OUTRUN 1984 / SYNTHWAVE NEON (RADICAL RETROWAVE & 80S GRID)
+   -------------------------------------------------------------------------- */
+.theme-synthwave.mode-dark {
+  --bg-app: #120924;
+  --bg-surface: #1c1038;
+  --bg-card: #251646;
+  --border-color: #582b82;
+  --border-highlight: #ff2a85;
+  --text-main: #fce7f3;
+  --text-muted: #d8b4fe;
+  --text-dim: #9333ea;
+  
+  --accent-gold: #ffb703;
+  --accent-cyan: #00f0ff;
+  --accent-green: #39ff14;
+  --accent-red: #ff2a85;
+  --accent-purple: #c084fc;
+  
+  --font-display: 'Righteous', 'Audiowide', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 0 4px 15px rgba(255, 42, 133, 0.25), 0 0 8px rgba(0, 240, 255, 0.2);
+  --glow-primary: 0 0 12px rgba(255, 42, 133, 0.6), 0 0 20px rgba(0, 240, 255, 0.4);
+  --btn-active-bg: #ff2a85;
+  --btn-active-text: #ffffff;
+}
+
+.theme-synthwave.mode-light {
+  --bg-app: #fdf2f8;
+  --bg-surface: #ffffff;
+  --bg-card: #fff1f5;
+  --border-color: #f472b6;
+  --border-highlight: #0284c7;
+  --text-main: #1e0e38;
+  --text-muted: #581c87;
+  --text-dim: #86198f;
+  
+  --accent-gold: #d97706;
+  --accent-cyan: #0284c7;
+  --accent-green: #15803d;
+  --accent-red: #e11d48;
+  --accent-purple: #7e22ce;
+  
+  --font-display: 'Righteous', 'Audiowide', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 4px 4px 0px rgba(244, 114, 182, 0.45);
+  --glow-primary: 0 0 10px rgba(225, 29, 72, 0.35);
+  --btn-active-bg: #e11d48;
+  --btn-active-text: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
    GLOBAL LAYOUT & CRT SCANLINES
    -------------------------------------------------------------------------- */
 * {
@@ -323,6 +374,20 @@ body.theme-inkwell h2,
 body.theme-inkwell h3 {
   font-family: var(--font-display);
   letter-spacing: 0.035em;
+}
+
+body.theme-synthwave {
+  /* 'Righteous' / 'JetBrains Mono' Outrun Synthwave */
+  font-size: 1.25rem;
+  letter-spacing: 0.025em;
+}
+
+body.theme-synthwave h1,
+body.theme-synthwave h2,
+body.theme-synthwave h3 {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  text-shadow: 0 0 8px rgba(255, 42, 133, 0.45);
 }
 
 /* Headings across all themes */
@@ -477,6 +542,34 @@ body.theme-inkwell .node-card-title {
   font-size: 1.05em !important;
   line-height: 1.38 !important;
   letter-spacing: 0.02em;
+}
+
+body.theme-synthwave .node-card {
+  border-radius: 2px;
+  transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+body.theme-synthwave .node-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  box-shadow: 0 0 16px rgba(255, 42, 133, 0.5), 0 0 25px rgba(0, 240, 255, 0.3);
+  border-color: #00f0ff !important;
+}
+
+body.theme-synthwave .domain-banner {
+  border-radius: 2px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.theme-synthwave .domain-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(255, 42, 133, 0.6) !important;
+}
+
+body.theme-synthwave .node-card-title {
+  font-family: var(--font-display);
+  font-size: 1.02em !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0.03em;
 }
 
 /* Markdown body across all themes with comfortable reading typography */

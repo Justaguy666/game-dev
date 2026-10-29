@@ -1376,6 +1376,333 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
     }
   }
 
+  // =========================================================================
+  // 6. OUTRUN 1984 / SYNTHWAVE NEON (80s Retrowave, Wireframe Grid & Laser)
+  // =========================================================================
+  if (theme === 'synthwave') {
+    switch (name) {
+      case 'tree':
+        return (
+          <svg {...commonSvgProps}>
+            <line x1="2" y1="20" x2="22" y2="20" stroke={color} strokeWidth="1.8" />
+            <line x1="12" y1="4" x2="2" y2="20" stroke={color} strokeWidth="1.8" />
+            <line x1="12" y1="4" x2="22" y2="20" stroke={color} strokeWidth="1.8" />
+            <line x1="12" y1="4" x2="8" y2="20" stroke={color} strokeWidth="1.4" />
+            <line x1="12" y1="4" x2="16" y2="20" stroke={color} strokeWidth="1.4" />
+            <line x1="5" y1="15" x2="19" y2="15" stroke={color} strokeWidth="1.4" />
+            <line x1="7.5" y1="11" x2="16.5" y2="11" stroke={color} strokeWidth="1.4" />
+            <circle cx="12" cy="4" r="2" fill={color} />
+          </svg>
+        );
+      case 'docs':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s Compact Cassette Tape */}
+            <rect x="2" y="5" width="20" height="14" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <rect x="5" y="8" width="14" height="6" rx="1" stroke={color} strokeWidth="1.4" fill="none" />
+            <circle cx="8" cy="11" r="1.8" stroke={color} strokeWidth="1.4" fill="none" />
+            <circle cx="16" cy="11" r="1.8" stroke={color} strokeWidth="1.4" fill="none" />
+            <line x1="10" y1="11" x2="14" y2="11" stroke={color} strokeWidth="1.2" />
+            <polygon points="4,19 7,16 17,16 20,19" fill={color} opacity="0.3" />
+          </svg>
+        );
+      case 'quests':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s Neon Lightning Trophy */}
+            <polygon points="13,2 4,12 11,12 9,22 20,10 13,10" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <circle cx="7" cy="5" r="1" fill={color} />
+            <circle cx="18" cy="17" r="1" fill={color} />
+          </svg>
+        );
+      case 'sun':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Iconic Sliced Synthwave Sunset Sun */}
+            <path d="M4 12 A8 8 0 0 1 20 12" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="4" y1="12" x2="20" y2="12" stroke={color} strokeWidth="2" />
+            <line x1="5" y1="9" x2="19" y2="9" stroke={color} strokeWidth="1.6" />
+            <line x1="7" y1="6.5" x2="17" y2="6.5" stroke={color} strokeWidth="1.6" />
+            <line x1="2" y1="16" x2="22" y2="16" stroke={color} strokeWidth="1.6" strokeDasharray="3 2" />
+            <line x1="1" y1="19" x2="23" y2="19" stroke={color} strokeWidth="1.6" />
+          </svg>
+        );
+      case 'moon':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s Laser Sliced Crescent Moon */}
+            <path d="M14 3.5a8.5 8.5 0 000 17 8.5 8.5 0 006-2.5 8.5 8.5 0 01-6-14.5z" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="6" y1="8" x2="14" y2="8" stroke={color} strokeWidth="1.4" />
+            <line x1="5" y1="12" x2="15" y2="12" stroke={color} strokeWidth="1.4" />
+            <line x1="6" y1="16" x2="14" y2="16" stroke={color} strokeWidth="1.4" />
+          </svg>
+        );
+      case 'tv':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s Sony Trinitron CRT Monitor */}
+            <rect x="2" y="6" width="20" height="15" rx="3" stroke={color} strokeWidth="2" fill="none" />
+            <rect x="4" y="8" width="13" height="11" rx="1.5" stroke={color} strokeWidth="1.4" fill="none" />
+            <circle cx="19" cy="10" r="1.2" fill={color} />
+            <circle cx="19" cy="14" r="1.2" fill={color} />
+            <line x1="18" y1="17" x2="20" y2="17" stroke={color} strokeWidth="1.4" />
+            <line x1="8" y1="2" x2="12" y2="6" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="16" y1="2" x2="12" y2="6" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'volume':
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="3,8 7,8 12,4 12,20 7,16 3,16" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <path d="M15 8.5a5 5 0 010 7M18 5.5a9 9 0 010 13" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'mute':
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="3,8 7,8 12,4 12,20 7,16 3,16" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="16" y1="9" x2="22" y2="15" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="22" y1="9" x2="16" y2="15" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'globe':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s Wireframe Vector Globe */}
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <ellipse cx="12" cy="12" rx="4.5" ry="9" stroke={color} strokeWidth="1.6" fill="none" />
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.6" />
+            <line x1="4.5" y1="7" x2="19.5" y2="7" stroke={color} strokeWidth="1.3" />
+            <line x1="4.5" y1="17" x2="19.5" y2="17" stroke={color} strokeWidth="1.3" />
+          </svg>
+        );
+      case 'mastered':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s Chrome 4-Point Starburst */}
+            <path d="M12 2L14 9L21 12L14 15L12 22L10 15L3 12L10 9Z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill={color} />
+          </svg>
+        );
+      case 'learning':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s Digital LED Segment Watch */}
+            <rect x="6" y="2" width="12" height="20" rx="3" stroke={color} strokeWidth="2" fill="none" />
+            <rect x="8" y="7" width="8" height="10" stroke={color} strokeWidth="1.4" fill="none" />
+            <polyline points="10,12 12,12 12,9" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'locked':
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="5" y="10" width="14" height="11" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M8 10V6a4 4 0 018 0v4" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <circle cx="12" cy="15" r="1.5" fill={color} />
+            <line x1="12" y1="16.5" x2="12" y2="18.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'edit':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s Light Pen Drawing Vector Laser */}
+            <polygon points="4,20 8,19 19,8 15,4 4,15" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="13" y1="6" x2="17" y2="10" stroke={color} strokeWidth="1.5" />
+            <line x1="2" y1="22" x2="5" y2="21" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'save':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 3.5-inch Micro Floppy Disk */}
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M6 3v7h12V3" stroke={color} strokeWidth="1.8" fill="none" />
+            <rect x="9" y="4" width="4" height="4" fill={color} />
+            <rect x="6" y="14" width="12" height="7" stroke={color} strokeWidth="1.6" fill="none" />
+          </svg>
+        );
+      case 'download':
+        return (
+          <svg {...commonSvgProps}>
+            <line x1="12" y1="3" x2="12" y2="15" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <polyline points="7,10 12,15 17,10" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <path d="M4 17v3a1 1 0 001 1h14a1 1 0 001-1v-3" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'close':
+        return (
+          <svg {...commonSvgProps}>
+            <line x1="5" y1="5" x2="19" y2="19" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="19" y1="5" x2="5" y2="19" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+          </svg>
+        );
+      case 'search':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s Radar Screen Grid */}
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <circle cx="11" cy="11" r="3.5" stroke={color} strokeWidth="1.2" strokeDasharray="2 2" fill="none" />
+            <line x1="11" y1="7.5" x2="11" y2="14.5" stroke={color} strokeWidth="1.2" />
+            <line x1="7.5" y1="11" x2="14.5" y2="11" stroke={color} strokeWidth="1.2" />
+          </svg>
+        );
+      case 'zoomIn':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="11" y1="8" x2="11" y2="14" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="8" y1="11" x2="14" y2="11" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomOut':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="8" y1="11" x2="14" y2="11" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'reset':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s Cassette Rewind Icons */}
+            <polygon points="12,6 4,12 12,18" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill={color} />
+            <polygon points="20,6 12,12 20,18" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill={color} />
+          </svg>
+        );
+      case 'brand':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Classic 80s Neon Aviator Sunglasses */}
+            <path d="M2 9h4l2 2h8l2-2h4" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <path d="M3 10c0 4 3 6.5 6 6.5s5-2 5-6.5H3z" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M10 10c0 4 3 6.5 6 6.5s5-2 5-6.5h-11z" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="4.5" y1="12" x2="7.5" y2="12" stroke={color} strokeWidth="1.4" />
+            <line x1="16.5" y1="12" x2="19.5" y2="12" stroke={color} strokeWidth="1.4" />
+          </svg>
+        );
+      case 'design':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s Drafting Calipers & Triangle Grid */}
+            <polygon points="12,3 3,20 21,20" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <polygon points="12,9 7,17 17,17" stroke={color} strokeWidth="1.4" fill="none" />
+            <circle cx="12" cy="3" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'code':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s CLI Terminal Prompt >_ */}
+            <rect x="2" y="4" width="20" height="16" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <polyline points="6,9 10,12 6,15" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="15" x2="17" y2="15" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'qa':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Robotic Electronic Cyber-Bug */}
+            <circle cx="12" cy="13" r="5" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="6" r="2.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="12" y1="8.5" x2="12" y2="18" stroke={color} strokeWidth="1.8" />
+            <line x1="4" y1="11" x2="20" y2="11" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="5" y1="15" x2="19" y2="15" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <path d="M10 4l-2-2M14 4l2-2" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'art':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s Airbrush / Spray Can with Laser Flare */}
+            <rect x="7" y="9" width="10" height="12" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <rect x="10" y="5" width="4" height="4" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="12" y1="3" x2="12" y2="5" stroke={color} strokeWidth="2" />
+            <path d="M12 2l-3-1M12 2l3-1M12 2l0-1" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <line x1="9" y1="13" x2="15" y2="13" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'audio':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s Synthesizer Keytar */}
+            <polygon points="4,7 18,3 21,5 7,21 3,19" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="7" y1="11" x2="13" y2="9" stroke={color} strokeWidth="1.6" />
+            <line x1="9" y1="14" x2="15" y2="12" stroke={color} strokeWidth="1.6" />
+            <line x1="11" y1="17" x2="17" y2="15" stroke={color} strokeWidth="1.6" />
+            <circle cx="19" cy="4" r="1" fill={color} />
+          </svg>
+        );
+      case 'boss':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s Robotic Cyborg Invader Boss */}
+            <polygon points="12,2 20,7 18,17 12,21 6,17 4,7" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <rect x="7.5" y="8.5" width="3" height="3" fill={color} />
+            <rect x="13.5" y="8.5" width="3" height="3" fill={color} />
+            <line x1="8" y1="15" x2="16" y2="15" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'production':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s VHS Cassette Tape */}
+            <rect x="3" y="6" width="18" height="12" rx="1.5" stroke={color} strokeWidth="2" fill="none" />
+            <rect x="6" y="8" width="5" height="4" stroke={color} strokeWidth="1.4" fill="none" />
+            <rect x="13" y="8" width="5" height="4" stroke={color} strokeWidth="1.4" fill="none" />
+            <line x1="5" y1="15" x2="19" y2="15" stroke={color} strokeWidth="1.4" />
+          </svg>
+        );
+      case 'drag':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="8" cy="8" r="1.5" fill={color} />
+            <circle cx="16" cy="8" r="1.5" fill={color} />
+            <circle cx="8" cy="12" r="1.5" fill={color} />
+            <circle cx="16" cy="12" r="1.5" fill={color} />
+            <circle cx="8" cy="16" r="1.5" fill={color} />
+            <circle cx="16" cy="16" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'open':
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="4,20 12,16 12,4 4,4" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="12" y1="4" x2="20" y2="4" stroke={color} strokeWidth="2" />
+            <line x1="20" y1="4" x2="20" y2="20" stroke={color} strokeWidth="2" />
+            <line x1="12" y1="16" x2="20" y2="20" stroke={color} strokeWidth="2" />
+            <circle cx="7" cy="12" r="1" fill={color} />
+          </svg>
+        );
+      case 'font':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 80s Bold Chrome Letter A with Horizon Slice */}
+            <polygon points="12,2 19,21 15,21 13.5,16 10.5,16 9,21 5,21" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="7" y1="14" x2="17" y2="14" stroke={color} strokeWidth="2" />
+            <line x1="3" y1="10" x2="21" y2="10" stroke={color} strokeWidth="1" strokeDasharray="2 2" />
+          </svg>
+        );
+      case 'langVi':
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,2 21,7 21,17 12,22 3,17 3,7" stroke={color} strokeWidth="1.8" fill="none" />
+            <polygon points="12,6 14,10 18,10.5 15,13.5 16,17.5 12,15 8,17.5 9,13.5 6,10.5 10,10" fill={color} />
+          </svg>
+        );
+      case 'langEn':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="1.8" fill="none" />
+            <ellipse cx="12" cy="12" rx="4.5" ry="9" stroke={color} strokeWidth="1.4" fill="none" />
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.6" />
+            <ellipse cx="12" cy="12" rx="9" ry="4" stroke={color} strokeWidth="1.2" strokeDasharray="3 2" fill="none" />
+          </svg>
+        );
+    }
+  }
+
   // Fallback
   return (
     <svg {...commonSvgProps}>

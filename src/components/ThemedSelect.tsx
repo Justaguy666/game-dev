@@ -24,7 +24,8 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
     { id: 'gameboy', name: { vi: 'Game Boy DMG', en: 'Game Boy 1989' }, iconName: 'brand' },
     { id: 'cyber', name: { vi: 'Cyber Mecha', en: 'Cyber Mecha' }, iconName: 'code' },
     { id: 'fantasy', name: { vi: 'Dark Fantasy', en: 'Dark Fantasy' }, iconName: 'quests' },
-    { id: 'inkwell', name: { vi: '1930s Inkwell', en: '1930s Inkwell' }, iconName: 'art' }
+    { id: 'inkwell', name: { vi: '1930s Inkwell', en: '1930s Inkwell' }, iconName: 'art' },
+    { id: 'synthwave', name: { vi: 'Outrun Synthwave', en: 'Outrun Synthwave' }, iconName: 'sun' }
   ];
 
   const currentOption = themesList.find(t => t.id === currentTheme) || themesList[0];
