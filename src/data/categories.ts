@@ -178,41 +178,41 @@ export const getDomainForCategory = (category: string): GameDevDomain => {
  * readability and prevents eye strain across both Light and Dark modes.
  */
 export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode: ThemeMode): string => {
-  // 1. GAME BOY MONOCHROME PALETTES
+  // 1. GAME BOY CLASSIC PALETTE (High readability, distinct hues, zero glare)
   if (theme === 'gameboy') {
     if (mode === 'light') {
-      // Background is #9bbc0f (bright yellow-olive).
-      // MUST use deep, dark, high-contrast ink tones (contrast > 7:1) to prevent eye-straining neon glare!
+      // Light background is #9bbc0f (olive yellow-green).
+      // Rich, deep saturated hues providing distinct category identity without neon glare:
       switch (domainId) {
-        case 'root': return '#0f380f'; // Darkest DMG forest ink
-        case 'design': return '#263806'; // Deep army olive ink
-        case 'tech': return '#0a3028'; // Deep pine dark teal
-        case 'qa': return '#382206'; // Deep umber ochre
-        case 'art': return '#281438'; // Deep plum shadow
-        case 'audio': return '#0c331a'; // Deep spruce jade
+        case 'root': return '#854d0e'; // Golden bronze amber
+        case 'design': return '#c2410c'; // Rich rust orange
+        case 'tech': return '#0369a1'; // Deep cobalt cyan-blue
+        case 'qa': return '#b91c1c'; // Rich ruby crimson red
+        case 'art': return '#6b21a8'; // Royal violet purple
+        case 'audio': return '#065f46'; // Deep forest jade emerald
         case 'boss':
-        case 'production': return '#3a0f18'; // Deep crimson dark ink
-        default: return '#0f380f';
+        case 'production': return '#9f1239'; // Deep wine rose
+        default: return '#854d0e';
       }
     } else {
-      // Background is #0f380f (deep forest green).
-      // Crisp, luminous DMG green & soft tones:
+      // Dark background is #0f380f (deep forest green).
+      // Luminous retro hues that vividly distinguish categories on dark green:
       switch (domainId) {
-        case 'root': return '#9bbc0f'; // Brightest DMG Green
-        case 'design': return '#d4e840'; // Bright DMG Lime
-        case 'tech': return '#5eead4'; // Soft Mint
-        case 'qa': return '#fde047'; // Warm Yellow
-        case 'art': return '#c084fc'; // Soft Lavender
-        case 'audio': return '#86efac'; // Soft Spring Green
+        case 'root': return '#fde047'; // Bright retro gold
+        case 'design': return '#fb923c'; // Warm retro orange
+        case 'tech': return '#38bdf8'; // Electric sky blue / cyan
+        case 'qa': return '#f87171'; // Vibrant coral rose
+        case 'art': return '#c084fc'; // Retro lilac lavender
+        case 'audio': return '#4ade80'; // Crisp neon mint green
         case 'boss':
-        case 'production': return '#fda4af'; // Soft Coral
-        default: return '#9bbc0f';
+        case 'production': return '#fb7185'; // Strawberry pink
+        default: return '#fde047';
       }
     }
   }
 
-  // 2. LIGHT MODE ACROSS ALL THEMES (Arcade, Cyber, Fantasy)
-  // Background is white or light cream. Colors must be deep and accessible (> 4.5:1).
+  // 2. LIGHT MODE (Arcade, Cyber, Fantasy)
+  // Clean, high-contrast accessible jewel tones (> 4.5:1)
   if (mode === 'light') {
     switch (domainId) {
       case 'root': return '#b45309'; // Warm deep amber
@@ -227,8 +227,8 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
-  // 3. DARK MODE ACROSS ALL THEMES (Arcade, Cyber, Fantasy)
-  // Vibrant, luminous retro colors on dark surface
+  // 3. DARK MODE (Arcade, Cyber, Fantasy)
+  // Luminous retro neon & arcade colors on dark background
   switch (domainId) {
     case 'root': return '#fbbf24'; // Gold
     case 'design': return '#f59e0b'; // Amber

@@ -1,8 +1,9 @@
-import React, { useState, useRef, useEffect, useCallback } from 'react';
+import React, { useState, useRef, useEffect, useCallback, useMemo } from 'react';
 import { SkillNode, Language, ThemeId, ThemeMode } from '../types';
 import { ThemedIcon, IconName } from './ThemedIcon';
 import { sound } from '../soundEngine';
 import { GAME_DEV_DOMAINS, getDomainForCategory, getDomainColor, DomainId } from '../data/categories';
+import { matchSkillFullText, SearchMatchResult } from '../utils/search';
 
 interface SkillTreeViewProps {
   skills: SkillNode[];
@@ -21,12 +22,72 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
   themeMode
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const searchInputRef = useRef<HTMLInputElement>(null);
   const [zoom, setZoom] = useState(0.55);
   const [pan, setPan] = useState({ x: 20, y: 24 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [selectedDomain, setSelectedDomain] = useState<DomainId | 'all'>('all');
   const [isLegendExpanded, setIsLegendExpanded] = useState(false);
+
+  // Full-Text Search in Skill Tree
+  const [searchQuery, setSearchQuery] = useState('');
+  const [currentMatchIndex, setCurrentMatchIndex] = useState(0);
+
+  const searchResultsMap = useMemo(() => {
+    const map = new Map<string, SearchMatchResult>();
+    const trimmed = searchQuery.trim();
+    if (!trimmed) return map;
+
+    skills.forEach(s => {
+      const match = matchSkillFullText(s, trimmed, lang);
+      if (match.matched) {
+        map.set(s.id, match);
+      }
+    });
+    return map;
+  }, [skills, searchQuery, lang]);
+
+  const isSearchActive = !!searchQuery.trim();
+  const matchingSkills = useMemo(() => {
+    if (!isSearchActive) return [];
+    return skills.filter(s => searchResultsMap.has(s.id));
+  }, [skills, isSearchActive, searchResultsMap]);
+
+  const centerOnSkill = useCallback((skill: SkillNode) => {
+    if (!containerRef.current) return;
+    const containerWidth = containerRef.current.clientWidth;
+    const containerHeight = containerRef.current.clientHeight;
+    const targetZoom = 0.88;
+    setZoom(targetZoom);
+    const targetPanX = (containerWidth / 2) - ((skill.x + 145) * targetZoom);
+    const targetPanY = (containerHeight / 2) - ((skill.y + 80) * targetZoom);
+    setPan({ x: Math.round(targetPanX), y: Math.round(targetPanY) });
+  }, []);
+
+  const handleNextMatch = () => {
+    if (matchingSkills.length === 0) return;
+    sound.playClick();
+    const nextIdx = (currentMatchIndex + 1) % matchingSkills.length;
+    setCurrentMatchIndex(nextIdx);
+    centerOnSkill(matchingSkills[nextIdx]);
+  };
+
+  const handlePrevMatch = () => {
+    if (matchingSkills.length === 0) return;
+    sound.playClick();
+    const prevIdx = (currentMatchIndex - 1 + matchingSkills.length) % matchingSkills.length;
+    setCurrentMatchIndex(prevIdx);
+    centerOnSkill(matchingSkills[prevIdx]);
+  };
+
+  // Center on first match when query changes
+  useEffect(() => {
+    if (isSearchActive && matchingSkills.length > 0) {
+      centerOnSkill(matchingSkills[0]);
+      setCurrentMatchIndex(0);
+    }
+  }, [searchQuery]);
 
   // Compute optimal panoramic fit view so all 5 pillars & Root are centered
   const calcFitView = useCallback(() => {
@@ -240,10 +301,12 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
         from: { x: parent.x + 145, y: parent.y + 160 },
         to: { x: child.x + 145, y: child.y },
         status: child.status,
-        childCategory: child.category
+        childCategory: child.category,
+        parentId: parent.id,
+        childId: child.id
       };
     })
-    .filter(Boolean) as { id: string; from: { x: number; y: number }; to: { x: number; y: number }; status: string; childCategory: string }[];
+    .filter(Boolean) as { id: string; from: { x: number; y: number }; to: { x: number; y: number }; status: string; childCategory: string; parentId: string; childId: string }[];
 
   return (
     <div
@@ -276,7 +339,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
         display: 'flex',
         flexWrap: 'nowrap',
         overflowX: 'auto',
-        maxWidth: 'calc(100vw - 165px)',
+        maxWidth: 'calc(100vw - 460px)',
         scrollbarWidth: 'none',
         gap: '6px',
         zIndex: 50,
@@ -354,18 +417,125 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
         })}
       </div>
 
-      {/* HUD Controls Overlay with Zoom Percentage */}
+      {/* Top Floating Controls: Full-Text Search + Zoom HUD */}
       <div style={{
         position: 'absolute',
         top: '14px',
         right: '16px',
         display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'flex-end',
-        gap: '6px',
+        alignItems: 'flex-start',
+        gap: '8px',
         zIndex: 50
       }}>
-        <div style={{ display: 'flex', gap: '6px' }}>
+        {/* Full-Text Search Input Box */}
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '6px',
+          backgroundColor: 'var(--bg-surface)',
+          border: '1px solid var(--border-color)',
+          padding: '5px 10px',
+          boxShadow: 'var(--card-shadow)'
+        }}>
+          <ThemedIcon name="search" theme={currentTheme} size={14} color="var(--accent-gold)" />
+          <input
+            ref={searchInputRef}
+            type="text"
+            placeholder={lang === 'vi' ? 'Tìm kỹ năng, tag, mã lỗi, nội dung...' : 'Search skills, tags, code, content...'}
+            value={searchQuery}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setCurrentMatchIndex(0);
+            }}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                if (e.shiftKey) {
+                  handlePrevMatch();
+                } else {
+                  handleNextMatch();
+                }
+              } else if (e.key === 'Escape') {
+                setSearchQuery('');
+              }
+            }}
+            style={{
+              background: 'none',
+              border: 'none',
+              outline: 'none',
+              color: 'var(--text-main)',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.78em',
+              width: '180px'
+            }}
+          />
+          {isSearchActive && (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '3px' }}>
+              <span style={{
+                fontSize: '0.70em',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 800,
+                color: matchingSkills.length > 0 ? 'var(--accent-gold)' : 'var(--accent-red)',
+                whiteSpace: 'nowrap',
+                padding: '0 2px'
+              }}>
+                {matchingSkills.length > 0 ? `${currentMatchIndex + 1}/${matchingSkills.length}` : '0/0'}
+              </span>
+              {matchingSkills.length > 1 && (
+                <>
+                  <button
+                    onClick={handlePrevMatch}
+                    title={lang === 'vi' ? 'Khớp trước đó (Shift+Enter)' : 'Previous match (Shift+Enter)'}
+                    style={{
+                      background: 'var(--bg-card)',
+                      border: '1px solid var(--border-color)',
+                      color: 'var(--text-main)',
+                      cursor: 'pointer',
+                      padding: '1px 5px',
+                      fontSize: '10px'
+                    }}>
+                    ▲
+                  </button>
+                  <button
+                    onClick={handleNextMatch}
+                    title={lang === 'vi' ? 'Khớp tiếp theo (Enter)' : 'Next match (Enter)'}
+                    style={{
+                      background: 'var(--bg-card)',
+                      border: '1px solid var(--border-color)',
+                      color: 'var(--text-main)',
+                      cursor: 'pointer',
+                      padding: '1px 5px',
+                      fontSize: '10px'
+                    }}>
+                    ▼
+                  </button>
+                </>
+              )}
+              <button
+                onClick={() => { setSearchQuery(''); sound.playClick(); }}
+                title="Clear"
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--text-muted)',
+                  cursor: 'pointer',
+                  fontSize: '11px',
+                  padding: '0 2px'
+                }}>
+                ✕
+              </button>
+            </div>
+          )}
+        </div>
+
+        {/* HUD Controls Overlay with Zoom Percentage */}
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'flex-end',
+          gap: '6px'
+        }}>
+          <div style={{ display: 'flex', gap: '6px' }}>
           <button
             onClick={() => { sound.playClick(); setZoom(z => Math.min(1.8, parseFloat((z + 0.15).toFixed(2)))); }}
             title="Phóng to (Zoom In)"
@@ -432,6 +602,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
           <span style={{ color: 'var(--text-main)' }}>{Math.round(zoom * 100)}%</span>
         </div>
       </div>
+    </div>
 
       {/* Comprehensive Legend Table / Panel (Màu Border & Trạng Thái) */}
       <div 
@@ -608,6 +779,8 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                                   selectedDomain === conn.childCategory || 
                                   (selectedDomain === 'boss' && (conn.childCategory === 'boss' || conn.childCategory === 'production'));
 
+            const isConnSearchMatch = !isSearchActive || (searchResultsMap.has(conn.childId) || searchResultsMap.has(conn.parentId));
+
             return (
               <path
                 key={conn.id}
@@ -618,7 +791,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                 strokeDasharray={conn.status === 'locked' ? '4 4' : 'none'}
                 style={{
                   filter: conn.status === 'mastered' ? 'drop-shadow(0 0 4px var(--accent-green))' : 'none',
-                  opacity: isDomainMatch ? (conn.status === 'locked' ? 0.4 : 0.85) : 0.15,
+                  opacity: isDomainMatch && isConnSearchMatch ? (conn.status === 'locked' ? 0.4 : 0.85) : 0.08,
                   transition: 'opacity 0.2s ease'
                 }}
               />
@@ -703,14 +876,26 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
           const domain = getDomainForCategory(skill.category);
           const domainBorderColor = getDomainColor(skill.category, currentTheme, themeMode);
 
+          const matchResult = searchResultsMap.get(skill.id);
+          const isSearchMatch = !isSearchActive || !!matchResult;
+          const isCurrentMatch = isSearchActive && matchingSkills[currentMatchIndex]?.id === skill.id;
+
           const isDomainMatch = selectedDomain === 'all' || 
                                 selectedDomain === skill.category || 
                                 (selectedDomain === 'boss' && (skill.category === 'boss' || skill.category === 'production')) ||
                                 (skill.category === 'root');
 
-          const glow = isDomainMatch 
-            ? (isMastered ? `0 0 12px rgba(74, 222, 128, 0.4)` : `0 0 8px ${domainBorderColor}44`) 
-            : 'none';
+          const isVisible = isDomainMatch && isSearchMatch;
+
+          const glow = isCurrentMatch
+            ? `0 0 24px ${domainBorderColor}, 0 0 10px #ffffff, inset 0 0 8px ${domainBorderColor}66`
+            : (isSearchActive && matchResult
+                ? `0 0 18px ${domainBorderColor}bb`
+                : (isDomainMatch 
+                    ? (isMastered ? `0 0 12px rgba(74, 222, 128, 0.4)` : `0 0 8px ${domainBorderColor}44`) 
+                    : 'none'));
+
+          const cardOpacity = isVisible ? 1 : (isSearchActive ? 0.08 : 0.22);
 
           return (
             <div
@@ -725,11 +910,32 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                 position: 'absolute',
                 left: `${skill.x}px`,
                 top: `${skill.y}px`,
-                border: `2px solid ${domainBorderColor}`,
+                border: isCurrentMatch ? `2px solid #ffffff` : `2px solid ${domainBorderColor}`,
                 boxShadow: glow,
-                opacity: isDomainMatch ? 1 : 0.22,
+                opacity: cardOpacity,
                 transition: 'opacity 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease'
               }}>
+              
+              {/* Full-Text Search Match Badge */}
+              {isSearchActive && matchResult && (
+                <div style={{
+                  position: 'absolute',
+                  top: '-10px',
+                  right: '8px',
+                  backgroundColor: isCurrentMatch ? 'var(--btn-active-bg)' : 'var(--bg-card)',
+                  color: isCurrentMatch ? 'var(--btn-active-text)' : domainBorderColor,
+                  border: `1px solid ${domainBorderColor}`,
+                  fontSize: '0.62em',
+                  fontWeight: 800,
+                  fontFamily: 'var(--font-mono)',
+                  padding: '1px 6px',
+                  boxShadow: `0 0 6px ${domainBorderColor}66`,
+                  letterSpacing: '0.04em',
+                  zIndex: 3
+                }}>
+                  {isCurrentMatch ? '★ ' : ''}MATCH: {matchResult.matchField?.toUpperCase()}
+                </div>
+              )}
               
               {/* Header Badges */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>

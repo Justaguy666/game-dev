@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { SkillNode, Language, ThemeId, ThemeMode } from '../types';
 import { sound } from '../soundEngine';
 import { marked } from 'marked';
 import { ThemedIcon } from './ThemedIcon';
 import { GAME_DEV_DOMAINS, getDomainForCategory, getDomainColor, DomainId } from '../data/categories';
+import { matchSkillFullText, SearchMatchResult } from '../utils/search';
 
 interface DocumentReaderViewProps {
   skills: SkillNode[];
@@ -74,31 +75,44 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
 
   const renderedHtml = marked.parse(content) as string;
 
-  // Filter skills by search query
-  const searchFilteredSkills = skills.filter(s => {
-    const q = searchQuery.toLowerCase().trim();
-    if (!q) return true;
-    return s.title[lang].toLowerCase().includes(q) || 
-           s.tags.some(t => t.toLowerCase().includes(q)) ||
-           s.summary[lang].toLowerCase().includes(q);
-  });
+  // Full-Text search across title, markdown content, tags, objectives, and summary
+  const searchResultsMap = useMemo(() => {
+    const map = new Map<string, SearchMatchResult>();
+    const trimmed = searchQuery.trim();
+    if (!trimmed) return map;
+
+    skills.forEach(s => {
+      const match = matchSkillFullText(s, trimmed, lang);
+      if (match.matched) {
+        map.set(s.id, match);
+      }
+    });
+    return map;
+  }, [skills, searchQuery, lang]);
+
+  const searchFilteredSkills = useMemo(() => {
+    if (!searchQuery.trim()) return skills;
+    return skills.filter(s => searchResultsMap.has(s.id));
+  }, [skills, searchQuery, searchResultsMap]);
 
   // Group skills into domains
-  const domainGroups = GAME_DEV_DOMAINS.map(domain => {
-    const domainSkills = searchFilteredSkills.filter(s => {
-      if (domain.id === 'boss') {
-        return s.category === 'boss' || s.category === 'production';
-      }
-      return s.category === domain.id;
+  const domainGroups = useMemo(() => {
+    return GAME_DEV_DOMAINS.map(domain => {
+      const domainSkills = searchFilteredSkills.filter(s => {
+        if (domain.id === 'boss') {
+          return s.category === 'boss' || s.category === 'production';
+        }
+        return s.category === domain.id;
+      });
+      return {
+        domain,
+        skills: domainSkills
+      };
+    }).filter(group => {
+      if (selectedDomain === 'all') return group.skills.length > 0;
+      return group.domain.id === selectedDomain;
     });
-    return {
-      domain,
-      skills: domainSkills
-    };
-  }).filter(group => {
-    if (selectedDomain === 'all') return group.skills.length > 0;
-    return group.domain.id === selectedDomain;
-  });
+  }, [searchFilteredSkills, selectedDomain]);
 
   const activeDomain = activeSkill ? getDomainForCategory(activeSkill.category) : GAME_DEV_DOMAINS[0];
 
@@ -197,7 +211,7 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
             <ThemedIcon name="search" theme={currentTheme} size={14} color="var(--text-muted)" />
             <input
               type="text"
-              placeholder={lang === 'vi' ? 'Tìm bài viết, mã lỗi, tag...' : 'Search docs, concepts, tags...'}
+              placeholder={lang === 'vi' ? 'Tìm full-text, code, tag, nội dung...' : 'Full-text search, code, tags, docs...'}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               style={{
@@ -211,8 +225,21 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
               }}
             />
             {searchQuery && (
+              <span style={{
+                fontSize: '0.68em',
+                backgroundColor: 'var(--bg-card)',
+                padding: '2px 5px',
+                border: '1px solid var(--border-color)',
+                color: 'var(--accent-gold)',
+                whiteSpace: 'nowrap'
+              }}>
+                {searchFilteredSkills.length}
+              </span>
+            )}
+            {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
+                title="Clear"
                 style={{
                   background: 'none',
                   border: 'none',
@@ -235,6 +262,7 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
           ) : (
             domainGroups.map(({ domain, skills: groupSkills }) => {
               const isCollapsed = !!collapsedDomains[domain.id];
+              const dColor = getDomainColor(domain.id, currentTheme, themeMode);
               return (
                 <div key={domain.id} style={{ marginBottom: '10px' }}>
                   {/* Domain Folder Header */}
@@ -247,13 +275,13 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
                       padding: '8px 10px',
                       backgroundColor: 'var(--bg-card)',
                       border: '1px solid var(--border-color)',
-                      borderLeft: `4px solid ${domain.colorVar}`,
+                      borderLeft: `4px solid ${dColor}`,
                       cursor: 'pointer',
                       userSelect: 'none',
                       transition: 'background 0.12s ease'
                     }}>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                      <ThemedIcon name={domain.iconName} theme={currentTheme} size={14} color={domain.colorVar} />
+                      <ThemedIcon name={domain.iconName} theme={currentTheme} size={14} color={dColor} />
                       <span style={{
                         fontSize: '0.78em',
                         fontFamily: 'var(--font-mono)',
@@ -299,6 +327,7 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
                         const isSelected = skill.id === activeSkill?.id;
                         const isMastered = skill.status === 'mastered';
                         const isLearning = skill.status === 'learning';
+                        const matchInfo = searchResultsMap.get(skill.id);
 
                         const statusBorder = isMastered 
                           ? 'var(--accent-green)' 
@@ -316,10 +345,24 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
                               padding: '8px 10px',
                               backgroundColor: isSelected ? 'var(--bg-app)' : 'transparent',
                               border: isSelected ? `1px solid ${statusBorder}` : '1px solid transparent',
-                              borderLeft: isSelected ? `3px solid ${domain.colorVar}` : '3px solid transparent',
+                              borderLeft: isSelected ? `3px solid ${dColor}` : '3px solid transparent',
                               cursor: 'pointer',
                               transition: 'all 0.12s ease'
                             }}>
+                            {/* Fulltext Match Field & Snippet */}
+                            {matchInfo && matchInfo.snippet && searchQuery.trim() && (
+                              <div style={{
+                                fontSize: '0.68em',
+                                color: 'var(--accent-gold)',
+                                fontStyle: 'italic',
+                                marginBottom: '2px',
+                                overflow: 'hidden',
+                                textOverflow: 'ellipsis',
+                                whiteSpace: 'nowrap'
+                              }}>
+                                ↳ {matchInfo.matchField?.toUpperCase()}: "{matchInfo.snippet}"
+                              </div>
+                            )}
                             <div style={{
                               display: 'flex',
                               justifyContent: 'space-between',

@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { SkillNode, Language, ThemeId, ThemeMode } from '../types';
 import { sound } from '../soundEngine';
 import { ThemedIcon } from './ThemedIcon';
 import { ThemedCheckbox } from './ThemedCheckbox';
 import { GAME_DEV_DOMAINS, getDomainColor, DomainId } from '../data/categories';
+import { matchSkillFullText, SearchMatchResult, removeAccents } from '../utils/search';
 
 interface QuestsViewProps {
   skills: SkillNode[];
@@ -24,6 +25,28 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
 }) => {
   const [selectedDomain, setSelectedDomain] = useState<DomainId | 'all'>('all');
   const [collapsedDomains, setCollapsedDomains] = useState<Record<string, boolean>>({});
+  const [searchQuery, setSearchQuery] = useState<string>('');
+
+  // Full-Text Search Mapping across Quests
+  const searchResultsMap = useMemo(() => {
+    const map = new Map<string, SearchMatchResult>();
+    const trimmed = searchQuery.trim();
+    if (!trimmed) return map;
+
+    skills.forEach(s => {
+      const match = matchSkillFullText(s, trimmed, lang);
+      if (match.matched) {
+        map.set(s.id, match);
+      }
+    });
+    return map;
+  }, [skills, searchQuery, lang]);
+
+  const isSearchActive = !!searchQuery.trim();
+  const searchFilteredSkills = useMemo(() => {
+    if (!isSearchActive) return skills;
+    return skills.filter(s => searchResultsMap.has(s.id));
+  }, [skills, isSearchActive, searchResultsMap]);
 
   // Global objectives statistics
   const allObjectives = skills.flatMap(s => 
@@ -47,28 +70,30 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
     }));
   };
 
-  // Group skills by domain
-  const domainGroups = GAME_DEV_DOMAINS.map(domain => {
-    const domainSkills = skills.filter(skill => {
-      if (domain.id === 'root') return skill.category === 'root';
-      if (domain.id === 'boss') return skill.category === 'boss' || skill.category === 'production';
-      return skill.category === domain.id;
+  // Group skills by domain (accounting for active search filter)
+  const domainGroups = useMemo(() => {
+    return GAME_DEV_DOMAINS.map(domain => {
+      const domainSkills = searchFilteredSkills.filter(skill => {
+        if (domain.id === 'root') return skill.category === 'root';
+        if (domain.id === 'boss') return skill.category === 'boss' || skill.category === 'production';
+        return skill.category === domain.id;
+      });
+
+      const domainObjectives = domainSkills.flatMap(s => s.objectives);
+      const domainCompleted = domainObjectives.filter(o => o.completed).length;
+      const domainTotal = domainObjectives.length;
+      const domainPercent = domainTotal > 0 ? Math.round((domainCompleted / domainTotal) * 100) : 0;
+
+      return {
+        domain,
+        skills: domainSkills,
+        objectives: domainObjectives,
+        completedCount: domainCompleted,
+        totalCount: domainTotal,
+        percent: domainPercent
+      };
     });
-
-    const domainObjectives = domainSkills.flatMap(s => s.objectives);
-    const domainCompleted = domainObjectives.filter(o => o.completed).length;
-    const domainTotal = domainObjectives.length;
-    const domainPercent = domainTotal > 0 ? Math.round((domainCompleted / domainTotal) * 100) : 0;
-
-    return {
-      domain,
-      skills: domainSkills,
-      objectives: domainObjectives,
-      completedCount: domainCompleted,
-      totalCount: domainTotal,
-      percent: domainPercent
-    };
-  });
+  }, [searchFilteredSkills]);
 
   const filteredGroups = selectedDomain === 'all'
     ? domainGroups
@@ -155,7 +180,64 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
         </div>
       </div>
 
-      {/* 2. Domain Filter Navigation Bar (Responsive Horizontal Scroll) */}
+      {/* 2. Full-Text Search Input for Quests */}
+      <div style={{
+        backgroundColor: 'var(--bg-surface)',
+        border: '1px solid var(--border-color)',
+        padding: '8px 14px',
+        boxShadow: 'var(--card-shadow)',
+        marginBottom: '16px',
+        display: 'flex',
+        alignItems: 'center',
+        gap: '10px'
+      }}>
+        <ThemedIcon name="search" theme={currentTheme} size={16} color="var(--accent-gold)" />
+        <input
+          type="text"
+          placeholder={lang === 'vi' ? 'Tìm full-text nhiệm vụ, mục tiêu, tag, code, nội dung...' : 'Full-text search quests, objectives, tags, code...'}
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          style={{
+            background: 'none',
+            border: 'none',
+            outline: 'none',
+            color: 'var(--text-main)',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.84em',
+            width: '100%'
+          }}
+        />
+        {searchQuery.trim() && (
+          <span style={{
+            fontSize: '0.72em',
+            backgroundColor: 'var(--bg-app)',
+            border: '1px solid var(--border-color)',
+            padding: '2px 8px',
+            color: searchFilteredSkills.length > 0 ? 'var(--accent-gold)' : 'var(--accent-red)',
+            whiteSpace: 'nowrap',
+            fontWeight: 800
+          }}>
+            {searchFilteredSkills.length} {lang === 'vi' ? 'kết quả' : 'matches'}
+          </span>
+        )}
+        {searchQuery && (
+          <button
+            onClick={() => setSearchQuery('')}
+            title="Clear"
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'var(--text-muted)',
+              cursor: 'pointer',
+              fontSize: '14px',
+              padding: '0 4px'
+            }}>
+            ✕
+          </button>
+        )}
+      </div>
+
+      {/* 3. Domain Filter Navigation Bar (Responsive Horizontal Scroll) */}
       <div style={{
         backgroundColor: 'var(--bg-surface)',
         border: '1px solid var(--border-color)',
@@ -378,17 +460,20 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                     if (skill.objectives.length === 0) return null;
                     const isMastered = skill.status === 'mastered';
                     const isLearning = skill.status === 'learning';
+                    const matchInfo = searchResultsMap.get(skill.id);
 
                     return (
                       <div
                         key={skill.id}
                         style={{
                           backgroundColor: 'var(--bg-app)',
-                          border: '1px solid var(--border-color)',
+                          border: matchInfo && isSearchActive ? `2px solid ${domainColor}` : '1px solid var(--border-color)',
+                          boxShadow: matchInfo && isSearchActive ? `0 0 10px ${domainColor}33` : 'none',
                           padding: '14px 16px',
                           display: 'flex',
                           flexDirection: 'column',
-                          gap: '10px'
+                          gap: '10px',
+                          transition: 'all 0.15s ease'
                         }}>
                         {/* Skill Card Header (Responsive flex wrap) */}
                         <div style={{
@@ -470,50 +555,83 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                           </div>
                         </div>
 
+                        {/* Search Match Context Snippet Badge */}
+                        {matchInfo && matchInfo.snippet && isSearchActive && (
+                          <div style={{
+                            fontSize: '0.72em',
+                            fontFamily: 'var(--font-mono)',
+                            color: 'var(--accent-gold)',
+                            backgroundColor: 'var(--bg-surface)',
+                            padding: '4px 8px',
+                            border: '1px dashed var(--border-color)',
+                            display: 'flex',
+                            alignItems: 'center',
+                            gap: '6px'
+                          }}>
+                            <span style={{ fontWeight: 800, textTransform: 'uppercase' }}>
+                              ↳ {lang === 'vi' ? 'Khớp' : 'Match'} [{matchInfo.matchField}]:
+                            </span>
+                            <span style={{ fontStyle: 'italic', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
+                              "{matchInfo.snippet}"
+                            </span>
+                          </div>
+                        )}
+
                         {/* Objectives List */}
                         <div style={{ display: 'flex', flexDirection: 'column', gap: '7px' }}>
-                          {skill.objectives.map(obj => (
-                            <div
-                              key={obj.id}
-                              style={{
-                                backgroundColor: 'var(--bg-surface)',
-                                padding: '8px 12px',
-                                border: '1px solid var(--border-color)',
-                                display: 'flex',
-                                alignItems: 'center',
-                                justifyContent: 'space-between',
-                                transition: 'background 0.12s ease',
-                                gap: '8px'
-                              }}>
-                              <ThemedCheckbox
-                                checked={obj.completed}
-                                onChange={() => onToggleObjective(skill.id, obj.id)}
-                                theme={currentTheme}
-                                label={
-                                  <span style={{
-                                    color: obj.completed ? 'var(--text-muted)' : 'var(--text-main)',
-                                    textDecoration: obj.completed ? 'line-through' : 'none',
-                                    fontWeight: obj.completed ? 500 : 700,
-                                    fontSize: '0.90em',
-                                    wordBreak: 'break-word'
-                                  }}>
-                                    {obj.text[lang]}
-                                  </span>
-                                }
-                              />
+                          {skill.objectives.map(obj => {
+                            const qNorm = removeAccents(searchQuery);
+                            const isObjMatch = isSearchActive && (
+                              removeAccents(obj.text.vi).includes(qNorm) ||
+                              removeAccents(obj.text.en).includes(qNorm) ||
+                              obj.text.vi.toLowerCase().includes(searchQuery.toLowerCase().trim()) ||
+                              obj.text.en.toLowerCase().includes(searchQuery.toLowerCase().trim())
+                            );
 
-                              <span style={{
-                                fontSize: '0.72em',
-                                fontFamily: 'var(--font-mono)',
-                                color: obj.completed ? 'var(--accent-green)' : 'var(--text-muted)',
-                                fontWeight: 700,
-                                flexShrink: 0,
-                                marginLeft: '8px'
-                              }}>
-                                {obj.completed ? '✓ +XP' : `+${Math.round(skill.maxExp / skill.objectives.length)} XP`}
-                              </span>
-                            </div>
-                          ))}
+                            return (
+                              <div
+                                key={obj.id}
+                                style={{
+                                  backgroundColor: isObjMatch ? 'var(--bg-card)' : 'var(--bg-surface)',
+                                  padding: '8px 12px',
+                                  border: isObjMatch ? '1px solid var(--accent-gold)' : '1px solid var(--border-color)',
+                                  boxShadow: isObjMatch ? '0 0 8px rgba(251, 191, 36, 0.25)' : 'none',
+                                  display: 'flex',
+                                  alignItems: 'center',
+                                  justifyContent: 'space-between',
+                                  transition: 'background 0.12s ease',
+                                  gap: '8px'
+                                }}>
+                                <ThemedCheckbox
+                                  checked={obj.completed}
+                                  onChange={() => onToggleObjective(skill.id, obj.id)}
+                                  theme={currentTheme}
+                                  label={
+                                    <span style={{
+                                      color: obj.completed ? 'var(--text-muted)' : (isObjMatch ? 'var(--accent-gold)' : 'var(--text-main)'),
+                                      textDecoration: obj.completed ? 'line-through' : 'none',
+                                      fontWeight: obj.completed ? 500 : (isObjMatch ? 800 : 700),
+                                      fontSize: '0.90em',
+                                      wordBreak: 'break-word'
+                                    }}>
+                                      {obj.text[lang]}
+                                    </span>
+                                  }
+                                />
+
+                                <span style={{
+                                  fontSize: '0.72em',
+                                  fontFamily: 'var(--font-mono)',
+                                  color: obj.completed ? 'var(--accent-green)' : (isObjMatch ? 'var(--accent-gold)' : 'var(--text-muted)'),
+                                  fontWeight: 700,
+                                  flexShrink: 0,
+                                  marginLeft: '8px'
+                                }}>
+                                  {obj.completed ? '✓ +XP' : `+${Math.round(skill.maxExp / skill.objectives.length)} XP`}
+                                </span>
+                              </div>
+                            );
+                          })}
                         </div>
                       </div>
                     );
@@ -523,6 +641,47 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
             </div>
           );
         })}
+
+        {/* Empty Search State */}
+        {isSearchActive && searchFilteredSkills.length === 0 && (
+          <div style={{
+            backgroundColor: 'var(--bg-surface)',
+            border: '2px dashed var(--border-color)',
+            padding: '36px 20px',
+            textAlign: 'center',
+            boxShadow: 'var(--card-shadow)'
+          }}>
+            <ThemedIcon name="search" theme={currentTheme} size={28} color="var(--text-muted)" />
+            <div style={{
+              fontFamily: 'var(--font-display)',
+              fontSize: '1em',
+              color: 'var(--accent-gold)',
+              marginTop: '10px',
+              marginBottom: '6px'
+            }}>
+              {lang === 'vi' ? 'KHÔNG TÌM THẤY NHIỆM VỤ NÀO' : 'NO MATCHING QUESTS FOUND'}
+            </div>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.82em', maxWidth: '420px', margin: '0 auto 14px auto' }}>
+              {lang === 'vi'
+                ? `Không có nhiệm vụ hoặc mục tiêu nào khớp với từ khóa "${searchQuery}". Hãy thử tìm kiếm theo tên khác hoặc tag liên quan.`
+                : `No quests or objectives matched "${searchQuery}". Try searching with a different term or keyword.`}
+            </p>
+            <button
+              onClick={() => setSearchQuery('')}
+              style={{
+                backgroundColor: 'var(--btn-active-bg)',
+                color: 'var(--btn-active-text)',
+                border: 'none',
+                padding: '6px 14px',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.78em',
+                fontWeight: 800,
+                cursor: 'pointer'
+              }}>
+              {lang === 'vi' ? 'XÓA BỘ LỌC TÌM KIẾM' : 'CLEAR SEARCH FILTER'}
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
