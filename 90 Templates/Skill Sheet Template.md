@@ -1,4 +1,4 @@
----
+﻿---
 tier: 1
 category: Gameplay
 status: learning
@@ -7,30 +7,32 @@ tags:
   - skill/learning
 ---
 
-# ⚔️ {{title}}
+# âš”ï¸ {{title}}
 
 <div class="exp-bar" style="--val: 30%;"><span>EXP: 30 / 100</span></div>
 
-> [!NOTE] 📜 Yêu cầu tiên quyết (Prerequisites)
-> * Yêu cầu mở khóa trước: [[Game Dev Mastery]]
+> [!NOTE] ðŸ“œ YÃªu cáº§u tiÃªn quyáº¿t (Prerequisites)
+> * YÃªu cáº§u má»Ÿ khÃ³a trÆ°á»›c: [[Game Dev Mastery]]
 
-### 🎯 Mục tiêu lĩnh hội (Skill Objectives)
-- [ ] Nghiên cứu nguyên lý hoạt động & tài liệu tham khảo
-- [ ] Xây dựng Prototype chạy thử trong Engine
-- [ ] Viết code hoàn chỉnh & xử lý ngoại lệ (Edge cases)
-- [ ] Tích hợp hiệu ứng âm thanh 8-bit và hình ảnh
+### ðŸŽ¯ Má»¥c tiÃªu lÄ©nh há»™i (Skill Objectives)
+
+- [ ] NghiÃªn cá»©u nguyÃªn lÃ½ hoáº¡t Ä‘á»™ng & tÃ i liá»‡u tham kháº£o
+- [ ] XÃ¢y dá»±ng Prototype cháº¡y thá»­ trong Engine
+- [ ] Viáº¿t code hoÃ n chá»‰nh & xá»­ lÃ½ ngoáº¡i lá»‡ (Edge cases)
+- [ ] TÃ­ch há»£p hiá»‡u á»©ng Ã¢m thanh 8-bit vÃ  hÃ¬nh áº£nh
 
 ---
 
-### 🧠 Kiến thức cốt lõi (Skill Lore)
-* Mô tả cơ chế và các công thức toán học cần nhớ:
+### ðŸ§  Kiáº¿n thá»©c cá»‘t lÃµi (Skill Lore)
+
+* MÃ´ táº£ cÆ¡ cháº¿ vÃ  cÃ¡c cÃ´ng thá»©c toÃ¡n há»c cáº§n nhá»›:
 
 ```cpp
-// Logic cơ chế mẫu
+// Logic cÆ¡ cháº¿ máº«u
 void UpdateSkill() {
     // Code your logic here
 }
 ```
 
-> [!TIP] 💡 Lời khuyên tối ưu (Pro Tip)
-> Tránh cấp phát bộ nhớ trong Game Loop để không gây giật khung hình.
+> [!TIP] ðŸ’¡ Lá»i khuyÃªn tá»‘i Æ°u (Pro Tip)
+> TrÃ¡nh cáº¥p phÃ¡t bá»™ nhá»› trong Game Loop Ä‘á»ƒ khÃ´ng gÃ¢y giáº­t khung hÃ¬nh.
