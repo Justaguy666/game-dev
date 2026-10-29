@@ -630,3 +630,71 @@ code {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--retro-cyan);
 }
+
+/* --------------------------------------------------------------------------
+   12. BILINGUAL SWITCHER & MULTI-LANGUAGE BLOCKS
+   -------------------------------------------------------------------------- */
+.lang-switch-bar {
+  display: inline-flex;
+  gap: 8px;
+  margin: 12px 0 16px 0;
+  padding: 6px 10px;
+  background-color: var(--bg-retro-panel);
+  border: 2px solid var(--border-retro);
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5);
+  align-items: center;
+}
+
+.lang-switch-btn {
+  background-color: var(--bg-retro-darkest) !important;
+  color: var(--text-muted) !important;
+  border: 1px solid var(--border-retro) !important;
+  border-radius: 0px !important;
+  font-family: 'Consolas', monospace !important;
+  font-size: 0.82em !important;
+  font-weight: bold !important;
+  padding: 4px 10px !important;
+  cursor: pointer !important;
+  transition: all 0.15s ease !important;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4) !important;
+}
+
+.lang-switch-btn:hover {
+  color: #ffffff !important;
+  border-color: var(--retro-cyan) !important;
+  background-color: rgba(56, 189, 248, 0.15) !important;
+}
+
+.lang-switch-btn.is-active {
+  color: var(--retro-gold) !important;
+  border-color: var(--retro-gold) !important;
+  background-color: rgba(251, 191, 36, 0.18) !important;
+  box-shadow: 0 0 6px rgba(251, 191, 36, 0.3) !important;
+}
+
+/* Visibility rules driven by body class */
+body.retro-lang-vi .lang-en:not(.lang-always) {
+  display: none !important;
+}
+body.retro-lang-vi .lang-vi {
+  display: block !important;
+}
+
+body.retro-lang-en .lang-vi:not(.lang-always) {
+  display: none !important;
+}
+body.retro-lang-en .lang-en {
+  display: block !important;
+}
+
+body.retro-lang-both .lang-vi,
+body.retro-lang-both .lang-en {
+  display: block !important;
+}
+
+/* Visual divider when both languages are shown */
+body.retro-lang-both .lang-en {
+  border-left: 3px dashed var(--retro-cyan);
+  padding-left: 12px;
+  margin-top: 14px;
+}
