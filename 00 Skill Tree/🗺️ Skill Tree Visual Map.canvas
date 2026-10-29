@@ -1,20 +1,125 @@
 {
-	"nodes":[
-		{"id":"root-1","type":"file","file":"00 Skill Tree/Game Dev Mastery.md","x":320,"y":0,"width":320,"height":260,"color":"3"},
-		{"id":"prog-1","type":"file","file":"00 Skill Tree/Core Game Programming.md","x":0,"y":340,"width":300,"height":240,"color":"4"},
-		{"id":"loop-1","type":"file","file":"00 Skill Tree/Core Gameplay Loop.md","x":640,"y":340,"width":300,"height":240,"color":"4"},
-		{"id":"math-1","type":"file","file":"00 Skill Tree/2D Vector Math.md","x":0,"y":640,"width":300,"height":220,"color":"4"},
-		{"id":"kin-1","type":"file","file":"00 Skill Tree/Kinematics & Movement.md","x":0,"y":920,"width":300,"height":260,"color":"2"},
-		{"id":"dash-1","type":"file","file":"00 Skill Tree/Dash & Wall Jump.md","x":0,"y":1240,"width":300,"height":220,"color":"6"},
-		{"id":"boss-1","type":"file","file":"00 Skill Tree/Boss Fight State Machine.md","x":340,"y":1540,"width":340,"height":280,"color":"1"}
-	],
-	"edges":[
-		{"id":"e1","fromNode":"root-1","toNode":"prog-1","fromSide":"bottom","toSide":"top"},
-		{"id":"e2","fromNode":"root-1","toNode":"loop-1","fromSide":"bottom","toSide":"top"},
-		{"id":"e3","fromNode":"prog-1","toNode":"math-1","fromSide":"bottom","toSide":"top"},
-		{"id":"e4","fromNode":"math-1","toNode":"kin-1","fromSide":"bottom","toSide":"top"},
-		{"id":"e5","fromNode":"kin-1","toNode":"dash-1","fromSide":"bottom","toSide":"top"},
-		{"id":"e6","fromNode":"dash-1","toNode":"boss-1","fromSide":"bottom","toSide":"top"},
-		{"id":"e7","fromNode":"loop-1","toNode":"boss-1","fromSide":"bottom","toSide":"top"}
-	]
+  "nodes": [
+    {
+      "id": "root-1",
+      "type": "file",
+      "file": "00 Skill Tree/Game Dev Mastery.md",
+      "x": 400,
+      "y": 0,
+      "width": 380,
+      "height": 260,
+      "color": "3"
+    },
+    {
+      "id": "prog-1",
+      "type": "file",
+      "file": "00 Skill Tree/Core Game Programming.md",
+      "x": 40,
+      "y": 340,
+      "width": 340,
+      "height": 240,
+      "color": "4"
+    },
+    {
+      "id": "loop-1",
+      "type": "file",
+      "file": "00 Skill Tree/Core Gameplay Loop.md",
+      "x": 780,
+      "y": 340,
+      "width": 340,
+      "height": 280,
+      "color": "4"
+    },
+    {
+      "id": "math-1",
+      "type": "file",
+      "file": "00 Skill Tree/2D Vector Math.md",
+      "x": 40,
+      "y": 660,
+      "width": 340,
+      "height": 240,
+      "color": "4"
+    },
+    {
+      "id": "kin-1",
+      "type": "file",
+      "file": "00 Skill Tree/Kinematics & Movement.md",
+      "x": 40,
+      "y": 980,
+      "width": 340,
+      "height": 260,
+      "color": "2"
+    },
+    {
+      "id": "dash-1",
+      "type": "file",
+      "file": "00 Skill Tree/Dash & Wall Jump.md",
+      "x": 40,
+      "y": 1320,
+      "width": 340,
+      "height": 240,
+      "color": "6"
+    },
+    {
+      "id": "boss-1",
+      "type": "file",
+      "file": "00 Skill Tree/Boss Fight State Machine.md",
+      "x": 400,
+      "y": 1660,
+      "width": 380,
+      "height": 280,
+      "color": "1"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "fromNode": "root-1",
+      "toNode": "prog-1",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e2",
+      "fromNode": "root-1",
+      "toNode": "loop-1",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e3",
+      "fromNode": "prog-1",
+      "toNode": "math-1",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e4",
+      "fromNode": "math-1",
+      "toNode": "kin-1",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e5",
+      "fromNode": "kin-1",
+      "toNode": "dash-1",
+      "fromSide": "bottom",
+      "toSide": "top"
+    },
+    {
+      "id": "e6",
+      "fromNode": "dash-1",
+      "toNode": "boss-1",
+      "fromSide": "bottom",
+      "toSide": "left"
+    },
+    {
+      "id": "e7",
+      "fromNode": "loop-1",
+      "toNode": "boss-1",
+      "fromSide": "bottom",
+      "toSide": "right"
+    }
+  ]
 }

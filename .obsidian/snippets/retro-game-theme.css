@@ -632,6 +632,15 @@ code {
   background-color: #151622 !important;
 }
 
+/* Hide frontmatter properties box in Canvas so note content is visible */
+.canvas-node .metadata-container {
+  display: none !important;
+}
+
+.canvas-node .markdown-rendered {
+  padding: 10px 14px !important;
+}
+
 .canvas-node.is-focused .canvas-node-container {
   border-color: var(--retro-gold) !important;
   box-shadow: 0 0 10px rgba(251, 191, 36, 0.4) !important;
@@ -666,6 +675,7 @@ code {
 /* --------------------------------------------------------------------------
    12. BILINGUAL SWITCHER & MULTI-LANGUAGE BLOCKS
    -------------------------------------------------------------------------- */
+.lang-nav-bar,
 .lang-switch-bar {
   display: inline-flex;
   gap: 8px;
@@ -677,6 +687,7 @@ code {
   align-items: center;
 }
 
+.lang-nav-btn,
 .lang-switch-btn {
   background-color: var(--bg-retro-darkest) !important;
   color: var(--text-muted) !important;
@@ -685,18 +696,22 @@ code {
   font-family: 'Consolas', monospace !important;
   font-size: 0.82em !important;
   font-weight: bold !important;
-  padding: 4px 10px !important;
+  padding: 4px 12px !important;
   cursor: pointer !important;
   transition: all 0.15s ease !important;
   box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4) !important;
+  text-decoration: none !important;
+  display: inline-block;
 }
 
+.lang-nav-btn:hover,
 .lang-switch-btn:hover {
   color: #ffffff !important;
   border-color: var(--retro-cyan) !important;
   background-color: rgba(56, 189, 248, 0.15) !important;
 }
 
+.lang-nav-btn.is-active,
 .lang-switch-btn.is-active {
   color: var(--retro-gold) !important;
   border-color: var(--retro-gold) !important;
