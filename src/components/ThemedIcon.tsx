@@ -5073,6 +5073,341 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
     }
   }
 
+  if (theme === 'solarpunk') {
+    switch (name) {
+      case 'tree': // Biophilic Supertree / Solar Spire
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M12 21v-7m0 0c-2-2-4-2-5-6m5 6c2-2 4-2 5-6" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <path d="M5 9c0-4 3.5-6 7-6s7 2 7 6c0 1-1 2-2 2H7c-1 0-2-1-2-2z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="3" x2="12" y2="11" stroke={color} strokeWidth="1.2" />
+            <line x1="8.5" y1="5.5" x2="10.5" y2="11" stroke={color} strokeWidth="1" />
+            <line x1="15.5" y1="5.5" x2="13.5" y2="11" stroke={color} strokeWidth="1" />
+            <path d="M9 21c1-1 2-2 3-2s2 1 3 2" stroke={color} strokeWidth="1.6" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'docs': // Crystalline Solar Data Tablet with Leaf Filigree
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="4" y="3" width="16" height="18" rx="2.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="7" y1="6" x2="17" y2="6" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <path d="M12 9c-2 0-3 1.5-3 3 1.5 0 3-1 3-3z" fill={color} />
+            <path d="M12 9c2 0 3 1.5 3 3-1.5 0-3-1-3-3z" fill={color} opacity="0.6" />
+            <line x1="12" y1="9" x2="12" y2="14" stroke={color} strokeWidth="1.4" />
+            <line x1="7" y1="16" x2="17" y2="16" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+            <line x1="7" y1="18.5" x2="13" y2="18.5" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+          </svg>
+        );
+      case 'quests': // Solarium Sundial / Solar Prism Compass
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="12" y1="4" x2="12" y2="6" stroke={color} strokeWidth="1.6" />
+            <line x1="12" y1="18" x2="12" y2="20" stroke={color} strokeWidth="1.6" />
+            <line x1="4" y1="12" x2="6" y2="12" stroke={color} strokeWidth="1.6" />
+            <line x1="18" y1="12" x2="20" y2="12" stroke={color} strokeWidth="1.6" />
+            <polygon points="12,12 11,6 15,10" fill={color} />
+            <circle cx="12" cy="12" r="2" stroke={color} strokeWidth="1.5" fill="none" />
+          </svg>
+        );
+      case 'sun': // Radiant Solarpunk Sunflower / Heliostat
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="4" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M12 2v3m0 14v3M2 12h3m14 0h3" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <path d="M4.93 4.93l2.12 2.12m9.9 9.9l2.12 2.12M4.93 19.07l2.12-2.12m9.9-9.9l2.12-2.12" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'moon': // Geodesic Solarium Crescent Moon & Firefly
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M18 4a8.5 8.5 0 11-8 15 9 9 0 008-15z" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <line x1="13" y1="6" x2="10" y2="10" stroke={color} strokeWidth="1.2" />
+            <line x1="10" y1="10" x2="11" y2="15" stroke={color} strokeWidth="1.2" />
+            <circle cx="16" cy="10" r="1.5" fill={color} />
+            <circle cx="16" cy="10" r="3" stroke={color} strokeWidth="0.8" opacity="0.5" fill="none" />
+          </svg>
+        );
+      case 'tv': // Geodesic Crystal Solarium Greenhouse Dome
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M3 19c0-6 4-13 9-13s9 7 9 13H3z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="6" x2="12" y2="19" stroke={color} strokeWidth="1.4" />
+            <path d="M6 15c2-2 4-3 6-3s4 1 6 3" stroke={color} strokeWidth="1.2" fill="none" />
+            <path d="M12 19v-4m-2 2c1 0 2-1 2-2m0 1c0 1 1 1 2 1" stroke={color} strokeWidth="1.4" strokeLinecap="round" fill="none" />
+            <line x1="2" y1="19" x2="22" y2="19" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'volume': // Morning Glory Bio-Acoustic Flower
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M4 10c0-2 2-3 4-3l6-3v16l-6-3c-2 0-4-1-4-3v-4z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <path d="M3 12c0 2 1 3 2 3" stroke={color} strokeWidth="1.5" strokeLinecap="round" fill="none" />
+            <path d="M17 9c1.5 1 2 2 2 3s-.5 2-2 3" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <path d="M20 6c3 2 3.5 4 3.5 6s-.5 4-3.5 6" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'mute': // Bio-Acoustic Flower with Crystal Cut Slash
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M4 10c0-2 2-3 4-3l6-3v16l-6-3c-2 0-4-1-4-3v-4z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="17" y1="9" x2="22" y2="15" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="22" y1="9" x2="17" y2="15" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'globe': // Living Earth Terrarium Sphere
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="1.8" fill="none" />
+            <ellipse cx="12" cy="12" rx="9" ry="3.5" stroke={color} strokeWidth="1.2" fill="none" />
+            <line x1="12" y1="3" x2="12" y2="21" stroke={color} strokeWidth="1.2" />
+            <path d="M8 8c2-1 4 0 4 2s-1 3-3 3-2-2-1-5z" fill={color} opacity="0.3" stroke={color} strokeWidth="1.2" />
+          </svg>
+        );
+      case 'mastered': // 8-Facet Solar Crystal Prism Badge
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,2 19,5 22,12 19,19 12,22 5,19 2,12 5,5" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="22" stroke={color} strokeWidth="1.2" />
+            <line x1="2" y1="12" x2="22" y2="12" stroke={color} strokeWidth="1.2" />
+            <polygon points="12,7 17,12 12,17 7,12" stroke={color} strokeWidth="1.4" fill="none" />
+            <circle cx="12" cy="12" r="2" fill={color} />
+          </svg>
+        );
+      case 'learning': // Sprouting Hydroponic Seedling in Sunbeam
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M6 17c1 3 3 4 6 4s5-1 6-4" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <line x1="4" y1="17" x2="20" y2="17" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <path d="M12 17V8" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <path d="M12 12c-3 0-5-2-5-5 3 0 5 2 5 5z" fill={color} />
+            <path d="M12 10c3 0 5-2 5-5-3 0-5 2-5 5z" fill={color} opacity="0.6" />
+            <circle cx="12" cy="3" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'locked': // Living Vine Crystal Padlock
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M7 11V7a5 5 0 0110 0v4" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <path d="M17 6c1-1 2-1 3 0" stroke={color} strokeWidth="1.5" strokeLinecap="round" fill="none" />
+            <rect x="5" y="11" width="14" height="10" rx="3" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="12" cy="15.5" r="1.5" fill={color} />
+            <line x1="12" y1="17" x2="12" y2="19" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+        );
+      case 'edit': // Brass Botanical Stylus with Leaf Flourish
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M17 3l4 4L8 20l-5 1 1-5L17 3z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="14" y1="6" x2="18" y2="10" stroke={color} strokeWidth="1.6" />
+            <path d="M19 2c1 0 3 1 3 3-1 1-2 1-3 0" fill={color} />
+          </svg>
+        );
+      case 'save': // Solar Capacitor Cell / Photovoltaic Battery
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="5" y="6" width="14" height="14" rx="2.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M9 3h6v3H9V3z" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <path d="M12 16v-5m-2 2c1 0 2-1 2-2m0 1c0 1 1 1 2 1" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <circle cx="12" cy="9.5" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'download': // Solar Sail Glider Descending
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M3 6c6 3 12 3 18 0l-9 15L3 6z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="6" x2="12" y2="21" stroke={color} strokeWidth="1.6" />
+            <path d="M9 11l3 3 3-3" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'close': // Crossed Stained-Glass Cames / Prism X
+        return (
+          <svg {...commonSvgProps}>
+            <line x1="5" y1="5" x2="19" y2="19" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="19" y1="5" x2="5" y2="19" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <circle cx="5" cy="5" r="1" fill={color} />
+            <circle cx="19" cy="5" r="1" fill={color} />
+            <circle cx="5" cy="19" r="1" fill={color} />
+            <circle cx="19" cy="19" r="1" fill={color} />
+            <circle cx="12" cy="12" r="2.2" stroke={color} strokeWidth="1.5" fill="none" />
+          </svg>
+        );
+      case 'search': // Crystalline Leaf Magnifying Loupe
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="10.5" cy="10.5" r="6.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M15.5 15.5L21 21" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <path d="M18 16c1-1 3-1 3 1" stroke={color} strokeWidth="1.6" strokeLinecap="round" fill="none" />
+            <line x1="7.5" y1="7.5" x2="10" y2="6.5" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomIn': // Solar Loupe with [+] Prism
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="10.5" cy="10.5" r="6.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M15.5 15.5L21 21" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="10.5" y1="7.5" x2="10.5" y2="13.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="7.5" y1="10.5" x2="13.5" y2="10.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomOut': // Solar Loupe with [-] Prism
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="10.5" cy="10.5" r="6.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M15.5 15.5L21 21" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="7.5" y1="10.5" x2="13.5" y2="10.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'reset': // Aeropower 3-Blade Leaf Wind Turbine
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="2.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M12 9.5C12 5 15 2 15 2s-4 1-4 7.5" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <path d="M9.8 13.2C5.9 15.5 2.5 14 2.5 14s2.5 3 7.3 1.2" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <path d="M14.2 13.2C18.1 15.5 21.5 14 21.5 14s-2.5 3-7.3 1.2" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="12" r="1" fill={color} />
+          </svg>
+        );
+      case 'brand': // Solarpunk Geodesic Biosphere Dome with Solar Tree
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M2 19C2 10 6 3 12 3s10 7 10 16H2z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="6" r="2" fill={color} />
+            <line x1="12" y1="2" x2="12" y2="3.5" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+            <path d="M12 19v-8m0 2c-2-1-3-3-3-4 2 0 3 2 3 4m0-1c2-1 3-3 3-4-2 0-3 2-3 4" stroke={color} strokeWidth="1.6" strokeLinecap="round" fill="none" />
+            <line x1="1" y1="19" x2="23" y2="19" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'design': // Fibonacci Golden Spiral Drafting Shell
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M12 12a2 2 0 012-2 4 4 0 014 4 8 8 0 01-8 8 16 16 0 01-8-8c0-7 6-12 12-12" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <line x1="12" y1="12" x2="12" y2="2" stroke={color} strokeWidth="1.2" strokeDasharray="1.5 1.5" />
+            <line x1="12" y1="12" x2="20" y2="12" stroke={color} strokeWidth="1.2" strokeDasharray="1.5 1.5" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'code': // Chlorophyll DNA Double Helix with Photonic Strands
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M5 4c4 4 10 4 14 0M5 12c4 4 10 4 14 0M5 20c4-4 10-4 14 0" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <path d="M5 4c4-4 10-4 14 0M5 12c4-4 10-4 14 0" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <circle cx="8" cy="8" r="1.2" fill={color} />
+            <circle cx="16" cy="8" r="1.2" fill={color} />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+            <circle cx="8" cy="16" r="1.2" fill={color} />
+            <circle cx="16" cy="16" r="1.2" fill={color} />
+          </svg>
+        );
+      case 'qa': // Solar Hydroponic Water Purifier & Lily Pad
+        return (
+          <svg {...commonSvgProps}>
+            <ellipse cx="12" cy="16" rx="9" ry="3.5" stroke={color} strokeWidth="1.6" fill="none" />
+            <path d="M12 3c-3 4-4 6-4 8a4 4 0 008 0c0-2-1-4-4-8z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <path d="M12 3c1-2 3-2 4-1-1 1-2 2-4 1z" fill={color} />
+            <circle cx="12" cy="11" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'art': // Solarium Stained Glass Window Palette
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M12 3C7 3 3 7 3 12c0 4 3 8 8 8 2 0 3-1 3-2.5 0-.7-.3-1.4-.3-2 0-1.1.9-2 2-2h1.5C19.5 13.5 21 12 21 10.5 21 6 17 3 12 3z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <circle cx="7.5" cy="9.5" r="1.5" fill={color} />
+            <circle cx="11.5" cy="7.5" r="1.5" fill={color} />
+            <circle cx="16" cy="9.5" r="1.5" fill={color} />
+            <path d="M12 12c1 1 2 2 4 1" stroke={color} strokeWidth="1.4" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'audio': // Hanging Crystal Wind Harp / Glass Chime
+        return (
+          <svg {...commonSvgProps}>
+            <line x1="3" y1="4" x2="21" y2="4" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="6" y1="4" x2="6" y2="15" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="10" y1="4" x2="10" y2="19" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="14" y1="4" x2="14" y2="17" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="18" y1="4" x2="18" y2="12" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <circle cx="12" cy="14" r="2.5" fill={color} opacity="0.3" stroke={color} strokeWidth="1.2" />
+            <path d="M12 16.5c-1.5 2-1 4 0 5 1-1 1.5-3 0-5z" fill={color} />
+          </svg>
+        );
+      case 'boss': // Colossal Solar Ent / Bio-Titan with Crystal Antlers
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,5 18,10 16,19 12,22 8,19 6,10" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <path d="M6 10L3 4m3 6l-2-4m14 4l3-6m-3 6l2-4" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <circle cx="12" cy="10" r="2" fill={color} />
+            <line x1="9" y1="14" x2="10.5" y2="14" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="13.5" y1="14" x2="15" y2="14" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="10" y1="18" x2="12" y2="20" stroke={color} strokeWidth="1.4" />
+            <line x1="14" y1="18" x2="12" y2="20" stroke={color} strokeWidth="1.4" />
+          </svg>
+        );
+      case 'production': // Vertical Hydroponic Spiraling Tower
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="7" y="3" width="10" height="18" rx="2" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M5 8h14M5 13h14M5 18h14" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
+            <circle cx="9" cy="6" r="1.2" fill={color} />
+            <circle cx="15" cy="6" r="1.2" fill={color} />
+            <circle cx="12" cy="11" r="1.2" fill={color} />
+            <circle cx="9" cy="16" r="1.2" fill={color} />
+            <circle cx="15" cy="16" r="1.2" fill={color} />
+          </svg>
+        );
+      case 'drag': // 4-Way Solar Tracker Heliostat
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="3" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="12" cy="12" r="1.2" fill={color} />
+            <path d="M12 2l2 4h-4l2-4z" stroke={color} strokeWidth="1.4" strokeLinejoin="round" fill="none" />
+            <path d="M22 12l-4 2v-4l4 2z" stroke={color} strokeWidth="1.4" strokeLinejoin="round" fill="none" />
+            <path d="M12 22l-2-4h4l-2 4z" stroke={color} strokeWidth="1.4" strokeLinejoin="round" fill="none" />
+            <path d="M2 12l4-2v4l-4-2z" stroke={color} strokeWidth="1.4" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'open': // Solarium Skylight Vent Opening
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M4 11h16v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8z" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="3" y1="11" x2="20" y2="4" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="12" y1="2" x2="10" y2="8" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+            <line x1="16" y1="2" x2="14" y2="7" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+            <circle cx="12" cy="16" r="1.8" fill={color} />
+          </svg>
+        );
+      case 'font': // Biomorphic Living Vine Letters [S & P]
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M9 7c0-2-1.5-3-3-3s-3 1-3 3 2 2.5 3 3 3 1 3 3-1.5 3-3 3c-2 0-3-1.5-3-3" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <path d="M7 4c1-1 2-1 2 0" stroke={color} strokeWidth="1.5" strokeLinecap="round" fill="none" />
+            <path d="M15 19V7m0 0h3c2 0 3 1.5 3 3.5s-1 3.5-3 3.5h-3" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <circle cx="18" cy="10.5" r="1" fill={color} />
+          </svg>
+        );
+      case 'langVi': // Golden Solar Star over Terraced Rice Fields
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,3 14,8 19.5,8.5 15.5,12 16.5,17.5 12,14.5 7.5,17.5 8.5,12 4.5,8.5 10,8" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <path d="M4 19c4-1 8-1 16 0" stroke={color} strokeWidth="1.6" strokeLinecap="round" fill="none" />
+            <path d="M6 22c3-.8 6-.8 12 0" stroke={color} strokeWidth="1.6" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'langEn': // Solarpunk Photovoltaic Airship / Zeppelin
+        return (
+          <svg {...commonSvgProps}>
+            <ellipse cx="12" cy="10" rx="9" ry="5" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="3" y1="10" x2="21" y2="10" stroke={color} strokeWidth="1.2" />
+            <polygon points="3,10 1,7 3,8" fill={color} />
+            <polygon points="3,10 1,13 3,12" fill={color} />
+            <rect x="8" y="15" width="8" height="3" rx="1" stroke={color} strokeWidth="1.6" fill="none" />
+            <line x1="10" y1="15" x2="10" y2="18" stroke={color} strokeWidth="1" />
+            <line x1="14" y1="15" x2="14" y2="18" stroke={color} strokeWidth="1" />
+          </svg>
+        );
+    }
+  }
+
 // Fallback
   return (
     <svg {...commonSvgProps}>

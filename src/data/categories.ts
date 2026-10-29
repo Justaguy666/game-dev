@@ -559,6 +559,35 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
+  // 14. SOLARPUNK BIOPHILIC / CRYSTAL SOLARIUM (Sunlight, Photosynthesis & Crystal Prisms)
+  if (theme === 'solarpunk') {
+    if (mode === 'light') {
+      switch (domainId) {
+        case 'root': return '#d97706'; // Radiant Solar Amber
+        case 'design': return '#ea580c'; // Solar Thermal Orange
+        case 'tech': return '#0284c7'; // Solar Cell Crystal Cyan
+        case 'qa': return '#e11d48'; // Hibiscus Solar Red
+        case 'art': return '#9333ea'; // Solarium Prism Violet
+        case 'audio': return '#059669'; // Living Vine Emerald
+        case 'boss':
+        case 'production': return '#b45309'; // Brass Sunburst Bronze
+        default: return '#d97706';
+      }
+    } else {
+      switch (domainId) {
+        case 'root': return '#fbbf24'; // Radiant Solar Gold
+        case 'design': return '#f59e0b'; // Warm Amber Bloom
+        case 'tech': return '#38bdf8'; // Photonic Crystal Cyan
+        case 'qa': return '#f43f5e'; // Crimson Solar Flare
+        case 'art': return '#c084fc'; // Bioluminescent Orchid
+        case 'audio': return '#34d399'; // Photosynthetic Emerald
+        case 'boss':
+        case 'production': return '#fde047'; // Blazing Solar Ray
+        default: return '#fbbf24';
+      }
+    }
+  }
+
   // 3. LIGHT MODE (Arcade, Cyber, Fantasy)
   // Clean, high-contrast accessible jewel tones (> 4.5:1)
   if (mode === 'light') {

@@ -308,6 +308,25 @@ export const THEME_FAVICONS: Record<ThemeId, string> = {
   <!-- Crease fold lines -->
   <line x1="8" y1="4" x2="8" y2="13" stroke="#cbd5e1" stroke-width="0.8" />
   <line x1="1" y1="3" x2="15" y2="3" stroke="#ffffff" stroke-width="0.6" opacity="0.6" />
+</svg>`,
+
+  solarpunk: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- Deep Greenhouse Twilight Backdrop -->
+  <rect width="16" height="16" fill="#081614" rx="3" />
+  <!-- Radiant Solarium Geodesic Dome -->
+  <path d="M2,13 C2,7.5 4.5,3 8,3 C11.5,3 14,7.5 14,13 Z" fill="#0f2723" stroke="#10b981" stroke-width="0.8" />
+  <!-- Crystal Prism Facet Lines -->
+  <line x1="8" y1="3" x2="8" y2="13" stroke="#34d399" stroke-width="0.6" opacity="0.8" />
+  <line x1="8" y1="3" x2="4" y2="13" stroke="#38bdf8" stroke-width="0.5" opacity="0.6" />
+  <line x1="8" y1="3" x2="12" y2="13" stroke="#38bdf8" stroke-width="0.5" opacity="0.6" />
+  <!-- Solar Apex Sunburst Prism -->
+  <circle cx="8" cy="3" r="1.4" fill="#fbbf24" />
+  <line x1="8" y1="0.5" x2="8" y2="2" stroke="#fde047" stroke-width="0.8" stroke-linecap="round" />
+  <line x1="6" y1="1.5" x2="7" y2="2.5" stroke="#fde047" stroke-width="0.7" stroke-linecap="round" />
+  <line x1="10" y1="1.5" x2="9" y2="2.5" stroke="#fde047" stroke-width="0.7" stroke-linecap="round" />
+  <!-- Sprouting Biophilic Living Leaf -->
+  <path d="M8,13 C6.5,10 6.5,8 8,7 C9.5,8 9.5,10 8,13 Z" fill="#10b981" />
+  <path d="M8,11 C9.5,9.5 10.5,9.5 11,10.5 C10,11.5 9,11.5 8,11 Z" fill="#34d399" />
 </svg>`
 };
 

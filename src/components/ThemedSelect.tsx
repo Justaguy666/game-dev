@@ -116,6 +116,12 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
       name: { vi: 'Origami Gấp Giấy', en: 'Papercraft Origami' },
       iconName: 'design',
       palette: ['#e63946', '#f4a261', '#38bdf8', '#2ec4b6']
+    },
+    {
+      id: 'solarpunk',
+      name: { vi: 'Solarpunk Sinh Thái', en: 'Solarpunk Biophilic' },
+      iconName: 'brand',
+      palette: ['#10b981', '#fbbf24', '#38bdf8', '#34d399']
     }
   ];
 
@@ -306,7 +312,7 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
               border: '1px solid var(--border-color)',
               color: 'var(--accent-gold)'
             }}>
-              16 STYLES
+              17 STYLES
             </span>
           </div>
 

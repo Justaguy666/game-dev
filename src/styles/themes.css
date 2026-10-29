@@ -823,6 +823,55 @@
   --btn-active-text: #ffffff;
 }
 
+/* 17. Solarpunk Biophilic / Crystal Solarium */
+.theme-solarpunk.mode-dark {
+  --bg-app: #081614;
+  --bg-surface: #0f2723;
+  --bg-card: #153731;
+  --border-color: #10b981;
+  --border-highlight: #f59e0b;
+  --text-main: #f0fdf4;
+  --text-muted: #a7f3d0;
+  --text-dim: #6ee7b7;
+  
+  --accent-gold: #fbbf24;
+  --accent-cyan: #38bdf8;
+  --accent-green: #34d399;
+  --accent-red: #f43f5e;
+  --accent-purple: #c084fc;
+  
+  --font-display: 'Outfit', 'Cinzel', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), 0 0 15px rgba(16, 185, 129, 0.15);
+  --glow-primary: 0 0 16px rgba(52, 211, 153, 0.45);
+  --btn-active-bg: #10b981;
+  --btn-active-text: #06241e;
+}
+
+.theme-solarpunk.mode-light {
+  --bg-app: #f0fdf4;
+  --bg-surface: #dcfce7;
+  --bg-card: #ffffff;
+  --border-color: #059669;
+  --border-highlight: #d97706;
+  --text-main: #064e3b;
+  --text-muted: #065f46;
+  --text-dim: #047857;
+  
+  --accent-gold: #d97706;
+  --accent-cyan: #0284c7;
+  --accent-green: #059669;
+  --accent-red: #e11d48;
+  --accent-purple: #9333ea;
+  
+  --font-display: 'Outfit', 'Cinzel', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 0 4px 14px rgba(6, 78, 59, 0.08), 0 1px 3px rgba(6, 78, 59, 0.05);
+  --glow-primary: 0 0 12px rgba(16, 185, 129, 0.35);
+  --btn-active-bg: #059669;
+  --btn-active-text: #ffffff;
+}
+
 /* --------------------------------------------------------------------------
    GLOBAL LAYOUT & CRT SCANLINES
    -------------------------------------------------------------------------- */
@@ -1526,6 +1575,59 @@ body.theme-papercraft .node-card-title {
   font-size: 1.15em !important;
   line-height: 1.30 !important;
   letter-spacing: 0.03em;
+  font-weight: 700;
+}
+
+body.theme-solarpunk .node-card {
+  border-radius: 8px;
+  border-width: 1.5px;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+  backdrop-filter: blur(8px);
+}
+
+body.theme-solarpunk.mode-dark .node-card {
+  border-color: #10b981;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(52, 211, 153, 0.2);
+}
+
+body.theme-solarpunk.mode-dark .node-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: #34d399 !important;
+  box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3), 0 0 18px rgba(251, 191, 36, 0.4), inset 0 1px 0 rgba(251, 191, 36, 0.3);
+}
+
+body.theme-solarpunk.mode-light .node-card {
+  border-color: #059669;
+  box-shadow: 0 4px 14px rgba(6, 78, 59, 0.08), 0 1px 3px rgba(6, 78, 59, 0.05);
+}
+
+body.theme-solarpunk.mode-light .node-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: #d97706 !important;
+  box-shadow: 0 8px 22px rgba(5, 150, 105, 0.18), 0 0 12px rgba(217, 119, 6, 0.25);
+}
+
+body.theme-solarpunk .domain-banner {
+  border-radius: 8px;
+  border-width: 1.5px;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+body.theme-solarpunk.mode-dark .domain-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(52, 211, 153, 0.45) !important;
+}
+
+body.theme-solarpunk.mode-light .domain-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(6, 78, 59, 0.15) !important;
+}
+
+body.theme-solarpunk .node-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15em !important;
+  line-height: 1.30 !important;
+  letter-spacing: 0.02em;
   font-weight: 700;
 }
 

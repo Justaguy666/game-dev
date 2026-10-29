@@ -1,4 +1,4 @@
-export type ThemeId = 'arcade' | 'gameboy' | 'fantasy' | 'cyber' | 'inkwell' | 'synthwave' | 'gothic' | 'blueprint' | 'ghibli' | 'psx' | 'persona' | 'ukiyoe' | 'vaporwave' | 'pipboy' | 'claymation' | 'papercraft';
+export type ThemeId = 'arcade' | 'gameboy' | 'fantasy' | 'cyber' | 'inkwell' | 'synthwave' | 'gothic' | 'blueprint' | 'ghibli' | 'psx' | 'persona' | 'ukiyoe' | 'vaporwave' | 'pipboy' | 'claymation' | 'papercraft' | 'solarpunk';
 export type ThemeMode = 'dark' | 'light';
 export type Language = 'vi' | 'en';
 
