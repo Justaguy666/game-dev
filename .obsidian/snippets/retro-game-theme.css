@@ -53,35 +53,67 @@ body, .cm-s-obsidian, .markdown-rendered {
   line-height: 1.6;
 }
 
-/* Headings with Arcade & RPG styling */
-h1, .markdown-rendered h1, .cm-header-1, .HyperMD-header-1 {
+/* Prevent double borders on inner spans in Live Preview */
+.cm-header,
+.cm-header-1,
+.cm-header-2,
+.cm-header-3,
+.cm-header-4,
+.cm-header-5,
+.cm-header-6,
+.cm-formatting-header {
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+  box-shadow: none !important;
+}
+
+/* H1 Styling */
+h1, .markdown-rendered h1, .cm-header-1 {
   color: var(--retro-gold) !important;
   font-family: 'Consolas', 'JetBrains Mono', monospace;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  border-bottom: 2px dashed var(--retro-gold);
-  padding-bottom: 8px !important;
-  margin-top: 1.4em !important;
-  margin-bottom: 16px !important;
   text-shadow: 0 0 8px rgba(251, 191, 36, 0.35);
 }
 
-h2, .markdown-rendered h2, .cm-header-2, .HyperMD-header-2 {
-  color: var(--retro-cyan) !important;
-  font-family: 'Consolas', 'JetBrains Mono', monospace;
-  border-bottom: 1px solid var(--border-retro);
+/* H1 Single Divider (Only applied to the block line container) */
+.markdown-rendered h1,
+.cm-s-obsidian .HyperMD-header-1 {
+  border-bottom: 2px dashed var(--retro-gold) !important;
   padding-bottom: 8px !important;
   margin-top: 1.4em !important;
   margin-bottom: 16px !important;
+  display: block !important;
+}
+
+/* H2 Styling */
+h2, .markdown-rendered h2, .cm-header-2 {
+  color: var(--retro-cyan) !important;
+  font-family: 'Consolas', 'JetBrains Mono', monospace;
   text-shadow: 0 0 6px rgba(56, 189, 248, 0.3);
 }
 
-h3, .markdown-rendered h3, .cm-header-3, .HyperMD-header-3 {
+/* H2 Single Divider */
+.markdown-rendered h2,
+.cm-s-obsidian .HyperMD-header-2 {
+  border-bottom: 1px solid var(--border-retro) !important;
+  padding-bottom: 8px !important;
+  margin-top: 1.4em !important;
+  margin-bottom: 16px !important;
+  display: block !important;
+}
+
+/* H3 Styling */
+h3, .markdown-rendered h3, .cm-header-3 {
   color: var(--retro-green) !important;
+  text-shadow: 0 0 5px rgba(74, 222, 128, 0.25);
+}
+
+.markdown-rendered h3,
+.cm-s-obsidian .HyperMD-header-3 {
   margin-top: 1.2em !important;
   margin-bottom: 10px !important;
   padding-bottom: 4px !important;
-  text-shadow: 0 0 5px rgba(74, 222, 128, 0.25);
 }
 
 h4, .markdown-rendered h4, .cm-header-4 {
