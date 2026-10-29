@@ -172,6 +172,34 @@ class SoundEngine {
       gain.connect(ctx.destination);
       osc.start(now);
       osc.stop(now + 0.045);
+    } else if (this.currentTheme === 'ghibli') {
+      // Ghibli Cozy Forest: Gentle bamboo water-dropper clack & wood marimba pop
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(523.25, now);
+      osc.frequency.exponentialRampToValueAtTime(261.63, now + 0.05);
+
+      gain.gain.setValueAtTime(0.3 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+
+      // Soft water drop harmonic pop
+      const drop = ctx.createOscillator();
+      const dropGain = ctx.createGain();
+      drop.type = 'sine';
+      drop.frequency.setValueAtTime(1046.50, now);
+      drop.frequency.exponentialRampToValueAtTime(659.25, now + 0.04);
+      dropGain.gain.setValueAtTime(0.15 * vol, now);
+      dropGain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
+
+      osc.connect(gain);
+      drop.connect(dropGain);
+      gain.connect(ctx.destination);
+      dropGain.connect(ctx.destination);
+      osc.start(now);
+      drop.start(now);
+      osc.stop(now + 0.07);
+      drop.stop(now + 0.05);
     } else {
       // Fantasy: Resonant wooden snap
       const osc = ctx.createOscillator();
@@ -199,8 +227,8 @@ class SoundEngine {
 
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
-    osc.type = this.currentTheme === 'gothic' || this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'fantasy' || this.currentTheme === 'inkwell' ? 'sine' : 'triangle'));
-    osc.frequency.setValueAtTime(this.currentTheme === 'blueprint' ? 1046.50 : (this.currentTheme === 'gothic' ? 146.83 : (this.currentTheme === 'synthwave' ? 740 : (this.currentTheme === 'cyber' ? 880 : (this.currentTheme === 'inkwell' ? 620 : 330)))), now);
+    osc.type = this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'gothic' || this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'fantasy' || this.currentTheme === 'inkwell' ? 'sine' : 'triangle')));
+    osc.frequency.setValueAtTime(this.currentTheme === 'ghibli' ? 880 : (this.currentTheme === 'blueprint' ? 1046.50 : (this.currentTheme === 'gothic' ? 146.83 : (this.currentTheme === 'synthwave' ? 740 : (this.currentTheme === 'cyber' ? 880 : (this.currentTheme === 'inkwell' ? 620 : 330))))), now);
 
     gain.gain.setValueAtTime(0.1 * vol, now);
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
@@ -218,22 +246,24 @@ class SoundEngine {
     const now = ctx.currentTime;
     const vol = this.volume;
 
-    const notes = this.currentTheme === 'blueprint'
-      ? [440.00, 554.37, 659.25, 880.00] // Pure harmonic blueprint chime (A4, C#5, E5, A5)
-      : (this.currentTheme === 'gothic'
-        ? [146.83, 220.00, 261.63, 349.23] // D minor cathedral bell chime / organ toll (D3, A3, C4, F4)
-        : (this.currentTheme === 'synthwave'
-          ? [293.66, 369.99, 440.00, 554.37] // 80s D Major 7th synthwave chord (D4, F#4, A4, C#5)
-          : (this.currentTheme === 'cyber' 
-            ? [600, 900, 1200]
-            : (this.currentTheme === 'fantasy' 
-                ? [330, 440, 550] 
-                : (this.currentTheme === 'inkwell' ? [440, 554, 659, 880] : [523, 659, 784])))));
+    const notes = this.currentTheme === 'ghibli'
+      ? [523.25, 587.33, 659.25, 783.99, 880.00] // Joe Hisaishi C Major Pentatonic music box arpeggio (C5, D5, E5, G5, A5)
+      : (this.currentTheme === 'blueprint'
+        ? [440.00, 554.37, 659.25, 880.00] // Pure harmonic blueprint chime (A4, C#5, E5, A5)
+        : (this.currentTheme === 'gothic'
+          ? [146.83, 220.00, 261.63, 349.23] // D minor cathedral bell chime / organ toll (D3, A3, C4, F4)
+          : (this.currentTheme === 'synthwave'
+            ? [293.66, 369.99, 440.00, 554.37] // 80s D Major 7th synthwave chord (D4, F#4, A4, C#5)
+            : (this.currentTheme === 'cyber' 
+              ? [600, 900, 1200]
+              : (this.currentTheme === 'fantasy' 
+                  ? [330, 440, 550] 
+                  : (this.currentTheme === 'inkwell' ? [440, 554, 659, 880] : [523, 659, 784]))))));
 
     notes.forEach((freq, idx) => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-      osc.type = this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'gothic' ? 'triangle' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'arcade' ? 'square' : 'triangle')));
+      osc.type = this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'gothic' ? 'triangle' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'arcade' ? 'square' : 'triangle'))));
       osc.frequency.setValueAtTime(freq, now + idx * 0.04);
 
       gain.gain.setValueAtTime(0.2 * vol, now + idx * 0.04);

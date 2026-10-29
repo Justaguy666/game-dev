@@ -416,6 +416,57 @@
 }
 
 /* --------------------------------------------------------------------------
+   9. THEME: GHIBLI COZY FOREST / COTTAGECORE (WATERCOLOR MEADOW & FIREFLIES)
+   -------------------------------------------------------------------------- */
+.theme-ghibli.mode-dark {
+  --bg-app: #0f1d13;
+  --bg-surface: #172b1d;
+  --bg-card: #203827;
+  --border-color: #3b5e43;
+  --border-highlight: #4ade80;
+  --text-main: #f0fdf4;
+  --text-muted: #bbf7d0;
+  --text-dim: #86efac;
+  
+  --accent-gold: #fde047;
+  --accent-cyan: #38bdf8;
+  --accent-green: #4ade80;
+  --accent-red: #f87171;
+  --accent-purple: #c084fc;
+  
+  --font-display: 'Comfortaa', 'Sniglet', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 0 4px 14px rgba(15, 29, 19, 0.8), 0 0 10px rgba(74, 222, 128, 0.2);
+  --glow-primary: 0 0 14px rgba(74, 222, 128, 0.5), 0 0 22px rgba(253, 224, 71, 0.3);
+  --btn-active-bg: #4ade80;
+  --btn-active-text: #0f1d13;
+}
+
+.theme-ghibli.mode-light {
+  --bg-app: #f4f8ed;
+  --bg-surface: #ffffff;
+  --bg-card: #f9fbf4;
+  --border-color: #86b093;
+  --border-highlight: #2d6a4f;
+  --text-main: #143621;
+  --text-muted: #2d5a3c;
+  --text-dim: #4d7c5b;
+  
+  --accent-gold: #b45309;
+  --accent-cyan: #0284c7;
+  --accent-green: #15803d;
+  --accent-red: #b91c1c;
+  --accent-purple: #7e22ce;
+  
+  --font-display: 'Comfortaa', 'Sniglet', cursive;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 4px 4px 0px rgba(134, 176, 147, 0.35);
+  --glow-primary: 0 0 10px rgba(45, 106, 79, 0.3);
+  --btn-active-bg: #2d6a4f;
+  --btn-active-text: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
    GLOBAL LAYOUT & CRT SCANLINES
    -------------------------------------------------------------------------- */
 * {
@@ -516,6 +567,20 @@ body.theme-blueprint h2,
 body.theme-blueprint h3 {
   font-family: var(--font-display);
   letter-spacing: 0.04em;
+}
+
+body.theme-ghibli {
+  /* 'Comfortaa' / 'Sniglet' / 'JetBrains Mono' Ghibli Cozy Forest */
+  font-size: 1.25rem;
+  letter-spacing: 0.02em;
+}
+
+body.theme-ghibli h1,
+body.theme-ghibli h2,
+body.theme-ghibli h3 {
+  font-family: var(--font-display);
+  letter-spacing: 0.03em;
+  font-weight: 700;
 }
 
 /* Headings across all themes */
@@ -759,6 +824,36 @@ body.theme-blueprint .node-card-title {
   font-size: 1.15em !important;
   line-height: 1.35 !important;
   letter-spacing: 0.03em;
+}
+
+body.theme-ghibli .node-card {
+  border-radius: 8px;
+  border-width: 2px;
+  transition: transform 0.22s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.22s ease, border-color 0.22s ease;
+}
+
+body.theme-ghibli .node-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  border-color: #4ade80 !important;
+  box-shadow: 0 8px 20px rgba(74, 222, 128, 0.35), 0 0 14px rgba(253, 224, 71, 0.25);
+}
+
+body.theme-ghibli .domain-banner {
+  border-radius: 8px;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+body.theme-ghibli .domain-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(74, 222, 128, 0.5) !important;
+}
+
+body.theme-ghibli .node-card-title {
+  font-family: var(--font-display);
+  font-size: 1.05em !important;
+  line-height: 1.40 !important;
+  letter-spacing: 0.02em;
+  font-weight: 700;
 }
 
 /* Markdown body across all themes with comfortable reading typography */

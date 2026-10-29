@@ -327,6 +327,35 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
+  // 6. GHIBLI COZY FOREST / COTTAGECORE PALETTE (Watercolor Meadow & Firefly Grove)
+  if (theme === 'ghibli') {
+    if (mode === 'light') {
+      switch (domainId) {
+        case 'root': return '#b45309'; // Acorn Honey Amber
+        case 'design': return '#15803d'; // Matcha Leaf Green
+        case 'tech': return '#0369a1'; // River Stream Blue
+        case 'qa': return '#b91c1c'; // Ripe Strawberry Crimson
+        case 'art': return '#7e22ce'; // Wild Orchid Violet
+        case 'audio': return '#047857'; // Cottage Herb Green
+        case 'boss':
+        case 'production': return '#c2410c'; // Terracotta Pot Orange
+        default: return '#b45309';
+      }
+    } else {
+      switch (domainId) {
+        case 'root': return '#fde047'; // Firefly Honey Gold
+        case 'design': return '#4ade80'; // Lush Forest Leaf Green
+        case 'tech': return '#38bdf8'; // Morning Dew River Cyan
+        case 'qa': return '#f87171'; // Wild Forest Berry Coral
+        case 'art': return '#c084fc'; // Wisteria Blossom Violet
+        case 'audio': return '#34d399'; // Woodland Mint Green
+        case 'boss':
+        case 'production': return '#fb923c'; // Sunlit Autumn Ochre
+        default: return '#fde047';
+      }
+    }
+  }
+
   // 3. LIGHT MODE (Arcade, Cyber, Fantasy)
   // Clean, high-contrast accessible jewel tones (> 4.5:1)
   if (mode === 'light') {

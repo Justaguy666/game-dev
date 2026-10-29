@@ -2350,6 +2350,349 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
     }
   }
 
+  // =========================================================================
+  // 9. GHIBLI COZY FOREST / COTTAGECORE (Watercolor Meadow & Forest Spirits)
+  // =========================================================================
+  if (theme === 'ghibli') {
+    switch (name) {
+      case 'tree':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Ancient Camphor Sacred Forest Tree */}
+            <path d="M12 22v-6M10 22v-4M14 22v-4" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <path d="M7 16c-3 0-5-2.5-5-5.5 0-2.5 2-4.5 4.5-4.5 1-2.5 3.5-4 6-4s5 1.5 6 4c2.5 0 4.5 2 4.5 4.5 0 3-2 5.5-5 5.5H7z" fill="none" stroke={color} strokeWidth="2" strokeLinejoin="round" />
+            <circle cx="12" cy="10" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'docs':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Handcrafted Botanist Sketchbook with Leaf Bookmark */}
+            <rect x="4" y="3" width="16" height="18" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="8" y1="3" x2="8" y2="21" stroke={color} strokeWidth="1.8" />
+            <path d="M12 8h4M12 12h4M12 16h3" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
+            <path d="M14 1c2 1 2 3 0 4s-2-1 0-4z" fill={color} />
+          </svg>
+        );
+      case 'quests':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Woven Wicker Basket with Wild Berries */}
+            <path d="M4 10h16l-2 10H6L4 10z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <path d="M8 10V6a4 4 0 018 0v4" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="10" cy="13" r="1.5" fill={color} />
+            <circle cx="14" cy="13" r="1.5" fill={color} />
+            <circle cx="12" cy="16" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'sun':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Warm Smiling Sun with Gentle Cloud */}
+            <circle cx="12" cy="12" r="5" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <circle cx="10" cy="11" r="0.8" fill={color} />
+            <circle cx="14" cy="11" r="0.8" fill={color} />
+            <path d="M10.5 13.5c.8.6 2.2.6 3 0" stroke={color} strokeWidth="1.4" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'moon':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Cozy Crescent Moon with Little Sleeping Firefly */}
+            <path d="M14 3.5a8.5 8.5 0 00-1.5 17 8.5 8.5 0 007.5-5.5 8.5 8.5 0 01-6-11.5z" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <circle cx="10.5" cy="13.5" r="1.5" fill={color} />
+            <circle cx="11" cy="13" r="0.6" fill="var(--bg-app)" />
+          </svg>
+        );
+      case 'tv':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Cozy Cottage Window Looking at Rolling Hills */}
+            <rect x="4" y="4" width="16" height="16" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="12" y1="4" x2="12" y2="20" stroke={color} strokeWidth="1.8" />
+            <line x1="4" y1="12" x2="20" y2="12" stroke={color} strokeWidth="1.8" />
+            <path d="M4 18c3-2 5-2 8 0s5 2 8 0" stroke={color} strokeWidth="1.4" fill="none" />
+          </svg>
+        );
+      case 'volume':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Japanese Wind Chime Bell with Fluttering Paper (Furin) */}
+            <path d="M7 11a5 5 0 0110 0H7z" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="6" stroke={color} strokeWidth="1.8" />
+            <line x1="12" y1="11" x2="12" y2="14" stroke={color} strokeWidth="1.8" />
+            <rect x="10.5" y="14" width="3" height="7" stroke={color} strokeWidth="1.4" fill="none" />
+          </svg>
+        );
+      case 'mute':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M7 11a5 5 0 0110 0H7z" stroke={color} strokeWidth="2" fill="none" />
+            <rect x="10.5" y="14" width="3" height="7" stroke={color} strokeWidth="1.4" fill="none" />
+            <line x1="4" y1="4" x2="20" y2="20" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'globe':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Verdant Moss Terrarium Glass Globe with Sprout */}
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M6 16c2-2 4-2 6 0s4 2 6 0" stroke={color} strokeWidth="1.6" fill="none" />
+            <path d="M12 16v-6c-2 0-3-2-3-2s2 0 3 2c0-2 2-2 2-2s0 2-2 2" stroke={color} strokeWidth="1.6" fill="none" />
+          </svg>
+        );
+      case 'mastered':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Blooming Lucky Four-Leaf Clover */}
+            <circle cx="9" cy="9" r="3" stroke={color} strokeWidth="1.8" fill={color} />
+            <circle cx="15" cy="9" r="3" stroke={color} strokeWidth="1.8" fill={color} />
+            <circle cx="9" cy="15" r="3" stroke={color} strokeWidth="1.8" fill={color} />
+            <circle cx="15" cy="15" r="3" stroke={color} strokeWidth="1.8" fill={color} />
+            <path d="M12 12c-1 4-1 7-3 9" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'learning':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Sprouting Green Cotyledon Leaves */}
+            <path d="M12 20v-8" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <path d="M12 14c-4 0-6-3-6-6 4 0 6 3 6 6z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <path d="M12 12c4 0 6-3 6-6-4 0-6 3-6 6z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <path d="M8 20h8" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'locked':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Wooden Garden Picket Gate Latch */}
+            <rect x="5" y="10" width="14" height="11" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M8 10V7a4 4 0 018 0v3" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="15" r="1.5" fill={color} />
+            <path d="M5 14h14" stroke={color} strokeWidth="1.4" strokeDasharray="2 2" />
+          </svg>
+        );
+      case 'edit':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Wooden Twig Stylus Brush with Leaf Tip */}
+            <path d="M4 20l4-1 11-11a2.1 2.1 0 00-3-3L5 16l-1 4z" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <path d="M18 4c2-2 3-1 2 1s-3 1-2-1z" fill={color} />
+          </svg>
+        );
+      case 'save':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Honey Jar / Firefly Mason Jar */}
+            <rect x="7" y="2" width="10" height="3" rx="1" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M6 5h12a2 2 0 012 2v12a3 3 0 01-3 3H7a3 3 0 01-3-3V7a2 2 0 012-2z" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="10" cy="11" r="1" fill={color} />
+            <circle cx="14" cy="14" r="1" fill={color} />
+            <circle cx="11" cy="16" r="1" fill={color} />
+          </svg>
+        );
+      case 'download':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Cozy Watering Can Sprinkling Drops */}
+            <path d="M6 10h8l-1 9H7l-1-9z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <path d="M14 12l5-4v2l-5 4" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <path d="M6 12H3a1 1 0 01-1-1V8a1 1 0 011-1h4" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="20" cy="14" r="0.8" fill={color} />
+            <circle cx="21" cy="17" r="0.8" fill={color} />
+          </svg>
+        );
+      case 'close':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Crossed Flower Twigs */}
+            <line x1="6" y1="6" x2="18" y2="18" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="18" y1="6" x2="6" y2="18" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <circle cx="12" cy="12" r="2" fill={color} />
+          </svg>
+        );
+      case 'search':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Magnifying Glass Inspecting Forest Clover */}
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <circle cx="11" cy="11" r="2" fill={color} />
+          </svg>
+        );
+      case 'zoomIn':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="11" y1="8" x2="11" y2="14" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="8" y1="11" x2="14" y2="11" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomOut':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="8" y1="11" x2="14" y2="11" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'reset':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Braided Leaf Wreath Loop */}
+            <path d="M20 12a8 8 0 11-2.4-5.7L20 9" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <polyline points="20,4 20,9 15,9" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="4" r="1.2" fill={color} />
+          </svg>
+        );
+      case 'brand':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Kodama Forest Spirit with Sprout */}
+            <ellipse cx="12" cy="13" rx="7" ry="7.5" stroke={color} strokeWidth="2" fill="none" />
+            <ellipse cx="9" cy="12" rx="1.5" ry="2" fill={color} />
+            <ellipse cx="15" cy="12" rx="1.5" ry="2" fill={color} />
+            <ellipse cx="12" cy="16.5" rx="1" ry="1.5" fill={color} />
+            <path d="M12 5.5V2c-1.5 0-2.5-1-2.5-1s0 2 2.5 2z" fill={color} />
+          </svg>
+        );
+      case 'design':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Carved Wooden Compass & Vine */}
+            <circle cx="12" cy="5" r="2.5" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="12" y1="7.5" x2="5" y2="21" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="12" y1="7.5" x2="19" y2="21" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <path d="M8 15h8" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <circle cx="12" cy="5" r="1" fill={color} />
+          </svg>
+        );
+      case 'code':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Music Box Cylinder Combs & Pins */}
+            <rect x="4" y="6" width="16" height="12" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="8" cy="9" r="1" fill={color} />
+            <circle cx="12" cy="12" r="1" fill={color} />
+            <circle cx="16" cy="10" r="1" fill={color} />
+            <circle cx="10" cy="15" r="1" fill={color} />
+            <line x1="4" y1="3" x2="8" y2="6" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'qa':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Cute Forest Ladybug with Spots */}
+            <circle cx="12" cy="14" r="6" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="6.5" r="2.5" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="12" y1="8" x2="12" y2="20" stroke={color} strokeWidth="1.8" />
+            <circle cx="9.5" cy="13" r="1" fill={color} />
+            <circle cx="14.5" cy="13" r="1" fill={color} />
+            <circle cx="9.5" cy="17" r="1" fill={color} />
+            <circle cx="14.5" cy="17" r="1" fill={color} />
+            <path d="M10 4.5l-2-2M14 4.5l2-2" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'art':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Wooden Artist Palette with Flower Blossom */}
+            <path d="M12 3a9 9 0 000 18c2 0 4-1 4-3a2 2 0 00-2-2h-2a2 2 0 01-2-2 4 4 0 014-4h2a5 5 0 005-5c0-4-4-7-9-7z" fill="none" stroke={color} strokeWidth="2" strokeLinejoin="round" />
+            <circle cx="7.5" cy="9" r="1.3" fill={color} />
+            <circle cx="12" cy="6.5" r="1.3" fill={color} />
+            <circle cx="16.5" cy="9.5" r="1.3" fill={color} />
+          </svg>
+        );
+      case 'audio':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Totoro's Clay Ocarina */}
+            <ellipse cx="12" cy="12" rx="8" ry="6" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="9" cy="11" r="1.3" fill={color} />
+            <circle cx="13" cy="10" r="1.3" fill={color} />
+            <circle cx="16" cy="11" r="1.3" fill={color} />
+            <rect x="3" y="10" width="3" height="4" rx="1" fill={color} />
+          </svg>
+        );
+      case 'boss':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Ancient Forest Spirit / Great Antlered Deer */}
+            <ellipse cx="12" cy="14" rx="4.5" ry="6" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M9 9C6 6 4 7 3 5M15 9c3-3 5-2 6-4" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <path d="M7 6l-2-3M17 6l2-3" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <circle cx="10" cy="13" r="1" fill={color} />
+            <circle cx="14" cy="13" r="1" fill={color} />
+          </svg>
+        );
+      case 'production':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Riverside Watermill Wheel */}
+            <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="3" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="12" y1="4" x2="12" y2="20" stroke={color} strokeWidth="1.6" />
+            <line x1="4" y1="12" x2="20" y2="12" stroke={color} strokeWidth="1.6" />
+            <line x1="6.3" y1="6.3" x2="17.7" y2="17.7" stroke={color} strokeWidth="1.6" />
+            <line x1="6.3" y1="17.7" x2="17.7" y2="6.3" stroke={color} strokeWidth="1.6" />
+          </svg>
+        );
+      case 'drag':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 6 Smooth River Pebbles */}
+            <circle cx="8" cy="8" r="1.6" fill={color} />
+            <circle cx="16" cy="8" r="1.6" fill={color} />
+            <circle cx="8" cy="12" r="1.6" fill={color} />
+            <circle cx="16" cy="12" r="1.6" fill={color} />
+            <circle cx="8" cy="16" r="1.6" fill={color} />
+            <circle cx="16" cy="16" r="1.6" fill={color} />
+          </svg>
+        );
+      case 'open':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Cottage Wooden Door Opening */}
+            <rect x="4" y="3" width="16" height="18" rx="1.5" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="8" cy="12" r="1.2" fill={color} />
+            <path d="M12 3v18" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'font':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Wooden Branch Letter A with Leaf Sprout */}
+            <path d="M12 3l6 18h-3.5l-1.5-5H11l-1.5 5H6l6-18z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="9.5" y1="14" x2="14.5" y2="14" stroke={color} strokeWidth="2" />
+            <path d="M12 3c1-2 2-2 3-1s0 2-3 1z" fill={color} />
+          </svg>
+        );
+      case 'langVi':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Lotus Flower Seal with Star */}
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <polygon points="12,5 14,9 18.5,9.5 15,12.5 16,17 12,14.5 8,17 9,12.5 5.5,9.5 10,9" fill={color} />
+          </svg>
+        );
+      case 'langEn':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Sunflower Compass */}
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="4" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+            <line x1="12" y1="3" x2="12" y2="5" stroke={color} strokeWidth="1.8" />
+            <line x1="12" y1="19" x2="12" y2="21" stroke={color} strokeWidth="1.8" />
+            <line x1="3" y1="12" x2="5" y2="12" stroke={color} strokeWidth="1.8" />
+            <line x1="19" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+    }
+  }
+
   // Fallback
   return (
     <svg {...commonSvgProps}>

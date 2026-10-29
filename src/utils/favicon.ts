@@ -158,6 +158,24 @@ export const THEME_FAVICONS: Record<ThemeId, string> = {
   <!-- Dimension Arrow Marks -->
   <rect x="14" y="13" width="1" height="2" fill="#f0f9ff" />
   <rect x="2" y="1" width="1" height="2" fill="#f0f9ff" />
+</svg>`,
+
+  ghibli: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges">
+  <!-- Deep Enchanted Forest Night -->
+  <rect width="16" height="16" fill="#0f1d13" />
+  <!-- White Kodama Forest Spirit Head -->
+  <rect x="4" y="4" width="8" height="10" fill="#f0fdf4" rx="2" />
+  <rect x="3" y="5" width="10" height="8" fill="#f0fdf4" />
+  <!-- Hollow Eyes & Mouth -->
+  <rect x="5" y="6" width="2" height="3" fill="#0f1d13" />
+  <rect x="9" y="6" width="2" height="3" fill="#0f1d13" />
+  <rect x="7" y="10" width="2" height="2" fill="#0f1d13" />
+  <!-- Sprouting Green Leaf -->
+  <rect x="7" y="2" width="2" height="2" fill="#4ade80" />
+  <rect x="5" y="1" width="3" height="2" fill="#4ade80" />
+  <rect x="8" y="2" width="3" height="1" fill="#22c55e" />
+  <!-- Warm Firefly Light -->
+  <rect x="13" y="3" width="2" height="2" fill="#fef08a" />
 </svg>`
 };
 
