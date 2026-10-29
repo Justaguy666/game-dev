@@ -305,42 +305,43 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
           }}>
             {/* Column 1: Retro Consoles & Vintage Hardware */}
             <div>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '2px 4px 6px 4px',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.70em',
-                fontWeight: 800,
-                color: 'var(--accent-cyan)',
-                textTransform: 'uppercase',
-                letterSpacing: '0.04em'
-              }}>
-                <ThemedIcon name="tv" theme={currentTheme} size={12} color="var(--accent-cyan)" />
-                <span>{lang === 'vi' ? 'Console & Cổ Điển' : 'Retro & Hardware'}</span>
-              </div>
               {retroThemes.map(renderThemeItem)}
             </div>
 
             {/* Column 2: Creative Art Styles & Worlds */}
             <div>
-              <div style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '6px',
-                padding: '2px 4px 6px 4px',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.70em',
-                fontWeight: 800,
-                color: 'var(--accent-gold)',
-                textTransform: 'uppercase',
-                letterSpacing: '0.04em'
-              }}>
-                <ThemedIcon name="art" theme={currentTheme} size={12} color="var(--accent-gold)" />
-                <span>{lang === 'vi' ? 'Phong Cách Art Game' : 'Art Styles & Worlds'}</span>
-              </div>
               {artThemes.map(renderThemeItem)}
+            </div>
+          </div>
+
+          {/* Bottom Footer Legend */}
+          <div style={{
+            marginTop: '8px',
+            paddingTop: '6px',
+            borderTop: '1px solid var(--border-color)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            paddingLeft: '4px',
+            paddingRight: '4px',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.68em',
+            letterSpacing: '0.02em'
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+              <ThemedIcon name="tv" theme={currentTheme} size={11} color="var(--accent-cyan)" />
+              <span style={{ color: 'var(--accent-cyan)', fontWeight: 700 }}>
+                {lang === 'vi' ? 'Console & Cổ Điển' : 'Retro & Hardware'}
+              </span>
+              <span style={{ color: 'var(--text-dim)' }}>(5)</span>
+            </div>
+
+            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
+              <ThemedIcon name="art" theme={currentTheme} size={11} color="var(--accent-gold)" />
+              <span style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>
+                {lang === 'vi' ? 'Phong Cách Art Game' : 'Art Styles & Worlds'}
+              </span>
+              <span style={{ color: 'var(--text-dim)' }}>(6)</span>
             </div>
           </div>
         </div>
