@@ -36,15 +36,15 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
   const getSkillY = useCallback((skill: SkillNode): number => {
     if (skill.tier === 0) return 60;
     // Tier 1 starts safely below pillar banners with comfortable breathing room
-    const baseT1 = Math.round(540 + Math.max(0, (fontScale - 1.0)) * 340);
+    const baseT1 = Math.round(520 + Math.max(0, (fontScale - 1.0)) * 320);
     // Dynamic gap between tiers: guarantees >= 260px gap even when cards grow to 450px+ at max font size
     const dynamicGap = Math.round(480 + Math.max(0, (fontScale - 1.0)) * 520);
     return Math.round(baseT1 + (skill.tier - 1) * dynamicGap);
   }, [fontScale]);
 
-  // Dynamic Y positioning for pillar banners (adapting as Tier 0 expands with fontScale)
+  // Dynamic Y positioning for pillar banners (centered between Tier 0 and Tier 1)
   const pillarY = useMemo(() => {
-    return Math.round(380 + Math.max(0, (fontScale - 1.0)) * 260);
+    return Math.round(360 + Math.max(0, (fontScale - 1.0)) * 220);
   }, [fontScale]);
 
   // Full-Text Search in Skill Tree
@@ -253,6 +253,22 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
     }
   };
 
+  // Domain completion stats for Pillar Gateways
+  const domainStats = useMemo(() => {
+    const stats = new Map<string, { total: number; mastered: number; learning: number }>();
+    (['design', 'tech', 'qa', 'art', 'audio'] as DomainId[]).forEach(domId => {
+      const domSkills = skills.filter(s => {
+        if (domId === 'tech') return s.category === 'tech' || s.category === 'boss';
+        if (domId === 'qa') return s.category === 'qa' || s.category === 'production';
+        return s.category === domId;
+      });
+      const mastered = domSkills.filter(s => s.status === 'mastered').length;
+      const learning = domSkills.filter(s => s.status === 'learning').length;
+      stats.set(domId, { total: domSkills.length, mastered, learning });
+    });
+    return stats;
+  }, [skills]);
+
   // Pillar banners to display on canvas above Tier 1 (Generous Y spacing from Tier 1 cards)
   const pillarBanners = useMemo(() => [
     {
@@ -307,29 +323,85 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
     }
   ], [pillarY, currentTheme, themeMode]);
 
-  // Find connections (Dynamically using getSkillY and 350px center width)
-  const connections = skills
-    .filter(s => s.parentId)
-    .map(child => {
-      const parent = skills.find(p => p.id === child.parentId);
-      if (!parent) return null;
-      const parentY = getSkillY(parent);
-      const childY = getSkillY(child);
-      const parentHeight = parent.tier === 0
-        ? Math.round(200 + Math.max(0, fontScale - 1.0) * 160)
-        : Math.round(210 + Math.max(0, fontScale - 1.0) * 200);
+  // Find connections (Dynamically routing from Root -> Pillars -> Tier 1 -> subsequent tiers)
+  const connections = useMemo(() => {
+    const rootSkill = skills.find(s => s.tier === 0);
+    const rootHeight = Math.round(200 + Math.max(0, fontScale - 1.0) * 160);
+    const pillarHeight = Math.round(62 + Math.max(0, fontScale - 1.0) * 20);
 
-      return {
-        id: `${parent.id}->${child.id}`,
-        from: { x: parent.x + 175, y: parentY + parentHeight },
-        to: { x: child.x + 175, y: childY },
-        status: child.status,
-        childCategory: child.category,
-        parentId: parent.id,
-        childId: child.id
-      };
-    })
-    .filter(Boolean) as { id: string; from: { x: number; y: number }; to: { x: number; y: number }; status: string; childCategory: string; parentId: string; childId: string }[];
+    const list: Array<{
+      id: string;
+      from: { x: number; y: number };
+      to: { x: number; y: number };
+      status: string;
+      childCategory: string;
+      parentId: string;
+      childId: string;
+      customColor?: string;
+    }> = [];
+
+    if (rootSkill) {
+      const rootY = getSkillY(rootSkill);
+
+      pillarBanners.forEach(p => {
+        // Find Tier 1 skill for this pillar
+        const tier1Skill = skills.find(s => s.tier === 1 && (
+          s.category === p.domainId ||
+          (p.domainId === 'qa' && s.category === 'qa') ||
+          (p.domainId === 'tech' && s.category === 'tech')
+        ));
+
+        // 1. Connection from Root Nexus to Pillar Gateway
+        list.push({
+          id: `root->pillar-${p.domainId}`,
+          from: { x: rootSkill.x + 175, y: rootY + rootHeight },
+          to: { x: p.x + 175, y: p.y },
+          status: rootSkill.status,
+          childCategory: p.domainId,
+          parentId: rootSkill.id,
+          childId: `pillar-${p.domainId}`,
+          customColor: p.color
+        });
+
+        // 2. Connection from Pillar Gateway to Tier 1 Skill
+        if (tier1Skill) {
+          const tier1Y = getSkillY(tier1Skill);
+          list.push({
+            id: `pillar-${p.domainId}->${tier1Skill.id}`,
+            from: { x: p.x + 175, y: p.y + pillarHeight },
+            to: { x: tier1Skill.x + 175, y: tier1Y },
+            status: tier1Skill.status,
+            childCategory: p.domainId,
+            parentId: `pillar-${p.domainId}`,
+            childId: tier1Skill.id
+          });
+        }
+      });
+    }
+
+    // 3. Subsequent Tier connections (Tier 1 -> Tier 2 -> Tier 3 -> Tier 4 -> Tier 5)
+    skills
+      .filter(s => s.tier > 1 && s.parentId)
+      .forEach(child => {
+        const parent = skills.find(p => p.id === child.parentId);
+        if (!parent) return;
+        const parentY = getSkillY(parent);
+        const childY = getSkillY(child);
+        const parentHeight = Math.round(210 + Math.max(0, fontScale - 1.0) * 200);
+
+        list.push({
+          id: `${parent.id}->${child.id}`,
+          from: { x: parent.x + 175, y: parentY + parentHeight },
+          to: { x: child.x + 175, y: childY },
+          status: child.status,
+          childCategory: child.category,
+          parentId: parent.id,
+          childId: child.id
+        });
+      });
+
+    return list;
+  }, [skills, pillarBanners, getSkillY, fontScale]);
 
   return (
     <div
@@ -794,9 +866,9 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
             const dx = conn.to.x - conn.from.x;
             const dy = conn.to.y - conn.from.y;
             const pathData = `M ${conn.from.x} ${conn.from.y} C ${conn.from.x} ${conn.from.y + dy * 0.5}, ${conn.to.x} ${conn.to.y - dy * 0.5}, ${conn.to.x} ${conn.to.y}`;
-            const strokeColor = conn.status === 'mastered' 
+            const strokeColor = conn.customColor || (conn.status === 'mastered' 
               ? 'var(--accent-green)' 
-              : (conn.status === 'learning' ? 'var(--accent-gold)' : 'var(--border-color)');
+              : (conn.status === 'learning' ? 'var(--accent-gold)' : 'var(--border-color)'));
 
             const isDomainMatch = selectedDomain === 'all' || 
                                   selectedDomain === conn.childCategory || 
@@ -813,8 +885,8 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                 strokeWidth={conn.status === 'locked' ? 2 : 3}
                 strokeDasharray={conn.status === 'locked' ? '4 4' : 'none'}
                 style={{
-                  filter: conn.status === 'mastered' ? 'drop-shadow(0 0 4px var(--accent-green))' : 'none',
-                  opacity: isDomainMatch && isConnSearchMatch ? (conn.status === 'locked' ? 0.4 : 0.85) : 0.08,
+                  filter: conn.status === 'mastered' || conn.customColor ? `drop-shadow(0 0 4px ${conn.customColor || 'var(--accent-green)'})` : 'none',
+                  opacity: isDomainMatch && isConnSearchMatch ? (conn.status === 'locked' ? 0.4 : 0.9) : 0.08,
                   transition: 'opacity 0.2s ease'
                 }}
               />
@@ -845,9 +917,18 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
           </span>
         </div>
 
-        {/* Domain Pillar Banners on Canvas */}
+        {/* Domain Pillar Banners on Canvas (Integrated Gateways with Top & Bottom Sockets) */}
         {pillarBanners.map(p => {
           const isFocused = selectedDomain === 'all' || selectedDomain === p.domainId;
+          const stat = domainStats.get(p.domainId);
+          const tier1Skill = skills.find(s => s.tier === 1 && (
+            s.category === p.domainId ||
+            (p.domainId === 'qa' && s.category === 'qa') ||
+            (p.domainId === 'tech' && s.category === 'tech')
+          ));
+          const isTier1Mastered = tier1Skill?.status === 'mastered';
+          const isTier1Learning = tier1Skill?.status === 'learning';
+
           return (
             <div
               key={p.domainId}
@@ -860,7 +941,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                 width: '350px',
                 backgroundColor: 'var(--bg-surface)',
                 border: `2px solid ${p.color}`,
-                padding: '8px 12px',
+                padding: '8px 12px 6px 12px',
                 boxShadow: isFocused ? `0 0 14px ${p.color}44` : 'none',
                 opacity: isFocused ? 1 : 0.35,
                 cursor: 'pointer',
@@ -868,23 +949,74 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                 userSelect: 'none',
                 zIndex: 2
               }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
-                <ThemedIcon name={p.icon} theme={currentTheme} size={15} color={p.color} />
-                <span className="domain-banner-title" style={{
-                  fontFamily: 'var(--font-display)',
-                  fontSize: '0.72em',
-                  fontWeight: 800,
-                  color: p.color,
-                  letterSpacing: '0.03em',
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis'
-                }}>
-                  {p.title[lang]}
-                </span>
-              </div>
+              {/* Top Inbound Terminal Socket (connecting from Root) */}
               <div style={{
-                fontSize: '0.68em',
+                position: 'absolute',
+                top: '-5px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                backgroundColor: p.color,
+                border: '2px solid var(--bg-surface)',
+                boxShadow: `0 0 6px ${p.color}`,
+                zIndex: 4
+              }} />
+
+              {/* Bottom Outbound Terminal Socket (connecting to Tier 1) */}
+              <div style={{
+                position: 'absolute',
+                bottom: '-5px',
+                left: '50%',
+                transform: 'translateX(-50%)',
+                width: '8px',
+                height: '8px',
+                borderRadius: '50%',
+                backgroundColor: isTier1Mastered ? 'var(--accent-green)' : (isTier1Learning ? 'var(--accent-gold)' : p.color),
+                border: '2px solid var(--bg-surface)',
+                boxShadow: `0 0 6px ${p.color}`,
+                zIndex: 4
+              }} />
+
+              {/* Header Row: Icon, Title & Domain Progress Counter */}
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px', marginBottom: '3px' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '7px', minWidth: 0 }}>
+                  <ThemedIcon name={p.icon} theme={currentTheme} size={15} color={p.color} />
+                  <span className="domain-banner-title" style={{
+                    fontFamily: 'var(--font-display)',
+                    fontSize: '0.72em',
+                    fontWeight: 800,
+                    color: p.color,
+                    letterSpacing: '0.03em',
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis'
+                  }}>
+                    {p.title[lang]}
+                  </span>
+                </div>
+
+                {stat && (
+                  <span style={{
+                    fontSize: '0.62em',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 800,
+                    padding: '1px 6px',
+                    backgroundColor: stat.mastered === stat.total ? 'var(--accent-green)' : 'var(--bg-app)',
+                    color: stat.mastered === stat.total ? 'var(--btn-active-text)' : p.color,
+                    border: `1px solid ${p.color}88`,
+                    borderRadius: '2px',
+                    flexShrink: 0
+                  }}>
+                    {stat.mastered}/{stat.total}
+                  </span>
+                )}
+              </div>
+
+              {/* Subtitle / Key Competencies */}
+              <div style={{
+                fontSize: '0.66em',
                 fontFamily: 'var(--font-mono)',
                 color: 'var(--text-muted)',
                 whiteSpace: 'nowrap',
@@ -893,6 +1025,25 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
               }}>
                 {p.subtitle[lang]}
               </div>
+
+              {/* Micro Progress Bar at the bottom of the Gateway */}
+              {stat && (
+                <div style={{
+                  width: '100%',
+                  height: '3px',
+                  backgroundColor: 'var(--bg-app)',
+                  marginTop: '5px',
+                  border: '1px solid var(--border-color)',
+                  overflow: 'hidden'
+                }}>
+                  <div style={{
+                    width: `${(stat.mastered / stat.total) * 100}%`,
+                    height: '100%',
+                    backgroundColor: stat.mastered === stat.total ? 'var(--accent-green)' : p.color,
+                    transition: 'width 0.3s ease'
+                  }} />
+                </div>
+              )}
             </div>
           );
         })}
