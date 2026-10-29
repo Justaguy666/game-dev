@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="32" height="32" shape-rendering="crispEdges">
+  <!-- Outer Dark DMG Border -->
+  <rect x="2" y="1" width="12" height="14" fill="#0f380f" />
+  
+  <!-- Handheld Console Body (Classic DMG Grey-Olive) -->
+  <rect x="3" y="2" width="10" height="12" fill="#8bac0f" />
+  <rect x="3" y="2" width="1" height="12" fill="#9bbc0f" />
+  <rect x="3" y="2" width="10" height="1" fill="#9bbc0f" />
+  <rect x="12" y="2" width="1" height="12" fill="#306230" />
+  
+  <!-- Screen Bezel Outer Frame -->
+  <rect x="4" y="3" width="8" height="6" fill="#306230" />
+  
+  <!-- Battery Power LED (Classic Red Indicator) -->
+  <rect x="4" y="5" width="1" height="1" fill="#ef4444" />
+  
+  <!-- 4-Shade Olive LCD Matrix Screen -->
+  <rect x="6" y="4" width="5" height="4" fill="#9bbc0f" />
+  <rect x="7" y="5" width="3" height="2" fill="#0f380f" />
+  
+  <!-- D-Pad (Classic Plus Symbol Bottom Left) -->
+  <rect x="4" y="11" width="3" height="1" fill="#0f380f" />
+  <rect x="5" y="10" width="1" height="3" fill="#0f380f" />
+  
+  <!-- Tilted A/B Action Buttons (Burgundy Red Bottom Right) -->
+  <rect x="9" y="11" width="1" height="2" fill="#9f1239" />
+  <rect x="11" y="10" width="1" height="2" fill="#9f1239" />
+  
+  <!-- Speaker Slots (Bottom Corner) -->
+  <rect x="10" y="13" width="1" height="1" fill="#306230" />
+  <rect x="12" y="13" width="1" height="1" fill="#306230" />
+</svg>

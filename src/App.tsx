@@ -7,6 +7,7 @@ import { SkillTreeView } from './components/SkillTreeView';
 import { SkillOutlineModal } from './components/SkillOutlineModal';
 import { DocumentReaderView } from './components/DocumentReaderView';
 import { QuestsView } from './components/QuestsView';
+import { updateThemeFavicon } from './utils/favicon';
 
 const DATA_VERSION = 'v7_generous_tier_spacing_and_card_clean';
 
@@ -58,10 +59,11 @@ export const App: React.FC = () => {
   const [activeDrawerSkill, setActiveDrawerSkill] = useState<SkillNode | null>(null);
   const [selectedReaderSkillId, setSelectedReaderSkillId] = useState<string>('root-game-dev');
 
-  // Save changes to localStorage
+  // Save changes to localStorage and update theme favicon
   useEffect(() => {
     localStorage.setItem('gamedev_theme', currentTheme);
     sound.setTheme(currentTheme);
+    updateThemeFavicon(currentTheme);
   }, [currentTheme]);
 
   useEffect(() => {
