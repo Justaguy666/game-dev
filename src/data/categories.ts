@@ -501,6 +501,35 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
+  // 12. CLAYMATION STOP-MOTION / PLASTICINE ART (Handmade Modeling Clay Colors)
+  if (theme === 'claymation') {
+    if (mode === 'light') {
+      switch (domainId) {
+        case 'root': return '#d97706'; // Gromit Wensleydale Cheese Yellow
+        case 'design': return '#c2410c'; // Terracotta Clay Rust
+        case 'tech': return '#0284c7'; // Modeling Blue Clay
+        case 'qa': return '#dc2626'; // Bright Red Plasticine
+        case 'art': return '#7c3aed'; // Plum Plasticine
+        case 'audio': return '#16a34a'; // Pea-Green Clay
+        case 'boss':
+        case 'production': return '#ea580c'; // Tangerine Dough
+        default: return '#d97706';
+      }
+    } else {
+      switch (domainId) {
+        case 'root': return '#ffd166'; // Plasticine Cheese Yellow
+        case 'design': return '#ffa07a'; // Terracotta Modeling Clay
+        case 'tech': return '#4cc9f0'; // Sky-Blue Play-Doh
+        case 'qa': return '#ff6b8b'; // Cherry Plasticine Red
+        case 'art': return '#c77dff'; // Grape Purple Clay
+        case 'audio': return '#06d6a0'; // Mint Green Play-Doh
+        case 'boss':
+        case 'production': return '#ff9f1c'; // Molded Tangerine Clay
+        default: return '#ffd166';
+      }
+    }
+  }
+
   // 3. LIGHT MODE (Arcade, Cyber, Fantasy)
   // Clean, high-contrast accessible jewel tones (> 4.5:1)
   if (mode === 'light') {

@@ -4381,6 +4381,368 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
     }
   }
 
+  // =========================================================================
+  // 15. CLAYMATION STOP-MOTION / PLASTICINE ART (ORGANIC SCULPTED HANDMADE)
+  // =========================================================================
+  if (theme === 'claymation') {
+    switch (name) {
+      case 'tree': // Twisted Clay Trunk & Plasticine Foliage Balls
+        return (
+          <svg {...commonSvgProps}>
+            {/* Trunk */}
+            <path d="M12 21c-1-5 2-8 0-11-1-1-2-1-3-1" stroke={color} strokeWidth="2.4" strokeLinecap="round" fill="none" />
+            <path d="M11 14c2-2 3-2 5-1" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            {/* Clay foliage balls with thumbprint dents */}
+            <circle cx="8" cy="7" r="4.2" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="15.5" cy="11.5" r="3.2" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="13" cy="5" r="3.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="8" cy="7" r="1.5" fill={color} />
+            <circle cx="15.5" cy="11.5" r="1.2" fill={color} />
+          </svg>
+        );
+      case 'docs': // Rolled Clay Dough Slab with Carved Lines
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="4.5" y="3.5" width="15" height="17" rx="3.5" stroke={color} strokeWidth="2" fill="none" />
+            {/* Soft clay slab indentations */}
+            <line x1="8" y1="8" x2="16" y2="8" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="8" y1="12" x2="16" y2="12" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="8" y1="16" x2="13" y2="16" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <circle cx="15.5" cy="16" r="1.2" fill={color} />
+          </svg>
+        );
+      case 'quests': // Clay Medal with Ribbon & Thumbprint
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="10" r="6" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="10" r="3" stroke={color} strokeWidth="1.4" strokeDasharray="3 2" fill="none" />
+            <circle cx="12" cy="10" r="1.5" fill={color} />
+            {/* Clay ribbons */}
+            <path d="M8.5 14.5l-2.5 5.5 4-1.5 2 2" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <path d="M15.5 14.5l2.5 5.5-4-1.5-2 2" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'sun': // Dough Ball Sun with Squished Clay Teardrop Rays
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="5" fill={color} />
+            {/* Squishy clay rays */}
+            <ellipse cx="12" cy="4" rx="1.6" ry="2.2" fill={color} />
+            <ellipse cx="12" cy="20" rx="1.6" ry="2.2" fill={color} />
+            <ellipse cx="4" cy="12" rx="2.2" ry="1.6" fill={color} />
+            <ellipse cx="20" cy="12" rx="2.2" ry="1.6" fill={color} />
+            <circle cx="6" cy="6" r="1.6" fill={color} />
+            <circle cx="18" cy="6" r="1.6" fill={color} />
+            <circle cx="6" cy="18" r="1.6" fill={color} />
+            <circle cx="18" cy="18" r="1.6" fill={color} />
+          </svg>
+        );
+      case 'moon': // Wallace & Gromit Cheese Moon with Craters
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M15 3.5a8.5 8.5 0 00-1.5 17 8.5 8.5 0 007.5-5.5 8.5 8.5 0 01-6-11.5z" stroke={color} strokeWidth="2.2" fill="none" strokeLinejoin="round" />
+            {/* Cheese craters */}
+            <circle cx="10" cy="9" r="1.5" stroke={color} strokeWidth="1.2" fill="none" />
+            <circle cx="8" cy="15" r="1.2" stroke={color} strokeWidth="1.2" fill="none" />
+            <circle cx="14" cy="15" r="1.8" stroke={color} strokeWidth="1.2" fill="none" />
+          </svg>
+        );
+      case 'tv': // Stop-Motion Wooden Camera Rig with Bellows
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="6" y="5" width="12" height="10" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            {/* Film spools on top */}
+            <circle cx="9" cy="3.5" r="1.8" stroke={color} strokeWidth="1.5" fill="none" />
+            <circle cx="15" cy="3.5" r="1.8" stroke={color} strokeWidth="1.5" fill="none" />
+            {/* Camera lens */}
+            <path d="M6 8l-3-2v6l3-2" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            {/* Tripod legs */}
+            <line x1="8" y1="15" x2="4" y2="21" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="12" y1="15" x2="12" y2="21" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="16" y1="15" x2="20" y2="21" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'volume': // Molded Clay Megaphone Horn
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="4,9 8,9 13,5 13,19 8,15 4,15" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <path d="M16 8c1.5 2 1.5 6 0 8" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <path d="M19 5c3 4 3 10 0 14" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'mute': // Clay Megaphone with Dough Stopper Plug
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="4,9 8,9 13,5 13,19 8,15 4,15" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="16" y1="8" x2="21" y2="16" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="21" y1="8" x2="16" y2="16" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'globe': // Striped Play-Doh Marble Globe
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="8.5" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M4 10c3 3 13 3 16 0" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M4 14c3-3 13-3 16 0" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="12" cy="6" r="1.5" fill={color} />
+            <circle cx="12" cy="18" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'mastered': // Sculpted Clay Trophy / Cheese Wedge
+        return (
+          <svg {...commonSvgProps}>
+            {/* Wensleydale Cheese Wedge */}
+            <polygon points="4,15 20,15 17,7 4,15" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <polygon points="17,7 12,3 4,15" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            {/* Cheese holes */}
+            <circle cx="12" cy="12" r="1.4" fill={color} />
+            <circle cx="8" cy="13" r="1.1" fill={color} />
+            <circle cx="15" cy="13" r="0.9" fill={color} />
+          </svg>
+        );
+      case 'learning': // Clay Rolling Pin Flattening Dough
+        return (
+          <svg {...commonSvgProps}>
+            {/* Rolling pin barrel */}
+            <rect x="6" y="9" width="12" height="6" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            {/* Handles */}
+            <line x1="2" y1="12" x2="6" y2="12" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="18" y1="12" x2="22" y2="12" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            {/* Dough slab below */}
+            <ellipse cx="12" cy="18" rx="8" ry="2" stroke={color} strokeWidth="1.6" fill="none" />
+          </svg>
+        );
+      case 'locked': // Chunky Molded Plasticine Padlock
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="5.5" y="10" width="13" height="11" rx="3" stroke={color} strokeWidth="2.2" fill="none" />
+            <path d="M8 10V6.5a4 4 0 018 0V10" stroke={color} strokeWidth="2.2" strokeLinecap="round" fill="none" />
+            <circle cx="12" cy="14.5" r="1.5" fill={color} />
+            <path d="M12 16v2.5" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'edit': // Sculpting Wire Loop Tool & Spatula
+        return (
+          <svg {...commonSvgProps}>
+            {/* Wooden handle */}
+            <line x1="5" y1="19" x2="15" y2="9" stroke={color} strokeWidth="2.4" strokeLinecap="round" />
+            {/* Wire loop head */}
+            <path d="M14 10l2-2c2-2 5 1 3 3l-2 2" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            {/* Pointed spatula tail */}
+            <polygon points="3,21 6,18 4,16" fill={color} />
+          </svg>
+        );
+      case 'save': // Stop-Motion 16mm Film Reel
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="8.5" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="2.8" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="12" cy="12" r="1" fill={color} />
+            {/* 4 film spokes */}
+            <circle cx="12" cy="6.2" r="1.5" fill={color} />
+            <circle cx="12" cy="17.8" r="1.5" fill={color} />
+            <circle cx="6.2" cy="12" r="1.5" fill={color} />
+            <circle cx="17.8" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'download': // Clay Extruder Funnel with Dough Coil
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M6 4h12l-4 8h-4z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="12" x2="12" y2="18" stroke={color} strokeWidth="2.4" strokeLinecap="round" />
+            {/* Extruded clay curl */}
+            <path d="M12 18c0 2 3 2 3 0s-3-2-3-4" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'close': // Squished Clay [X] with Rounded Ends
+        return (
+          <svg {...commonSvgProps}>
+            <line x1="6" y1="6" x2="18" y2="18" stroke={color} strokeWidth="3" strokeLinecap="round" />
+            <line x1="18" y1="6" x2="6" y2="18" stroke={color} strokeWidth="3" strokeLinecap="round" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'search': // Molded Clay Magnifying Glass
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="10.5" cy="10.5" r="6.5" stroke={color} strokeWidth="2.2" fill="none" />
+            <line x1="15.5" y1="15.5" x2="20.5" y2="20.5" stroke={color} strokeWidth="3" strokeLinecap="round" />
+            <path d="M8 8a3.5 3.5 0 014 0" stroke={color} strokeWidth="1.5" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'zoomIn': // Clay Magnifier [+]
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="10.5" cy="10.5" r="6.5" stroke={color} strokeWidth="2.2" fill="none" />
+            <line x1="15.5" y1="15.5" x2="20.5" y2="20.5" stroke={color} strokeWidth="3" strokeLinecap="round" />
+            <line x1="10.5" y1="7.5" x2="10.5" y2="13.5" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="7.5" y1="10.5" x2="13.5" y2="10.5" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomOut': // Clay Magnifier [-]
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="10.5" cy="10.5" r="6.5" stroke={color} strokeWidth="2.2" fill="none" />
+            <line x1="15.5" y1="15.5" x2="20.5" y2="20.5" stroke={color} strokeWidth="3" strokeLinecap="round" />
+            <line x1="7.5" y1="10.5" x2="13.5" y2="10.5" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'reset': // Twisted Dual Clay Coil Spiral
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M4 12a8 8 0 0114.5-4.5" stroke={color} strokeWidth="2.2" strokeLinecap="round" fill="none" />
+            <polygon points="19,3.5 20,8.5 15,8" fill={color} />
+            <path d="M20 12a8 8 0 01-14.5 4.5" stroke={color} strokeWidth="2.2" strokeLinecap="round" fill="none" />
+            <polygon points="5,20.5 4,15.5 9,16" fill={color} />
+            <circle cx="12" cy="12" r="2" fill={color} />
+          </svg>
+        );
+      case 'brand': // Stop-Motion Ball-and-Socket Armature Figure
+        return (
+          <svg {...commonSvgProps}>
+            {/* Wire armature head ball */}
+            <circle cx="12" cy="5" r="2.5" stroke={color} strokeWidth="2" fill="none" />
+            {/* Spine */}
+            <line x1="12" y1="7.5" x2="12" y2="14" stroke={color} strokeWidth="2" />
+            {/* Shoulder and Hip Joint balls */}
+            <circle cx="12" cy="9" r="1.2" fill={color} />
+            <circle cx="12" cy="14" r="1.2" fill={color} />
+            {/* Arms with elbow balls */}
+            <path d="M6 12l3-3 3 0 3 0 3-3" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <circle cx="9" cy="9" r="1" fill={color} />
+            <circle cx="15" cy="9" r="1" fill={color} />
+            {/* Legs with knee balls */}
+            <path d="M7 21l2-4 3-3 3 3 2 4" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <circle cx="9" cy="17" r="1" fill={color} />
+            <circle cx="15" cy="17" r="1" fill={color} />
+          </svg>
+        );
+      case 'design': // Molded Clay Vase on Turntable Pottery Wheel
+        return (
+          <svg {...commonSvgProps}>
+            {/* Symmetrical molded clay vase */}
+            <path d="M9 5c0 3-3 5-3 8 0 2 2 3 6 3s6-1 6-3c0-3-3-5-3-8h-6z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            {/* Wheel platter */}
+            <ellipse cx="12" cy="18" rx="8" ry="2" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="10" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'code': // Carved Clay Block with Curly Brackets
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="4.5" y="4.5" width="15" height="15" rx="3.5" stroke={color} strokeWidth="2" fill="none" />
+            {/* Carved { } */}
+            <path d="M9 8c-1 0-1.5.5-1.5 2v1c0 1-.5 1-1 1 .5 0 1 0 1 1v1c0 1.5.5 2 1.5 2" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <path d="M15 8c1 0 1.5.5 1.5 2v1c0 1 .5 1 1 1-.5 0-1 0-1 1v1c0 1.5-.5 2-1.5 2" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'qa': // Splattered Clay Blob with Exclamation Mark [!]
+        return (
+          <svg {...commonSvgProps}>
+            {/* Splattered clay contour */}
+            <path d="M12 3c3 0 5 2 7 4s1 5 1 8-2 6-8 6-8-2-8-6 1-6 3-8 2-4 5-4z" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="12" y1="8" x2="12" y2="13" stroke={color} strokeWidth="2.4" strokeLinecap="round" />
+            <circle cx="12" cy="16.5" r="1.4" fill={color} />
+          </svg>
+        );
+      case 'art': // 3 Plasticine Modeling Clay Bars with Craft Knife
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="4" y="5" width="12" height="3" rx="1.5" stroke={color} strokeWidth="1.6" fill="none" />
+            <rect x="4" y="9.5" width="12" height="3" rx="1.5" stroke={color} strokeWidth="1.6" fill="none" />
+            <rect x="4" y="14" width="12" height="3" rx="1.5" stroke={color} strokeWidth="1.6" fill="none" />
+            {/* Modeling knife diagonally */}
+            <line x1="19" y1="3" x2="13" y2="19" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <polygon points="12,17 14,21 17,20" fill={color} />
+          </svg>
+        );
+      case 'audio': // Cartoon Slide Whistle / Kazoo
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="5" y="8" width="11" height="5" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="5" y1="10.5" x2="2" y2="10.5" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            {/* Slide plunger rod with ring */}
+            <line x1="16" y1="10.5" x2="21" y2="10.5" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <circle cx="21" cy="10.5" r="1.5" stroke={color} strokeWidth="1.5" fill="none" />
+            {/* Sound puffs */}
+            <path d="M8 5c1-1 3-1 4 0" stroke={color} strokeWidth="1.6" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'boss': // Claymation Monster Creature with Googly Eyes
+        return (
+          <svg {...commonSvgProps}>
+            {/* Blob monster body */}
+            <path d="M6 19c-2 0-3-2-2-6 1-4 3-7 8-7s7 3 8 7c1 4 0 6-2 6z" stroke={color} strokeWidth="2" fill="none" />
+            {/* Two big googly eyes */}
+            <circle cx="9" cy="9.5" r="2.8" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="15" cy="9.5" r="2.8" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="9.5" cy="9.5" r="1.2" fill={color} />
+            <circle cx="14.5" cy="9.5" r="1.2" fill={color} />
+            {/* Jagged clay teeth smile */}
+            <path d="M8 15h8M9 15l1 2 1-2 1 2 1-2 1 2 1-2" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'production': // Stop-Motion Wooden Clapperboard
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="4" y="8" width="16" height="12" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            {/* Top clap stick hinged */}
+            <polygon points="4,4 20,4 18,8 4,8" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="8" y1="4" x2="6" y2="8" stroke={color} strokeWidth="1.6" />
+            <line x1="12" y1="4" x2="10" y2="8" stroke={color} strokeWidth="1.6" />
+            <line x1="16" y1="4" x2="14" y2="8" stroke={color} strokeWidth="1.6" />
+            <line x1="8" y1="12" x2="16" y2="12" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
+            <line x1="8" y1="16" x2="13" y2="16" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+        );
+      case 'drag': // 4 Squishy Clay Dough Balls Directional D-pad
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="4.5" r="2" fill={color} />
+            <circle cx="12" cy="19.5" r="2" fill={color} />
+            <circle cx="4.5" cy="12" r="2" fill={color} />
+            <circle cx="19.5" cy="12" r="2" fill={color} />
+            <line x1="12" y1="6.5" x2="12" y2="17.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="6.5" y1="12" x2="17.5" y2="12" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'open': // Molded Clay Box with Lid Opening
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M4 10h16v8a2 2 0 01-2 2H6a2 2 0 01-2-2v-8z" stroke={color} strokeWidth="2" fill="none" />
+            {/* Open lid tilted */}
+            <line x1="3" y1="9" x2="19" y2="5" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="10" y1="14" x2="14" y2="14" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'font': // Extruded Round Plasticine Letters [CLAY]
+        return (
+          <svg {...commonSvgProps}>
+            {/* C */}
+            <path d="M8 8a3 3 0 00-3 3v2a3 3 0 003 3" stroke={color} strokeWidth="2.2" strokeLinecap="round" fill="none" />
+            {/* L */}
+            <path d="M12 8v8h3" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            {/* Dot */}
+            <circle cx="18" cy="15" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'langVi': // Sculpted Clay Star inside Dough Medallion
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="4" y="4" width="16" height="16" rx="4" stroke={color} strokeWidth="2" fill="none" />
+            <polygon points="12,7 13.5,10.5 17,10.7 14.3,12.7 15.3,16 12,14 8.7,16 9.7,12.7 7,10.7 10.5,10.5" fill={color} />
+          </svg>
+        );
+      case 'langEn': // Swirled Play-Doh Marble with Spiral
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="8.5" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M6 12a6 6 0 0112 0 4 4 0 01-8 0 2 2 0 014 0" stroke={color} strokeWidth="1.6" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+    }
+  }
+
 // Fallback
   return (
     <svg {...commonSvgProps}>

@@ -270,6 +270,26 @@ export const THEME_FAVICONS: Record<ThemeId, string> = {
   <!-- Corner Geiger Scan Indicator (Amber Rad Alert) -->
   <rect x="2" y="2" width="2" height="1" fill="#ffb900" />
   <rect x="12" y="13" width="2" height="1" fill="#1bf5e6" />
+</svg>`,
+
+  claymation: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- Studio Craft Backdrop -->
+  <rect width="16" height="16" fill="#1c1824" rx="3" />
+  <!-- Kneaded Clay Ball Head -->
+  <ellipse cx="8" cy="8.5" rx="6.5" ry="6" fill="#ffa07a" />
+  <!-- Thumbprint / Clay Mold Texture -->
+  <path d="M4 6c2-1 6-1 8 0" stroke="#f4845f" stroke-width="1" stroke-linecap="round" fill="none" opacity="0.6" />
+  <!-- Googly White Clay Eyeballs -->
+  <circle cx="5.5" cy="7.5" r="2.2" fill="#ffffff" stroke="#352c45" stroke-width="0.8" />
+  <circle cx="10.5" cy="7.5" r="2.2" fill="#ffffff" stroke="#352c45" stroke-width="0.8" />
+  <!-- Clay Pupils -->
+  <circle cx="6" cy="7" r="1.1" fill="#1c1824" />
+  <circle cx="11" cy="7" r="1.1" fill="#1c1824" />
+  <!-- Playful Clay Smile -->
+  <path d="M5.5 11.5c1.2 1.2 3.8 1.2 5 0" stroke="#6b2b1a" stroke-width="1.3" stroke-linecap="round" fill="none" />
+  <!-- Rosy Clay Cheeks -->
+  <circle cx="3.8" cy="10" r="1" fill="#ff6b8b" opacity="0.8" />
+  <circle cx="12.2" cy="10" r="1" fill="#ff6b8b" opacity="0.8" />
 </svg>`
 };
 

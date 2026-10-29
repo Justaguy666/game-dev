@@ -104,6 +104,12 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
       name: { vi: 'Pip-Boy 3000', en: 'Pip-Boy 3000' },
       iconName: 'tv',
       palette: ['#1aff59', '#0f2617', '#ffb900', '#1bf5e6']
+    },
+    {
+      id: 'claymation',
+      name: { vi: 'Claymation Đất Nặn', en: 'Claymation Clay' },
+      iconName: 'art',
+      palette: ['#ffa07a', '#ffd166', '#4cc9f0', '#06d6a0']
     }
   ];
 
@@ -294,7 +300,7 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
               border: '1px solid var(--border-color)',
               color: 'var(--accent-gold)'
             }}>
-              14 STYLES
+              15 STYLES
             </span>
           </div>
 
