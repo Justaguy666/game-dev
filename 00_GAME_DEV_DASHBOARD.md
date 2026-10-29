@@ -45,8 +45,9 @@ tags:
 ---
 
 ## ⚔️ Bảng nhiệm vụ đang hoạt động (Active Quests)
+
 - [x] Thiết lập hệ sinh thái Obsidian Retro Game Dev (CSS, 8-bit SFX, Skill Tree)
-- [x] Lĩnh hội nguyên lý [[2D Vector Math]] cho game 2D
+- [ ] Lĩnh hội nguyên lý [[2D Vector Math]] cho game 2D
 - [ ] Hoàn thành mục tiêu của [[Kinematics & Movement]] (Coyote time & Jump buffer)
 - [ ] Mở khóa kỹ năng [[Dash & Wall Jump]]
 - [ ] Thiết kế cơ chế Boss với [[Boss Fight State Machine]]

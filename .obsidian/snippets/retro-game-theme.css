@@ -54,31 +54,33 @@ body, .cm-s-obsidian, .markdown-rendered {
 }
 
 /* Headings with Arcade & RPG styling */
-h1, .markdown-rendered h1, .cm-header-1 {
+h1, .markdown-rendered h1, .cm-header-1, .HyperMD-header-1 {
   color: var(--retro-gold) !important;
   font-family: 'Consolas', 'JetBrains Mono', monospace;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border-bottom: 2px dashed var(--retro-gold);
-  padding-bottom: 8px;
-  margin-top: 1.4em;
-  margin-bottom: 0.8em;
+  padding-bottom: 8px !important;
+  margin-top: 1.4em !important;
+  margin-bottom: 16px !important;
   text-shadow: 0 0 8px rgba(251, 191, 36, 0.35);
 }
 
-h2, .markdown-rendered h2, .cm-header-2 {
+h2, .markdown-rendered h2, .cm-header-2, .HyperMD-header-2 {
   color: var(--retro-cyan) !important;
   font-family: 'Consolas', 'JetBrains Mono', monospace;
   border-bottom: 1px solid var(--border-retro);
-  padding-bottom: 5px;
-  margin-top: 1.2em;
-  margin-bottom: 0.6em;
+  padding-bottom: 8px !important;
+  margin-top: 1.4em !important;
+  margin-bottom: 16px !important;
   text-shadow: 0 0 6px rgba(56, 189, 248, 0.3);
 }
 
-h3, .markdown-rendered h3, .cm-header-3 {
+h3, .markdown-rendered h3, .cm-header-3, .HyperMD-header-3 {
   color: var(--retro-green) !important;
-  margin-top: 1em;
+  margin-top: 1.2em !important;
+  margin-bottom: 10px !important;
+  padding-bottom: 4px !important;
   text-shadow: 0 0 5px rgba(74, 222, 128, 0.25);
 }
 
@@ -303,20 +305,56 @@ h5, .markdown-rendered h5, .cm-header-5 {
 }
 
 /* --------------------------------------------------------------------------
-   7. PIXEL CHECKBOXES (QUEST LOG TASKS)
+   7. PIXEL CHECKBOXES & TASK SPACING (QUEST LOG TASKS)
    -------------------------------------------------------------------------- */
+/* Reading View Task list & items */
+.markdown-rendered ul.contains-task-list {
+  padding-left: 0 !important;
+  margin-top: 14px !important;
+  margin-bottom: 18px !important;
+}
+
+.markdown-rendered li.task-list-item {
+  display: flex !important;
+  align-items: center !important;
+  margin: 10px 0 !important;
+  padding: 3px 0 !important;
+  line-height: 1.7 !important;
+  list-style: none !important;
+}
+
+/* Live Preview line spacing for tasks and lists */
+.cm-s-obsidian .HyperMD-task-line {
+  padding-top: 6px !important;
+  padding-bottom: 6px !important;
+  line-height: 1.75 !important;
+}
+
+.cm-s-obsidian .HyperMD-list-line {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+
+/* Checkbox Box Centering */
 .task-list-item-checkbox {
   appearance: none;
   -webkit-appearance: none;
-  width: 15px !important;
-  height: 15px !important;
+  width: 16px !important;
+  height: 16px !important;
   border: 2px solid var(--border-retro-highlight) !important;
   border-radius: 0px !important;
   background-color: var(--bg-retro-darkest) !important;
   cursor: pointer;
   position: relative;
-  vertical-align: middle;
-  margin-right: 8px !important;
+  /* Perfect vertical centering with text */
+  vertical-align: middle !important;
+  margin: 0 10px 0 0 !important;
+  top: -2px !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  box-sizing: border-box !important;
+  flex-shrink: 0 !important;
 }
 
 .task-list-item-checkbox:hover {
@@ -330,14 +368,17 @@ h5, .markdown-rendered h5, .cm-header-5 {
   box-shadow: 0 0 6px var(--retro-green) !important;
 }
 
+/* Perfectly Centered Tick inside the Box */
 .task-list-item-checkbox:checked::after {
   content: '✓';
   position: absolute;
-  top: -3px;
-  left: 2px;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -55%) !important;
   font-size: 11px;
-  font-weight: bold;
+  font-weight: 900;
   color: #111217;
+  line-height: 1;
 }
 
 .task-list-item.is-checked {
