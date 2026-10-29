@@ -1,0 +1,9 @@
+{
+  "id": "retro-game-sfx",
+  "name": "Retro Game SFX & Dev HUD",
+  "version": "1.0.0",
+  "minAppVersion": "0.15.0",
+  "description": "8-bit chiptune sound effects and RPG status bar HUD for game development notes.",
+  "author": "Antigravity",
+  "isDesktopOnly": false
+}
