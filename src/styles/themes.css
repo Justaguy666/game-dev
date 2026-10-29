@@ -467,6 +467,57 @@
 }
 
 /* --------------------------------------------------------------------------
+   10. THEME: PSX 32-BIT / INDUSTRIAL CD-ROM (1994 PLAYSTATION & INDUSTRIAL TECH)
+   -------------------------------------------------------------------------- */
+.theme-psx.mode-dark {
+  --bg-app: #121216;
+  --bg-surface: #1a1a22;
+  --bg-card: #22222c;
+  --border-color: #3b3b4a;
+  --border-highlight: #70d6ff;
+  --text-main: #f4f4f8;
+  --text-muted: #a3a3b5;
+  --text-dim: #6e6e80;
+  
+  --accent-gold: #facc15;
+  --accent-cyan: #38bdf8;
+  --accent-green: #34c759;
+  --accent-red: #ff3b30;
+  --accent-purple: #ff2d55;
+  
+  --font-display: 'Chakra Petch', 'Oxanium', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.7), inset 1px 1px 0 rgba(255, 255, 255, 0.08);
+  --glow-primary: 0 0 14px rgba(112, 214, 255, 0.45), inset 0 0 8px rgba(112, 214, 255, 0.2);
+  --btn-active-bg: #2563eb;
+  --btn-active-text: #ffffff;
+}
+
+.theme-psx.mode-light {
+  --bg-app: #dcdde3;
+  --bg-surface: #ffffff;
+  --bg-card: #ececf2;
+  --border-color: #9898a8;
+  --border-highlight: #2563eb;
+  --text-main: #181822;
+  --text-muted: #434354;
+  --text-dim: #69697d;
+  
+  --accent-gold: #b45309;
+  --accent-cyan: #0284c7;
+  --accent-green: #16a34a;
+  --accent-red: #dc2626;
+  --accent-purple: #db2777;
+  
+  --font-display: 'Chakra Petch', 'Oxanium', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 3px 3px 0px rgba(152, 152, 168, 0.6), inset 1px 1px 0 rgba(255, 255, 255, 0.8);
+  --glow-primary: 0 0 10px rgba(37, 99, 235, 0.35);
+  --btn-active-bg: #2563eb;
+  --btn-active-text: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
    GLOBAL LAYOUT & CRT SCANLINES
    -------------------------------------------------------------------------- */
 * {
@@ -581,6 +632,21 @@ body.theme-ghibli h3 {
   font-family: var(--font-display);
   letter-spacing: 0.03em;
   font-weight: 700;
+}
+
+body.theme-psx {
+  /* 'Chakra Petch' / 'Oxanium' / 'JetBrains Mono' PSX 32-Bit Industrial */
+  font-size: 1.25rem;
+  letter-spacing: 0.025em;
+}
+
+body.theme-psx h1,
+body.theme-psx h2,
+body.theme-psx h3 {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 /* Headings across all themes */
@@ -853,6 +919,36 @@ body.theme-ghibli .node-card-title {
   font-size: 1.05em !important;
   line-height: 1.40 !important;
   letter-spacing: 0.02em;
+  font-weight: 700;
+}
+
+body.theme-psx .node-card {
+  border-radius: 2px;
+  border-width: 2px;
+  transition: transform 0.18s cubic-bezier(0.2, 0.9, 0.3, 1.2), box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+body.theme-psx .node-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: #70d6ff !important;
+  box-shadow: 0 0 16px rgba(112, 214, 255, 0.45), 0 8px 18px rgba(0, 0, 0, 0.5);
+}
+
+body.theme-psx .domain-banner {
+  border-radius: 2px;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+body.theme-psx .domain-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 14px rgba(112, 214, 255, 0.5) !important;
+}
+
+body.theme-psx .node-card-title {
+  font-family: var(--font-display);
+  font-size: 1.05em !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0.03em;
   font-weight: 700;
 }
 

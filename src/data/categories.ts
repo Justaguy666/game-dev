@@ -356,6 +356,35 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
+  // 7. PSX 32-BIT / INDUSTRIAL CD-ROM PALETTE (PlayStation 1994 & 32-Bit Geometry)
+  if (theme === 'psx') {
+    if (mode === 'light') {
+      switch (domainId) {
+        case 'root': return '#b45309'; // Memory Card Amber
+        case 'design': return '#16a34a'; // PSX Triangle Green
+        case 'tech': return '#2563eb'; // PSX Cross Blue
+        case 'qa': return '#dc2626'; // PSX Circle Red
+        case 'art': return '#db2777'; // PSX Square Pink
+        case 'audio': return '#0d9488'; // CD Audio Track Teal
+        case 'boss':
+        case 'production': return '#c2410c'; // SCSI Industrial Terracotta
+        default: return '#b45309';
+      }
+    } else {
+      switch (domainId) {
+        case 'root': return '#facc15'; // Memory Card 1MB Gold
+        case 'design': return '#34c759'; // PSX Triangle Neon Green
+        case 'tech': return '#38bdf8'; // PSX Cross Laser Cyan/Blue
+        case 'qa': return '#ff3b30'; // PSX Circle Neon Red
+        case 'art': return '#ff2d55'; // PSX Square Neon Pink
+        case 'audio': return '#2dd4bf'; // CD-ROM Laser Phosphor Cyan
+        case 'boss':
+        case 'production': return '#fb923c'; // SCSI Drive Amber
+        default: return '#facc15';
+      }
+    }
+  }
+
   // 3. LIGHT MODE (Arcade, Cyber, Fantasy)
   // Clean, high-contrast accessible jewel tones (> 4.5:1)
   if (mode === 'light') {

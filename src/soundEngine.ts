@@ -200,6 +200,33 @@ class SoundEngine {
       drop.start(now);
       osc.stop(now + 0.07);
       drop.stop(now + 0.05);
+    } else if (this.currentTheme === 'psx') {
+      // PSX 32-Bit: Optical lens stepper seek tap & CD-ROM spindle click
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1400, now);
+      osc.frequency.exponentialRampToValueAtTime(350, now + 0.025);
+
+      gain.gain.setValueAtTime(0.3 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+
+      const stepper = ctx.createOscillator();
+      const stepperGain = ctx.createGain();
+      stepper.type = 'triangle';
+      stepper.frequency.setValueAtTime(700, now);
+      stepper.frequency.exponentialRampToValueAtTime(120, now + 0.04);
+      stepperGain.gain.setValueAtTime(0.2 * vol, now);
+      stepperGain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
+
+      osc.connect(gain);
+      stepper.connect(stepperGain);
+      gain.connect(ctx.destination);
+      stepperGain.connect(ctx.destination);
+      osc.start(now);
+      stepper.start(now);
+      osc.stop(now + 0.035);
+      stepper.stop(now + 0.05);
     } else {
       // Fantasy: Resonant wooden snap
       const osc = ctx.createOscillator();
@@ -227,8 +254,8 @@ class SoundEngine {
 
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
-    osc.type = this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'gothic' || this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'fantasy' || this.currentTheme === 'inkwell' ? 'sine' : 'triangle')));
-    osc.frequency.setValueAtTime(this.currentTheme === 'ghibli' ? 880 : (this.currentTheme === 'blueprint' ? 1046.50 : (this.currentTheme === 'gothic' ? 146.83 : (this.currentTheme === 'synthwave' ? 740 : (this.currentTheme === 'cyber' ? 880 : (this.currentTheme === 'inkwell' ? 620 : 330))))), now);
+    osc.type = this.currentTheme === 'psx' ? 'triangle' : (this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'gothic' || this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'fantasy' || this.currentTheme === 'inkwell' ? 'sine' : 'triangle'))));
+    osc.frequency.setValueAtTime(this.currentTheme === 'psx' ? 1200 : (this.currentTheme === 'ghibli' ? 880 : (this.currentTheme === 'blueprint' ? 1046.50 : (this.currentTheme === 'gothic' ? 146.83 : (this.currentTheme === 'synthwave' ? 740 : (this.currentTheme === 'cyber' ? 880 : (this.currentTheme === 'inkwell' ? 620 : 330)))))), now);
 
     gain.gain.setValueAtTime(0.1 * vol, now);
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
@@ -246,24 +273,26 @@ class SoundEngine {
     const now = ctx.currentTime;
     const vol = this.volume;
 
-    const notes = this.currentTheme === 'ghibli'
-      ? [523.25, 587.33, 659.25, 783.99, 880.00] // Joe Hisaishi C Major Pentatonic music box arpeggio (C5, D5, E5, G5, A5)
-      : (this.currentTheme === 'blueprint'
-        ? [440.00, 554.37, 659.25, 880.00] // Pure harmonic blueprint chime (A4, C#5, E5, A5)
-        : (this.currentTheme === 'gothic'
-          ? [146.83, 220.00, 261.63, 349.23] // D minor cathedral bell chime / organ toll (D3, A3, C4, F4)
-          : (this.currentTheme === 'synthwave'
-            ? [293.66, 369.99, 440.00, 554.37] // 80s D Major 7th synthwave chord (D4, F#4, A4, C#5)
-            : (this.currentTheme === 'cyber' 
-              ? [600, 900, 1200]
-              : (this.currentTheme === 'fantasy' 
-                  ? [330, 440, 550] 
-                  : (this.currentTheme === 'inkwell' ? [440, 554, 659, 880] : [523, 659, 784]))))));
+    const notes = this.currentTheme === 'psx'
+      ? [220.00, 440.00, 659.25, 880.00, 1318.51] // PS1 BIOS celestial ambient overtone chime
+      : (this.currentTheme === 'ghibli'
+        ? [523.25, 587.33, 659.25, 783.99, 880.00] // Joe Hisaishi C Major Pentatonic music box arpeggio (C5, D5, E5, G5, A5)
+        : (this.currentTheme === 'blueprint'
+          ? [440.00, 554.37, 659.25, 880.00] // Pure harmonic blueprint chime (A4, C#5, E5, A5)
+          : (this.currentTheme === 'gothic'
+            ? [146.83, 220.00, 261.63, 349.23] // D minor cathedral bell chime / organ toll (D3, A3, C4, F4)
+            : (this.currentTheme === 'synthwave'
+              ? [293.66, 369.99, 440.00, 554.37] // 80s D Major 7th synthwave chord (D4, F#4, A4, C#5)
+              : (this.currentTheme === 'cyber' 
+                ? [600, 900, 1200]
+                : (this.currentTheme === 'fantasy' 
+                    ? [330, 440, 550] 
+                    : (this.currentTheme === 'inkwell' ? [440, 554, 659, 880] : [523, 659, 784])))))));
 
     notes.forEach((freq, idx) => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-      osc.type = this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'gothic' ? 'triangle' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'arcade' ? 'square' : 'triangle'))));
+      osc.type = this.currentTheme === 'psx' ? 'sine' : (this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'gothic' ? 'triangle' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'arcade' ? 'square' : 'triangle')))));
       osc.frequency.setValueAtTime(freq, now + idx * 0.04);
 
       gain.gain.setValueAtTime(0.2 * vol, now + idx * 0.04);

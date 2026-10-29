@@ -176,6 +176,28 @@ export const THEME_FAVICONS: Record<ThemeId, string> = {
   <rect x="8" y="2" width="3" height="1" fill="#22c55e" />
   <!-- Warm Firefly Light -->
   <rect x="13" y="3" width="2" height="2" fill="#fef08a" />
+</svg>`,
+
+  psx: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges">
+  <!-- Matte Industrial PSX Charcoal Chassis -->
+  <rect width="16" height="16" fill="#121216" />
+  <!-- Central CD-ROM Disc Platter -->
+  <rect x="4" y="4" width="8" height="8" fill="#2b2b36" rx="2" />
+  <rect x="5" y="3" width="6" height="10" fill="#3b3b4a" />
+  <rect x="3" y="5" width="10" height="6" fill="#3b3b4a" />
+  <rect x="7" y="7" width="2" height="2" fill="#70d6ff" />
+  <!-- Top: Green Triangle -->
+  <polygon points="8,1 10,4 6,4" fill="#34c759" />
+  <!-- Right: Red Circle -->
+  <rect x="13" y="7" width="2" height="2" fill="#ff3b30" />
+  <!-- Bottom: Blue Cross -->
+  <rect x="7" y="13" width="2" height="2" fill="#38bdf8" />
+  <rect x="6" y="12" width="1" height="1" fill="#38bdf8" />
+  <rect x="9" y="12" width="1" height="1" fill="#38bdf8" />
+  <rect x="6" y="15" width="1" height="1" fill="#38bdf8" />
+  <rect x="9" y="15" width="1" height="1" fill="#38bdf8" />
+  <!-- Left: Pink Square -->
+  <rect x="1" y="7" width="2" height="2" fill="#ff2d55" />
 </svg>`
 };
 

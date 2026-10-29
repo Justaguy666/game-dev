@@ -2693,6 +2693,341 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
     }
   }
 
+  // =========================================================================
+  // 10. PSX 32-BIT / INDUSTRIAL CD-ROM (1994 PlayStation & 32-Bit Geometry)
+  // =========================================================================
+  if (theme === 'psx') {
+    switch (name) {
+      case 'tree':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 3D Coordinate Hierarchy & Transform Matrix */}
+            <line x1="12" y1="3" x2="12" y2="12" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="12" y1="12" x2="4" y2="18" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="12" y1="12" x2="20" y2="18" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <circle cx="12" cy="3" r="2" fill={color} />
+            <circle cx="4" cy="18" r="2" fill={color} />
+            <circle cx="20" cy="18" r="2" fill={color} />
+            <circle cx="12" cy="12" r="1.5" stroke={color} strokeWidth="1.5" fill="none" />
+          </svg>
+        );
+      case 'docs':
+        return (
+          <svg {...commonSvgProps}>
+            {/* PS1 Compact Disc Jewel Case with Spindle */}
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="6" y1="3" x2="6" y2="21" stroke={color} strokeWidth="1.6" />
+            <circle cx="13" cy="12" r="5" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="13" cy="12" r="1.8" fill={color} />
+          </svg>
+        );
+      case 'quests':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 32-Bit Low-Poly Polygon Trophy with Shapes */}
+            <polygon points="6,3 18,3 15,13 9,13" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="13" x2="12" y2="18" stroke={color} strokeWidth="2" />
+            <line x1="8" y1="18" x2="16" y2="18" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <polygon points="12,6 14,9 10,9" fill={color} />
+          </svg>
+        );
+      case 'sun':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Optical Disc Laser Pickup Lens */}
+            <circle cx="12" cy="12" r="5" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="2" fill={color} />
+            <line x1="12" y1="1" x2="12" y2="5" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="12" y1="19" x2="12" y2="23" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="1" y1="12" x2="5" y2="12" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="19" y1="12" x2="23" y2="12" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'moon':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Crescent CD-ROM Platter */}
+            <path d="M15 3.5a8.5 8.5 0 00-1.5 17 8.5 8.5 0 007.5-5.5 8.5 8.5 0 01-6-11.5z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <circle cx="10" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'tv':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Sony Trinitron PVM RGB CRT Broadcast Monitor */}
+            <rect x="2" y="5" width="20" height="15" rx="1.5" stroke={color} strokeWidth="2" fill="none" />
+            <rect x="4" y="7" width="13" height="11" rx="1" stroke={color} strokeWidth="1.4" fill="none" />
+            <line x1="18.5" y1="8" x2="19.5" y2="8" stroke={color} strokeWidth="1.8" />
+            <line x1="18.5" y1="11" x2="19.5" y2="11" stroke={color} strokeWidth="1.8" />
+            <line x1="18.5" y1="14" x2="19.5" y2="14" stroke={color} strokeWidth="1.8" />
+            <circle cx="19" cy="16.5" r="0.8" fill={color} />
+          </svg>
+        );
+      case 'volume':
+        return (
+          <svg {...commonSvgProps}>
+            {/* CD-DA Digital Audio Waveform */}
+            <polygon points="3,8 7,8 12,4 12,20 7,16 3,16" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <path d="M15 8.5a4.5 4.5 0 010 7M18.5 5.5a8.5 8.5 0 010 13" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'mute':
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="3,8 7,8 12,4 12,20 7,16 3,16" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="16" y1="9" x2="22" y2="15" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="22" y1="9" x2="16" y2="15" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'globe':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 3D Affine Polygon Wireframe Mesh Sphere */}
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.6" />
+            <ellipse cx="12" cy="12" rx="4.5" ry="9" stroke={color} strokeWidth="1.4" fill="none" />
+            <polygon points="12,3 16,8 16,16 12,21 8,16 8,8" stroke={color} strokeWidth="1.2" strokeDasharray="3 1" fill="none" />
+          </svg>
+        );
+      case 'mastered':
+        return (
+          <svg {...commonSvgProps}>
+            {/* PlayStation 1MB Memory Card with Contact Pins */}
+            <rect x="4" y="3" width="16" height="18" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <rect x="7" y="6" width="10" height="5" stroke={color} strokeWidth="1.4" fill="none" />
+            <line x1="8" y1="18" x2="8" y2="21" stroke={color} strokeWidth="1.6" />
+            <line x1="11" y1="18" x2="11" y2="21" stroke={color} strokeWidth="1.6" />
+            <line x1="14" y1="18" x2="14" y2="21" stroke={color} strokeWidth="1.6" />
+            <line x1="16" y1="18" x2="16" y2="21" stroke={color} strokeWidth="1.6" />
+          </svg>
+        );
+      case 'learning':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Spinning 2x-Speed CD-ROM Optical Disc */}
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="3.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+            <line x1="12" y1="3" x2="12" y2="6" stroke={color} strokeWidth="1.8" />
+            <line x1="21" y1="12" x2="18" y2="12" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'locked':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Memory Card Save File Security Lock */}
+            <rect x="5" y="10" width="14" height="11" rx="1.5" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M8 10V6a4 4 0 018 0v4" stroke={color} strokeWidth="2" fill="none" />
+            <rect x="11" y="13" width="2" height="4" fill={color} />
+          </svg>
+        );
+      case 'edit':
+        return (
+          <svg {...commonSvgProps}>
+            {/* MGS CODEC Stylus Antenna */}
+            <polygon points="4,20 8,19 19,8 15,4 4,15" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="14" y1="5" x2="18" y2="9" stroke={color} strokeWidth="1.6" />
+            <circle cx="4" cy="20" r="1" fill={color} />
+          </svg>
+        );
+      case 'save':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 15-Block PS1 Memory Card */}
+            <rect x="4" y="3" width="16" height="18" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <rect x="7" y="6" width="10" height="7" stroke={color} strokeWidth="1.4" fill="none" />
+            <line x1="7" y1="9.5" x2="17" y2="9.5" stroke={color} strokeWidth="1.2" />
+            <line x1="12" y1="6" x2="12" y2="13" stroke={color} strokeWidth="1.2" />
+            <rect x="8" y="16" width="8" height="2" fill={color} />
+          </svg>
+        );
+      case 'download':
+        return (
+          <svg {...commonSvgProps}>
+            {/* CD-ROM Tray Eject / Laser Write */}
+            <line x1="12" y1="3" x2="12" y2="14" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <polyline points="7,9 12,14 17,9" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <path d="M4 18h16" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <polygon points="9,21 15,21 12,18" fill={color} />
+          </svg>
+        );
+      case 'close':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Iconic PSX Controller Blue Cross (❌) */}
+            <line x1="5" y1="5" x2="19" y2="19" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="19" y1="5" x2="5" y2="19" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+          </svg>
+        );
+      case 'search':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Optical Laser Lens Focus Assembly */}
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <circle cx="11" cy="11" r="3" stroke={color} strokeWidth="1.4" fill="none" />
+          </svg>
+        );
+      case 'zoomIn':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="11" y1="8" x2="11" y2="14" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="8" y1="11" x2="14" y2="11" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomOut':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16.5" y1="16.5" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="8" y1="11" x2="14" y2="11" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'reset':
+        return (
+          <svg {...commonSvgProps}>
+            {/* PSX Console Circular Reset Button */}
+            <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M12 7v5l3 3" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'brand':
+        return (
+          <svg {...commonSvgProps}>
+            {/* The 4 Iconic PlayStation Shapes (Triangle, Circle, Cross, Square) */}
+            <polygon points="7,4 10,8 4,8" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="16" cy="6" r="2.2" stroke={color} strokeWidth="1.6" fill="none" />
+            <line x1="5" y1="14" x2="9" y2="18" stroke={color} strokeWidth="1.8" />
+            <line x1="9" y1="14" x2="5" y2="18" stroke={color} strokeWidth="1.8" />
+            <rect x="14" y="14" width="4" height="4" stroke={color} strokeWidth="1.6" fill="none" />
+          </svg>
+        );
+      case 'design':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 3D Wireframe Polygon Tetrahedron */}
+            <polygon points="12,2 21,18 3,18" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="18" stroke={color} strokeWidth="1.5" />
+            <line x1="3" y1="18" x2="12" y2="11" stroke={color} strokeWidth="1.5" />
+            <line x1="21" y1="18" x2="12" y2="11" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'code':
+        return (
+          <svg {...commonSvgProps}>
+            {/* MGS CODEC Frequency Readout Display */}
+            <rect x="3" y="6" width="18" height="12" rx="1.5" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="6" y1="12" x2="10" y2="12" stroke={color} strokeWidth="1.8" />
+            <circle cx="12" cy="12" r="1" fill={color} />
+            <line x1="14" y1="12" x2="18" y2="12" stroke={color} strokeWidth="1.8" />
+            <line x1="3" y1="9" x2="21" y2="9" stroke={color} strokeWidth="1" strokeDasharray="2 2" />
+          </svg>
+        );
+      case 'qa':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Low-Poly 3D Geometric Spider Bug */}
+            <polygon points="12,8 16,13 14,18 10,18 8,13" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="6" r="2" fill={color} />
+            <line x1="4" y1="10" x2="8" y2="12" stroke={color} strokeWidth="1.8" />
+            <line x1="20" y1="10" x2="16" y2="12" stroke={color} strokeWidth="1.8" />
+            <line x1="4" y1="16" x2="9" y2="15" stroke={color} strokeWidth="1.8" />
+            <line x1="20" y1="16" x2="15" y2="15" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'art':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 3D TrueColor RGB Palette Cube */}
+            <polygon points="12,3 20,7.5 20,16.5 12,21 4,16.5 4,7.5" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="12" x2="12" y2="21" stroke={color} strokeWidth="1.8" />
+            <line x1="12" y1="12" x2="20" y2="7.5" stroke={color} strokeWidth="1.8" />
+            <line x1="12" y1="12" x2="4" y2="7.5" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'audio':
+        return (
+          <svg {...commonSvgProps}>
+            {/* CD-DA Optical Audio Track Player */}
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="3.5" stroke={color} strokeWidth="1.6" fill="none" />
+            <polygon points="10,9 15,12 10,15" fill={color} />
+          </svg>
+        );
+      case 'boss':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Low-Poly 3D Mecha Metal Gear Boss Skull */}
+            <polygon points="12,2 20,7 18,17 12,21 6,17 4,7" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <rect x="7" y="9" width="3" height="3" fill={color} />
+            <rect x="14" y="9" width="3" height="3" fill={color} />
+            <line x1="8" y1="16" x2="16" y2="16" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="12" y1="2" x2="12" y2="9" stroke={color} strokeWidth="1.6" />
+          </svg>
+        );
+      case 'production':
+        return (
+          <svg {...commonSvgProps}>
+            {/* CD-ROM Disc Pressing Stamper */}
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="4.5" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+            <line x1="6" y1="2" x2="18" y2="2" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'drag':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 6 Controller Grip Studs */}
+            <circle cx="8" cy="8" r="1.5" fill={color} />
+            <circle cx="16" cy="8" r="1.5" fill={color} />
+            <circle cx="8" cy="12" r="1.5" fill={color} />
+            <circle cx="16" cy="12" r="1.5" fill={color} />
+            <circle cx="8" cy="16" r="1.5" fill={color} />
+            <circle cx="16" cy="16" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'open':
+        return (
+          <svg {...commonSvgProps}>
+            {/* PSX Console Open Hatch Lid */}
+            <ellipse cx="12" cy="14" rx="8" ry="4" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M4 14C4 8 8 4 12 4s8 4 8 10" stroke={color} strokeWidth="1.8" strokeDasharray="3 2" fill="none" />
+            <circle cx="12" cy="14" r="1.8" fill={color} />
+          </svg>
+        );
+      case 'font':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 90s Industrial Block Letter A with Facets */}
+            <polygon points="12,2 19,21 15,21 13.5,16 10.5,16 9,21 5,21" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="8" y1="13.5" x2="16" y2="13.5" stroke={color} strokeWidth="2" />
+            <polygon points="12,6 14,10 10,10" fill={color} />
+          </svg>
+        );
+      case 'langVi':
+        return (
+          <svg {...commonSvgProps}>
+            {/* PSX Memory Card with Vietnam Star Icon */}
+            <rect x="4" y="3" width="16" height="18" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <polygon points="12,6 13.5,10 17.5,10.2 14.3,12.5 15.5,16.5 12,14 8.5,16.5 9.7,12.5 6.5,10.2 10.5,10" fill={color} />
+          </svg>
+        );
+      case 'langEn':
+        return (
+          <svg {...commonSvgProps}>
+            {/* CD-ROM Disc with World Track Sectors */}
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <ellipse cx="12" cy="12" rx="4.5" ry="9" stroke={color} strokeWidth="1.5" fill="none" />
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.6" />
+            <circle cx="12" cy="12" r="2" fill={color} />
+          </svg>
+        );
+    }
+  }
+
   // Fallback
   return (
     <svg {...commonSvgProps}>
