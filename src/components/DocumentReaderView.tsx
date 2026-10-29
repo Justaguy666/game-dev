@@ -423,14 +423,14 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
       }}>
         {/* Document Top Actions Bar with Domain Breadcrumbs */}
         <div style={{
-          padding: '10px 20px',
+          padding: '12px 24px',
           borderBottom: '2px solid var(--border-color)',
           backgroundColor: 'var(--bg-surface)',
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'center',
           flexWrap: 'wrap',
-          gap: '10px'
+          gap: '12px'
         }}>
           {/* Breadcrumbs & Sidebar Toggle */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
@@ -547,33 +547,39 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
           </div>
         </div>
 
-        {/* Document Content View / Edit */}
-        <div style={{ flex: 1, overflowY: 'auto', padding: '28px 36px' }}>
-          {isEditing ? (
-            <textarea
-              value={content}
-              onChange={(e) => setContent(e.target.value)}
-              style={{
-                width: '100%',
-                height: '100%',
-                minHeight: '500px',
-                backgroundColor: 'var(--bg-card)',
-                color: 'var(--text-main)',
-                border: '1px solid var(--border-color)',
-                padding: '18px',
-                fontFamily: 'var(--font-mono)',
-                fontSize: '0.92em',
-                lineHeight: 1.6,
-                outline: 'none',
-                resize: 'none'
-              }}
-            />
-          ) : (
-            <div
-              className="markdown-body"
-              dangerouslySetInnerHTML={{ __html: renderedHtml }}
-            />
-          )}
+        {/* Document Content View / Edit (Centered, comfortable max-width reading column) */}
+        <div style={{ flex: 1, overflowY: 'auto', padding: '36px 32px 80px 32px' }}>
+          <div style={{
+            maxWidth: '920px',
+            margin: '0 auto',
+            width: '100%'
+          }}>
+            {isEditing ? (
+              <textarea
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                style={{
+                  width: '100%',
+                  minHeight: '650px',
+                  backgroundColor: 'var(--bg-card)',
+                  color: 'var(--text-main)',
+                  border: '1px solid var(--border-color)',
+                  padding: '24px 28px',
+                  fontFamily: 'var(--font-mono)',
+                  fontSize: '0.94em',
+                  lineHeight: 1.68,
+                  outline: 'none',
+                  resize: 'vertical',
+                  boxShadow: 'var(--card-shadow)'
+                }}
+              />
+            ) : (
+              <div
+                className="markdown-body"
+                dangerouslySetInnerHTML={{ __html: renderedHtml }}
+              />
+            )}
+          </div>
         </div>
       </main>
     </div>

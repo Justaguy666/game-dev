@@ -374,33 +374,138 @@ body.theme-gameboy .node-card-tag {
   border-color: var(--border-color) !important;
 }
 
-/* Markdown body across all themes */
+/* Markdown body across all themes with comfortable reading typography */
 .markdown-body {
-  font-size: 1.4rem;
-  line-height: 1.65;
+  font-size: 1.35rem;
+  line-height: 1.72;
+  color: var(--text-main);
+  word-break: break-word;
 }
 
 .markdown-body h1 {
-  font-size: 2.05rem;
-  margin-bottom: 0.7em;
+  font-size: 2rem;
+  margin-top: 0.2em;
+  margin-bottom: 0.8em;
+  line-height: 1.28;
+  color: var(--text-main);
+  letter-spacing: 0.03em;
+  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.5em;
 }
 
 .markdown-body h2 {
-  font-size: 1.8rem;
-  margin-top: 1.2em;
+  font-size: 1.62rem;
+  margin-top: 1.5em;
   margin-bottom: 0.6em;
+  line-height: 1.32;
+  color: var(--accent-gold);
+  letter-spacing: 0.02em;
 }
 
 .markdown-body h3 {
-  font-size: 1.58rem;
-  margin-top: 1em;
+  font-size: 1.38rem;
+  margin-top: 1.2em;
   margin-bottom: 0.5em;
+  line-height: 1.35;
+  color: var(--text-main);
 }
 
-.markdown-body p, 
+.markdown-body p {
+  font-size: 1.3rem;
+  line-height: 1.72;
+  margin-bottom: 1.15em;
+}
+
+/* Ensure ordered and unordered lists have ample left padding so numbers/bullets never clip */
+.markdown-body ol, 
+.markdown-body ul {
+  padding-left: 2.2rem !important;
+  margin-top: 0.6em;
+  margin-bottom: 1.2em;
+}
+
+.markdown-body ol {
+  list-style-type: decimal !important;
+}
+
+.markdown-body ul {
+  list-style-type: square !important;
+}
+
 .markdown-body li {
-  font-size: 1.34rem;
-  line-height: 1.6;
+  font-size: 1.3rem;
+  line-height: 1.68;
+  margin-bottom: 0.5em;
+  padding-left: 0.25rem;
+}
+
+.markdown-body li::marker {
+  color: var(--accent-gold);
+  font-weight: 800;
+}
+
+/* Blockquotes with retro RPG inset border */
+.markdown-body blockquote {
+  border-left: 3px solid var(--accent-gold);
+  padding: 10px 18px;
+  margin: 1.3em 0;
+  background-color: var(--bg-card);
+  color: var(--text-muted);
+  font-style: italic;
+  box-shadow: var(--card-shadow);
+}
+
+/* Code blocks & Inline code */
+.markdown-body pre {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  padding: 14px 18px;
+  margin: 1.2em 0;
+  overflow-x: auto;
+  box-shadow: var(--card-shadow);
+  border-radius: var(--radius-sharp);
+}
+
+.markdown-body code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background-color: var(--bg-card);
+  padding: 2px 6px;
+  border: 1px solid var(--border-color);
+  color: var(--accent-cyan);
+}
+
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+  border: none;
+  color: var(--text-main);
+}
+
+/* Markdown tables */
+.markdown-body table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.3em 0;
+}
+
+.markdown-body th,
+.markdown-body td {
+  border: 1px solid var(--border-color);
+  padding: 8px 12px;
+}
+
+.markdown-body th {
+  background-color: var(--bg-card);
+  color: var(--accent-gold);
+  font-weight: 800;
+}
+
+/* Horizontal rule divider */
+.markdown-body hr {
+  border: none;
+  border-top: 1px solid var(--border-color);
+  margin: 1.6em 0;
 }
 
 /* Eliminate browser default focus outlines */

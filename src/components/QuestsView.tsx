@@ -101,18 +101,18 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
 
   return (
     <div style={{
-      maxWidth: '1000px',
+      maxWidth: '1020px',
       margin: '0 auto',
-      padding: '28px 20px 60px 20px',
+      padding: '28px 24px 80px 24px',
       fontFamily: 'var(--font-mono)'
     }}>
       {/* 1. Header Banner */}
       <div style={{
         backgroundColor: 'var(--bg-surface)',
         border: '2px solid var(--border-color)',
-        padding: '22px 24px',
+        padding: '22px 28px',
         boxShadow: 'var(--card-shadow)',
-        marginBottom: '20px'
+        marginBottom: '16px'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px', marginBottom: '8px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
@@ -184,9 +184,9 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
       <div style={{
         backgroundColor: 'var(--bg-surface)',
         border: '1px solid var(--border-color)',
-        padding: '8px 14px',
+        padding: '9px 16px',
         boxShadow: 'var(--card-shadow)',
-        marginBottom: '16px',
+        marginBottom: '14px',
         display: 'flex',
         alignItems: 'center',
         gap: '10px'
@@ -241,9 +241,9 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
       <div style={{
         backgroundColor: 'var(--bg-surface)',
         border: '1px solid var(--border-color)',
-        padding: '8px 12px',
+        padding: '8px 14px',
         boxShadow: 'var(--card-shadow)',
-        marginBottom: '24px',
+        marginBottom: '20px',
         display: 'flex',
         flexWrap: 'nowrap',
         overflowX: 'auto',
