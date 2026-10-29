@@ -210,6 +210,26 @@ export const THEME_FAVICONS: Record<ThemeId, string> = {
   <polygon points="3,6 13,6 11,11 8,9 5,11" fill="#ffffff" />
   <rect x="5" y="7" width="2" height="2" fill="#121118" />
   <rect x="9" y="7" width="2" height="2" fill="#121118" />
+</svg>`,
+
+  ukiyoe: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges">
+  <!-- Warm Washi Paper / Night Canvas -->
+  <rect width="16" height="16" fill="#12100e" />
+  <!-- Crimson Rising Sun Circle -->
+  <circle cx="8" cy="8" r="6" fill="#dc2626" opacity="0.3" />
+  <circle cx="8" cy="8" r="4" fill="#dc2626" />
+  <!-- Sacred Torii Gate (Vermilion Lintels & Pillars) -->
+  <rect x="2" y="2" width="12" height="2" fill="#ef4444" />
+  <rect x="1" y="2" width="1" height="1" fill="#ef4444" />
+  <rect x="14" y="2" width="1" height="1" fill="#ef4444" />
+  <rect x="3" y="5" width="10" height="1" fill="#b91c1c" />
+  <rect x="4" y="2" width="2" height="12" fill="#dc2626" />
+  <rect x="10" y="2" width="2" height="12" fill="#dc2626" />
+  <rect x="3" y="14" width="4" height="2" fill="#2c241e" />
+  <rect x="9" y="14" width="4" height="2" fill="#2c241e" />
+  <!-- Sakura Flower Blossom Drift -->
+  <rect x="1" y="9" width="1" height="1" fill="#fbcfe8" />
+  <rect x="14" y="11" width="1" height="1" fill="#fbcfe8" />
 </svg>`
 };
 

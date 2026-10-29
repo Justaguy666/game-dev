@@ -569,6 +569,57 @@
 }
 
 /* --------------------------------------------------------------------------
+   12. THEME: UKIYO-E SUMI-E / FEUDAL JAPAN BRUSH (WOODBLOCK & INK WASH)
+   -------------------------------------------------------------------------- */
+.theme-ukiyoe.mode-dark {
+  --bg-app: #12100e;
+  --bg-surface: #1b1714;
+  --bg-card: #231f1a;
+  --border-color: #5c4b3f;
+  --border-highlight: #dc2626;
+  --text-main: #f5ede4;
+  --text-muted: #b8a99a;
+  --text-dim: #7a6e63;
+  
+  --accent-gold: #f59e0b;
+  --accent-cyan: #38bdf8;
+  --accent-green: #34d399;
+  --accent-red: #ef4444;
+  --accent-purple: #c084fc;
+  
+  --font-display: 'Shojumaru', 'Shippori Mincho', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 0 4px 14px rgba(10, 8, 7, 0.8), 0 0 10px rgba(220, 38, 38, 0.25);
+  --glow-primary: 0 0 14px rgba(220, 38, 38, 0.45), 0 0 20px rgba(245, 158, 11, 0.3);
+  --btn-active-bg: #dc2626;
+  --btn-active-text: #ffffff;
+}
+
+.theme-ukiyoe.mode-light {
+  --bg-app: #f4ede2;
+  --bg-surface: #ffffff;
+  --bg-card: #faf5ec;
+  --border-color: #8c7355;
+  --border-highlight: #b91c1c;
+  --text-main: #1c1814;
+  --text-muted: #3d352e;
+  --text-dim: #6e6155;
+  
+  --accent-gold: #b45309;
+  --accent-cyan: #0284c7;
+  --accent-green: #15803d;
+  --accent-red: #b91c1c;
+  --accent-purple: #7e22ce;
+  
+  --font-display: 'Shojumaru', 'Shippori Mincho', serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 3px 3px 0px rgba(140, 115, 85, 0.4);
+  --glow-primary: 0 0 12px rgba(185, 28, 28, 0.35);
+  --btn-active-bg: #b91c1c;
+  --btn-active-text: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
    GLOBAL LAYOUT & CRT SCANLINES
    -------------------------------------------------------------------------- */
 * {
@@ -1033,6 +1084,37 @@ body.theme-persona .node-card-title {
   letter-spacing: 0.04em;
   font-weight: 700;
   text-transform: uppercase;
+}
+
+body.theme-ukiyoe .node-card {
+  border-radius: 4px 1px 4px 2px;
+  border-width: 2px;
+  transition: transform 0.2s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+body.theme-ukiyoe .node-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 16px rgba(220, 38, 38, 0.4), 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+body.theme-ukiyoe .domain-banner {
+  border-radius: 3px;
+  border-width: 2px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+body.theme-ukiyoe .domain-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 16px rgba(220, 38, 38, 0.5) !important;
+}
+
+body.theme-ukiyoe .node-card-title {
+  font-family: var(--font-display);
+  font-size: 1.12em !important;
+  line-height: 1.30 !important;
+  letter-spacing: 0.03em;
+  font-weight: 700;
 }
 
 /* Markdown body across all themes with comfortable reading typography */

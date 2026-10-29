@@ -414,6 +414,35 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
+  // 9. UKIYO-E SUMI-E / FEUDAL JAPAN BRUSH (Woodblock Print & Mineral Pigments)
+  if (theme === 'ukiyoe') {
+    if (mode === 'light') {
+      switch (domainId) {
+        case 'root': return '#b45309'; // Imperial Gold Leaf
+        case 'design': return '#b91c1c'; // Torii Cinnabar Vermilion
+        case 'tech': return '#0369a1'; // Hokusai Great Wave Indigo
+        case 'qa': return '#991b1b'; // Crimson Seal Ink
+        case 'art': return '#7e22ce'; // Kyoto Wisteria Purple
+        case 'audio': return '#15803d'; // Zen Bamboo Moss
+        case 'boss':
+        case 'production': return '#c2410c'; // Terracotta Ceramic Ochre
+        default: return '#b45309';
+      }
+    } else {
+      switch (domainId) {
+        case 'root': return '#fbbf24'; // Kintsugi Gold Leaf
+        case 'design': return '#ef4444'; // Torii Vermilion Red
+        case 'tech': return '#38bdf8'; // Mist River Indigo
+        case 'qa': return '#f87171'; // Sakura Blossom Crimson
+        case 'art': return '#c084fc'; // Imperial Silk Lilac
+        case 'audio': return '#4ade80'; // Bamboo Forest Green
+        case 'boss':
+        case 'production': return '#fb923c'; // Paper Lantern Amber
+        default: return '#fbbf24';
+      }
+    }
+  }
+
   // 3. LIGHT MODE (Arcade, Cyber, Fantasy)
   // Clean, high-contrast accessible jewel tones (> 4.5:1)
   if (mode === 'light') {

@@ -3359,6 +3359,343 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
     }
   }
 
+// =========================================================================
+  // 12. UKIYO-E SUMI-E / FEUDAL JAPAN BRUSH (Woodblock Print & Mineral Pigments)
+  // =========================================================================
+  if (theme === 'ukiyoe') {
+    switch (name) {
+      case 'tree':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Ancient Gnarled Bonsai Pine with Tiered Needle Clouds */}
+            <path d="M12 21c-1-5 2-9-1-12-1-1-2-1-3-1" stroke={color} strokeWidth="2.2" strokeLinecap="round" fill="none" />
+            <path d="M11 14c2-2 4-2 6-1" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            {/* Pine needle cloud clusters */}
+            <ellipse cx="8" cy="7" rx="5" ry="2.5" stroke={color} strokeWidth="1.6" fill="none" />
+            <ellipse cx="17" cy="12" rx="4" ry="2" stroke={color} strokeWidth="1.6" fill="none" />
+            <ellipse cx="13" cy="4" rx="4" ry="2" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="8" cy="7" r="1.2" fill={color} />
+            <circle cx="17" cy="12" r="1.2" fill={color} />
+          </svg>
+        );
+      case 'docs':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Traditional Rolled Washi Scroll (Makimono) with Red Seal */}
+            <path d="M4 6c0-1.5 1.5-2 3-2h12c1.5 0 2 .5 2 2v11c0 1.5-1.5 2-3 2H6c-1.5 0-3-.5-3-2V6z" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="6" y1="4" x2="6" y2="19" stroke={color} strokeWidth="2.2" />
+            <line x1="10" y1="8" x2="16" y2="8" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="10" y1="12" x2="15" y2="12" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            {/* Vermilion Square Seal Stamp */}
+            <rect x="13" y="14" width="4" height="4" fill={color} />
+          </svg>
+        );
+      case 'quests':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Sacred Shinto Torii Gate with Crimson Sun */}
+            <circle cx="12" cy="10" r="5" stroke={color} strokeWidth="1.5" strokeDasharray="3 2" fill="none" />
+            {/* Curved Kasagi top beam */}
+            <path d="M3 4c3-1 15-1 18 0" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="4.5" y1="7" x2="19.5" y2="7" stroke={color} strokeWidth="1.8" />
+            {/* Vertical Hashira pillars */}
+            <line x1="7" y1="4" x2="7" y2="20" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="17" y1="4" x2="17" y2="20" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            {/* Central plaque tablet Gakuzuka */}
+            <rect x="11" y="4" width="2" height="3" fill={color} />
+          </svg>
+        );
+      case 'sun':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Radiant Edo Rising Sun with Swirling Cloud Bands */}
+            <circle cx="12" cy="12" r="5" fill={color} />
+            <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="1.6" strokeDasharray="4 2" fill="none" />
+            <path d="M2 15c3-2 6 0 8-1s4-2 6-1" stroke={color} strokeWidth="1.6" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'moon':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Slender Autumn Crescent Moon with Zen Cloud Trail */}
+            <path d="M15 3.5a8.5 8.5 0 00-1.5 17 8.5 8.5 0 007.5-5.5 8.5 8.5 0 01-6-11.5z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <path d="M2 13c3-1 6 1 9 0s4-1 6 0" stroke={color} strokeWidth="1.4" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'tv':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Japanese Wooden Lattice Lantern (Andon / Chochin) */}
+            <rect x="6" y="5" width="12" height="14" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="6" y1="10" x2="18" y2="10" stroke={color} strokeWidth="1.5" />
+            <line x1="6" y1="14" x2="18" y2="14" stroke={color} strokeWidth="1.5" />
+            <line x1="12" y1="5" x2="12" y2="19" stroke={color} strokeWidth="1.5" />
+            {/* Lantern handle and flame */}
+            <path d="M8 5V3a4 4 0 018 0v2" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'volume':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Japanese Temple Bronze Gong (Kane) & Resonance Wave */}
+            <path d="M6 8c0-3 3-5 6-5s6 2 6 5v7H6V8z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="5" y1="15" x2="19" y2="15" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <circle cx="12" cy="11" r="1.8" fill={color} />
+            <path d="M19 8c1.5 1.2 2 2.5 2 4s-.5 2.8-2 4" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'mute':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Temple Bell with Bold Sumi Brush Diagonal Slash */}
+            <path d="M6 8c0-3 3-5 6-5s6 2 6 5v7H6V8z" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="5" y1="15" x2="19" y2="15" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="3" y1="3" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+          </svg>
+        );
+      case 'globe':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Traditional Folding Paper Fan (Sensu) Opened Wide */}
+            <path d="M3 15C5 8 10 4 17 4c2 0 3 .5 4 1-3 5-7 9-14 10z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="7" y1="15" x2="12" y2="8" stroke={color} strokeWidth="1.4" />
+            <line x1="7" y1="15" x2="16" y2="10" stroke={color} strokeWidth="1.4" />
+            <circle cx="7" cy="15" r="1.5" fill={color} />
+            {/* Hokusai wave arc inside fan */}
+            <path d="M8 11c2-1 4 0 6-1" stroke={color} strokeWidth="1.4" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'mastered':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 5-Petal Sakura Cherry Blossom with Golden Stamens */}
+            <path d="M12 7c-1-3-3-4-4-3s0 3 2 4c-3 0-5 2-4 3s3 1 4-1c0 3 2 4 3 3s1-3-1-4c3 0 4-2 3-3s-3-1-4 1c0-3-1-4-3-3-1 1 0 3 1 4z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="12" r="1.8" fill={color} />
+          </svg>
+        );
+      case 'learning':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Zen Enso Ink Circle (Unbroken dynamic brush stroke) */}
+            <path d="M12 3a9 9 0 106.8 3.5" stroke={color} strokeWidth="2.6" strokeLinecap="round" fill="none" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'locked':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Traditional Japanese Iron Chest Lock (Kura Lock) with Silk Knot */}
+            <rect x="5" y="10" width="14" height="11" rx="1.5" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M8 10V6a4 4 0 018 0v4" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <circle cx="12" cy="14" r="1.5" fill={color} />
+            <path d="M10 18l2-2 2 2" stroke={color} strokeWidth="1.6" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'edit':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Bamboo Calligraphy Brush (Fude) Dipping into Sumi Ink */}
+            <line x1="20" y1="4" x2="10" y2="14" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <path d="M10 14l-4 4c-1 1-2 2-3 2 0-1 1-2 2-3l4-4" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <polygon points="3,20 6,17 7,18" fill={color} />
+          </svg>
+        );
+      case 'save':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Japanese Lacquer Seal Stamp Box (Inro) with Cinnabar Stamp */}
+            <rect x="6" y="5" width="12" height="14" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="6" y1="10" x2="18" y2="10" stroke={color} strokeWidth="1.5" />
+            <line x1="6" y1="14" x2="18" y2="14" stroke={color} strokeWidth="1.5" />
+            <circle cx="12" cy="3" r="1.5" fill={color} />
+            <rect x="10" y="11" width="4" height="2" fill={color} />
+          </svg>
+        );
+      case 'download':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Samurai Katana Downward Slashing Trail */}
+            <path d="M12 3v11m0 0l-4-4m4 4l4-4" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <path d="M5 19c4 2 10 2 14 0" stroke={color} strokeWidth="2.5" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'close':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Crossed Bamboo Training Swords (Shinai) */}
+            <line x1="4" y1="4" x2="20" y2="20" stroke={color} strokeWidth="2.8" strokeLinecap="round" />
+            <line x1="20" y1="4" x2="4" y2="20" stroke={color} strokeWidth="2.8" strokeLinecap="round" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'search':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Bamboo Rimmed Lens with Rising Sun Reflection */}
+            <circle cx="10.5" cy="10.5" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16" y1="16" x2="21" y2="21" stroke={color} strokeWidth="2.8" strokeLinecap="round" />
+            <circle cx="10.5" cy="10.5" r="2.5" fill={color} />
+          </svg>
+        );
+      case 'zoomIn':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Bamboo Looking Glass with Kanji Plus */}
+            <circle cx="10" cy="10" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="15.5" y1="15.5" x2="21" y2="21" stroke={color} strokeWidth="2.8" strokeLinecap="round" />
+            <line x1="10" y1="7" x2="10" y2="13" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="7" y1="10" x2="13" y2="10" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomOut':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Bamboo Looking Glass with Horizontal Kanji Minus */}
+            <circle cx="10" cy="10" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="15.5" y1="15.5" x2="21" y2="21" stroke={color} strokeWidth="2.8" strokeLinecap="round" />
+            <line x1="7" y1="10" x2="13" y2="10" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'reset':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Japanese Three-Fold Whirlpool (Mitsudomoe) */}
+            <path d="M4 12a8 8 0 102.3-5.7L3 9" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <polygon points="3,4 8,4 6,9" fill={color} />
+          </svg>
+        );
+      case 'brand':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Mount Fuji Silhouette with Snowcap & Crimson Sun */}
+            <circle cx="12" cy="7" r="4" fill={color} />
+            <polygon points="2,20 9,9 15,9 22,20" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <polyline points="9,9 12,12 15,9" stroke={color} strokeWidth="1.8" fill="none" />
+          </svg>
+        );
+      case 'design':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Carpenter's Ink Pot (Sumitsubo) & Bamboo Ruler */}
+            <path d="M4 17a4 4 0 018 0H4z" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="8" y1="17" x2="20" y2="5" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="12" y1="13" x2="14" y2="15" stroke={color} strokeWidth="1.6" />
+            <line x1="16" y1="9" x2="18" y2="11" stroke={color} strokeWidth="1.6" />
+            <circle cx="8" cy="15" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'code':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Twin Crossed Katana Swords in Duel Stance */}
+            <line x1="4" y1="20" x2="20" y2="4" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="20" y1="20" x2="4" y2="4" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            {/* Tsuba handguards */}
+            <ellipse cx="8" cy="16" rx="2" ry="1" transform="rotate(-45 8 16)" fill={color} />
+            <ellipse cx="16" cy="16" rx="2" ry="1" transform="rotate(45 16 16)" fill={color} />
+          </svg>
+        );
+      case 'qa':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Kyudo Archery Target with Bullseye Arrow */}
+            <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="4.5" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="12" cy="12" r="1.8" fill={color} />
+            <line x1="4" y1="4" x2="12" y2="12" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'art':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Ceramic Inkstone (Suzuri) & Calligraphy Brush */}
+            <rect x="4" y="6" width="16" height="14" rx="2.5" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="13" r="3.5" stroke={color} strokeWidth="1.5" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="6" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <circle cx="12" cy="13" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'audio':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Bamboo Shakuhachi Flute with Wind Notes */}
+            <line x1="6" y1="20" x2="18" y2="4" stroke={color} strokeWidth="3" strokeLinecap="round" />
+            <circle cx="10" cy="15" r="1.2" fill={color} />
+            <circle cx="12" cy="12" r="1.2" fill={color} />
+            <circle cx="14" cy="9" r="1.2" fill={color} />
+            <path d="M18 7c2-1 3-3 2-4" stroke={color} strokeWidth="1.5" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'boss':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Japanese Oni Demon / Kabuki Hannya Horned Mask */}
+            <path d="M6 3l3 4c1-.5 2-.8 3-.8s2 .3 3 .8l3-4c-1 3-1 6-1 8 0 4-3 7-6 7s-6-3-6-7c0-2 0-5-1-8z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <ellipse cx="9" cy="12" rx="1.5" ry="1" fill={color} />
+            <ellipse cx="15" cy="12" rx="1.5" ry="1" fill={color} />
+            <path d="M9 16c1.5 1.5 4.5 1.5 6 0" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'production':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Traditional Wooden Waterwheel (Mizuguruma) in Stream */}
+            <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="2.5" fill={color} />
+            <line x1="12" y1="4" x2="12" y2="20" stroke={color} strokeWidth="1.8" />
+            <line x1="4" y1="12" x2="20" y2="12" stroke={color} strokeWidth="1.8" />
+            <line x1="6.3" y1="6.3" x2="17.7" y2="17.7" stroke={color} strokeWidth="1.8" />
+            <line x1="6.3" y1="17.7" x2="17.7" y2="6.3" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'drag':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 4-Pointed Ninja Shuriken Throwing Star */}
+            <polygon points="12,2 14,9 21,9 16,14 18,21 12,17 6,21 8,14 3,9 10,9" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="12" r="2" fill={color} />
+          </svg>
+        );
+      case 'open':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Traditional Bento Box Lid Sliding Open with Silk Cord */}
+            <rect x="4" y="9" width="16" height="11" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M3 9c3-3 15-3 18 0" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <circle cx="12" cy="5" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'font':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Traditional Calligraphy Brush Character Stroke (Yong / A) */}
+            <path d="M12 3v15M8 6h8M7 11h10M9 16l3 3 5-4" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="3" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'langVi':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Wooden Ema Votive Prayer Tablet with Golden Star */}
+            <polygon points="12,3 20,8 20,20 4,20 4,8" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="6" r="1.5" fill={color} />
+            <polygon points="12,10 13.5,13.5 17,13.7 14.3,15.7 15.3,19 12,17 8.7,19 9.7,15.7 7,13.7 10.5,13.5" fill={color} />
+          </svg>
+        );
+      case 'langEn':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Sensu Paper Fan with World Ocean Wave Lines */}
+            <path d="M3 15C5 8 10 4 17 4c2 0 3 .5 4 1-3 5-7 9-14 10z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <circle cx="14" cy="9" r="3" stroke={color} strokeWidth="1.2" fill="none" />
+            <ellipse cx="14" cy="9" rx="1.5" ry="3" stroke={color} strokeWidth="1" fill="none" />
+            <circle cx="7" cy="15" r="1.5" fill={color} />
+          </svg>
+        );
+    }
+  }
+
   // Fallback
   return (
     <svg {...commonSvgProps}>

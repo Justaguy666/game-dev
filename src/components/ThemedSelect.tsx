@@ -86,6 +86,12 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
       name: { vi: 'Persona Acid Pop', en: 'Persona Acid Pop' },
       iconName: 'quests',
       palette: ['#ff1e56', '#ffe600', '#00f0ff', '#c084fc']
+    },
+    {
+      id: 'ukiyoe',
+      name: { vi: 'Ukiyo-e Thủy Mặc', en: 'Ukiyo-e Sumi-e' },
+      iconName: 'art',
+      palette: ['#dc2626', '#d97706', '#1d4ed8', '#15803d']
     }
   ];
 
@@ -276,7 +282,7 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
               border: '1px solid var(--border-color)',
               color: 'var(--accent-gold)'
             }}>
-              11 STYLES
+              12 STYLES
             </span>
           </div>
 
