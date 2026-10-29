@@ -2,6 +2,7 @@ import React from 'react';
 import { SkillNode, Language, ThemeId } from '../types';
 import { sound } from '../soundEngine';
 import { ThemedIcon } from './ThemedIcon';
+import { ThemedCheckbox } from './ThemedCheckbox';
 
 interface QuestsViewProps {
   skills: SkillNode[];
@@ -128,32 +129,29 @@ export const QuestsView: React.FC<QuestsViewProps> = ({ skills, onToggleObjectiv
                 </span>
               </div>
 
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {skill.objectives.map(obj => (
-                  <label
+                  <div
                     key={obj.id}
                     style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      gap: '12px',
-                      cursor: 'pointer',
-                      fontSize: '0.88em',
-                      color: obj.completed ? 'var(--text-dim)' : 'var(--text-main)',
-                      textDecoration: obj.completed ? 'line-through' : 'none'
+                      backgroundColor: 'var(--bg-app)',
+                      padding: '8px 12px',
+                      border: '1px solid var(--border-color)'
                     }}>
-                    <input
-                      type="checkbox"
+                    <ThemedCheckbox
                       checked={obj.completed}
                       onChange={() => onToggleObjective(skill.id, obj.id)}
-                      style={{
-                        width: '18px',
-                        height: '18px',
-                        accentColor: 'var(--accent-green)',
-                        cursor: 'pointer'
-                      }}
+                      theme={currentTheme}
+                      label={
+                        <span style={{
+                          color: obj.completed ? 'var(--text-dim)' : 'var(--text-main)',
+                          textDecoration: obj.completed ? 'line-through' : 'none'
+                        }}>
+                          {obj.text[lang]}
+                        </span>
+                      }
                     />
-                    <span>{obj.text[lang]}</span>
-                  </label>
+                  </div>
                 ))}
               </div>
             </div>

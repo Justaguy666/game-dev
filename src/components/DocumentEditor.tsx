@@ -3,6 +3,7 @@ import { SkillNode, Language, ThemeId } from '../types';
 import { sound } from '../soundEngine';
 import { marked } from 'marked';
 import { ThemedIcon } from './ThemedIcon';
+import { ThemedCheckbox } from './ThemedCheckbox';
 
 interface DocumentEditorProps {
   skill: SkillNode;
@@ -245,30 +246,28 @@ ${content}
 
             <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
               {skill.objectives.map(obj => (
-                <label
+                <div
                   key={obj.id}
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '10px',
-                    cursor: 'pointer',
-                    fontSize: '0.88em',
-                    color: obj.completed ? 'var(--text-dim)' : 'var(--text-main)',
-                    textDecoration: obj.completed ? 'line-through' : 'none'
+                    backgroundColor: 'var(--bg-app)',
+                    padding: '8px 10px',
+                    border: '1px solid var(--border-color)'
                   }}>
-                  <input
-                    type="checkbox"
+                  <ThemedCheckbox
                     checked={obj.completed}
                     onChange={() => handleToggleObjective(obj.id)}
-                    style={{
-                      width: '16px',
-                      height: '16px',
-                      accentColor: 'var(--accent-green)',
-                      cursor: 'pointer'
-                    }}
+                    theme={currentTheme}
+                    label={
+                      <span style={{
+                        color: obj.completed ? 'var(--text-dim)' : 'var(--text-main)',
+                        textDecoration: obj.completed ? 'line-through' : 'none',
+                        fontSize: '0.9em'
+                      }}>
+                        {obj.text[lang]}
+                      </span>
+                    }
                   />
-                  <span>{obj.text[lang]}</span>
-                </label>
+                </div>
               ))}
             </div>
           </div>

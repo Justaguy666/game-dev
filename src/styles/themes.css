@@ -214,16 +214,32 @@ body {
 
 /* Game Boy 1989 Font Scale Enhancement (Crisp & Legible Pixel Sizing) */
 body.theme-gameboy {
-  font-size: 1.26rem;
-  letter-spacing: 0.035em;
+  font-size: 1.48rem;
+  letter-spacing: 0.04em;
+  font-weight: 600;
 }
 
-body.theme-gameboy h1,
-body.theme-gameboy h2,
-body.theme-gameboy h3,
-body.theme-gameboy h4 {
+body.theme-gameboy h1 {
+  font-size: 1.95rem;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+}
+
+body.theme-gameboy h2 {
+  font-size: 1.7rem;
   letter-spacing: 0.05em;
   font-weight: 700;
+}
+
+body.theme-gameboy h3 {
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+}
+
+body.theme-gameboy p {
+  font-size: 1.3rem;
+  line-height: 1.38;
 }
 
 body.theme-gameboy button,
@@ -231,13 +247,52 @@ body.theme-gameboy input,
 body.theme-gameboy select,
 body.theme-gameboy textarea {
   font-family: var(--font-mono);
-  font-size: 1.18rem;
-  letter-spacing: 0.03em;
+  font-size: 1.32rem;
+  letter-spacing: 0.035em;
+}
+
+body.theme-gameboy nav button {
+  font-size: 1.25rem;
+  padding: 6px 14px;
+}
+
+body.theme-gameboy .node-card-title {
+  font-size: 1.46rem !important;
+  line-height: 1.3 !important;
+}
+
+body.theme-gameboy .node-card-desc {
+  font-size: 1.26rem !important;
+  line-height: 1.35 !important;
+}
+
+body.theme-gameboy .node-card-badge {
+  font-size: 1.18rem !important;
 }
 
 body.theme-gameboy .markdown-body {
-  font-size: 1.25rem;
+  font-size: 1.38rem;
   line-height: 1.5;
+}
+
+body.theme-gameboy .markdown-body h1 {
+  font-size: 2rem;
+}
+
+body.theme-gameboy .markdown-body h2 {
+  font-size: 1.75rem;
+}
+
+body.theme-gameboy .markdown-body h3 {
+  font-size: 1.52rem;
+}
+
+/* Eliminate browser default focus outlines */
+button:focus-visible, 
+input:focus-visible, 
+textarea:focus-visible {
+  outline: 2px solid var(--accent-gold);
+  outline-offset: 1px;
 }
 
 /* CRT Scanlines Overlay (Toggleable) */

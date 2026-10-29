@@ -8,7 +8,7 @@ import { SkillOutlineModal } from './components/SkillOutlineModal';
 import { DocumentReaderView } from './components/DocumentReaderView';
 import { QuestsView } from './components/QuestsView';
 
-const DATA_VERSION = 'v5_tool_agnostic_22_nodes_no_emojis';
+const DATA_VERSION = 'v6_root_spacing_and_custom_themes';
 
 export const App: React.FC = () => {
   // 1. Persistent State

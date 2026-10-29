@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { SkillNode, Language, ThemeId } from '../types';
 import { sound } from '../soundEngine';
 import { ThemedIcon, IconName } from './ThemedIcon';
+import { ThemedCheckbox } from './ThemedCheckbox';
 
 interface SkillOutlineModalProps {
   skill: SkillNode;
@@ -308,33 +309,27 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
               {skill.objectives.map(obj => (
-                <label
+                <div
                   key={obj.id}
                   style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '8px',
-                    cursor: 'pointer',
-                    fontSize: '0.82rem',
-                    color: obj.completed ? 'var(--text-dim)' : 'var(--text-main)',
-                    textDecoration: obj.completed ? 'line-through' : 'none',
                     backgroundColor: 'var(--bg-app)',
-                    padding: '6px 8px',
+                    padding: '8px 10px',
                     border: '1px solid var(--border-color)'
                   }}>
-                  <input
-                    type="checkbox"
+                  <ThemedCheckbox
                     checked={obj.completed}
                     onChange={() => onToggleObjective(skill.id, obj.id)}
-                    style={{
-                      width: '14px',
-                      height: '14px',
-                      accentColor: 'var(--accent-green)',
-                      cursor: 'pointer'
-                    }}
+                    theme={currentTheme}
+                    label={
+                      <span style={{
+                        color: obj.completed ? 'var(--text-dim)' : 'var(--text-main)',
+                        textDecoration: obj.completed ? 'line-through' : 'none'
+                      }}>
+                        {obj.text[lang]}
+                      </span>
+                    }
                   />
-                  <span>{obj.text[lang]}</span>
-                </label>
+                </div>
               ))}
             </div>
           </div>

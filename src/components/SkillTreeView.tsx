@@ -225,7 +225,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
       {/* SVG Canvas World */}
       <div style={{
         width: '2750px',
-        height: '1650px',
+        height: '2000px',
         position: 'absolute',
         transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
         transformOrigin: '0 0',
@@ -295,7 +295,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
               
               {/* Header Badges */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
-                <span style={{
+                <span className="node-card-badge" style={{
                   fontSize: '9px',
                   fontWeight: 800,
                   fontFamily: 'var(--font-display)',
@@ -304,7 +304,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
                   TIER {skill.tier}
                 </span>
 
-                <span style={{
+                <span className="node-card-badge" style={{
                   fontSize: '10px',
                   fontWeight: 700,
                   display: 'flex',
@@ -320,7 +320,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
               </div>
 
               {/* Title */}
-              <h3 style={{
+              <h3 className="node-card-title" style={{
                 fontSize: '0.92em',
                 fontFamily: 'var(--font-mono)',
                 fontWeight: 800,
@@ -336,7 +336,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
               </h3>
 
               {/* Summary */}
-              <p style={{
+              <p className="node-card-desc" style={{
                 fontSize: '0.78em',
                 color: 'var(--text-muted)',
                 lineHeight: 1.45,

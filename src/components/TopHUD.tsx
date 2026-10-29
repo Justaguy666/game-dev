@@ -2,6 +2,7 @@ import React from 'react';
 import { ThemeId, ThemeMode, Language } from '../types';
 import { sound } from '../soundEngine';
 import { ThemedIcon } from './ThemedIcon';
+import { ThemedSelect } from './ThemedSelect';
 
 interface TopHUDProps {
   currentTheme: ThemeId;
@@ -43,13 +44,6 @@ export const TopHUD: React.FC<TopHUDProps> = ({
   const level = Math.floor(totalExp / 180) + 1;
   const currentLevelExp = totalExp % 180;
   const progressPercent = Math.min(100, Math.round((currentLevelExp / 180) * 100));
-
-  const themesList: { id: ThemeId; name: { vi: string; en: string } }[] = [
-    { id: 'arcade', name: { vi: '16-Bit Arcade', en: '16-Bit Arcade' } },
-    { id: 'gameboy', name: { vi: 'Game Boy DMG', en: 'Game Boy 1989' } },
-    { id: 'cyber', name: { vi: 'Cyber Mecha', en: 'Cyber Mecha' } },
-    { id: 'fantasy', name: { vi: 'Dark Fantasy', en: 'Dark Fantasy' } }
-  ];
 
   return (
     <header style={{
@@ -200,32 +194,12 @@ export const TopHUD: React.FC<TopHUDProps> = ({
 
       {/* Control Actions: Theme, Mode, Sound, Language */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        {/* Game Theme Switcher */}
-        <select
-          value={currentTheme}
-          onChange={(e) => {
-            const nextTheme = e.target.value as ThemeId;
-            sound.setTheme(nextTheme);
-            sound.playSelect();
-            onThemeChange(nextTheme);
-          }}
-          style={{
-            backgroundColor: 'var(--bg-card)',
-            color: 'var(--accent-cyan)',
-            border: '1px solid var(--border-color)',
-            padding: '5px 8px',
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.85em',
-            fontWeight: 700,
-            cursor: 'pointer',
-            outline: 'none'
-          }}>
-          {themesList.map(t => (
-            <option key={t.id} value={t.id}>
-              {t.name[lang]}
-            </option>
-          ))}
-        </select>
+        {/* Game Theme Switcher (Themed Dropdown, 0 OS default styling) */}
+        <ThemedSelect
+          currentTheme={currentTheme}
+          onThemeChange={onThemeChange}
+          lang={lang}
+        />
 
         {/* Dark / Light Toggle */}
         <button
