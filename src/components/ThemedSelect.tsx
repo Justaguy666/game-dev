@@ -109,6 +109,7 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
             return (
               <div
                 key={option.id}
+                className={`themed-select-item ${isSelected ? 'is-selected' : ''}`}
                 onClick={() => handleSelect(option.id)}
                 onMouseEnter={() => sound.playHover()}
                 style={{

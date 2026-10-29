@@ -102,8 +102,8 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
       if (!parent) return null;
       return {
         id: `${parent.id}->${child.id}`,
-        from: { x: parent.x + 130, y: parent.y + 80 },
-        to: { x: child.x + 130, y: child.y },
+        from: { x: parent.x + 140, y: parent.y + 90 },
+        to: { x: child.x + 140, y: child.y },
         status: child.status
       };
     })
@@ -283,7 +283,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
                 position: 'absolute',
                 left: `${skill.x}px`,
                 top: `${skill.y}px`,
-                width: '260px',
+                width: '280px',
                 backgroundColor: 'var(--bg-surface)',
                 border: `2px solid ${borderColor}`,
                 padding: '12px 14px',
@@ -296,7 +296,6 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
               {/* Header Badges */}
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
                 <span className="node-card-badge" style={{
-                  fontSize: '9px',
                   fontWeight: 800,
                   fontFamily: 'var(--font-display)',
                   color: isMastered ? 'var(--accent-green)' : (isLearning ? 'var(--accent-gold)' : 'var(--text-dim)')
@@ -305,23 +304,21 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
                 </span>
 
                 <span className="node-card-badge" style={{
-                  fontSize: '10px',
                   fontWeight: 700,
                   display: 'flex',
                   alignItems: 'center',
                   gap: '5px',
                   color: borderColor
                 }}>
-                  {isMastered && <ThemedIcon name="mastered" theme={currentTheme} size={12} color="var(--accent-green)" />}
-                  {isLearning && <ThemedIcon name="learning" theme={currentTheme} size={12} color="var(--accent-gold)" />}
-                  {isLocked && <ThemedIcon name="locked" theme={currentTheme} size={12} color="var(--text-dim)" />}
+                  {isMastered && <ThemedIcon name="mastered" theme={currentTheme} size={13} color="var(--accent-green)" />}
+                  {isLearning && <ThemedIcon name="learning" theme={currentTheme} size={13} color="var(--accent-gold)" />}
+                  {isLocked && <ThemedIcon name="locked" theme={currentTheme} size={13} color="var(--text-dim)" />}
                   {isMastered ? (lang === 'vi' ? 'ĐÃ LĨNH HỘI' : 'MASTERED') : (isLearning ? (lang === 'vi' ? 'ĐANG HỌC' : 'LEARNING') : (lang === 'vi' ? 'KHÓA' : 'LOCKED'))}
                 </span>
               </div>
 
               {/* Title */}
               <h3 className="node-card-title" style={{
-                fontSize: '0.92em',
                 fontFamily: 'var(--font-mono)',
                 fontWeight: 800,
                 color: 'var(--text-main)',
@@ -331,13 +328,12 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
                 alignItems: 'center',
                 gap: '8px'
               }}>
-                <ThemedIcon name={getCategoryIcon(skill.category)} theme={currentTheme} size={15} color="var(--accent-gold)" />
+                <ThemedIcon name={getCategoryIcon(skill.category)} theme={currentTheme} size={16} color="var(--accent-gold)" />
                 <span>{skill.title[lang]}</span>
               </h3>
 
               {/* Summary */}
               <p className="node-card-desc" style={{
-                fontSize: '0.78em',
                 color: 'var(--text-muted)',
                 lineHeight: 1.45,
                 marginBottom: '10px'

@@ -126,7 +126,7 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
         position: 'fixed',
         left: `${pos.x}px`,
         top: `${pos.y}px`,
-        width: '430px',
+        width: '470px',
         maxHeight: 'calc(100vh - 100px)',
         backgroundColor: 'var(--bg-surface)',
         border: `2px solid ${borderColor}`,
@@ -206,12 +206,12 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
         {/* Title */}
         <div>
           <h2 style={{
-            fontSize: '1.05rem',
+            fontSize: '1.25em',
             fontFamily: 'var(--font-mono)',
             fontWeight: 800,
             color: 'var(--text-main)',
             lineHeight: 1.35,
-            marginBottom: '6px'
+            marginBottom: '8px'
           }}>
             {skill.title[lang]}
           </h2>
@@ -222,10 +222,10 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
               <span
                 key={t}
                 style={{
-                  fontSize: '9px',
+                  fontSize: '0.82em',
                   backgroundColor: 'var(--bg-app)',
                   border: '1px solid var(--border-color)',
-                  padding: '2px 6px',
+                  padding: '2px 8px',
                   color: 'var(--text-muted)'
                 }}>
                 #{t}
@@ -236,12 +236,12 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
 
         {/* EXP Progress Bar */}
         <div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '10px', color: 'var(--text-muted)', marginBottom: '4px' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.86em', color: 'var(--text-muted)', marginBottom: '4px' }}>
             <span>{lang === 'vi' ? 'Tiến độ kinh nghiệm (EXP)' : 'Experience Progress'}</span>
             <span style={{ fontWeight: 700, color: 'var(--accent-gold)' }}>{skill.exp} / {skill.maxExp} XP</span>
           </div>
           <div style={{
-            height: '8px',
+            height: '10px',
             backgroundColor: 'var(--bg-app)',
             border: '1px solid var(--border-color)',
             overflow: 'hidden'
@@ -258,9 +258,9 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
         {/* Summary Block */}
         <div style={{
           backgroundColor: 'var(--bg-card)',
-          borderLeft: `3px solid ${borderColor}`,
-          padding: '10px 12px',
-          fontSize: '0.86rem',
+          borderLeft: `4px solid ${borderColor}`,
+          padding: '12px 14px',
+          fontSize: '0.98em',
           lineHeight: 1.5,
           color: 'var(--text-main)'
         }}>
@@ -270,7 +270,7 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
         {/* Outline / Key Concepts */}
         <div>
           <div style={{
-            fontSize: '0.8rem',
+            fontSize: '0.92em',
             fontFamily: 'var(--font-mono)',
             fontWeight: 800,
             color: 'var(--accent-cyan)',
@@ -279,12 +279,12 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
             alignItems: 'center',
             gap: '6px'
           }}>
-            <ThemedIcon name="docs" theme={currentTheme} size={13} color="var(--accent-cyan)" />
+            <ThemedIcon name="docs" theme={currentTheme} size={14} color="var(--accent-cyan)" />
             <span>{lang === 'vi' ? 'DÀN Ý KIẾN THỨC TRỌNG TÂM' : 'CORE CONCEPTS OUTLINE'}</span>
           </div>
-          <ul style={{ paddingLeft: '18px', fontSize: '0.84rem', color: 'var(--text-muted)', display: 'flex', flexDirection: 'column', gap: '5px' }}>
+          <ul style={{ paddingLeft: '20px', fontSize: '0.92em', color: 'var(--text-muted)', display: 'flex', flexDirection: 'column', gap: '6px' }}>
             {outlinePoints.map((pt, i) => (
-              <li key={i} style={{ lineHeight: 1.4 }}>
+              <li key={i} style={{ lineHeight: 1.45 }}>
                 <span style={{ color: 'var(--text-main)' }}>{pt}</span>
               </li>
             ))}
@@ -295,7 +295,7 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
         {skill.objectives.length > 0 && (
           <div>
             <div style={{
-              fontSize: '0.8rem',
+              fontSize: '0.92em',
               fontFamily: 'var(--font-mono)',
               fontWeight: 800,
               color: 'var(--accent-gold)',
@@ -304,7 +304,7 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
               alignItems: 'center',
               gap: '6px'
             }}>
-              <ThemedIcon name="quests" theme={currentTheme} size={13} color="var(--accent-gold)" />
+              <ThemedIcon name="quests" theme={currentTheme} size={14} color="var(--accent-gold)" />
               <span>{lang === 'vi' ? 'MỤC TIÊU THỰC HÀNH' : 'PRACTICAL OBJECTIVES'}</span>
             </div>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '6px' }}>
@@ -323,7 +323,8 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
                     label={
                       <span style={{
                         color: obj.completed ? 'var(--text-dim)' : 'var(--text-main)',
-                        textDecoration: obj.completed ? 'line-through' : 'none'
+                        textDecoration: obj.completed ? 'line-through' : 'none',
+                        fontSize: '0.94em'
                       }}>
                         {obj.text[lang]}
                       </span>
@@ -338,7 +339,7 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
 
       {/* Footer Actions */}
       <div style={{
-        padding: '10px 14px',
+        padding: '12px 16px',
         backgroundColor: 'var(--bg-card)',
         borderTop: '1px solid var(--border-color)',
         display: 'flex',
@@ -359,14 +360,14 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
             backgroundColor: 'var(--accent-gold)',
             color: '#111',
             border: 'none',
-            padding: '8px 14px',
+            padding: '10px 16px',
             fontFamily: 'var(--font-mono)',
-            fontSize: '0.84rem',
+            fontSize: '0.96em',
             fontWeight: 800,
             cursor: 'pointer',
             transition: 'all 0.15s ease'
           }}>
-          <ThemedIcon name="open" theme={currentTheme} size={15} color="#111" />
+          <ThemedIcon name="open" theme={currentTheme} size={16} color="#111" />
           <span>{lang === 'vi' ? 'Xem Toàn Bộ Tài Liệu & Soạn Thảo' : 'Open Full Doc & Editor'}</span>
         </button>
       </div>

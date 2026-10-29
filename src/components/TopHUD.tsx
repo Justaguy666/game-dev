@@ -115,7 +115,7 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             <span style={{
               position: 'absolute',
               top: 0, left: 0, right: 0, bottom: 0,
-              fontSize: '9px',
+              fontSize: '11px',
               fontWeight: 800,
               display: 'flex',
               alignItems: 'center',
