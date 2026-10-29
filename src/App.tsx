@@ -9,7 +9,7 @@ import { DocumentReaderView } from './components/DocumentReaderView';
 import { QuestsView } from './components/QuestsView';
 import { updateThemeFavicon } from './utils/favicon';
 
-const DATA_VERSION = 'v8_dynamic_spacing_and_card_typography';
+const DATA_VERSION = 'v9_spacious_nodes_and_max_font_support';
 
 export const App: React.FC = () => {
   // 1. Persistent State

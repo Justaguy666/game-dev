@@ -34,10 +34,17 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
 
   // Dynamic Y positioning calculated to guarantee parent-child spacing across all font scales
   const getSkillY = useCallback((skill: SkillNode): number => {
-    if (skill.tier === 0) return 45;
-    const baseT1 = Math.round(480 + Math.max(0, (fontScale - 1.0)) * 100);
-    const dynamicGap = Math.round(400 + Math.max(0, (fontScale - 1.0)) * 220);
+    if (skill.tier === 0) return 60;
+    // Tier 1 starts safely below pillar banners with comfortable breathing room
+    const baseT1 = Math.round(540 + Math.max(0, (fontScale - 1.0)) * 340);
+    // Dynamic gap between tiers: guarantees >= 260px gap even when cards grow to 450px+ at max font size
+    const dynamicGap = Math.round(480 + Math.max(0, (fontScale - 1.0)) * 520);
     return Math.round(baseT1 + (skill.tier - 1) * dynamicGap);
+  }, [fontScale]);
+
+  // Dynamic Y positioning for pillar banners (adapting as Tier 0 expands with fontScale)
+  const pillarY = useMemo(() => {
+    return Math.round(380 + Math.max(0, (fontScale - 1.0)) * 260);
   }, [fontScale]);
 
   // Full-Text Search in Skill Tree
@@ -70,8 +77,8 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
     const containerHeight = containerRef.current.clientHeight;
     const targetZoom = 0.85;
     setZoom(targetZoom);
-    const targetPanX = (containerWidth / 2) - ((skill.x + 160) * targetZoom);
-    const targetPanY = (containerHeight / 2) - ((getSkillY(skill) + 90) * targetZoom);
+    const targetPanX = (containerWidth / 2) - ((skill.x + 175) * targetZoom);
+    const targetPanY = (containerHeight / 2) - ((getSkillY(skill) + 120) * targetZoom);
     setPan({ x: Math.round(targetPanX), y: Math.round(targetPanY) });
   }, [getSkillY]);
 
@@ -247,14 +254,14 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
   };
 
   // Pillar banners to display on canvas above Tier 1 (Generous Y spacing from Tier 1 cards)
-  const pillarBanners = [
+  const pillarBanners = useMemo(() => [
     {
       domainId: 'design' as DomainId,
       code: '01',
       title: { vi: '01. GAME DESIGN & CƠ CHẾ', en: '01. GAME DESIGN & SYSTEMS' },
       subtitle: { vi: 'Core Loop • Cân Bằng • Game Feel', en: 'Core Loop • Systems Balance • Juice' },
-      x: 100,
-      y: 350,
+      x: 80,
+      y: pillarY,
       color: getDomainColor('design', currentTheme, themeMode),
       icon: 'design' as IconName
     },
@@ -263,8 +270,8 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
       code: '02',
       title: { vi: '02. LẬP TRÌNH & KIẾN TRÚC', en: '02. TECH & ARCHITECTURE' },
       subtitle: { vi: 'DeltaTime • Vector Math • FSM/ECS', en: 'DeltaTime • 2D Math • FSM/ECS • AI' },
-      x: 660,
-      y: 350,
+      x: 680,
+      y: pillarY,
       color: getDomainColor('tech', currentTheme, themeMode),
       icon: 'code' as IconName
     },
@@ -273,8 +280,8 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
       code: '03',
       title: { vi: '03. KIỂM THỬ QA & HIỆU NĂNG', en: '03. QA & PERFORMANCE' },
       subtitle: { vi: 'Bug Taxonomy • Headless Bot • Profiling', en: 'Bug Taxonomy • Headless Bot • Profiling' },
-      x: 1220,
-      y: 350,
+      x: 1280,
+      y: pillarY,
       color: getDomainColor('qa', currentTheme, themeMode),
       icon: 'qa' as IconName
     },
@@ -283,8 +290,8 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
       code: '04',
       title: { vi: '04. NGHỆ THUẬT & TECHNICAL ART', en: '04. ART & TECHNICAL VISUALS' },
       subtitle: { vi: 'Silhouette • Diễn Hoạt • Shaders', en: 'Silhouette • Animation • Shaders • UI' },
-      x: 1780,
-      y: 350,
+      x: 1880,
+      y: pillarY,
       color: getDomainColor('art', currentTheme, themeMode),
       icon: 'art' as IconName
     },
@@ -293,14 +300,14 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
       code: '05',
       title: { vi: '05. ÂM THANH & SOUND DESIGN', en: '05. AUDIO & SOUND DESIGN' },
       subtitle: { vi: 'Ký Hiệu Học • Adaptive SFX • 3D Spatial', en: 'Semiotics • Adaptive Audio • 3D Spatial' },
-      x: 2340,
-      y: 350,
+      x: 2480,
+      y: pillarY,
       color: getDomainColor('audio', currentTheme, themeMode),
       icon: 'volume' as IconName
     }
-  ];
+  ], [pillarY, currentTheme, themeMode]);
 
-  // Find connections (Dynamically using getSkillY and 320px center width)
+  // Find connections (Dynamically using getSkillY and 350px center width)
   const connections = skills
     .filter(s => s.parentId)
     .map(child => {
@@ -309,13 +316,13 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
       const parentY = getSkillY(parent);
       const childY = getSkillY(child);
       const parentHeight = parent.tier === 0
-        ? Math.round(180 + Math.max(0, fontScale - 1.0) * 70)
-        : Math.round(195 + Math.max(0, fontScale - 1.0) * 70);
+        ? Math.round(200 + Math.max(0, fontScale - 1.0) * 160)
+        : Math.round(210 + Math.max(0, fontScale - 1.0) * 200);
 
       return {
         id: `${parent.id}->${child.id}`,
-        from: { x: parent.x + 160, y: parentY + parentHeight },
-        to: { x: child.x + 160, y: childY },
+        from: { x: parent.x + 175, y: parentY + parentHeight },
+        to: { x: child.x + 175, y: childY },
         status: child.status,
         childCategory: child.category,
         parentId: parent.id,
@@ -756,8 +763,8 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
 
       {/* SVG Canvas World */}
       <div style={{
-        width: '2900px',
-        height: '3200px',
+        width: '3150px',
+        height: '4600px',
         position: 'absolute',
         transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
         transformOrigin: '0 0',
@@ -769,10 +776,10 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
             key={p.domainId}
             style={{
               position: 'absolute',
-              left: `${p.x - 12}px`,
-              top: '335px',
-              width: '344px',
-              height: '2800px',
+              left: `${p.x - 14}px`,
+              top: `${pillarY - 15}px`,
+              width: '378px',
+              height: `${4200 - pillarY}px`,
               backgroundColor: selectedDomain === p.domainId ? 'rgba(255, 255, 255, 0.025)' : 'transparent',
               border: selectedDomain === p.domainId ? `1px dashed ${p.color}` : '1px dashed rgba(255, 255, 255, 0.04)',
               borderRadius: '2px',
@@ -818,9 +825,9 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
         {/* Root Nexus Banner */}
         <div style={{
           position: 'absolute',
-          left: '1220px',
-          top: '8px',
-          width: '320px',
+          left: '1280px',
+          top: '12px',
+          width: '350px',
           textAlign: 'center',
           pointerEvents: 'none'
         }}>
@@ -830,7 +837,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
             color: getDomainColor('root', currentTheme, themeMode),
             letterSpacing: '0.08em',
             backgroundColor: 'var(--bg-card)',
-            padding: '3px 12px',
+            padding: '4px 14px',
             border: `1px solid ${getDomainColor('root', currentTheme, themeMode)}`,
             display: 'inline-block'
           }}>
@@ -850,7 +857,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                 position: 'absolute',
                 left: `${p.x}px`,
                 top: `${p.y}px`,
-                width: '320px',
+                width: '350px',
                 backgroundColor: 'var(--bg-surface)',
                 border: `2px solid ${p.color}`,
                 padding: '8px 12px',
@@ -863,9 +870,9 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
               }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
                 <ThemedIcon name={p.icon} theme={currentTheme} size={15} color={p.color} />
-                <span style={{
+                <span className="domain-banner-title" style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: '0.74em',
+                  fontSize: '0.72em',
                   fontWeight: 800,
                   color: p.color,
                   letterSpacing: '0.03em',
