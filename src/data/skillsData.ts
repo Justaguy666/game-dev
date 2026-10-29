@@ -90,7 +90,7 @@ The study of game creation **must never be shackled to any single commercial too
     maxExp: 150,
     parentId: 'root-game-dev',
     x: 100,
-    y: 380,
+    y: 420,
     tags: ['game-design', 'core-loop', 'psychology', 'mda-framework'],
     summary: {
       vi: 'Mô hình MDA, vòng lặp 30 giây và chu trình phản hồi chi phối động lực gắn bó của người chơi.',
@@ -173,7 +173,7 @@ The study of game creation **must never be shackled to any single commercial too
     maxExp: 150,
     parentId: 'design-core-loop',
     x: 100,
-    y: 680,
+    y: 820,
     tags: ['level-design', 'spatial-pacing', 'guidance', 'flow'],
     summary: {
       vi: 'Điều hướng tiềm thức người chơi, cấu trúc không gian Pinch & Release và nhịp độ căng thẳng - giải tỏa.',
@@ -244,7 +244,7 @@ A well-architected level directs players intuitively without relying on intrusiv
     maxExp: 150,
     parentId: 'design-level-spatial',
     x: 100,
-    y: 980,
+    y: 1220,
     tags: ['game-feel', 'juice', 'input-buffering', 'coyote-time'],
     summary: {
       vi: 'Độ nảy tương tác, dung sai điều khiển vị tha (Coyote time, Buffering) và cảm giác thỏa mãn trong từng thao tác.',
@@ -309,7 +309,7 @@ Human reaction times carry microsecond variances. Great games quietly forgive me
     maxExp: 200,
     parentId: 'design-game-feel',
     x: 100,
-    y: 1280,
+    y: 1620,
     tags: ['economy', 'balancing', 'sinks-taps', 'progression'],
     summary: {
       vi: 'Mô hình Taps & Sinks, đường cong tiến trình (Linear/Sigmoid), và lý thuyết cân bằng rủi ro - phần thưởng.',
@@ -383,7 +383,7 @@ Meaningful gameplay emerges from trade-offs: massive burst damage balanced by he
     maxExp: 150,
     parentId: 'root-game-dev',
     x: 660,
-    y: 380,
+    y: 420,
     tags: ['programming', 'gameloop', 'fps', 'deltatime', 'architecture'],
     summary: {
       vi: 'Kiến trúc vòng lặp lõi, kỹ thuật Fixed Timestep, Accumulator pattern và tính độc lập với tốc độ khung hình.',
@@ -498,7 +498,7 @@ while (gameIsRunning) {
     maxExp: 150,
     parentId: 'prog-game-loop',
     x: 660,
-    y: 680,
+    y: 820,
     tags: ['math', 'vectors', 'physics', 'kinematics', 'collisions'],
     summary: {
       vi: 'Không gian Euclid, Dot product tầm nhìn, phản xạ mặt phẳng và va chạm AABB / Hình tròn.',
@@ -591,7 +591,7 @@ bool CheckAABBCollision(const Rect& a, const Rect& b) {
     maxExp: 150,
     parentId: 'prog-math-physics',
     x: 660,
-    y: 980,
+    y: 1220,
     tags: ['architecture', 'design-patterns', 'fsm', 'ecs', 'object-pool'],
     summary: {
       vi: 'Finite State Machine (FSM), Component-Based / ECS, Event Bus tách rời và Object Pooling chống phân mảnh RAM.',
@@ -663,7 +663,7 @@ Instantiating and discarding hundreds of projectiles per minute triggers catastr
     maxExp: 200,
     parentId: 'prog-architecture-patterns',
     x: 660,
-    y: 1280,
+    y: 1620,
     tags: ['ai', 'pathfinding', 'steering', 'behavior-tree', 'a-star'],
     summary: {
       vi: 'Thuật toán tìm đường A*, hành vi bầy đàn Steering Behaviors (Seek, Flee, Arrive) và Cây hành vi (Behavior Trees).',
@@ -742,7 +742,7 @@ The modular industry standard for hierarchical AI decision-making:
     maxExp: 300,
     parentId: 'prog-ai-behaviors',
     x: 660,
-    y: 1580,
+    y: 2020,
     tags: ['boss', 'ai', 'fsm', 'climax', 'telegraphing'],
     summary: {
       vi: 'Đỉnh cao tích hợp: State Machine đa giai đoạn (Multi-phase), Telegraphing đòn đánh và nhịp độ cao trào.',
@@ -816,7 +816,7 @@ Devastating strikes must feature distinct 300ms - 600ms visual/auditory wind-up 
     maxExp: 150,
     parentId: 'root-game-dev',
     x: 1220,
-    y: 380,
+    y: 420,
     tags: ['qa', 'testing', 'debugging', 'bug-lifecycle', 'methodology'],
     summary: {
       vi: 'Phân loại mức độ nghiêm trọng của lỗi, kiểm thử giá trị biên (Boundary testing) và quy trình tái hiện bug.',
@@ -891,7 +891,7 @@ Every actionable bug report must document: **Steps to Reproduce (100% determinis
     maxExp: 150,
     parentId: 'test-foundations-qa',
     x: 1220,
-    y: 680,
+    y: 820,
     tags: ['testing', 'automation', 'headless', 'unit-tests', 'simulation'],
     summary: {
       vi: 'Chạy game ở chế độ Headless (không cần bật đồ họa), Unit Test logic chiến đấu và Bot mô phỏng hàng triệu trận đánh.',
@@ -989,7 +989,7 @@ Deploy lightweight headless AI bots to simulate 10,000 matches in minutes. Analy
     maxExp: 150,
     parentId: 'test-automated-headless',
     x: 1220,
-    y: 980,
+    y: 1220,
     tags: ['performance', 'profiling', 'memory', 'fps', 'optimization'],
     summary: {
       vi: 'Định mức 16.6ms (60 FPS), tìm nút thắt cổ chai CPU/GPU, Draw Calls và rò rỉ bộ nhớ (Memory Leaks).',
@@ -1064,7 +1064,7 @@ Issuing individual draw commands for 500 foliage sprites chokes the CPU-GPU bus.
     maxExp: 200,
     parentId: 'test-profiling-perf',
     x: 1220,
-    y: 1280,
+    y: 1620,
     tags: ['playtesting', 'ux', 'telemetry', 'heatmaps', 'psychology'],
     summary: {
       vi: 'Giao thức kiểm thử ẩn danh (Blind playtest), loại bỏ thiên kiến quan sát và phân tích dữ liệu nhiệt (Heatmaps).',
@@ -1134,7 +1134,7 @@ However, their proposed solutions are rarely aligned with systemic design. It is
     maxExp: 300,
     parentId: 'test-playtesting-ux',
     x: 1220,
-    y: 1580,
+    y: 2020,
     tags: ['production', 'scope', 'polish', 'release', 'vertical-slice'],
     summary: {
       vi: 'Chống bệnh phình tính năng (Feature Creep), hoàn thiện bản Vertical Slice và quy tắc 80/20 trong công đoạn Polish.',
@@ -1210,7 +1210,7 @@ The transformative difference between a mediocre prototype and an unforgettable 
     maxExp: 150,
     parentId: 'root-game-dev',
     x: 1780,
-    y: 380,
+    y: 420,
     tags: ['art', 'silhouette', 'readability', 'color-theory', 'values'],
     summary: {
       vi: 'Độ rõ nét hình bóng (Silhouette), thang giá trị sáng tối (Value hierarchy) và lý thuyết màu sắc dẫn dắt cảm xúc.',
@@ -1283,7 +1283,7 @@ Deploy complementary color contrasts (Warm amber vs cool cyan) to immediately hi
     maxExp: 150,
     parentId: 'art-visual-principles',
     x: 1780,
-    y: 680,
+    y: 820,
     tags: ['animation', '12-principles', 'anticipation', 'squash-stretch', 'responsive'],
     summary: {
       vi: '12 nguyên lý hoạt hình thích ứng cho game: Dự báo (Anticipation), Co giãn (Squash & Stretch) và Frame Canceling.',
@@ -1352,7 +1352,7 @@ Allows skilled players to cancel lengthy recovery frames with timely Dash or Par
     maxExp: 150,
     parentId: 'art-animation-dynamics',
     x: 1780,
-    y: 980,
+    y: 1220,
     tags: ['shaders', 'tech-art', 'vfx', 'glsl', 'post-processing'],
     summary: {
       vi: 'Đường ống xử lý đồ họa (Graphics Pipeline), Vertex / Fragment Shaders, biến dạng UV và hiệu ứng hậu kỳ (Post-processing).',
@@ -1423,7 +1423,7 @@ Rather than hand-drawing hundreds of frames for flowing water, portals, or energ
     maxExp: 150,
     parentId: 'art-shaders-tech-art',
     x: 1780,
-    y: 1280,
+    y: 1620,
     tags: ['ui', 'ux', 'diegetic', 'accessibility', 'hud'],
     summary: {
       vi: '4 mô hình giao diện: Diegetic, Spatial, Non-Diegetic và Meta. Tối ưu tải trọng nhận thức và khả năng tiếp cận (Accessibility).',
@@ -1494,7 +1494,7 @@ Provide robust colorblind filter modes (Protanopia, Deuteranopia, Tritanopia), s
     maxExp: 150,
     parentId: 'root-game-dev',
     x: 2340,
-    y: 380,
+    y: 420,
     tags: ['audio', 'sfx', 'semiotics', 'feedback', 'frequencies'],
     summary: {
       vi: 'Phân tầng tín hiệu âm thanh (Phần thưởng, Cảnh báo, Xác nhận), cân bằng dải tần EQ và dải động (Dynamic range).',
@@ -1563,7 +1563,7 @@ Prevents acoustic muddiness during chaotic combat engagements:
     maxExp: 150,
     parentId: 'audio-sound-principles',
     x: 2340,
-    y: 680,
+    y: 820,
     tags: ['audio', 'adaptive-audio', 'stems', 'procedural', 'pitch-randomization'],
     summary: {
       vi: 'Nhạc nền đa tầng (Vertical Layering), biến thiên cường độ theo máu và ngẫu nhiên hóa cao độ chống mệt tai.',
@@ -1632,7 +1632,7 @@ Hearing an identical audio sample 4,000 times during a play session causes acute
     maxExp: 150,
     parentId: 'audio-interactive-systems',
     x: 2340,
-    y: 980,
+    y: 1220,
     tags: ['audio', 'spatial-audio', 'occlusion', 'ducking', 'mixing'],
     summary: {
       vi: 'Không gian 3D, suy giảm khoảng cách, cản âm qua tường (Occlusion) và nén giảm âm nền tự động (Ducking).',

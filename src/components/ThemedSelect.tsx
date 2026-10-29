@@ -20,10 +20,10 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const themesList: ThemeOption[] = [
-    { id: 'arcade', name: { vi: 'Arcade 16-Bit', en: '16-Bit Arcade' }, iconName: 'brand' },
+    { id: 'arcade', name: { vi: 'Arcade 16-Bit', en: '16-Bit Arcade' }, iconName: 'tv' },
     { id: 'gameboy', name: { vi: 'Game Boy DMG', en: 'Game Boy 1989' }, iconName: 'brand' },
-    { id: 'cyber', name: { vi: 'Cyber Mecha', en: 'Cyber Mecha' }, iconName: 'brand' },
-    { id: 'fantasy', name: { vi: 'Dark Fantasy', en: 'Dark Fantasy' }, iconName: 'brand' }
+    { id: 'cyber', name: { vi: 'Cyber Mecha', en: 'Cyber Mecha' }, iconName: 'code' },
+    { id: 'fantasy', name: { vi: 'Dark Fantasy', en: 'Dark Fantasy' }, iconName: 'quests' }
   ];
 
   const currentOption = themesList.find(t => t.id === currentTheme) || themesList[0];

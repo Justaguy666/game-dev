@@ -8,7 +8,7 @@ import { SkillOutlineModal } from './components/SkillOutlineModal';
 import { DocumentReaderView } from './components/DocumentReaderView';
 import { QuestsView } from './components/QuestsView';
 
-const DATA_VERSION = 'v6_root_spacing_and_custom_themes';
+const DATA_VERSION = 'v7_generous_tier_spacing_and_card_clean';
 
 export const App: React.FC = () => {
   // 1. Persistent State
@@ -22,6 +22,11 @@ export const App: React.FC = () => {
 
   const [lang, setLang] = useState<Language>(() => {
     return (localStorage.getItem('gamedev_lang') as Language) || 'vi';
+  });
+
+  const [fontScale, setFontScale] = useState<number>(() => {
+    const saved = localStorage.getItem('gamedev_font_scale');
+    return saved ? parseFloat(saved) : 1.0;
   });
 
   const [isCrtOn, setIsCrtOn] = useState<boolean>(() => {
@@ -66,6 +71,11 @@ export const App: React.FC = () => {
   useEffect(() => {
     localStorage.setItem('gamedev_lang', lang);
   }, [lang]);
+
+  useEffect(() => {
+    document.documentElement.style.setProperty('--font-scale', `${fontScale}`);
+    localStorage.setItem('gamedev_font_scale', `${fontScale}`);
+  }, [fontScale]);
 
   useEffect(() => {
     localStorage.setItem('gamedev_crt', isCrtOn.toString());
@@ -133,6 +143,8 @@ export const App: React.FC = () => {
         onThemeModeToggle={() => setThemeMode(m => m === 'dark' ? 'light' : 'dark')}
         lang={lang}
         onLangToggle={() => setLang(l => l === 'vi' ? 'en' : 'vi')}
+        fontScale={fontScale}
+        onFontScaleChange={setFontScale}
         isCrtOn={isCrtOn}
         onCrtToggle={() => setIsCrtOn(c => !c)}
         activeView={activeView}

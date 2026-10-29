@@ -31,7 +31,8 @@ export type IconName =
   | 'boss'
   | 'production'
   | 'drag'
-  | 'open';
+  | 'open'
+  | 'font';
 
 interface ThemedIconProps {
   name: IconName;
@@ -306,6 +307,15 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
             <path d="M14 3h7v7M21 3l-9 9M5 5H3v16h16v-2" stroke={color} strokeWidth="2" fill="none" />
           </svg>
         );
+      case 'font':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="7" y="3" width="10" height="2" fill={color} />
+            <rect x="5" y="5" width="4" height="16" fill={color} />
+            <rect x="15" y="5" width="4" height="16" fill={color} />
+            <rect x="7" y="11" width="10" height="3" fill={color} />
+          </svg>
+        );
     }
   }
 
@@ -523,6 +533,12 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
             <path d="M12 4h8v8M20 4l-9 9M4 8v12h12" stroke={color} strokeWidth="2" fill="none" />
           </svg>
         );
+      case 'font':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <path d="M8 3h8v3h2v15h-4v-6h-4v6H6V6h2V3zm2 6h4V6h-4v3z" fill={color} />
+          </svg>
+        );
     }
   }
 
@@ -567,10 +583,14 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
             <polygon points="12,7 17,12 12,17 7,12" fill={color} />
           </svg>
         );
-      case 'moon': // Night Stealth Arc
+      case 'moon': // Cyber Stealth Night Crescent
         return (
           <svg {...commonSvgProps}>
-            <path d="M12 2A10 10 0 002 12a10 10 0 0010 10 10 10 0 010-20z" fill={color} />
+            <path
+              d="M12 2A10 10 0 1 0 22 12a10.2 10.2 0 0 1-10-10z"
+              fill={color}
+            />
+            <polygon points="17,6 19,8 17,10 15,8" fill={color} />
           </svg>
         );
       case 'tv': // HUD Visor Waveform
@@ -754,6 +774,13 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
         return (
           <svg {...commonSvgProps}>
             <path d="M13 3h8v8M21 3l-10 10M5 7H3v14h14v-2" stroke={color} strokeWidth="1.8" fill="none" />
+          </svg>
+        );
+      case 'font':
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,2 19,22 15,22 13.5,17 10.5,17 9,22 5,22" fill="none" stroke={color} strokeWidth="1.8" />
+            <line x1="10" y1="14" x2="14" y2="14" stroke={color} strokeWidth="2" />
           </svg>
         );
     }
@@ -974,6 +1001,12 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
         return (
           <svg {...commonSvgProps}>
             <path d="M7 21V7a5 5 0 0110 0v14M12 11v4" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'font':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M12 2l7 20h-3l-2-6h-4l-2 6H5l7-20zm0 6l-1.5 5h3L12 8z" fill={color} />
           </svg>
         );
     }

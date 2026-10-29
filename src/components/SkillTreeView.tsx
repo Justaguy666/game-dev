@@ -1,83 +1,85 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { SkillNode, Language, ThemeId } from '../types';
-import { sound } from '../soundEngine';
 import { ThemedIcon, IconName } from './ThemedIcon';
+import { sound } from '../soundEngine';
 
 interface SkillTreeViewProps {
   skills: SkillNode[];
   onSelectSkill: (skill: SkillNode) => void;
-  onCloseDetail?: () => void;
+  onCloseDetail: () => void;
   lang: Language;
   currentTheme: ThemeId;
 }
 
-export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSkill, onCloseDetail, lang, currentTheme }) => {
-  const [zoom, setZoom] = useState<number>(0.85);
-  const [pan, setPan] = useState<{ x: number; y: number }>({ x: -500, y: 30 });
-  const [isDragging, setIsDragging] = useState<boolean>(false);
-  const [dragStart, setDragStart] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
-
+export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
+  skills,
+  onSelectSkill,
+  lang,
+  currentTheme
+}) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [zoom, setZoom] = useState(0.85);
+  const [pan, setPan] = useState({ x: -280, y: 20 });
+  const [isDragging, setIsDragging] = useState(false);
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
 
-  // Mouse wheel zoom towards cursor
-  const handleWheel = (e: React.WheelEvent) => {
-    e.preventDefault();
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const mouseX = e.clientX - rect.left;
-    const mouseY = e.clientY - rect.top;
-
-    const zoomDelta = e.deltaY < 0 ? 1.08 : 0.92;
-    setZoom(prevZoom => {
-      const nextZoom = Math.min(2.2, Math.max(0.35, prevZoom * zoomDelta));
-      if (nextZoom === prevZoom) return prevZoom;
-
-      setPan(prevPan => ({
-        x: mouseX - (mouseX - prevPan.x) * (nextZoom / prevZoom),
-        y: mouseY - (mouseY - prevPan.y) * (nextZoom / prevZoom)
-      }));
-
-      return nextZoom;
-    });
-  };
-
-  // Mouse drag handlers for panning
+  // Pan interaction
   const handleMouseDown = (e: React.MouseEvent) => {
-    if (e.button !== 0) return; // only left click
-    
-    // Close detail panel when clicking directly on canvas background
-    const target = e.target as HTMLElement;
-    if (target === containerRef.current || target.tagName === 'svg' || target.tagName === 'path') {
-      onCloseDetail?.();
-    }
-
+    // Only drag with left mouse button if not clicking interactive elements
+    if (e.button !== 0) return;
+    if ((e.target as HTMLElement).closest('.node-card, button, input')) return;
     setIsDragging(true);
     setDragStart({ x: e.clientX - pan.x, y: e.clientY - pan.y });
   };
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const handleMouseMove = useCallback((e: React.MouseEvent) => {
     if (!isDragging) return;
-    const dx = Math.abs(e.clientX - (dragStart.x + pan.x));
-    const dy = Math.abs(e.clientY - (dragStart.y + pan.y));
-    // If panning actively, close detail card so view is clean
-    if (dx > 12 || dy > 12) {
-      onCloseDetail?.();
-    }
-
     setPan({
       x: e.clientX - dragStart.x,
       y: e.clientY - dragStart.y
     });
-  };
+  }, [isDragging, dragStart]);
 
   const handleMouseUp = () => {
     setIsDragging(false);
   };
 
+  // Zoom interaction via Mouse Wheel
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9;
+    const newZoom = Math.min(Math.max(0.4, zoom * zoomFactor), 1.8);
+
+    if (containerRef.current) {
+      const rect = containerRef.current.getBoundingClientRect();
+      const mouseX = e.clientX - rect.left;
+      const mouseY = e.clientY - rect.top;
+
+      // Zoom towards mouse position
+      const newPanX = mouseX - (mouseX - pan.x) * (newZoom / zoom);
+      const newPanY = mouseY - (mouseY - pan.y) * (newZoom / zoom);
+
+      setZoom(newZoom);
+      setPan({ x: newPanX, y: newPanY });
+    }
+  };
+
+  // Center tree on mount
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'r' && (e.ctrlKey || e.metaKey)) return;
+      if (e.key === 'Home') {
+        resetView();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   const resetView = () => {
     sound.playClick();
     setZoom(0.85);
-    setPan({ x: -500, y: 30 });
+    setPan({ x: -280, y: 20 });
   };
 
   const getCategoryIcon = (category: string): IconName => {
@@ -102,8 +104,8 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
       if (!parent) return null;
       return {
         id: `${parent.id}->${child.id}`,
-        from: { x: parent.x + 140, y: parent.y + 90 },
-        to: { x: child.x + 140, y: child.y },
+        from: { x: parent.x + 145, y: parent.y + 110 },
+        to: { x: child.x + 145, y: child.y },
         status: child.status
       };
     })
@@ -128,57 +130,83 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
         backgroundSize: '24px 24px'
       }}>
       
-      {/* HUD Controls Overlay */}
+      {/* HUD Controls Overlay with Zoom Percentage */}
       <div style={{
         position: 'absolute',
         top: '16px',
         right: '16px',
         display: 'flex',
-        gap: '8px',
+        flexDirection: 'column',
+        alignItems: 'flex-end',
+        gap: '6px',
         zIndex: 50
       }}>
-        <button
-          onClick={() => { sound.playClick(); setZoom(z => Math.min(1.8, z + 0.15)); }}
-          title="Phóng to (Zoom In)"
-          style={{
-            backgroundColor: 'var(--bg-surface)',
-            color: 'var(--text-main)',
-            border: '1px solid var(--border-color)',
-            padding: '8px',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center'
-          }}>
-          <ThemedIcon name="zoomIn" theme={currentTheme} size={16} />
-        </button>
-        <button
-          onClick={() => { sound.playClick(); setZoom(z => Math.max(0.5, z - 0.15)); }}
-          title="Thu nhỏ (Zoom Out)"
-          style={{
-            backgroundColor: 'var(--bg-surface)',
-            color: 'var(--text-main)',
-            border: '1px solid var(--border-color)',
-            padding: '8px',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center'
-          }}>
-          <ThemedIcon name="zoomOut" theme={currentTheme} size={16} />
-        </button>
-        <button
-          onClick={resetView}
-          title="Đặt lại khung nhìn (Reset View)"
-          style={{
-            backgroundColor: 'var(--bg-surface)',
-            color: 'var(--text-main)',
-            border: '1px solid var(--border-color)',
-            padding: '8px',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center'
-          }}>
-          <ThemedIcon name="reset" theme={currentTheme} size={16} />
-        </button>
+        <div style={{ display: 'flex', gap: '6px' }}>
+          <button
+            onClick={() => { sound.playClick(); setZoom(z => Math.min(1.8, parseFloat((z + 0.15).toFixed(2)))); }}
+            title="Phóng to (Zoom In)"
+            style={{
+              backgroundColor: 'var(--bg-surface)',
+              color: 'var(--text-main)',
+              border: '1px solid var(--border-color)',
+              padding: '7px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              boxShadow: 'var(--card-shadow)'
+            }}>
+            <ThemedIcon name="zoomIn" theme={currentTheme} size={15} />
+          </button>
+          <button
+            onClick={() => { sound.playClick(); setZoom(z => Math.max(0.4, parseFloat((z - 0.15).toFixed(2)))); }}
+            title="Thu nhỏ (Zoom Out)"
+            style={{
+              backgroundColor: 'var(--bg-surface)',
+              color: 'var(--text-main)',
+              border: '1px solid var(--border-color)',
+              padding: '7px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              boxShadow: 'var(--card-shadow)'
+            }}>
+            <ThemedIcon name="zoomOut" theme={currentTheme} size={15} />
+          </button>
+          <button
+            onClick={resetView}
+            title="Đặt lại khung nhìn (Reset View)"
+            style={{
+              backgroundColor: 'var(--bg-surface)',
+              color: 'var(--text-main)',
+              border: '1px solid var(--border-color)',
+              padding: '7px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              boxShadow: 'var(--card-shadow)'
+            }}>
+            <ThemedIcon name="reset" theme={currentTheme} size={15} />
+          </button>
+        </div>
+
+        {/* Zoom Percentage Display Below Controls */}
+        <div style={{
+          backgroundColor: 'var(--bg-surface)',
+          border: '1px solid var(--border-color)',
+          padding: '3px 8px',
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.74em',
+          fontWeight: 800,
+          color: 'var(--accent-gold)',
+          letterSpacing: '0.04em',
+          boxShadow: 'var(--card-shadow)',
+          display: 'flex',
+          alignItems: 'center',
+          gap: '4px'
+        }}>
+          <span>ZOOM:</span>
+          <span style={{ color: 'var(--text-main)' }}>{Math.round(zoom * 100)}%</span>
+        </div>
       </div>
 
       {/* Legend Overlay */}
@@ -191,8 +219,8 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
         padding: '10px 14px',
         display: 'flex',
         flexDirection: 'column',
-        gap: '8px',
-        fontSize: '0.8em',
+        gap: '6px',
+        fontSize: '0.78em',
         fontFamily: 'var(--font-mono)',
         zIndex: 50,
         boxShadow: 'var(--card-shadow)'
@@ -209,23 +237,23 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
           <span>{lang === 'vi' ? 'TRẠNG THÁI KỸ NĂNG' : 'SKILL TREE LEGEND'}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <ThemedIcon name="mastered" theme={currentTheme} size={14} color="var(--accent-green)" />
+          <ThemedIcon name="mastered" theme={currentTheme} size={13} color="var(--accent-green)" />
           <span>{lang === 'vi' ? 'Đã lĩnh hội (Mastered)' : 'Mastered'}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <ThemedIcon name="learning" theme={currentTheme} size={14} color="var(--accent-gold)" />
+          <ThemedIcon name="learning" theme={currentTheme} size={13} color="var(--accent-gold)" />
           <span>{lang === 'vi' ? 'Đang luyện tập (Learning)' : 'In Training'}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <ThemedIcon name="locked" theme={currentTheme} size={14} color="var(--border-color)" />
+          <ThemedIcon name="locked" theme={currentTheme} size={13} color="var(--border-color)" />
           <span>{lang === 'vi' ? 'Chưa mở khóa (Locked)' : 'Locked'}</span>
         </div>
       </div>
 
       {/* SVG Canvas World */}
       <div style={{
-        width: '2750px',
-        height: '2000px',
+        width: '2800px',
+        height: '2500px',
         position: 'absolute',
         transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
         transformOrigin: '0 0',
@@ -250,7 +278,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
                 strokeDasharray={conn.status === 'locked' ? '4 4' : 'none'}
                 style={{
                   filter: conn.status === 'mastered' ? 'drop-shadow(0 0 4px var(--accent-green))' : 'none',
-                  opacity: conn.status === 'locked' ? 0.45 : 0.85
+                  opacity: conn.status === 'locked' ? 0.4 : 0.85
                 }}
               />
             );
@@ -274,6 +302,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
           return (
             <div
               key={skill.id}
+              className="node-card"
               onClick={() => {
                 sound.playNodeClick();
                 onSelectSkill(skill);
@@ -283,18 +312,12 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
                 position: 'absolute',
                 left: `${skill.x}px`,
                 top: `${skill.y}px`,
-                width: '280px',
-                backgroundColor: 'var(--bg-surface)',
                 border: `2px solid ${borderColor}`,
-                padding: '12px 14px',
-                cursor: 'pointer',
-                boxShadow: glow,
-                transition: 'all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1)',
-                userSelect: 'none'
+                boxShadow: glow
               }}>
               
               {/* Header Badges */}
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span className="node-card-badge" style={{
                   fontWeight: 800,
                   fontFamily: 'var(--font-display)',
@@ -307,54 +330,63 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
                   fontWeight: 700,
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '5px',
+                  gap: '4px',
                   color: borderColor
                 }}>
-                  {isMastered && <ThemedIcon name="mastered" theme={currentTheme} size={13} color="var(--accent-green)" />}
-                  {isLearning && <ThemedIcon name="learning" theme={currentTheme} size={13} color="var(--accent-gold)" />}
-                  {isLocked && <ThemedIcon name="locked" theme={currentTheme} size={13} color="var(--text-dim)" />}
+                  {isMastered && <ThemedIcon name="mastered" theme={currentTheme} size={12} color="var(--accent-green)" />}
+                  {isLearning && <ThemedIcon name="learning" theme={currentTheme} size={12} color="var(--accent-gold)" />}
+                  {isLocked && <ThemedIcon name="locked" theme={currentTheme} size={12} color="var(--text-dim)" />}
                   {isMastered ? (lang === 'vi' ? 'ĐÃ LĨNH HỘI' : 'MASTERED') : (isLearning ? (lang === 'vi' ? 'ĐANG HỌC' : 'LEARNING') : (lang === 'vi' ? 'KHÓA' : 'LOCKED'))}
                 </span>
               </div>
 
-              {/* Title */}
-              <h3 className="node-card-title" style={{
-                fontFamily: 'var(--font-mono)',
-                fontWeight: 800,
-                color: 'var(--text-main)',
-                marginBottom: '6px',
-                lineHeight: 1.3,
-                display: 'flex',
-                alignItems: 'center',
-                gap: '8px'
-              }}>
-                <ThemedIcon name={getCategoryIcon(skill.category)} theme={currentTheme} size={16} color="var(--accent-gold)" />
+              {/* Title with Category Icon */}
+              <h3 className="node-card-title">
+                <ThemedIcon name={getCategoryIcon(skill.category)} theme={currentTheme} size={15} color="var(--accent-gold)" />
                 <span>{skill.title[lang]}</span>
               </h3>
 
-              {/* Summary */}
-              <p className="node-card-desc" style={{
-                color: 'var(--text-muted)',
-                lineHeight: 1.45,
-                marginBottom: '10px'
-              }}>
+              {/* Tags */}
+              <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+                {skill.tags.slice(0, 2).map(tag => (
+                  <span key={tag} className="node-card-tag">#{tag}</span>
+                ))}
+              </div>
+
+              {/* Summary (Clamped neatly to 2 lines max) */}
+              <p className="node-card-desc">
                 {skill.summary[lang]}
               </p>
 
-              {/* Progress Bar */}
-              <div style={{
-                width: '100%',
-                height: '8px',
-                backgroundColor: 'var(--bg-app)',
-                border: '1px solid var(--border-color)',
-                overflow: 'hidden'
-              }}>
+              {/* Progress Bar & EXP Readout */}
+              <div>
                 <div style={{
-                  width: `${(skill.exp / skill.maxExp) * 100}%`,
-                  height: '100%',
-                  backgroundColor: borderColor,
-                  transition: 'width 0.3s ease'
-                }} />
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  fontSize: '0.70em',
+                  fontFamily: 'var(--font-mono)',
+                  color: 'var(--text-muted)',
+                  marginBottom: '3px'
+                }}>
+                  <span>{skill.category.toUpperCase()}</span>
+                  <span style={{ fontWeight: 700, color: borderColor }}>
+                    {skill.exp}/{skill.maxExp} XP
+                  </span>
+                </div>
+                <div style={{
+                  width: '100%',
+                  height: '6px',
+                  backgroundColor: 'var(--bg-app)',
+                  border: '1px solid var(--border-color)',
+                  overflow: 'hidden'
+                }}>
+                  <div style={{
+                    width: `${(skill.exp / skill.maxExp) * 100}%`,
+                    height: '100%',
+                    backgroundColor: borderColor,
+                    transition: 'width 0.3s ease'
+                  }} />
+                </div>
               </div>
             </div>
           );

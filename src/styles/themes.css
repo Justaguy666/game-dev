@@ -204,79 +204,151 @@
   padding: 0;
 }
 
+html {
+  font-size: calc(16px * var(--font-scale, 1));
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--bg-app);
   color: var(--text-main);
   font-family: var(--font-mono);
-  font-size: 1.48rem;
-  letter-spacing: 0.035em;
+  font-size: 1.25rem;
+  letter-spacing: 0.03em;
   overflow-x: hidden;
   min-height: 100vh;
 }
 
-/* Equalized typography scale across all 4 themes */
-body.theme-arcade,
-body.theme-cyber,
-body.theme-fantasy,
-body.theme-gameboy {
-  font-size: 1.48rem;
-  letter-spacing: 0.035em;
+/* Calibrated typography scale matching perceived glyph size & line width */
+body.theme-arcade {
+  /* 'Press Start 2P' is an ultra-wide pixel font; 1.15rem matches VT323 at 1.48rem visually */
+  font-size: 1.15rem;
+  letter-spacing: 0.02em;
 }
 
 body.theme-gameboy {
+  /* 'VT323' is a tall narrow condensed pixel font; 1.48rem provides comfortable reading */
+  font-size: 1.48rem;
   letter-spacing: 0.04em;
   font-weight: 600;
 }
 
+body.theme-cyber {
+  /* 'JetBrains Mono' / 'Orbitron' */
+  font-size: 1.25rem;
+  letter-spacing: 0.03em;
+}
+
+body.theme-fantasy {
+  /* 'Cinzel' / 'JetBrains Mono' */
+  font-size: 1.25rem;
+  letter-spacing: 0.025em;
+}
+
 /* Headings across all themes */
 h1 {
-  font-size: 2.05rem;
+  font-size: 1.95rem;
   letter-spacing: 0.05em;
   font-weight: 700;
 }
 
 h2 {
-  font-size: 1.8rem;
+  font-size: 1.72rem;
   letter-spacing: 0.045em;
   font-weight: 700;
 }
 
 h3 {
-  font-size: 1.58rem;
+  font-size: 1.48rem;
   letter-spacing: 0.04em;
   font-weight: 700;
 }
 
 p {
-  font-size: 1.34rem;
+  font-size: 1.25rem;
   line-height: 1.45;
 }
 
 button, input, select, textarea {
   font-family: var(--font-mono);
-  font-size: 1.35rem;
+  font-size: 1.22rem;
   letter-spacing: 0.03em;
 }
 
 nav button {
-  font-size: 1.26rem;
+  font-size: 1.15rem;
   padding: 8px 16px;
 }
 
-/* Node cards across all themes */
-.node-card-title {
-  font-size: 1.52rem !important;
-  line-height: 1.35 !important;
-  font-weight: 800 !important;
+/* Node cards across all themes (Organized, Clean, RPG Skill Tree Aesthetics) */
+.node-card {
+  width: 290px;
+  background-color: var(--bg-surface);
+  border: 2px solid var(--border-color);
+  padding: 12px 14px;
+  cursor: pointer;
+  user-select: none;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  box-shadow: var(--card-shadow);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
 }
 
-.node-card-desc {
-  font-size: 1.28rem !important;
-  line-height: 1.42 !important;
+.node-card:hover {
+  transform: translateY(-2px);
 }
 
 .node-card-badge {
-  font-size: 1.2rem !important;
+  font-size: 0.82em;
+}
+
+.node-card-title {
+  font-family: var(--font-display);
+  font-size: 1.05em !important;
+  font-weight: 800 !important;
+  line-height: 1.35 !important;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  word-break: break-word;
+}
+
+.node-card-desc {
+  font-size: 0.88em !important;
+  color: var(--text-muted);
+  line-height: 1.4 !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin: 0 !important;
+}
+
+.node-card-tag {
+  display: inline-block;
+  font-size: 0.74em;
+  padding: 1px 6px;
+  background-color: var(--bg-app);
+  border: 1px solid var(--border-color);
+  color: var(--text-dim);
+  font-family: var(--font-mono);
+}
+
+/* Theme specific card title font size adjustments for wide fonts */
+body.theme-arcade .node-card-title {
+  font-size: 0.88em !important;
+  letter-spacing: 0.02em;
+}
+
+body.theme-gameboy .node-card-title {
+  font-size: 1.25em !important;
+}
+
+body.theme-gameboy .node-card-desc {
+  font-size: 1.05em !important;
 }
 
 /* Markdown body across all themes */

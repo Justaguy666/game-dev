@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { ThemeId, ThemeMode, Language } from '../types';
 import { sound } from '../soundEngine';
 import { ThemedIcon } from './ThemedIcon';
@@ -11,6 +11,8 @@ interface TopHUDProps {
   onThemeModeToggle: () => void;
   lang: Language;
   onLangToggle: () => void;
+  fontScale: number;
+  onFontScaleChange: (scale: number) => void;
   isCrtOn: boolean;
   onCrtToggle: () => void;
   activeView: 'tree' | 'editor' | 'quests';
@@ -26,14 +28,36 @@ export const TopHUD: React.FC<TopHUDProps> = ({
   onThemeModeToggle,
   lang,
   onLangToggle,
+  fontScale,
+  onFontScaleChange,
   isCrtOn,
   onCrtToggle,
   activeView,
   onViewChange,
-  totalExp,
-  maxExp
+  totalExp
 }) => {
-  const [isMuted, setIsMuted] = React.useState(sound.getIsMuted());
+  const [isMuted, setIsMuted] = useState(sound.getIsMuted());
+  const [volume, setVolumeState] = useState(sound.getVolume());
+  const [isVolumeOpen, setIsVolumeOpen] = useState(false);
+  const [isFontOpen, setIsFontOpen] = useState(false);
+
+  const volumeMenuRef = useRef<HTMLDivElement>(null);
+  const fontMenuRef = useRef<HTMLDivElement>(null);
+  const volumeTimerRef = useRef<number | null>(null);
+
+  // Close menus on click outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (volumeMenuRef.current && !volumeMenuRef.current.contains(e.target as Node)) {
+        setIsVolumeOpen(false);
+      }
+      if (fontMenuRef.current && !fontMenuRef.current.contains(e.target as Node)) {
+        setIsFontOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
 
   const handleMuteToggle = () => {
     const muted = sound.toggleMute();
@@ -41,37 +65,64 @@ export const TopHUD: React.FC<TopHUDProps> = ({
     if (!muted) sound.playClick();
   };
 
+  const handleVolumeChange = (newVol: number) => {
+    sound.setVolume(newVol);
+    setVolumeState(newVol);
+    if (isMuted && newVol > 0) {
+      sound.toggleMute();
+      setIsMuted(false);
+    }
+  };
+
+  const handleVolumeMouseEnter = () => {
+    if (volumeTimerRef.current) clearTimeout(volumeTimerRef.current);
+    setIsVolumeOpen(true);
+  };
+
+  const handleVolumeMouseLeave = () => {
+    volumeTimerRef.current = window.setTimeout(() => {
+      setIsVolumeOpen(false);
+    }, 400);
+  };
+
   const level = Math.floor(totalExp / 180) + 1;
   const currentLevelExp = totalExp % 180;
   const progressPercent = Math.min(100, Math.round((currentLevelExp / 180) * 100));
+
+  const fontPresets = [
+    { label: { vi: '85% (Nhỏ / Compact)', en: '85% (Compact)' }, value: 0.85 },
+    { label: { vi: '100% (Chuẩn / Default)', en: '100% (Standard)' }, value: 1.0 },
+    { label: { vi: '115% (Lớn / Large)', en: '115% (Large)' }, value: 1.15 },
+    { label: { vi: '130% (Rất Lớn / XL)', en: '130% (Extra Large)' }, value: 1.30 }
+  ];
 
   return (
     <header style={{
       backgroundColor: 'var(--bg-surface)',
       borderBottom: '2px solid var(--border-color)',
-      padding: '10px 18px',
+      padding: '8px 16px',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'space-between',
       flexWrap: 'wrap',
-      gap: '12px',
+      gap: '10px',
       boxShadow: 'var(--card-shadow)',
       position: 'sticky',
       top: 0,
       zIndex: 1000
     }}>
       {/* Brand & Dev Level */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
         <div style={{
           display: 'flex',
           alignItems: 'center',
-          gap: '10px',
+          gap: '8px',
           fontFamily: 'var(--font-display)',
-          fontSize: '0.9em',
+          fontSize: '0.88em',
           color: 'var(--accent-gold)',
           letterSpacing: '0.04em'
         }}>
-          <ThemedIcon name="brand" theme={currentTheme} size={22} color="var(--accent-gold)" />
+          <ThemedIcon name="brand" theme={currentTheme} size={20} color="var(--accent-gold)" />
           <span>GAME DEV STUDIO</span>
         </div>
 
@@ -83,14 +134,14 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             cursor: 'pointer',
             backgroundColor: 'var(--bg-card)',
             border: '1px solid var(--border-color)',
-            padding: '4px 10px',
+            padding: '3px 8px',
             display: 'flex',
             alignItems: 'center',
-            gap: '10px',
+            gap: '8px',
             borderRadius: 'var(--radius-sharp)'
           }}>
           <span style={{
-            fontSize: '0.8em',
+            fontSize: '0.78em',
             fontWeight: 800,
             color: 'var(--accent-green)',
             fontFamily: 'var(--font-display)'
@@ -99,8 +150,8 @@ export const TopHUD: React.FC<TopHUDProps> = ({
           </span>
 
           <div style={{
-            width: '120px',
-            height: '14px',
+            width: '100px',
+            height: '12px',
             backgroundColor: 'var(--bg-app)',
             border: '1px solid var(--border-color)',
             position: 'relative',
@@ -115,7 +166,7 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             <span style={{
               position: 'absolute',
               top: 0, left: 0, right: 0, bottom: 0,
-              fontSize: '11px',
+              fontSize: '10px',
               fontWeight: 800,
               display: 'flex',
               alignItems: 'center',
@@ -142,12 +193,12 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             border: '1px solid var(--border-color)',
             padding: '6px 12px',
             fontFamily: 'var(--font-mono)',
-            fontSize: '0.85em',
+            fontSize: '0.82em',
             fontWeight: 700,
             cursor: 'pointer',
             transition: 'all 0.15s ease'
           }}>
-          <ThemedIcon name="tree" theme={currentTheme} size={16} />
+          <ThemedIcon name="tree" theme={currentTheme} size={15} />
           {lang === 'vi' ? 'Cây Kỹ Năng' : 'Skill Tree'}
         </button>
 
@@ -162,12 +213,12 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             border: '1px solid var(--border-color)',
             padding: '6px 12px',
             fontFamily: 'var(--font-mono)',
-            fontSize: '0.85em',
+            fontSize: '0.82em',
             fontWeight: 700,
             cursor: 'pointer',
             transition: 'all 0.15s ease'
           }}>
-          <ThemedIcon name="docs" theme={currentTheme} size={16} />
+          <ThemedIcon name="docs" theme={currentTheme} size={15} />
           {lang === 'vi' ? 'Tài Liệu & Soạn Thảo' : 'Docs & Editor'}
         </button>
 
@@ -182,19 +233,19 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             border: '1px solid var(--border-color)',
             padding: '6px 12px',
             fontFamily: 'var(--font-mono)',
-            fontSize: '0.85em',
+            fontSize: '0.82em',
             fontWeight: 700,
             cursor: 'pointer',
             transition: 'all 0.15s ease'
           }}>
-          <ThemedIcon name="quests" theme={currentTheme} size={16} />
+          <ThemedIcon name="quests" theme={currentTheme} size={15} />
           {lang === 'vi' ? 'Nhiệm Vụ' : 'Quests'}
         </button>
       </nav>
 
-      {/* Control Actions: Theme, Mode, Sound, Language */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-        {/* Game Theme Switcher (Themed Dropdown, 0 OS default styling) */}
+      {/* Control Actions: Theme, Mode, Sound, Font, Language */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+        {/* Game Theme Switcher */}
         <ThemedSelect
           currentTheme={currentTheme}
           onThemeChange={onThemeChange}
@@ -215,9 +266,9 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             alignItems: 'center'
           }}>
           {themeMode === 'dark' ? (
-            <ThemedIcon name="sun" theme={currentTheme} size={16} color="var(--accent-gold)" />
+            <ThemedIcon name="sun" theme={currentTheme} size={15} color="var(--accent-gold)" />
           ) : (
-            <ThemedIcon name="moon" theme={currentTheme} size={16} />
+            <ThemedIcon name="moon" theme={currentTheme} size={15} color="var(--accent-cyan)" />
           )}
         </button>
 
@@ -234,28 +285,272 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             display: 'flex',
             alignItems: 'center'
           }}>
-          <ThemedIcon name="tv" theme={currentTheme} size={16} />
+          <ThemedIcon name="tv" theme={currentTheme} size={15} />
         </button>
 
-        {/* Audio Mute Toggle */}
-        <button
-          onClick={handleMuteToggle}
-          title={isMuted ? 'Bật âm thanh hiệu ứng' : 'Tắt âm thanh hiệu ứng'}
-          style={{
-            backgroundColor: isMuted ? 'rgba(244, 63, 94, 0.2)' : 'var(--bg-card)',
-            color: isMuted ? 'var(--accent-red)' : 'var(--accent-green)',
-            border: `1px solid ${isMuted ? 'var(--accent-red)' : 'var(--border-color)'}`,
-            padding: '6px 9px',
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center'
-          }}>
-          {isMuted ? (
-            <ThemedIcon name="mute" theme={currentTheme} size={16} />
-          ) : (
-            <ThemedIcon name="volume" theme={currentTheme} size={16} />
+        {/* Font Size Settings Popover */}
+        <div ref={fontMenuRef} style={{ position: 'relative' }}>
+          <button
+            onClick={() => { sound.playClick(); setIsFontOpen(!isFontOpen); }}
+            title={lang === 'vi' ? 'Cài đặt kích thước font chữ' : 'Font Size Settings'}
+            style={{
+              backgroundColor: isFontOpen ? 'var(--accent-gold)' : 'var(--bg-card)',
+              color: isFontOpen ? '#111' : 'var(--text-main)',
+              border: '1px solid var(--border-color)',
+              padding: '6px 10px',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.80em',
+              fontWeight: 700,
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '5px'
+            }}>
+            <ThemedIcon name="font" theme={currentTheme} size={14} color={isFontOpen ? '#111' : 'var(--accent-gold)'} />
+            <span>{Math.round(fontScale * 100)}%</span>
+            <span style={{ fontSize: '8px', color: isFontOpen ? '#111' : 'var(--text-muted)' }}>▼</span>
+          </button>
+
+          {isFontOpen && (
+            <div style={{
+              position: 'absolute',
+              top: 'calc(100% + 4px)',
+              right: 0,
+              minWidth: '200px',
+              backgroundColor: 'var(--bg-surface)',
+              border: '2px solid var(--border-color)',
+              boxShadow: 'var(--card-shadow), 0 8px 24px rgba(0, 0, 0, 0.5)',
+              zIndex: 9999,
+              padding: '8px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '6px'
+            }}>
+              <div style={{
+                fontSize: '0.74em',
+                fontFamily: 'var(--font-display)',
+                color: 'var(--accent-gold)',
+                paddingBottom: '4px',
+                borderBottom: '1px solid var(--border-color)',
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center'
+              }}>
+                <span>{lang === 'vi' ? 'CỠ CHỮ (FONT SIZE)' : 'FONT SIZE'}</span>
+                <span>{Math.round(fontScale * 100)}%</span>
+              </div>
+
+              {/* Stepper Buttons */}
+              <div style={{ display: 'flex', gap: '6px', alignItems: 'center' }}>
+                <button
+                  onClick={() => {
+                    const next = Math.max(0.75, parseFloat((fontScale - 0.05).toFixed(2)));
+                    onFontScaleChange(next);
+                    sound.playClick();
+                  }}
+                  style={{
+                    flex: 1,
+                    backgroundColor: 'var(--bg-card)',
+                    border: '1px solid var(--border-color)',
+                    color: 'var(--text-main)',
+                    padding: '4px',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.85em',
+                    fontWeight: 800,
+                    cursor: 'pointer'
+                  }}>
+                  A -
+                </button>
+                <button
+                  onClick={() => {
+                    const next = Math.min(1.5, parseFloat((fontScale + 0.05).toFixed(2)));
+                    onFontScaleChange(next);
+                    sound.playClick();
+                  }}
+                  style={{
+                    flex: 1,
+                    backgroundColor: 'var(--bg-card)',
+                    border: '1px solid var(--border-color)',
+                    color: 'var(--text-main)',
+                    padding: '4px',
+                    fontFamily: 'var(--font-mono)',
+                    fontSize: '0.85em',
+                    fontWeight: 800,
+                    cursor: 'pointer'
+                  }}>
+                  A +
+                </button>
+              </div>
+
+              {/* Presets */}
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '3px', marginTop: '4px' }}>
+                {fontPresets.map(preset => {
+                  const isCurrent = Math.abs(fontScale - preset.value) < 0.02;
+                  return (
+                    <div
+                      key={preset.value}
+                      onClick={() => {
+                        onFontScaleChange(preset.value);
+                        sound.playSelect();
+                        setIsFontOpen(false);
+                      }}
+                      onMouseEnter={() => sound.playHover()}
+                      className={`themed-select-item ${isCurrent ? 'is-selected' : ''}`}
+                      style={{
+                        padding: '6px 8px',
+                        fontSize: '0.80em',
+                        cursor: 'pointer',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        backgroundColor: isCurrent ? 'var(--accent-gold)' : 'transparent',
+                        color: isCurrent ? '#111' : 'var(--text-main)',
+                        border: isCurrent ? '1px solid var(--border-color)' : '1px solid transparent'
+                      }}>
+                      <span>{preset.label[lang]}</span>
+                      {isCurrent && <span style={{ fontWeight: 800 }}>✓</span>}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           )}
-        </button>
+        </div>
+
+        {/* Audio Speaker & Volume Control Hover Dropdown */}
+        <div
+          ref={volumeMenuRef}
+          onMouseEnter={handleVolumeMouseEnter}
+          onMouseLeave={handleVolumeMouseLeave}
+          style={{ position: 'relative' }}>
+          <button
+            onClick={() => { sound.playClick(); setIsVolumeOpen(!isVolumeOpen); }}
+            title={lang === 'vi' ? 'Âm thanh & Âm lượng (Rê chuột để chỉnh volume)' : 'Sound & Volume (Hover to adjust)'}
+            style={{
+              backgroundColor: isMuted ? 'rgba(244, 63, 94, 0.2)' : (isVolumeOpen ? 'var(--bg-surface)' : 'var(--bg-card)'),
+              color: isMuted ? 'var(--accent-red)' : 'var(--accent-green)',
+              border: `1px solid ${isMuted ? 'var(--accent-red)' : (isVolumeOpen ? 'var(--accent-green)' : 'var(--border-color)')}`,
+              padding: '6px 9px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center'
+            }}>
+            {isMuted ? (
+              <ThemedIcon name="mute" theme={currentTheme} size={15} />
+            ) : (
+              <ThemedIcon name="volume" theme={currentTheme} size={15} />
+            )}
+          </button>
+
+          {/* Volume Dropdown Popover */}
+          {isVolumeOpen && (
+            <div style={{
+              position: 'absolute',
+              top: 'calc(100% + 4px)',
+              right: 0,
+              width: '210px',
+              backgroundColor: 'var(--bg-surface)',
+              border: '2px solid var(--border-color)',
+              boxShadow: 'var(--card-shadow), 0 8px 24px rgba(0, 0, 0, 0.5)',
+              zIndex: 9999,
+              padding: '10px 12px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '8px',
+              animation: 'fadeIn 0.1s ease-out'
+            }}>
+              <div style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+                fontSize: '0.74em',
+                fontFamily: 'var(--font-display)',
+                color: 'var(--accent-green)'
+              }}>
+                <span>{lang === 'vi' ? 'ÂM LƯỢNG' : 'VOLUME'}</span>
+                <span>{isMuted ? (lang === 'vi' ? 'TẮT TIẾNG' : 'MUTED') : `${Math.round(volume * 100)}%`}</span>
+              </div>
+
+              {/* Slider */}
+              <input
+                type="range"
+                min="0"
+                max="1"
+                step="0.05"
+                value={isMuted ? 0 : volume}
+                onChange={(e) => handleVolumeChange(parseFloat(e.target.value))}
+                style={{
+                  width: '100%',
+                  cursor: 'pointer',
+                  accentColor: 'var(--accent-green)'
+                }}
+              />
+
+              {/* Quick Presets & Test Beep */}
+              <div style={{ display: 'flex', gap: '4px', justifyContent: 'space-between', marginTop: '2px' }}>
+                <button
+                  onClick={handleMuteToggle}
+                  style={{
+                    flex: 1,
+                    backgroundColor: isMuted ? 'var(--accent-red)' : 'var(--bg-card)',
+                    color: isMuted ? '#fff' : 'var(--text-main)',
+                    border: '1px solid var(--border-color)',
+                    padding: '3px 6px',
+                    fontSize: '0.72em',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 700,
+                    cursor: 'pointer'
+                  }}>
+                  {isMuted ? 'Unmute' : 'Mute'}
+                </button>
+
+                <button
+                  onClick={() => { handleVolumeChange(0.5); sound.playClick(); }}
+                  style={{
+                    backgroundColor: 'var(--bg-card)',
+                    color: 'var(--text-main)',
+                    border: '1px solid var(--border-color)',
+                    padding: '3px 6px',
+                    fontSize: '0.72em',
+                    fontFamily: 'var(--font-mono)',
+                    cursor: 'pointer'
+                  }}>
+                  50%
+                </button>
+
+                <button
+                  onClick={() => { handleVolumeChange(1.0); sound.playClick(); }}
+                  style={{
+                    backgroundColor: 'var(--bg-card)',
+                    color: 'var(--text-main)',
+                    border: '1px solid var(--border-color)',
+                    padding: '3px 6px',
+                    fontSize: '0.72em',
+                    fontFamily: 'var(--font-mono)',
+                    cursor: 'pointer'
+                  }}>
+                  100%
+                </button>
+
+                <button
+                  onClick={() => sound.playClick()}
+                  title={lang === 'vi' ? 'Bấm để nghe thử âm' : 'Test sound effect'}
+                  style={{
+                    backgroundColor: 'var(--accent-green)',
+                    color: '#111',
+                    border: 'none',
+                    padding: '3px 6px',
+                    fontSize: '0.72em',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: 800,
+                    cursor: 'pointer'
+                  }}>
+                  ♪ Test
+                </button>
+              </div>
+            </div>
+          )}
+        </div>
 
         {/* Language Switcher */}
         <button
@@ -265,16 +560,16 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             backgroundColor: 'var(--bg-card)',
             color: 'var(--accent-gold)',
             border: '1px solid var(--border-color)',
-            padding: '5px 10px',
+            padding: '5px 9px',
             fontFamily: 'var(--font-mono)',
-            fontSize: '0.82em',
+            fontSize: '0.80em',
             fontWeight: 800,
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            gap: '6px'
+            gap: '5px'
           }}>
-          <ThemedIcon name="globe" theme={currentTheme} size={15} />
+          <ThemedIcon name="globe" theme={currentTheme} size={14} />
           {lang === 'vi' ? 'VI' : 'EN'}
         </button>
       </div>
