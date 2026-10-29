@@ -29,7 +29,8 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
     { id: 'gothic', name: { vi: 'Gothic Eldritch', en: 'Gothic Eldritch' }, iconName: 'boss' },
     { id: 'blueprint', name: { vi: 'Blueprint Architect', en: 'Blueprint Architect' }, iconName: 'design' },
     { id: 'ghibli', name: { vi: 'Ghibli Cozy Forest', en: 'Ghibli Cozy Forest' }, iconName: 'brand' },
-    { id: 'psx', name: { vi: 'PSX 32-Bit CD-ROM', en: 'PSX 32-Bit CD-ROM' }, iconName: 'tv' }
+    { id: 'psx', name: { vi: 'PSX 32-Bit CD-ROM', en: 'PSX 32-Bit CD-ROM' }, iconName: 'tv' },
+    { id: 'persona', name: { vi: 'Persona Acid Pop', en: 'Persona Acid Pop' }, iconName: 'quests' }
   ];
 
   const currentOption = themesList.find(t => t.id === currentTheme) || themesList[0];

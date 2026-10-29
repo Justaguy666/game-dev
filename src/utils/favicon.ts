@@ -198,6 +198,18 @@ export const THEME_FAVICONS: Record<ThemeId, string> = {
   <rect x="9" y="15" width="1" height="1" fill="#38bdf8" />
   <!-- Left: Pink Square -->
   <rect x="1" y="7" width="2" height="2" fill="#ff2d55" />
+</svg>`,
+
+  persona: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges">
+  <!-- Acid Crimson Comic Canvas -->
+  <rect width="16" height="16" fill="#121118" />
+  <polygon points="0,0 16,0 16,16" fill="#ff1e56" />
+  <!-- Comic Slanted Starburst -->
+  <polygon points="8,1 10,5 15,4 11,8 14,13 9,10 8,15 7,10 2,13 5,8 1,4 6,5" fill="#ffe600" />
+  <!-- Phantom Thief Mask & Slit Eyes -->
+  <polygon points="3,6 13,6 11,11 8,9 5,11" fill="#ffffff" />
+  <rect x="5" y="7" width="2" height="2" fill="#121118" />
+  <rect x="9" y="7" width="2" height="2" fill="#121118" />
 </svg>`
 };
 

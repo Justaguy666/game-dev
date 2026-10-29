@@ -3028,6 +3028,337 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
     }
   }
 
+// =========================================================================
+  // 11. PERSONA ACID POP / COMIC CEL-SHADE (Shigenori Soejima & Manga Pop Art)
+  // =========================================================================
+  if (theme === 'persona') {
+    switch (name) {
+      case 'tree':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Persona Stylized Comic Branching Star Frame */}
+            <line x1="12" y1="3" x2="12" y2="11" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="12" y1="11" x2="4" y2="18" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="12" y1="11" x2="20" y2="18" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <polygon points="12,1 14,5 10,5" fill={color} />
+            <polygon points="4,16 6,20 2,20" fill={color} />
+            <polygon points="20,16 22,20 18,20" fill={color} />
+            <polygon points="12,9 14,11 12,13 10,11" fill={color} />
+          </svg>
+        );
+      case 'docs':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Manga Tankobon with Slanted Speedlines & Star */}
+            <path d="M4 3h13a2 2 0 012 2v15a1 1 0 01-1 1H5a2 2 0 01-2-2V4a1 1 0 011-1z" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="7" y1="3" x2="7" y2="21" stroke={color} strokeWidth="1.8" />
+            <line x1="10" y1="7" x2="16" y2="7" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="10" y1="11" x2="15" y2="11" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <polygon points="13,14 14,16 16,16 14.5,17.5 15,19.5 13,18 11,19.5 11.5,17.5 10,16 12,16" fill={color} />
+          </svg>
+        );
+      case 'quests':
+        return (
+          <svg {...commonSvgProps}>
+            {/* All-Out Attack Comic Starburst / Calling Card Star */}
+            <polygon points="12,2 14.5,8 21,9 16,13.5 17.5,20 12,16.5 6.5,20 8,13.5 3,9 9.5,8" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <polygon points="12,6 13.5,10 17.5,10.5 14.5,13 15.5,17 12,15 8.5,17 9.5,13 6.5,10.5 10.5,10" fill={color} />
+          </svg>
+        );
+      case 'sun':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Acid Pop Starburst Sun */}
+            <circle cx="12" cy="12" r="5" stroke={color} strokeWidth="2.5" fill="none" />
+            <circle cx="12" cy="12" r="2.2" fill={color} />
+            <line x1="12" y1="2" x2="12" y2="5" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="12" y1="19" x2="12" y2="22" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="2" y1="12" x2="5" y2="12" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="19" y1="12" x2="22" y2="12" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="5" y1="5" x2="7.5" y2="7.5" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="16.5" y1="16.5" x2="19" y2="19" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="5" y1="19" x2="7.5" y2="16.5" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="16.5" y1="7.5" x2="19" y2="5" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'moon':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Sharp Crescent Moon with Phantom Thief Eye Slash */}
+            <path d="M14 3a8.5 8.5 0 00-1.5 17 8.5 8.5 0 007.5-5.5 8.5 8.5 0 01-6-11.5z" stroke={color} strokeWidth="2.2" strokeLinejoin="round" fill="none" />
+            <polygon points="10,10 13,11 10,13 11,11" fill={color} />
+          </svg>
+        );
+      case 'tv':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Persona 4 Midnight Channel CRT TV */}
+            <rect x="3" y="6" width="18" height="14" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <rect x="5" y="8" width="10" height="10" stroke={color} strokeWidth="1.5" fill="none" />
+            <line x1="18" y1="10" x2="18" y2="12" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <circle cx="18" cy="15" r="1.2" fill={color} />
+            <line x1="8" y1="2" x2="11" y2="6" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="16" y1="2" x2="13" y2="6" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'volume':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Pop Sound Cone & Shockwaves */}
+            <polygon points="4,9 8,9 13,5 13,19 8,15 4,15" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <path d="M16 8c1.5 1.2 2.5 2.5 2.5 4s-1 2.8-2.5 4" stroke={color} strokeWidth="2.2" strokeLinecap="round" fill="none" />
+            <path d="M19 5c2.5 2 4 4.5 4 7s-1.5 5-4 7" stroke={color} strokeWidth="2.2" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'mute':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Sound Cone with Bold Comic Diagonal Slash */}
+            <polygon points="4,9 8,9 13,5 13,19 8,15 4,15" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="2" y1="2" x2="22" y2="22" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+          </svg>
+        );
+      case 'globe':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Dynamic Comic Cel-Shade Globe with Starburst */}
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <ellipse cx="12" cy="12" rx="4" ry="9" stroke={color} strokeWidth="1.5" fill="none" />
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="2" />
+            <polygon points="17,6 18,8 20,8 18.5,9.5 19,11.5 17,10 15,11.5 15.5,9.5 14,8 16,8" fill={color} />
+          </svg>
+        );
+      case 'mastered':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Persona CONFIDANT MAX Comic Starburst Check */}
+            <polygon points="12,1 15,5 20,4 19,9 23,12 19,15 20,20 15,19 12,23 9,19 4,20 5,15 1,12 5,9 4,4 9,5" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polyline points="8,12 11,15 16,9" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'learning':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Persona Action Flame / Dynamic Action Swirl */}
+            <path d="M12 2C8 6 6 10 6 14a6 6 0 0012 0c0-4-3-7-6-12z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <path d="M12 10c-1.5 2-2 3.5-2 5a2 2 0 004 0c0-1.5-1-2.5-2-5z" fill={color} />
+          </svg>
+        );
+      case 'locked':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Skull / Heavy Spade Padlock */}
+            <rect x="5" y="10" width="14" height="11" rx="2" stroke={color} strokeWidth="2.2" fill="none" />
+            <path d="M8 10V6a4 4 0 018 0v4" stroke={color} strokeWidth="2.2" strokeLinecap="round" fill="none" />
+            <circle cx="12" cy="15" r="1.8" fill={color} />
+            <line x1="12" y1="16.5" x2="12" y2="18.5" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'edit':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Manga Dip G-Pen Nib with Comic Ink Spark */}
+            <path d="M18 2l4 4-12 12-5 1 1-5L18 2z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="15" y1="5" x2="19" y2="9" stroke={color} strokeWidth="1.8" />
+            <circle cx="7" cy="17" r="1.2" fill={color} />
+          </svg>
+        );
+      case 'save':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Phantom Calling Card Envelope with Seal Star */}
+            <rect x="3" y="5" width="18" height="14" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <polyline points="3,6 12,13 21,6" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <polygon points="12,11 13,13 15,13 13.5,14.5 14,16.5 12,15 10,16.5 10.5,14.5 9,13 11,13" fill={color} />
+          </svg>
+        );
+      case 'download':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Dynamic Lightning Arrow Shooting Down */}
+            <path d="M12 3v11m0 0l-4-4m4 4l4-4" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke={color} strokeWidth="2.2" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'close':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Heavy Comic Ink Cross Slash */}
+            <line x1="4" y1="4" x2="20" y2="20" stroke={color} strokeWidth="3" strokeLinecap="round" />
+            <line x1="20" y1="4" x2="4" y2="20" stroke={color} strokeWidth="3" strokeLinecap="round" />
+          </svg>
+        );
+      case 'search':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Detective Magnifying Lens with Star Reflection */}
+            <circle cx="10.5" cy="10.5" r="7" stroke={color} strokeWidth="2.2" fill="none" />
+            <line x1="16" y1="16" x2="21" y2="21" stroke={color} strokeWidth="3" strokeLinecap="round" />
+            <polygon points="9,6 10,8 12,8 10.5,9.5 11,11 9,10 7,11 7.5,9.5 6,8 8,8" fill={color} />
+          </svg>
+        );
+      case 'zoomIn':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Pop Magnifier with Bold + */}
+            <circle cx="10" cy="10" r="7" stroke={color} strokeWidth="2.2" fill="none" />
+            <line x1="15.5" y1="15.5" x2="21" y2="21" stroke={color} strokeWidth="3" strokeLinecap="round" />
+            <line x1="10" y1="7" x2="10" y2="13" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="7" y1="10" x2="13" y2="10" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomOut':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Pop Magnifier with Bold - */}
+            <circle cx="10" cy="10" r="7" stroke={color} strokeWidth="2.2" fill="none" />
+            <line x1="15.5" y1="15.5" x2="21" y2="21" stroke={color} strokeWidth="3" strokeLinecap="round" />
+            <line x1="7" y1="10" x2="13" y2="10" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'reset':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Action Spin Arrow */}
+            <path d="M3 12a9 9 0 102.5-6.2L2 9" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <polygon points="2,4 7,4 7,9" stroke={color} strokeWidth="1.5" fill={color} />
+          </svg>
+        );
+      case 'brand':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Persona Phantom Thief Winged Eye Mask */}
+            <polygon points="2,8 7,5 12,9 17,5 22,8 19,16 12,12 5,16" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <ellipse cx="8" cy="10" rx="2" ry="1.5" fill={color} />
+            <ellipse cx="16" cy="10" rx="2" ry="1.5" fill={color} />
+          </svg>
+        );
+      case 'design':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Manga Pen & Slanted Ruler */}
+            <line x1="3" y1="21" x2="21" y2="3" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="6" y1="15" x2="9" y2="18" stroke={color} strokeWidth="2" />
+            <line x1="11" y1="10" x2="14" y2="13" stroke={color} strokeWidth="2" />
+            <line x1="16" y1="5" x2="19" y2="8" stroke={color} strokeWidth="2" />
+            <polygon points="4,4 10,4 4,10" fill={color} />
+          </svg>
+        );
+      case 'code':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Dynamic Comic Slanted Terminal Brackets */}
+            <polyline points="7,8 3,12 7,16" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <polyline points="17,8 21,12 17,16" stroke={color} strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <line x1="14" y1="5" x2="10" y2="19" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+          </svg>
+        );
+      case 'qa':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Action Target Crosshair & Warning Spark */}
+            <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="4" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="6" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="12" y1="18" x2="12" y2="22" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="2" y1="12" x2="6" y2="12" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="18" y1="12" x2="22" y2="12" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'art':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Cel-Shaded Painter Palette with Comic Splash Dots */}
+            <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c1.5 0 2.5-1 2.5-2.5 0-.7-.3-1.3-.8-1.8-.5-.5-.7-1.1-.7-1.7 0-1.4 1.1-2.5 2.5-2.5H17c3.3 0 5-2.2 5-5 0-5-4.5-8.5-10-8.5z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <circle cx="7" cy="8" r="1.5" fill={color} />
+            <circle cx="12" cy="6" r="1.5" fill={color} />
+            <circle cx="16" cy="9" r="1.5" fill={color} />
+            <circle cx="9" cy="14" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'audio':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Acid Jazz Vinyl Record with Comic Sound Shockwave Note */}
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="5" stroke={color} strokeWidth="1.5" fill="none" />
+            <circle cx="12" cy="12" r="2" fill={color} />
+            <polygon points="17,3 21,3 21,9 18,9 18,6 17,6" fill={color} />
+          </svg>
+        );
+      case 'boss':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Persona Shadow / Reaper Horned Skull Mask with Menacing Eyes */}
+            <path d="M5 4L8 8C9 7 11 6.5 12 6.5s3 .5 4 1.5l3-4c-1 3-1 6-1 8 0 4-3 7-6 7s-6-3-6-7c0-2 0-5-1-8z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <polygon points="9,12 11,14 10,15 8,14" fill={color} />
+            <polygon points="15,12 13,14 14,15 16,14" fill={color} />
+            <line x1="12" y1="16" x2="12" y2="18" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'production':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Cogwheel & Speed Action Star */}
+            <circle cx="12" cy="12" r="4" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M12 2v3m0 14v3M2 12h3m14 0h3m-3.5-6.5l-2.1 2.1m-8.8 8.8l-2.1 2.1m0-13l2.1 2.1m8.8 8.8l2.1 2.1" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'drag':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Action 4-Way Compass Arrows */}
+            <polyline points="9,5 12,2 15,5" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <polyline points="9,19 12,22 15,19" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <polyline points="5,9 2,12 5,15" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <polyline points="19,9 22,12 19,15" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="12" r="2" fill={color} />
+          </svg>
+        );
+      case 'open':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Slanted Comic Box Bursting Open with Speed Lines */}
+            <polygon points="3,8 12,3 21,8 12,13" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="3" y1="8" x2="3" y2="18" stroke={color} strokeWidth="2" />
+            <line x1="21" y1="8" x2="21" y2="18" stroke={color} strokeWidth="2" />
+            <line x1="12" y1="13" x2="12" y2="22" stroke={color} strokeWidth="2" />
+            <polygon points="12,13 3,18 12,22 21,18" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="0" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'font':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Bold Stylized Condensed Letter A with Comic Drop Shadow */}
+            <polygon points="12,2 19,21 15.5,21 14,16 10,16 8.5,21 5,21" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="7.5" y1="13.5" x2="16.5" y2="13.5" stroke={color} strokeWidth="2.2" />
+            <polygon points="12,6 14,11 10,11" fill={color} />
+          </svg>
+        );
+      case 'langVi':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Speech Bubble with Vietnam Star */}
+            <path d="M3 4h18a2 2 0 012 2v10a2 2 0 01-2 2H8l-5 4v-4a2 2 0 01-2-2V6a2 2 0 012-2z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <polygon points="12,7 13.5,10.5 17,10.7 14.3,12.7 15.3,16 12,14 8.7,16 9.7,12.7 7,10.7 10.5,10.5" fill={color} />
+          </svg>
+        );
+      case 'langEn':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Comic Speech Bubble with Slanted World Meridian */}
+            <path d="M3 4h18a2 2 0 012 2v10a2 2 0 01-2 2H8l-5 4v-4a2 2 0 01-2-2V6a2 2 0 012-2z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="11" r="5" stroke={color} strokeWidth="1.5" fill="none" />
+            <ellipse cx="12" cy="11" rx="2.5" ry="5" stroke={color} strokeWidth="1.2" fill="none" />
+            <line x1="7" y1="11" x2="17" y2="11" stroke={color} strokeWidth="1.2" />
+          </svg>
+        );
+    }
+  }
+
   // Fallback
   return (
     <svg {...commonSvgProps}>

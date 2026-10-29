@@ -385,6 +385,35 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
+  // 8. PERSONA ACID POP / COMIC CEL-SHADE (Shigenori Soejima & Manga Anime Energy)
+  if (theme === 'persona') {
+    if (mode === 'light') {
+      switch (domainId) {
+        case 'root': return '#b45309'; // Acid Gold Ink
+        case 'design': return '#e11d48'; // High-voltage Acid Crimson
+        case 'tech': return '#0284c7'; // Electric Cyan Ink
+        case 'qa': return '#b91c1c'; // Warning Punch Red
+        case 'art': return '#7e22ce'; // Velvet Room Purple
+        case 'audio': return '#047857'; // Acid Mint Green
+        case 'boss':
+        case 'production': return '#c2410c'; // Sunburst Ochre
+        default: return '#b45309';
+      }
+    } else {
+      switch (domainId) {
+        case 'root': return '#ffe600'; // All-Out Attack Acid Yellow
+        case 'design': return '#ff1e56'; // Phantom Joker Crimson Red
+        case 'tech': return '#00f0ff'; // Electric Cyan Blue
+        case 'qa': return '#ff2a85'; // Acid Magenta Pink
+        case 'art': return '#c084fc'; // Velvet Violet
+        case 'audio': return '#00e676'; // Acid Lime Neon
+        case 'boss':
+        case 'production': return '#fb923c'; // Sunburst Orange
+        default: return '#ffe600';
+      }
+    }
+  }
+
   // 3. LIGHT MODE (Arcade, Cyber, Fantasy)
   // Clean, high-contrast accessible jewel tones (> 4.5:1)
   if (mode === 'light') {

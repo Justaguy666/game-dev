@@ -518,6 +518,57 @@
 }
 
 /* --------------------------------------------------------------------------
+   11. THEME: PERSONA ACID POP / COMIC CEL-SHADE (SHIGENORI SOEJIMA & MANGA ANIME)
+   -------------------------------------------------------------------------- */
+.theme-persona.mode-dark {
+  --bg-app: #121118;
+  --bg-surface: #1b1924;
+  --bg-card: #221f2e;
+  --border-color: #ff1e56;
+  --border-highlight: #ffe600;
+  --text-main: #ffffff;
+  --text-muted: #cbd5e1;
+  --text-dim: #94a3b8;
+  
+  --accent-gold: #ffe600;
+  --accent-cyan: #00f0ff;
+  --accent-green: #00e676;
+  --accent-red: #ff1e56;
+  --accent-purple: #c084fc;
+  
+  --font-display: 'Bebas Neue', 'Righteous', 'Syne', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 4px 4px 0px #000000, 0 0 12px rgba(255, 30, 86, 0.45);
+  --glow-primary: 0 0 14px rgba(255, 30, 86, 0.6), 0 0 22px rgba(255, 230, 0, 0.35);
+  --btn-active-bg: #ff1e56;
+  --btn-active-text: #ffffff;
+}
+
+.theme-persona.mode-light {
+  --bg-app: #f6f3ea;
+  --bg-surface: #ffffff;
+  --bg-card: #ffffff;
+  --border-color: #16151d;
+  --border-highlight: #ff1e56;
+  --text-main: #111116;
+  --text-muted: #2d2d38;
+  --text-dim: #525263;
+  
+  --accent-gold: #b45309;
+  --accent-cyan: #0284c7;
+  --accent-green: #15803d;
+  --accent-red: #e11d48;
+  --accent-purple: #7e22ce;
+  
+  --font-display: 'Bebas Neue', 'Righteous', 'Syne', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 4px 4px 0px #16151d;
+  --glow-primary: 0 0 12px rgba(255, 30, 86, 0.35);
+  --btn-active-bg: #ff1e56;
+  --btn-active-text: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
    GLOBAL LAYOUT & CRT SCANLINES
    -------------------------------------------------------------------------- */
 * {
@@ -950,6 +1001,38 @@ body.theme-psx .node-card-title {
   line-height: 1.35 !important;
   letter-spacing: 0.03em;
   font-weight: 700;
+}
+
+body.theme-persona .node-card {
+  border-radius: 3px;
+  border-width: 2.5px;
+  transition: transform 0.16s cubic-bezier(0.18, 0.89, 0.32, 1.28), box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+body.theme-persona .node-card:hover {
+  transform: translateY(-4px) rotate(-0.5deg) scale(1.02);
+  border-color: #ffe600 !important;
+  box-shadow: 6px 6px 0px #111116, 0 0 16px rgba(255, 30, 86, 0.5);
+}
+
+body.theme-persona .domain-banner {
+  border-radius: 3px;
+  border-width: 2.5px;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+body.theme-persona .domain-banner:hover {
+  transform: translateY(-3px) skewX(-1.5deg);
+  box-shadow: 5px 5px 0px #111116, 0 0 16px rgba(255, 230, 0, 0.6) !important;
+}
+
+body.theme-persona .node-card-title {
+  font-family: var(--font-display);
+  font-size: 1.18em !important;
+  line-height: 1.22 !important;
+  letter-spacing: 0.04em;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 /* Markdown body across all themes with comfortable reading typography */
