@@ -13,6 +13,8 @@ interface ThemeOption {
   id: ThemeId;
   name: { vi: string; en: string };
   iconName: IconName;
+  category: 'retro' | 'art';
+  palette: string[];
 }
 
 export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThemeChange, lang }) => {
@@ -20,33 +22,112 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const themesList: ThemeOption[] = [
-    { id: 'arcade', name: { vi: 'Arcade 16-Bit', en: '16-Bit Arcade' }, iconName: 'tv' },
-    { id: 'gameboy', name: { vi: 'Game Boy DMG', en: 'Game Boy 1989' }, iconName: 'brand' },
-    { id: 'cyber', name: { vi: 'Cyber Mecha', en: 'Cyber Mecha' }, iconName: 'code' },
-    { id: 'fantasy', name: { vi: 'Dark Fantasy', en: 'Dark Fantasy' }, iconName: 'quests' },
-    { id: 'inkwell', name: { vi: '1930s Inkwell', en: '1930s Inkwell' }, iconName: 'art' },
-    { id: 'synthwave', name: { vi: 'Outrun Synthwave', en: 'Outrun Synthwave' }, iconName: 'sun' },
-    { id: 'gothic', name: { vi: 'Gothic Eldritch', en: 'Gothic Eldritch' }, iconName: 'boss' },
-    { id: 'blueprint', name: { vi: 'Blueprint Architect', en: 'Blueprint Architect' }, iconName: 'design' },
-    { id: 'ghibli', name: { vi: 'Ghibli Cozy Forest', en: 'Ghibli Cozy Forest' }, iconName: 'brand' },
-    { id: 'psx', name: { vi: 'PSX 32-Bit CD-ROM', en: 'PSX 32-Bit CD-ROM' }, iconName: 'tv' },
-    { id: 'persona', name: { vi: 'Persona Acid Pop', en: 'Persona Acid Pop' }, iconName: 'quests' }
+    // 1. Retro Consoles & Vintage Hardware
+    {
+      id: 'arcade',
+      name: { vi: '16-Bit Arcade', en: '16-Bit Arcade' },
+      iconName: 'tv',
+      category: 'retro',
+      palette: ['#fbbf24', '#00f0ff', '#ef4444', '#10b981']
+    },
+    {
+      id: 'gameboy',
+      name: { vi: 'Game Boy 1989', en: 'Game Boy 1989' },
+      iconName: 'brand',
+      category: 'retro',
+      palette: ['#9bbc0f', '#8bac0f', '#306230', '#0f380f']
+    },
+    {
+      id: 'psx',
+      name: { vi: 'PSX 32-Bit CD', en: 'PSX 32-Bit CD' },
+      iconName: 'tv',
+      category: 'retro',
+      palette: ['#34c759', '#ff3b30', '#38bdf8', '#ff2d55']
+    },
+    {
+      id: 'inkwell',
+      name: { vi: '1930s Inkwell', en: '1930s Inkwell' },
+      iconName: 'art',
+      category: 'retro',
+      palette: ['#f4eedb', '#2b261f', '#d97706', '#991b1b']
+    },
+    {
+      id: 'synthwave',
+      name: { vi: 'Outrun 1984', en: 'Outrun 1984' },
+      iconName: 'sun',
+      category: 'retro',
+      palette: ['#ff2a85', '#00f0ff', '#ffe600', '#a855f7']
+    },
+
+    // 2. Creative Art Styles & Worlds
+    {
+      id: 'persona',
+      name: { vi: 'Persona Acid Pop', en: 'Persona Acid Pop' },
+      iconName: 'quests',
+      category: 'art',
+      palette: ['#ff1e56', '#ffe600', '#00f0ff', '#c084fc']
+    },
+    {
+      id: 'ghibli',
+      name: { vi: 'Ghibli Cozy Forest', en: 'Ghibli Cozy Forest' },
+      iconName: 'brand',
+      category: 'art',
+      palette: ['#4ade80', '#fde047', '#38bdf8', '#c084fc']
+    },
+    {
+      id: 'blueprint',
+      name: { vi: 'Blueprint Architect', en: 'Blueprint Architect' },
+      iconName: 'design',
+      category: 'art',
+      palette: ['#38bdf8', '#0b1d3a', '#fde047', '#f0f9ff']
+    },
+    {
+      id: 'gothic',
+      name: { vi: 'Gothic Eldritch', en: 'Gothic Eldritch' },
+      iconName: 'boss',
+      category: 'art',
+      palette: ['#dc2626', '#94a3b8', '#1c1917', '#eab308']
+    },
+    {
+      id: 'cyber',
+      name: { vi: 'Cyber Mecha', en: 'Cyber Mecha' },
+      iconName: 'code',
+      category: 'art',
+      palette: ['#00f0ff', '#ff0055', '#ffe600', '#7928ca']
+    },
+    {
+      id: 'fantasy',
+      name: { vi: 'Dark Fantasy RPG', en: 'Dark Fantasy RPG' },
+      iconName: 'quests',
+      category: 'art',
+      palette: ['#d4af37', '#8b5a2b', '#4a2c11', '#c2410c']
+    }
   ];
 
   const currentOption = themesList.find(t => t.id === currentTheme) || themesList[0];
+  const retroThemes = themesList.filter(t => t.category === 'retro');
+  const artThemes = themesList.filter(t => t.category === 'art');
 
-  // Close dropdown when clicking outside
+  // Close dropdown when clicking outside or pressing Escape
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
         setIsOpen(false);
       }
     };
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false);
+      }
+    };
+
     if (isOpen) {
       document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
     }
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, [isOpen]);
 
@@ -55,6 +136,70 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
     sound.playSelect();
     onThemeChange(themeId);
     setIsOpen(false);
+  };
+
+  const renderThemeItem = (option: ThemeOption) => {
+    const isSelected = option.id === currentTheme;
+    return (
+      <div
+        key={option.id}
+        className={`themed-select-item ${isSelected ? 'is-selected' : ''}`}
+        onClick={() => handleSelect(option.id)}
+        onMouseEnter={() => sound.playHover()}
+        title={option.name[lang]}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          padding: '6px 10px',
+          cursor: 'pointer',
+          backgroundColor: isSelected ? 'var(--btn-active-bg)' : 'transparent',
+          color: isSelected ? 'var(--btn-active-text)' : 'var(--text-main)',
+          fontFamily: 'var(--font-mono)',
+          fontSize: '0.82em',
+          fontWeight: isSelected ? 800 : 600,
+          transition: 'all 0.12s ease',
+          border: isSelected ? '1px solid var(--border-color)' : '1px solid transparent',
+          borderRadius: '2px',
+          marginBottom: '2px'
+        }}>
+        <ThemedIcon
+          name={option.iconName}
+          theme={option.id}
+          size={14}
+          color={isSelected ? 'var(--btn-active-text)' : 'var(--accent-gold)'}
+        />
+        <span style={{
+          flex: 1,
+          whiteSpace: 'nowrap',
+          overflow: 'hidden',
+          textOverflow: 'ellipsis'
+        }}>
+          {option.name[lang]}
+        </span>
+
+        {/* 4 Mini Theme Palette Dots */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '3px', flexShrink: 0 }} aria-hidden="true">
+          {option.palette.map((colorHex, idx) => (
+            <span
+              key={idx}
+              style={{
+                width: '6px',
+                height: '6px',
+                borderRadius: '50%',
+                backgroundColor: colorHex,
+                border: '1px solid rgba(0, 0, 0, 0.25)',
+                display: 'inline-block'
+              }}
+            />
+          ))}
+        </div>
+
+        {isSelected && (
+          <span style={{ fontSize: '10px', fontWeight: 800, flexShrink: 0, marginLeft: '2px' }}>✓</span>
+        )}
+      </div>
+    );
   };
 
   return (
@@ -66,6 +211,9 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
           sound.playClick();
           setIsOpen(!isOpen);
         }}
+        aria-expanded={isOpen}
+        aria-haspopup="true"
+        title={lang === 'vi' ? 'Chọn chủ đề nghệ thuật giao diện' : 'Select Game Dev Art Theme'}
         style={{
           display: 'flex',
           alignItems: 'center',
@@ -83,7 +231,7 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
           transition: 'all 0.15s ease'
         }}>
         <ThemedIcon name={currentOption.iconName} theme={currentTheme} size={15} color="var(--accent-cyan)" />
-        <span>{currentOption.name[lang]}</span>
+        <span style={{ whiteSpace: 'nowrap' }}>{currentOption.name[lang]}</span>
         <span style={{
           fontSize: '9px',
           transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
@@ -94,58 +242,107 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
         </span>
       </button>
 
-      {/* Themed Popup Menu (In-DOM, 0 default browser OS styling) */}
+      {/* Themed 2-Column Gallery Popover (Space-Efficient & Zero Truncation) */}
       {isOpen && (
-        <div style={{
-          position: 'absolute',
-          top: 'calc(100% + 4px)',
-          right: 0,
-          minWidth: '180px',
-          backgroundColor: 'var(--bg-surface)',
-          border: '2px solid var(--border-color)',
-          boxShadow: 'var(--card-shadow), 0 8px 24px rgba(0, 0, 0, 0.5)',
-          zIndex: 9999,
-          padding: '4px',
-          display: 'flex',
-          flexDirection: 'column',
-          gap: '3px',
-          animation: 'fadeIn 0.1s ease-out'
-        }}>
-          {themesList.map(option => {
-            const isSelected = option.id === currentTheme;
-            return (
-              <div
-                key={option.id}
-                className={`themed-select-item ${isSelected ? 'is-selected' : ''}`}
-                onClick={() => handleSelect(option.id)}
-                onMouseEnter={() => sound.playHover()}
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  padding: '8px 12px',
-                  cursor: 'pointer',
-                  backgroundColor: isSelected ? 'var(--btn-active-bg)' : 'transparent',
-                  color: isSelected ? 'var(--btn-active-text)' : 'var(--text-main)',
-                  fontFamily: 'var(--font-mono)',
-                  fontSize: '0.88em',
-                  fontWeight: isSelected ? 800 : 600,
-                  transition: 'background 0.1s ease',
-                  border: isSelected ? '1px solid var(--border-color)' : '1px solid transparent'
-                }}>
-                <ThemedIcon
-                  name={option.iconName}
-                  theme={option.id}
-                  size={15}
-                  color={isSelected ? 'var(--btn-active-text)' : 'var(--accent-gold)'}
-                />
-                <span style={{ flex: 1 }}>{option.name[lang]}</span>
-                {isSelected && (
-                  <span style={{ fontSize: '10px', fontWeight: 800 }}>✓</span>
-                )}
+        <div
+          role="menu"
+          style={{
+            position: 'absolute',
+            top: 'calc(100% + 5px)',
+            right: 0,
+            width: 'min(440px, calc(100vw - 24px))',
+            maxHeight: 'min(500px, calc(100vh - 70px))',
+            overflowY: 'auto',
+            backgroundColor: 'var(--bg-surface)',
+            border: '2px solid var(--border-color)',
+            boxShadow: 'var(--card-shadow), 0 12px 32px rgba(0, 0, 0, 0.55)',
+            zIndex: 9999,
+            padding: '10px',
+            animation: 'fadeIn 0.12s ease-out'
+          }}>
+          {/* Popover Header */}
+          <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            paddingBottom: '8px',
+            marginBottom: '8px',
+            borderBottom: '1px solid var(--border-color)'
+          }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.74em',
+              fontWeight: 800,
+              color: 'var(--text-muted)',
+              textTransform: 'uppercase',
+              letterSpacing: '0.04em'
+            }}>
+              <ThemedIcon name="design" theme={currentTheme} size={13} color="var(--accent-gold)" />
+              <span>{lang === 'vi' ? 'Bộ Sưu Tập Giao Diện' : 'Theme Gallery'}</span>
+            </div>
+            <span style={{
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.72em',
+              fontWeight: 700,
+              padding: '2px 6px',
+              borderRadius: '2px',
+              backgroundColor: 'var(--bg-card)',
+              border: '1px solid var(--border-color)',
+              color: 'var(--accent-gold)'
+            }}>
+              11 THEMES
+            </span>
+          </div>
+
+          {/* 2-Column Side-by-Side Thematic Grid */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
+            gap: '10px'
+          }}>
+            {/* Column 1: Retro Consoles & Vintage Hardware */}
+            <div>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '2px 4px 6px 4px',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.70em',
+                fontWeight: 800,
+                color: 'var(--accent-cyan)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.04em'
+              }}>
+                <ThemedIcon name="tv" theme={currentTheme} size={12} color="var(--accent-cyan)" />
+                <span>{lang === 'vi' ? 'Console & Cổ Điển' : 'Retro & Hardware'}</span>
               </div>
-            );
-          })}
+              {retroThemes.map(renderThemeItem)}
+            </div>
+
+            {/* Column 2: Creative Art Styles & Worlds */}
+            <div>
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '2px 4px 6px 4px',
+                fontFamily: 'var(--font-mono)',
+                fontSize: '0.70em',
+                fontWeight: 800,
+                color: 'var(--accent-gold)',
+                textTransform: 'uppercase',
+                letterSpacing: '0.04em'
+              }}>
+                <ThemedIcon name="art" theme={currentTheme} size={12} color="var(--accent-gold)" />
+                <span>{lang === 'vi' ? 'Phong Cách Art Game' : 'Art Styles & Worlds'}</span>
+              </div>
+              {artThemes.map(renderThemeItem)}
+            </div>
+          </div>
         </div>
       )}
     </div>
