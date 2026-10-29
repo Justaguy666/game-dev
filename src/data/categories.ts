@@ -211,7 +211,36 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
-  // 2. LIGHT MODE (Arcade, Cyber, Fantasy)
+  // 2. 1930s INKWELL / RUBBER HOSE PALETTE (Vintage Technicolor & Cartoon Cel Colors)
+  if (theme === 'inkwell') {
+    if (mode === 'light') {
+      switch (domainId) {
+        case 'root': return '#a16207'; // Vintage sepia amber
+        case 'design': return '#c2410c'; // Vintage cartoon rubber-hose orange
+        case 'tech': return '#0e7490'; // Steamboat cyan-blue
+        case 'qa': return '#b91c1c'; // Vintage cartoon crimson red
+        case 'art': return '#7e22ce'; // Vintage dark violet
+        case 'audio': return '#15803d'; // Vintage cartoon moss green
+        case 'boss':
+        case 'production': return '#be123c'; // Vintage deep rose
+        default: return '#a16207';
+      }
+    } else {
+      switch (domainId) {
+        case 'root': return '#fcd34d'; // Warm buttercup gold
+        case 'design': return '#fb923c'; // Rubber-hose warm orange
+        case 'tech': return '#38bdf8'; // Electric cartoon cyan
+        case 'qa': return '#f87171'; // Bright cartoon red
+        case 'art': return '#c084fc'; // Vintage lilac
+        case 'audio': return '#4ade80'; // Bright cartoon mint
+        case 'boss':
+        case 'production': return '#fb7185'; // Vibrant rose
+        default: return '#fcd34d';
+      }
+    }
+  }
+
+  // 3. LIGHT MODE (Arcade, Cyber, Fantasy)
   // Clean, high-contrast accessible jewel tones (> 4.5:1)
   if (mode === 'light') {
     switch (domainId) {
@@ -227,7 +256,7 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
-  // 3. DARK MODE (Arcade, Cyber, Fantasy)
+  // 4. DARK MODE (Arcade, Cyber, Fantasy)
   // Luminous retro neon & arcade colors on dark background
   switch (domainId) {
     case 'root': return '#fbbf24'; // Gold

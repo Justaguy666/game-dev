@@ -212,6 +212,57 @@
 }
 
 /* --------------------------------------------------------------------------
+   5. THEME: 1930s INKWELL / RUBBER HOSE (VINTAGE CARTOON & FLEISCHER CEL ART)
+   -------------------------------------------------------------------------- */
+.theme-inkwell.mode-dark {
+  --bg-app: #141210;
+  --bg-surface: #1e1a16;
+  --bg-card: #27211b;
+  --border-color: #4a3e33;
+  --border-highlight: #f3d37a;
+  --text-main: #f0e6d2;
+  --text-muted: #bdae97;
+  --text-dim: #8c7f6b;
+  
+  --accent-gold: #f3d37a;
+  --accent-cyan: #5bb2b0;
+  --accent-green: #76a957;
+  --accent-red: #c84337;
+  --accent-purple: #9b72aa;
+  
+  --font-display: 'Special Elite', 'Courier New', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 4px 4px 0px #0a0807;
+  --glow-primary: 0 0 10px rgba(243, 211, 122, 0.4);
+  --btn-active-bg: #f3d37a;
+  --btn-active-text: #141210;
+}
+
+.theme-inkwell.mode-light {
+  --bg-app: #f5edd8;
+  --bg-surface: #fffbf0;
+  --bg-card: #f9f2e3;
+  --border-color: #2b221a;
+  --border-highlight: #d48817;
+  --text-main: #1c1510;
+  --text-muted: #544436;
+  --text-dim: #7a6654;
+  
+  --accent-gold: #d48817;
+  --accent-cyan: #267a80;
+  --accent-green: #3d7826;
+  --accent-red: #b8332a;
+  --accent-purple: #6f3b82;
+  
+  --font-display: 'Special Elite', 'Courier New', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 4px 4px 0px #2b221a;
+  --glow-primary: 0 0 10px rgba(212, 136, 23, 0.35);
+  --btn-active-bg: #d48817;
+  --btn-active-text: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
    GLOBAL LAYOUT & CRT SCANLINES
    -------------------------------------------------------------------------- */
 * {
@@ -259,6 +310,19 @@ body.theme-fantasy {
   /* 'Cinzel' / 'JetBrains Mono' */
   font-size: 1.25rem;
   letter-spacing: 0.025em;
+}
+
+body.theme-inkwell {
+  /* 'Special Elite' / 'JetBrains Mono' vintage cartoon */
+  font-size: 1.25rem;
+  letter-spacing: 0.025em;
+}
+
+body.theme-inkwell h1,
+body.theme-inkwell h2,
+body.theme-inkwell h3 {
+  font-family: var(--font-display);
+  letter-spacing: 0.035em;
 }
 
 /* Headings across all themes */
@@ -390,6 +454,29 @@ body.theme-gameboy .node-card-desc {
 body.theme-gameboy .node-card-tag {
   color: var(--text-main) !important;
   border-color: var(--border-color) !important;
+}
+
+body.theme-inkwell .node-card {
+  border-radius: 4px;
+}
+
+body.theme-inkwell .node-card:hover {
+  transform: translateY(-3px) rotate(-0.4deg);
+}
+
+body.theme-inkwell .domain-banner {
+  border-radius: 4px;
+}
+
+body.theme-inkwell .domain-banner:hover {
+  transform: translateY(-2px) rotate(0.4deg);
+}
+
+body.theme-inkwell .node-card-title {
+  font-family: var(--font-display);
+  font-size: 1.05em !important;
+  line-height: 1.38 !important;
+  letter-spacing: 0.02em;
 }
 
 /* Markdown body across all themes with comfortable reading typography */

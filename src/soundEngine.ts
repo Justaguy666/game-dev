@@ -99,6 +99,21 @@ class SoundEngine {
       gain.connect(ctx.destination);
       osc.start(now);
       osc.stop(now + 0.06);
+    } else if (this.currentTheme === 'inkwell') {
+      // 1930s Cartoon: Wooden pop / slide whistle click
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(750, now);
+      osc.frequency.exponentialRampToValueAtTime(320, now + 0.05);
+
+      gain.gain.setValueAtTime(0.28 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.07);
     } else {
       // Fantasy: Resonant wooden snap
       const osc = ctx.createOscillator();
@@ -126,8 +141,8 @@ class SoundEngine {
 
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
-    osc.type = this.currentTheme === 'fantasy' ? 'sine' : 'triangle';
-    osc.frequency.setValueAtTime(this.currentTheme === 'cyber' ? 880 : 330, now);
+    osc.type = this.currentTheme === 'fantasy' || this.currentTheme === 'inkwell' ? 'sine' : 'triangle';
+    osc.frequency.setValueAtTime(this.currentTheme === 'cyber' ? 880 : (this.currentTheme === 'inkwell' ? 620 : 330), now);
 
     gain.gain.setValueAtTime(0.1 * vol, now);
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
@@ -147,7 +162,9 @@ class SoundEngine {
 
     const notes = this.currentTheme === 'cyber' 
       ? [600, 900, 1200]
-      : (this.currentTheme === 'fantasy' ? [330, 440, 550] : [523, 659, 784]);
+      : (this.currentTheme === 'fantasy' 
+          ? [330, 440, 550] 
+          : (this.currentTheme === 'inkwell' ? [440, 554, 659, 880] : [523, 659, 784]));
 
     notes.forEach((freq, idx) => {
       const osc = ctx.createOscillator();

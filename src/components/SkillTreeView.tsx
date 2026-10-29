@@ -274,7 +274,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
     {
       domainId: 'design' as DomainId,
       code: '01',
-      title: { vi: '01. GAME DESIGN & CƠ CHẾ', en: '01. GAME DESIGN & SYSTEMS' },
+      title: { vi: '01. GAME DESIGN', en: '01. GAME DESIGN' },
       subtitle: { vi: 'Core Loop • Cân Bằng • Game Feel', en: 'Core Loop • Systems Balance • Juice' },
       x: 80,
       y: pillarY,
@@ -304,7 +304,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
     {
       domainId: 'art' as DomainId,
       code: '04',
-      title: { vi: '04. NGHỆ THUẬT & TECHNICAL ART', en: '04. ART & TECHNICAL VISUALS' },
+      title: { vi: '04. NGHỆ THUẬT & VISUALS', en: '04. ART & VISUALS' },
       subtitle: { vi: 'Silhouette • Diễn Hoạt • Shaders', en: 'Silhouette • Animation • Shaders • UI' },
       x: 1880,
       y: pillarY,

@@ -1089,6 +1089,293 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
     }
   }
 
+  // =========================================================================
+  // 5. 1930s INKWELL / RUBBER HOSE (Vintage Hand-Drawn Cartoon & Ink Cel Style)
+  // =========================================================================
+  if (theme === 'inkwell') {
+    switch (name) {
+      case 'tree':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="5" r="3" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="6" cy="18" r="3" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="18" cy="18" r="3" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M12 8v4c0 3-4 3-4 6M12 12c0 3 4 3 4 6" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <circle cx="12" cy="5" r="1" fill={color} />
+          </svg>
+        );
+      case 'docs':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M5 4c0-1.1.9-2 2-2h8l5 5v13a2 2 0 01-2 2H7a2 2 0 01-2-2V4z" fill="none" stroke={color} strokeWidth="2" strokeLinejoin="round" />
+            <path d="M14 2v6h6M8 12h8M8 16h6" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <circle cx="15" cy="16" r="0.8" fill={color} />
+          </svg>
+        );
+      case 'quests':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M7 4h10v6a5 5 0 01-10 0V4z" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M7 6H4a2 2 0 00-2 2v1a3 3 0 003 3h2M17 6h3a2 2 0 012 2v1a3 3 0 01-3 3h-2M12 15v4M8 19h8" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="8" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'sun':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="5" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <circle cx="10" cy="11" r="0.9" fill={color} />
+            <circle cx="14" cy="11" r="0.9" fill={color} />
+            <path d="M10.5 13.5c.8.8 2.2.8 3 0" stroke={color} strokeWidth="1.4" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'moon':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M15 3.5a8.5 8.5 0 00-1.5 17 8.5 8.5 0 007.5-5.5 8.5 8.5 0 01-6-11.5z" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <circle cx="11" cy="11" r="1" fill={color} />
+            <path d="M10 14c1 .8 2.5.5 3-.5" stroke={color} strokeWidth="1.4" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'tv':
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="3" y="6" width="18" height="14" rx="3" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="10" cy="13" r="4.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="17" cy="10" r="1.5" fill={color} />
+            <circle cx="17" cy="15" r="1.5" fill={color} />
+            <path d="M8 3l4 3M16 3l-4 3" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'volume':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M3 9h4l5-4v14l-5-4H3a1 1 0 01-1-1v-4a1 1 0 011-1z" fill="none" stroke={color} strokeWidth="2" strokeLinejoin="round" />
+            <path d="M16 8a4.5 4.5 0 010 8M19 5.5a8.5 8.5 0 010 13" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'mute':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M3 9h4l5-4v14l-5-4H3a1 1 0 01-1-1v-4a1 1 0 011-1z" fill="none" stroke={color} strokeWidth="2" strokeLinejoin="round" />
+            <line x1="16" y1="9" x2="22" y2="15" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="22" y1="9" x2="16" y2="15" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'globe':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <ellipse cx="12" cy="12" rx="4.5" ry="9" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.8" />
+            <path d="M5 7h14M5 17h14" stroke={color} strokeWidth="1.3" strokeLinecap="round" />
+          </svg>
+        );
+      case 'mastered':
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,2 15,8.5 22,9.5 17,14.5 18.5,21.5 12,18 5.5,21.5 7,14.5 2,9.5 9,8.5" stroke={color} strokeWidth="2" strokeLinejoin="round" fill={color} />
+          </svg>
+        );
+      case 'learning':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <polyline points="12,6 12,12 16,15" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'locked':
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="5" y="11" width="14" height="10" rx="2.5" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M8 11V7a4 4 0 018 0v4" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <circle cx="12" cy="15" r="1.5" fill={color} />
+            <path d="M12 16.5v2.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'edit':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M4 20l4-1 11-11a2.1 2.1 0 00-3-3L5 16l-1 4z" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <path d="M14 5l3 3M7 17l2 2" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+            <circle cx="4" cy="20" r="1" fill={color} />
+          </svg>
+        );
+      case 'save':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M19 21H5a2 2 0 01-2-2V5a2 2 0 012-2h11l5 5v11a2 2 0 01-2 2z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <path d="M17 21v-8H7v8M7 3v5h8" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <circle cx="10" cy="6" r="1" fill={color} />
+          </svg>
+        );
+      case 'download':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M12 3v12M7 10l5 5 5-5" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <path d="M4 17v2a2 2 0 002 2h12a2 2 0 002-2v-2" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'close':
+        return (
+          <svg {...commonSvgProps}>
+            <line x1="6" y1="6" x2="18" y2="18" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="18" y1="6" x2="6" y2="18" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+          </svg>
+        );
+      case 'search':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="10.5" cy="10.5" r="6.5" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="15.5" y1="15.5" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <path d="M8 8a3 3 0 013-1" stroke={color} strokeWidth="1.5" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'zoomIn':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16" y1="16" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="11" y1="8" x2="11" y2="14" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="8" y1="11" x2="14" y2="11" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomOut':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16" y1="16" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="8" y1="11" x2="14" y2="11" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'reset':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M20 12a8 8 0 11-2.4-5.7L20 9" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <polyline points="20,4 20,9 15,9" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'brand':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <ellipse cx="9" cy="10" rx="1.5" ry="2.5" fill={color} />
+            <ellipse cx="15" cy="10" rx="1.5" ry="2.5" fill={color} />
+            <circle cx="8.5" cy="9" r="0.6" fill="var(--bg-app)" />
+            <circle cx="14.5" cy="9" r="0.6" fill="var(--bg-app)" />
+            <path d="M8 14.5c1.5 2 6.5 2 8 0" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <circle cx="12" cy="13.5" r="0.8" fill={color} />
+          </svg>
+        );
+      case 'design':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="5" r="2.5" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M12 7.5L5 21M12 7.5L19 21M8 15h8" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="12" cy="5" r="1" fill={color} />
+          </svg>
+        );
+      case 'code':
+        return (
+          <svg {...commonSvgProps}>
+            <polyline points="8,8 4,12 8,16" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <polyline points="16,8 20,12 16,16" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <line x1="14" y1="5" x2="10" y2="19" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'qa':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="14" r="5.5" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="6.5" r="2.5" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M12 9v11M5 12h14M5 16h14" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <path d="M10 4.5l-2-2M14 4.5l2-2" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'art':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M12 3a9 9 0 000 18c2 0 4-1 4-3a2 2 0 00-2-2h-2a2 2 0 01-2-2 4 4 0 014-4h2a5 5 0 005-5c0-4-4-7-9-7z" fill="none" stroke={color} strokeWidth="2" strokeLinejoin="round" />
+            <circle cx="7.5" cy="9" r="1.3" fill={color} />
+            <circle cx="12" cy="6.5" r="1.3" fill={color} />
+            <circle cx="16.5" cy="9.5" r="1.3" fill={color} />
+            <circle cx="8" cy="14" r="1" fill={color} />
+          </svg>
+        );
+      case 'audio':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="4" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+            <path d="M12 3a9 9 0 019 9M3 12a9 9 0 019-9" stroke={color} strokeWidth="1.2" strokeDasharray="2 2" fill="none" />
+          </svg>
+        );
+      case 'boss':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M7 8V3h10v5" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="4" y1="8" x2="20" y2="8" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <circle cx="12" cy="15" r="5.5" stroke={color} strokeWidth="2" fill="none" />
+            <ellipse cx="10" cy="13.5" rx="1" ry="1.5" fill={color} />
+            <circle cx="14.5" cy="13.5" r="2" stroke={color} strokeWidth="1.5" fill="none" />
+            <path d="M10 18c1-1 3-1 4 0" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'production':
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="3" y="9" width="18" height="12" rx="1" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M3 9l3-5h15l-3 5H3z" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="8" y1="4" x2="6" y2="9" stroke={color} strokeWidth="1.8" />
+            <line x1="13" y1="4" x2="11" y2="9" stroke={color} strokeWidth="1.8" />
+            <line x1="18" y1="4" x2="16" y2="9" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'drag':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="8" cy="8" r="1.5" fill={color} />
+            <circle cx="16" cy="8" r="1.5" fill={color} />
+            <circle cx="8" cy="12" r="1.5" fill={color} />
+            <circle cx="16" cy="12" r="1.5" fill={color} />
+            <circle cx="8" cy="16" r="1.5" fill={color} />
+            <circle cx="16" cy="16" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'open':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M14 4h6v6M20 4L10 14M5 9H4a2 2 0 00-2 2v8a2 2 0 002 2h8a2 2 0 002-2v-1" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'font':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M12 3l6 18h-3.5l-1.5-5H11l-1.5 5H6l6-18z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="9.5" y1="14" x2="14.5" y2="14" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'langVi':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <polygon points="12,5 14,9 18,9.5 15,12 16,16 12,14 8,16 9,12 6,9.5 10,9" fill={color} />
+          </svg>
+        );
+      case 'langEn':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <ellipse cx="12" cy="12" rx="4" ry="9" stroke={color} strokeWidth="1.6" fill="none" />
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+    }
+  }
+
   // Fallback
   return (
     <svg {...commonSvgProps}>

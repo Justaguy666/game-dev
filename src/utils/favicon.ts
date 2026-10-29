@@ -73,6 +73,27 @@ export const THEME_FAVICONS: Record<ThemeId, string> = {
   <rect x="11" y="9" width="1" height="1" fill="#a855f7" />
   <rect x="3" y="11" width="1" height="1" fill="#c084fc" />
   <rect x="12" y="12" width="1" height="1" fill="#c084fc" />
+</svg>`,
+
+  inkwell: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="32" height="32" shape-rendering="crispEdges">
+  <rect x="2" y="1" width="12" height="14" fill="#141210" />
+  <rect x="3" y="2" width="10" height="12" fill="#f5edd8" />
+  <!-- Vintage Pie Eyes -->
+  <rect x="5" y="4" width="2" height="4" fill="#141210" />
+  <rect x="9" y="4" width="2" height="4" fill="#141210" />
+  <rect x="6" y="5" width="1" height="1" fill="#f5edd8" />
+  <rect x="10" y="5" width="1" height="1" fill="#f5edd8" />
+  <!-- Cartoon red button nose -->
+  <rect x="7" y="8" width="2" height="1" fill="#c84337" />
+  <!-- Cartoon pie smile -->
+  <rect x="4" y="9" width="1" height="1" fill="#141210" />
+  <rect x="5" y="10" width="6" height="1" fill="#141210" />
+  <rect x="11" y="9" width="1" height="1" fill="#141210" />
+  <!-- Red bowtie -->
+  <rect x="7" y="12" width="2" height="2" fill="#c84337" />
+  <rect x="5" y="11" width="2" height="3" fill="#c84337" />
+  <rect x="9" y="11" width="2" height="3" fill="#c84337" />
+  <rect x="7" y="12" width="2" height="1" fill="#f5edd8" />
 </svg>`
 };
 

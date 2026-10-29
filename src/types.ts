@@ -1,4 +1,4 @@
-export type ThemeId = 'arcade' | 'gameboy' | 'fantasy' | 'cyber';
+export type ThemeId = 'arcade' | 'gameboy' | 'fantasy' | 'cyber' | 'inkwell';
 export type ThemeMode = 'dark' | 'light';
 export type Language = 'vi' | 'en';
 
