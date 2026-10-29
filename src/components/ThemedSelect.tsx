@@ -13,7 +13,6 @@ interface ThemeOption {
   id: ThemeId;
   name: { vi: string; en: string };
   iconName: IconName;
-  category: 'retro' | 'art';
   palette: string[];
 }
 
@@ -22,91 +21,75 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   const themesList: ThemeOption[] = [
-    // 1. Retro Consoles & Vintage Hardware
     {
       id: 'arcade',
       name: { vi: '16-Bit Arcade', en: '16-Bit Arcade' },
       iconName: 'tv',
-      category: 'retro',
       palette: ['#fbbf24', '#00f0ff', '#ef4444', '#10b981']
     },
     {
       id: 'gameboy',
       name: { vi: 'Game Boy 1989', en: 'Game Boy 1989' },
       iconName: 'brand',
-      category: 'retro',
       palette: ['#9bbc0f', '#8bac0f', '#306230', '#0f380f']
-    },
-    {
-      id: 'psx',
-      name: { vi: 'PSX 32-Bit CD', en: 'PSX 32-Bit CD' },
-      iconName: 'tv',
-      category: 'retro',
-      palette: ['#34c759', '#ff3b30', '#38bdf8', '#ff2d55']
-    },
-    {
-      id: 'inkwell',
-      name: { vi: '1930s Inkwell', en: '1930s Inkwell' },
-      iconName: 'art',
-      category: 'retro',
-      palette: ['#f4eedb', '#2b261f', '#d97706', '#991b1b']
-    },
-    {
-      id: 'synthwave',
-      name: { vi: 'Outrun 1984', en: 'Outrun 1984' },
-      iconName: 'sun',
-      category: 'retro',
-      palette: ['#ff2a85', '#00f0ff', '#ffe600', '#a855f7']
-    },
-
-    // 2. Creative Art Styles & Worlds
-    {
-      id: 'persona',
-      name: { vi: 'Persona Acid Pop', en: 'Persona Acid Pop' },
-      iconName: 'quests',
-      category: 'art',
-      palette: ['#ff1e56', '#ffe600', '#00f0ff', '#c084fc']
-    },
-    {
-      id: 'ghibli',
-      name: { vi: 'Ghibli Cozy Forest', en: 'Ghibli Cozy Forest' },
-      iconName: 'brand',
-      category: 'art',
-      palette: ['#4ade80', '#fde047', '#38bdf8', '#c084fc']
-    },
-    {
-      id: 'blueprint',
-      name: { vi: 'Blueprint Architect', en: 'Blueprint Architect' },
-      iconName: 'design',
-      category: 'art',
-      palette: ['#38bdf8', '#0b1d3a', '#fde047', '#f0f9ff']
-    },
-    {
-      id: 'gothic',
-      name: { vi: 'Gothic Eldritch', en: 'Gothic Eldritch' },
-      iconName: 'boss',
-      category: 'art',
-      palette: ['#dc2626', '#94a3b8', '#1c1917', '#eab308']
     },
     {
       id: 'cyber',
       name: { vi: 'Cyber Mecha', en: 'Cyber Mecha' },
       iconName: 'code',
-      category: 'art',
       palette: ['#00f0ff', '#ff0055', '#ffe600', '#7928ca']
     },
     {
       id: 'fantasy',
       name: { vi: 'Dark Fantasy RPG', en: 'Dark Fantasy RPG' },
       iconName: 'quests',
-      category: 'art',
       palette: ['#d4af37', '#8b5a2b', '#4a2c11', '#c2410c']
+    },
+    {
+      id: 'inkwell',
+      name: { vi: '1930s Inkwell', en: '1930s Inkwell' },
+      iconName: 'art',
+      palette: ['#f4eedb', '#2b261f', '#d97706', '#991b1b']
+    },
+    {
+      id: 'synthwave',
+      name: { vi: 'Outrun 1984', en: 'Outrun 1984' },
+      iconName: 'sun',
+      palette: ['#ff2a85', '#00f0ff', '#ffe600', '#a855f7']
+    },
+    {
+      id: 'gothic',
+      name: { vi: 'Gothic Eldritch', en: 'Gothic Eldritch' },
+      iconName: 'boss',
+      palette: ['#dc2626', '#94a3b8', '#1c1917', '#eab308']
+    },
+    {
+      id: 'blueprint',
+      name: { vi: 'Blueprint Architect', en: 'Blueprint Architect' },
+      iconName: 'design',
+      palette: ['#38bdf8', '#0b1d3a', '#fde047', '#f0f9ff']
+    },
+    {
+      id: 'ghibli',
+      name: { vi: 'Ghibli Cozy Forest', en: 'Ghibli Cozy Forest' },
+      iconName: 'brand',
+      palette: ['#4ade80', '#fde047', '#38bdf8', '#c084fc']
+    },
+    {
+      id: 'psx',
+      name: { vi: 'PSX 32-Bit CD', en: 'PSX 32-Bit CD' },
+      iconName: 'tv',
+      palette: ['#34c759', '#ff3b30', '#38bdf8', '#ff2d55']
+    },
+    {
+      id: 'persona',
+      name: { vi: 'Persona Acid Pop', en: 'Persona Acid Pop' },
+      iconName: 'quests',
+      palette: ['#ff1e56', '#ffe600', '#00f0ff', '#c084fc']
     }
   ];
 
   const currentOption = themesList.find(t => t.id === currentTheme) || themesList[0];
-  const retroThemes = themesList.filter(t => t.category === 'retro');
-  const artThemes = themesList.filter(t => t.category === 'art');
 
   // Close dropdown when clicking outside or pressing Escape
   useEffect(() => {
@@ -281,7 +264,7 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
               letterSpacing: '0.04em'
             }}>
               <ThemedIcon name="design" theme={currentTheme} size={13} color="var(--accent-gold)" />
-              <span>{lang === 'vi' ? 'Bộ Sưu Tập Giao Diện' : 'Theme Gallery'}</span>
+              <span>{lang === 'vi' ? 'Bộ Sưu Tập Phong Cách Art' : 'Game Art Styles'}</span>
             </div>
             <span style={{
               fontFamily: 'var(--font-mono)',
@@ -293,56 +276,17 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
               border: '1px solid var(--border-color)',
               color: 'var(--accent-gold)'
             }}>
-              11 THEMES
+              11 STYLES
             </span>
           </div>
 
-          {/* 2-Column Side-by-Side Thematic Grid */}
+          {/* Unified 2-Column Art Styles Grid */}
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))',
-            gap: '10px'
+            gridTemplateColumns: 'repeat(auto-fit, minmax(195px, 1fr))',
+            gap: '4px'
           }}>
-            {/* Column 1: Retro Consoles & Vintage Hardware */}
-            <div>
-              {retroThemes.map(renderThemeItem)}
-            </div>
-
-            {/* Column 2: Creative Art Styles & Worlds */}
-            <div>
-              {artThemes.map(renderThemeItem)}
-            </div>
-          </div>
-
-          {/* Bottom Footer Legend */}
-          <div style={{
-            marginTop: '8px',
-            paddingTop: '6px',
-            borderTop: '1px solid var(--border-color)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            paddingLeft: '4px',
-            paddingRight: '4px',
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.68em',
-            letterSpacing: '0.02em'
-          }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-              <ThemedIcon name="tv" theme={currentTheme} size={11} color="var(--accent-cyan)" />
-              <span style={{ color: 'var(--accent-cyan)', fontWeight: 700 }}>
-                {lang === 'vi' ? 'Console & Cổ Điển' : 'Retro & Hardware'}
-              </span>
-              <span style={{ color: 'var(--text-dim)' }}>(5)</span>
-            </div>
-
-            <div style={{ display: 'flex', alignItems: 'center', gap: '5px' }}>
-              <ThemedIcon name="art" theme={currentTheme} size={11} color="var(--accent-gold)" />
-              <span style={{ color: 'var(--accent-gold)', fontWeight: 700 }}>
-                {lang === 'vi' ? 'Phong Cách Art Game' : 'Art Styles & Worlds'}
-              </span>
-              <span style={{ color: 'var(--text-dim)' }}>(6)</span>
-            </div>
+            {themesList.map(renderThemeItem)}
           </div>
         </div>
       )}
