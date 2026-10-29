@@ -1,25 +1,27 @@
 /* ==========================================================================
-   RETRO GAME DEV WORKSPACE - CSS SNIPPET FOR OBSIDIAN
+   RETRO GAME DEV WORKSPACE - CSS SNIPPET FOR OBSIDIAN (ENHANCED V2)
    Style: 16-bit RPG & Arcade Debugger Console
+   Optimized for Game Development Research & Visual Thinking
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
    1. COLOR VARIABLES & THEME OVERRIDES
    -------------------------------------------------------------------------- */
 .theme-dark {
-  --bg-retro-darkest: #121218;
-  --bg-retro-panel: #181924;
-  --bg-retro-card: #202230;
-  --border-retro: #3b3f58;
+  --bg-retro-darkest: #111217;
+  --bg-retro-panel: #161722;
+  --bg-retro-card: #1f212f;
+  --border-retro: #363b52;
   --border-retro-highlight: #7aa2f7;
 
-  /* Accent Colors */
+  /* 16-bit Arcade Accent Colors */
   --retro-green: #4ade80;   /* Pixel / Terminal Green */
   --retro-gold: #fbbf24;    /* Coin / Legendary Gold */
   --retro-cyan: #38bdf8;    /* Mana / Link Cyan */
   --retro-red: #f43f5e;     /* HP / Boss Crimson */
   --retro-purple: #a855f7;  /* Inventory Purple */
   --retro-orange: #fb923c;  /* Quest / Flame Orange */
+  --retro-blue: #60a5fa;    /* Resource Blue */
 
   /* Obsidian Mappings */
   --background-primary: var(--bg-retro-darkest);
@@ -29,8 +31,8 @@
   --background-modifier-border: var(--border-retro);
   --background-modifier-border-hover: var(--border-retro-highlight);
 
-  --text-normal: #d8deeb;
-  --text-muted: #8b92b2;
+  --text-normal: #d5dbed;
+  --text-muted: #8890b0;
   --text-faint: #565f89;
   --text-accent: var(--retro-cyan);
   --text-accent-hover: var(--retro-green);
@@ -48,17 +50,19 @@
 body, .cm-s-obsidian, .markdown-rendered {
   font-family: 'Consolas', 'JetBrains Mono', 'Courier New', monospace;
   letter-spacing: -0.01em;
+  line-height: 1.6;
 }
 
-/* Headings with Arcade styling */
+/* Headings with Arcade & RPG styling */
 h1, .markdown-rendered h1, .cm-header-1 {
   color: var(--retro-gold) !important;
   font-family: 'Consolas', 'JetBrains Mono', monospace;
   text-transform: uppercase;
   letter-spacing: 0.05em;
   border-bottom: 2px dashed var(--retro-gold);
-  padding-bottom: 6px;
-  margin-top: 1.2em;
+  padding-bottom: 8px;
+  margin-top: 1.4em;
+  margin-bottom: 0.8em;
   text-shadow: 0 0 8px rgba(251, 191, 36, 0.35);
 }
 
@@ -66,13 +70,16 @@ h2, .markdown-rendered h2, .cm-header-2 {
   color: var(--retro-cyan) !important;
   font-family: 'Consolas', 'JetBrains Mono', monospace;
   border-bottom: 1px solid var(--border-retro);
-  padding-bottom: 4px;
+  padding-bottom: 5px;
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
   text-shadow: 0 0 6px rgba(56, 189, 248, 0.3);
 }
 
 h3, .markdown-rendered h3, .cm-header-3 {
   color: var(--retro-green) !important;
-  text-shadow: 0 0 6px rgba(74, 222, 128, 0.3);
+  margin-top: 1em;
+  text-shadow: 0 0 5px rgba(74, 222, 128, 0.25);
 }
 
 h4, .markdown-rendered h4, .cm-header-4 {
@@ -84,104 +91,225 @@ h5, .markdown-rendered h5, .cm-header-5 {
 }
 
 /* --------------------------------------------------------------------------
-   3. INTERNAL WIKILINKS & TAGS (GLOWING ENERGY LINKS)
+   3. PROPERTIES / FRONTMATTER (RPG CHARACTER & ITEM CARD)
    -------------------------------------------------------------------------- */
-.cm-hmd-internal-link,
-.markdown-rendered .internal-link {
-  color: var(--retro-cyan) !important;
-  text-decoration: none !important;
-  border-bottom: 1px dashed var(--retro-cyan);
-  transition: all 0.15s ease-in-out;
-  padding: 0 2px;
-}
-
-.cm-hmd-internal-link:hover,
-.markdown-rendered .internal-link:hover {
-  color: #ffffff !important;
-  background-color: rgba(56, 189, 248, 0.25);
-  border-bottom: 1px solid var(--retro-green);
-  text-shadow: 0 0 8px var(--retro-cyan);
-}
-
-/* Tags styled as Quest / Inventory Badges */
-.tag, a.tag {
-  background-color: var(--bg-retro-card) !important;
-  color: var(--retro-gold) !important;
-  border: 1px solid var(--border-retro) !important;
+.metadata-container {
+  background-color: #151622 !important;
+  border: 2px solid var(--border-retro) !important;
+  border-left: 4px solid var(--retro-gold) !important;
   border-radius: 0px !important;
-  padding: 2px 6px !important;
-  font-size: 0.85em !important;
-  font-weight: bold;
-  text-transform: uppercase;
+  padding: 10px 14px !important;
+  margin-bottom: 22px !important;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5) !important;
 }
 
-.tag:hover {
-  background-color: var(--retro-gold) !important;
-  color: #121218 !important;
-  text-shadow: none !important;
+.metadata-properties-heading {
+  font-family: 'Consolas', monospace !important;
+  font-size: 0.8em !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  color: var(--retro-gold) !important;
+  margin-bottom: 8px !important;
+}
+
+.metadata-property-key {
+  font-family: 'Consolas', monospace !important;
+  color: var(--retro-cyan) !important;
+  font-size: 0.9em !important;
+}
+
+.metadata-property-value {
+  font-family: 'Consolas', monospace !important;
 }
 
 /* --------------------------------------------------------------------------
-   4. RPG DIALOGUE BOXES (CALLOUTS)
+   4. MARKDOWN TABLES (RPG INVENTORY & STAT MATRIX)
+   -------------------------------------------------------------------------- */
+.markdown-rendered table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  margin: 1.4em 0 !important;
+  border: 2px solid var(--border-retro) !important;
+  background-color: #12131c !important;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5) !important;
+}
+
+.markdown-rendered th {
+  background-color: #1a1c29 !important;
+  color: var(--retro-gold) !important;
+  font-family: 'Consolas', monospace !important;
+  font-size: 0.88em !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.06em !important;
+  border-bottom: 2px solid var(--border-retro-highlight) !important;
+  border-right: 1px solid var(--border-retro) !important;
+  padding: 9px 14px !important;
+}
+
+.markdown-rendered td {
+  border: 1px solid var(--border-retro) !important;
+  padding: 8px 14px !important;
+  color: var(--text-normal) !important;
+}
+
+.markdown-rendered tr:nth-child(even) {
+  background-color: rgba(255, 255, 255, 0.02) !important;
+}
+
+.markdown-rendered tr:hover {
+  background-color: rgba(56, 189, 248, 0.08) !important;
+}
+
+/* --------------------------------------------------------------------------
+   5. RPG DIALOGUE BOXES (CALLOUTS ENHANCED)
    -------------------------------------------------------------------------- */
 .callout {
   border-radius: 0px !important;
   border: 2px solid var(--border-retro) !important;
-  background-color: var(--bg-retro-panel) !important;
+  background-color: #161724 !important;
   box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.6) !important;
-  margin: 1.2em 0 !important;
-  padding: 12px 16px !important;
+  margin: 1.4em 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
 }
 
 .callout-title {
+  padding: 8px 14px !important;
+  background-color: rgba(0, 0, 0, 0.35) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06) !important;
   font-weight: bold;
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   font-family: 'Consolas', monospace;
+  font-size: 0.9em;
 }
 
-/* Quest Lore Callout */
+.callout-content {
+  padding: 12px 16px !important;
+}
+
+/* Callout Variants with dedicated header backgrounds */
 .callout[data-callout="note"] {
-  border-color: var(--retro-gold) !important;
+  border-left: 5px solid var(--retro-gold) !important;
 }
 .callout[data-callout="note"] .callout-title {
   color: var(--retro-gold) !important;
+  background-color: rgba(251, 191, 36, 0.12) !important;
 }
 
-/* Skill Tip Callout */
 .callout[data-callout="tip"] {
-  border-color: var(--retro-green) !important;
+  border-left: 5px solid var(--retro-green) !important;
 }
 .callout[data-callout="tip"] .callout-title {
   color: var(--retro-green) !important;
+  background-color: rgba(74, 222, 128, 0.12) !important;
 }
 
-/* Boss Danger / Bug Callout */
 .callout[data-callout="warning"],
 .callout[data-callout="danger"] {
-  border-color: var(--retro-red) !important;
+  border-left: 5px solid var(--retro-red) !important;
 }
 .callout[data-callout="warning"] .callout-title,
 .callout[data-callout="danger"] .callout-title {
   color: var(--retro-red) !important;
+  background-color: rgba(244, 63, 94, 0.16) !important;
 }
 
-/* Game Mechanic Callout */
 .callout[data-callout="info"] {
-  border-color: var(--retro-cyan) !important;
+  border-left: 5px solid var(--retro-cyan) !important;
 }
 .callout[data-callout="info"] .callout-title {
   color: var(--retro-cyan) !important;
+  background-color: rgba(56, 189, 248, 0.12) !important;
 }
 
 /* --------------------------------------------------------------------------
-   5. PIXEL CHECKBOXES (QUEST LOG TASKS)
+   6. ENHANCED PROGRESS BARS (HP / MP / EXP BARS)
+   Clean text rendering, zero clipping with Vietnamese diacritics
+   -------------------------------------------------------------------------- */
+.hp-bar, .mp-bar, .exp-bar {
+  position: relative;
+  width: 100%;
+  max-width: 440px;
+  height: 28px;
+  background-color: #0b0c10;
+  border: 2px solid #363b52;
+  border-radius: 0px;
+  margin: 12px 0 16px 0;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hp-bar::before, .mp-bar::before, .exp-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: var(--val, 50%);
+  transition: width 0.3s ease;
+  z-index: 1;
+}
+
+/* Pixel segmented gradient stripes */
+.hp-bar::before {
+  background: repeating-linear-gradient(
+    90deg,
+    #f43f5e,
+    #f43f5e 8px,
+    #9f1239 8px,
+    #9f1239 10px
+  );
+}
+
+.mp-bar::before {
+  background: repeating-linear-gradient(
+    90deg,
+    #38bdf8,
+    #38bdf8 8px,
+    #0369a1 8px,
+    #0369a1 10px
+  );
+}
+
+.exp-bar::before {
+  background: repeating-linear-gradient(
+    90deg,
+    #fbbf24,
+    #fbbf24 8px,
+    #b45309 8px,
+    #b45309 10px
+  );
+}
+
+.hp-bar span, .mp-bar span, .exp-bar span {
+  position: relative;
+  z-index: 2;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #ffffff;
+  font-family: 'Consolas', 'JetBrains Mono', monospace;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  background-color: rgba(11, 12, 16, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 0px;
+  text-shadow: 1px 1px 0px #000;
+  white-space: nowrap;
+}
+
+/* --------------------------------------------------------------------------
+   7. PIXEL CHECKBOXES (QUEST LOG TASKS)
    -------------------------------------------------------------------------- */
 .task-list-item-checkbox {
   appearance: none;
   -webkit-appearance: none;
-  width: 14px !important;
-  height: 14px !important;
+  width: 15px !important;
+  height: 15px !important;
   border: 2px solid var(--border-retro-highlight) !important;
   border-radius: 0px !important;
   background-color: var(--bg-retro-darkest) !important;
@@ -206,33 +334,32 @@ h5, .markdown-rendered h5, .cm-header-5 {
   content: '✓';
   position: absolute;
   top: -3px;
-  left: 1px;
+  left: 2px;
   font-size: 11px;
   font-weight: bold;
-  color: #121218;
+  color: #111217;
 }
 
-/* Quest Cleared (Crossed out item) */
 .task-list-item.is-checked {
   color: var(--text-faint) !important;
   text-decoration: line-through;
 }
 
 /* --------------------------------------------------------------------------
-   6. CODE BLOCKS (ARCADE DEBUGGER TERMINAL)
+   8. CODE BLOCKS (ARCADE DEBUGGER TERMINAL)
    -------------------------------------------------------------------------- */
 .markdown-rendered pre,
 .cm-s-obsidian pre.HyperMD-codeblock {
-  background-color: #0d0e14 !important;
+  background-color: #0b0c10 !important;
   border: 1px solid var(--border-retro) !important;
   border-left: 4px solid var(--retro-green) !important;
   border-radius: 0px !important;
-  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.5) !important;
 }
 
 code {
   color: var(--retro-green) !important;
-  background-color: #12131c !important;
+  background-color: #141520 !important;
   border: 1px solid var(--border-retro);
   border-radius: 0px !important;
   padding: 1px 4px !important;
@@ -240,101 +367,81 @@ code {
 }
 
 /* --------------------------------------------------------------------------
-   7. RETRO PROGRESS BARS (HP / MP / EXP BARS)
-   Usage in Markdown:
-   <div class="hp-bar" style="--val: 75%;"><span>HP: 75/100</span></div>
-   <div class="exp-bar" style="--val: 45%;"><span>EXP: 450/1000</span></div>
+   9. FILE EXPLORER: COLOR-CODED RETRO DIRECTORIES
    -------------------------------------------------------------------------- */
-.hp-bar, .mp-bar, .exp-bar {
-  position: relative;
-  width: 100%;
-  max-width: 380px;
-  height: 20px;
-  background-color: #0e0f17;
-  border: 2px solid #3b3f58;
-  margin: 8px 0;
-  box-shadow: 2px 2px 0px rgba(0,0,0,0.6);
-}
-
-.hp-bar::before, .mp-bar::before, .exp-bar::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: var(--val, 50%);
-  transition: width 0.3s ease;
-}
-
-.hp-bar::before {
-  background: repeating-linear-gradient(
-    90deg,
-    var(--retro-red),
-    var(--retro-red) 6px,
-    #b91c1c 6px,
-    #b91c1c 8px
-  );
-}
-
-.mp-bar::before {
-  background: repeating-linear-gradient(
-    90deg,
-    var(--retro-cyan),
-    var(--retro-cyan) 6px,
-    #0284c7 6px,
-    #0284c7 8px
-  );
-}
-
-.exp-bar::before {
-  background: repeating-linear-gradient(
-    90deg,
-    var(--retro-gold),
-    var(--retro-gold) 6px,
-    #d97706 6px,
-    #d97706 8px
-  );
-}
-
-.hp-bar span, .mp-bar span, .exp-bar span {
-  position: absolute;
-  width: 100%;
-  text-align: center;
-  font-size: 10px;
-  font-weight: bold;
-  line-height: 18px;
-  color: #ffffff;
-  text-shadow: 1px 1px 2px #000;
-  z-index: 2;
-  font-family: 'Consolas', monospace;
-  letter-spacing: 0.05em;
-}
-
-/* --------------------------------------------------------------------------
-   8. SIDEBAR, TABS & WORKSPACE BORDERS
-   -------------------------------------------------------------------------- */
-/* Sharp Cartridge Tabs */
-.workspace-tab-header {
+/* General Folder Styling */
+.nav-folder-title {
   border-radius: 0px !important;
-  border-right: 1px solid var(--border-retro) !important;
   font-family: 'Consolas', monospace;
-  font-size: 0.9em;
+  font-size: 0.92em;
 }
 
-.workspace-tab-header.is-active {
-  background-color: var(--bg-retro-panel) !important;
-  border-top: 2px solid var(--retro-gold) !important;
+/* 00 Skill Tree & 00 Inbox - Legendary Gold */
+.nav-folder-title[data-path^="00"] .nav-folder-title-content {
+  color: var(--retro-gold) !important;
+  font-weight: bold;
+}
+.nav-folder-title[data-path^="00"] {
+  border-left: 2px solid var(--retro-gold) !important;
 }
 
-/* File explorer tree hover */
+/* 10 Game Design Theory - Mana Cyan */
+.nav-folder-title[data-path^="10"] .nav-folder-title-content {
+  color: var(--retro-cyan) !important;
+  font-weight: bold;
+}
+.nav-folder-title[data-path^="10"] {
+  border-left: 2px solid var(--retro-cyan) !important;
+}
+
+/* 20 Tech & Architecture - Pixel Green */
+.nav-folder-title[data-path^="20"] .nav-folder-title-content {
+  color: var(--retro-green) !important;
+  font-weight: bold;
+}
+.nav-folder-title[data-path^="20"] {
+  border-left: 2px solid var(--retro-green) !important;
+}
+
+/* 30 Assets & Art - Inventory Purple */
+.nav-folder-title[data-path^="30"] .nav-folder-title-content {
+  color: var(--retro-purple) !important;
+  font-weight: bold;
+}
+.nav-folder-title[data-path^="30"] {
+  border-left: 2px solid var(--retro-purple) !important;
+}
+
+/* 40 Projects & Prototypes - Flame Orange */
+.nav-folder-title[data-path^="40"] .nav-folder-title-content {
+  color: var(--retro-orange) !important;
+  font-weight: bold;
+}
+.nav-folder-title[data-path^="40"] {
+  border-left: 2px solid var(--retro-orange) !important;
+}
+
+/* 80 Resources & References - Resource Blue */
+.nav-folder-title[data-path^="80"] .nav-folder-title-content {
+  color: var(--retro-blue) !important;
+  font-weight: bold;
+}
+.nav-folder-title[data-path^="80"] {
+  border-left: 2px solid var(--retro-blue) !important;
+}
+
+/* 90 Templates & Attachments - Muted Slate */
+.nav-folder-title[data-path^="90"] .nav-folder-title-content {
+  color: #94a3b8 !important;
+}
+
+/* Hover & Active File in Explorer */
 .nav-file-title:hover,
 .nav-folder-title:hover {
   background-color: rgba(56, 189, 248, 0.12) !important;
-  border-left: 2px solid var(--retro-green) !important;
   border-radius: 0px !important;
 }
 
-/* Active file in explorer */
 .nav-file-title.is-active {
   background-color: rgba(251, 191, 36, 0.15) !important;
   border-left: 2px solid var(--retro-gold) !important;
@@ -343,11 +450,42 @@ code {
 }
 
 /* --------------------------------------------------------------------------
-   9. GRAPH VIEW RETRO GLOW
+   10. CANVAS NODES & GRAPH VIEW
    -------------------------------------------------------------------------- */
+.canvas-node-container {
+  border-radius: 0px !important;
+  border: 2px solid var(--border-retro) !important;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.6) !important;
+  background-color: #151622 !important;
+}
+
+.canvas-node.is-focused .canvas-node-container {
+  border-color: var(--retro-gold) !important;
+  box-shadow: 0 0 10px rgba(251, 191, 36, 0.4) !important;
+}
+
 .graph-view.color-fill {
-  filter: drop-shadow(0 0 4px rgba(74, 222, 128, 0.4));
+  filter: drop-shadow(0 0 5px rgba(74, 222, 128, 0.4));
 }
 .graph-view.color-line {
-  opacity: 0.65;
+  opacity: 0.7;
+}
+
+/* --------------------------------------------------------------------------
+   11. RETRO SCROLLBARS
+   -------------------------------------------------------------------------- */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+  background: var(--bg-retro-darkest);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2b2f42;
+  border: 1px solid var(--border-retro);
+  border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--retro-cyan);
 }
