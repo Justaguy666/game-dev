@@ -138,6 +138,7 @@ export const App: React.FC = () => {
             skills={skills}
             onSelectSkill={(skill) => setActiveDrawerSkill(skill)}
             lang={lang}
+            currentTheme={currentTheme}
           />
         )}
 
@@ -148,6 +149,7 @@ export const App: React.FC = () => {
             onSelectSkillId={setSelectedReaderSkillId}
             onUpdateSkill={handleUpdateSkill}
             lang={lang}
+            currentTheme={currentTheme}
           />
         )}
 
@@ -160,6 +162,7 @@ export const App: React.FC = () => {
               setActiveView('editor');
             }}
             lang={lang}
+            currentTheme={currentTheme}
           />
         )}
 
@@ -170,6 +173,7 @@ export const App: React.FC = () => {
             onClose={() => setActiveDrawerSkill(null)}
             onUpdateSkill={handleUpdateSkill}
             lang={lang}
+            currentTheme={currentTheme}
           />
         )}
       </div>

@@ -1,16 +1,17 @@
 import React from 'react';
-import { SkillNode, Language } from '../types';
+import { SkillNode, Language, ThemeId } from '../types';
 import { sound } from '../soundEngine';
-import { CheckCircle2, Circle, Flame, Sparkles } from 'lucide-react';
+import { ThemedIcon } from './ThemedIcon';
 
 interface QuestsViewProps {
   skills: SkillNode[];
   onToggleObjective: (skillId: string, objId: string) => void;
   onOpenSkill: (skill: SkillNode) => void;
   lang: Language;
+  currentTheme: ThemeId;
 }
 
-export const QuestsView: React.FC<QuestsViewProps> = ({ skills, onToggleObjective, onOpenSkill, lang }) => {
+export const QuestsView: React.FC<QuestsViewProps> = ({ skills, onToggleObjective, onOpenSkill, lang, currentTheme }) => {
   const allObjectives = skills.flatMap(s => 
     s.objectives.map(obj => ({
       skill: s,
@@ -38,7 +39,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({ skills, onToggleObjectiv
         marginBottom: '28px'
       }}>
         <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-          <Sparkles color="var(--accent-gold)" size={24} />
+          <ThemedIcon name="quests" theme={currentTheme} size={24} color="var(--accent-gold)" />
           <h1 style={{
             fontSize: '1.2em',
             fontFamily: 'var(--font-display)',

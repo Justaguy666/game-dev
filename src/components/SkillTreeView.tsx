@@ -1,15 +1,16 @@
 import React, { useState, useRef } from 'react';
-import { SkillNode, Language } from '../types';
+import { SkillNode, Language, ThemeId } from '../types';
 import { sound } from '../soundEngine';
-import { ZoomIn, ZoomOut, RotateCcw, CheckCircle2, Lock, Flame, Sparkles } from 'lucide-react';
+import { ThemedIcon } from './ThemedIcon';
 
 interface SkillTreeViewProps {
   skills: SkillNode[];
   onSelectSkill: (skill: SkillNode) => void;
   lang: Language;
+  currentTheme: ThemeId;
 }
 
-export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSkill, lang }) => {
+export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSkill, lang, currentTheme }) => {
   const [zoom, setZoom] = useState<number>(1);
   const [pan, setPan] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -92,9 +93,11 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
             color: 'var(--text-main)',
             border: '1px solid var(--border-color)',
             padding: '8px',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center'
           }}>
-          <ZoomIn size={16} />
+          <ThemedIcon name="zoomIn" theme={currentTheme} size={16} />
         </button>
         <button
           onClick={() => { sound.playClick(); setZoom(z => Math.max(0.5, z - 0.15)); }}
@@ -104,9 +107,11 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
             color: 'var(--text-main)',
             border: '1px solid var(--border-color)',
             padding: '8px',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center'
           }}>
-          <ZoomOut size={16} />
+          <ThemedIcon name="zoomOut" theme={currentTheme} size={16} />
         </button>
         <button
           onClick={resetView}
@@ -116,9 +121,11 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
             color: 'var(--text-main)',
             border: '1px solid var(--border-color)',
             padding: '8px',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center'
           }}>
-          <RotateCcw size={16} />
+          <ThemedIcon name="reset" theme={currentTheme} size={16} />
         </button>
       </div>
 
@@ -132,25 +139,25 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
         padding: '10px 14px',
         display: 'flex',
         flexDirection: 'column',
-        gap: '6px',
+        gap: '8px',
         fontSize: '0.8em',
         fontFamily: 'var(--font-mono)',
         zIndex: 50,
         boxShadow: 'var(--card-shadow)'
       }}>
-        <div style={{ fontWeight: 800, color: 'var(--accent-gold)', marginBottom: '4px' }}>
+        <div style={{ fontWeight: 800, color: 'var(--accent-gold)', marginBottom: '2px' }}>
           {lang === 'vi' ? '📜 TRẠNG THÁI KỸ NĂNG' : '📜 SKILL TREE LEGEND'}
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ width: '10px', height: '10px', backgroundColor: 'var(--accent-green)', display: 'inline-block' }} />
+          <ThemedIcon name="mastered" theme={currentTheme} size={14} color="var(--accent-green)" />
           <span>{lang === 'vi' ? 'Đã lĩnh hội (Mastered)' : 'Mastered'}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ width: '10px', height: '10px', backgroundColor: 'var(--accent-gold)', display: 'inline-block' }} />
+          <ThemedIcon name="learning" theme={currentTheme} size={14} color="var(--accent-gold)" />
           <span>{lang === 'vi' ? 'Đang luyện tập (Learning)' : 'In Training'}</span>
         </div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <span style={{ width: '10px', height: '10px', backgroundColor: 'var(--border-color)', display: 'inline-block' }} />
+          <ThemedIcon name="locked" theme={currentTheme} size={14} color="var(--border-color)" />
           <span>{lang === 'vi' ? 'Chưa mở khóa (Locked)' : 'Locked'}</span>
         </div>
       </div>
@@ -242,12 +249,12 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
                   fontWeight: 700,
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '4px',
+                  gap: '5px',
                   color: borderColor
                 }}>
-                  {isMastered && <CheckCircle2 size={12} />}
-                  {isLearning && <Flame size={12} />}
-                  {isLocked && <Lock size={12} />}
+                  {isMastered && <ThemedIcon name="mastered" theme={currentTheme} size={12} color="var(--accent-green)" />}
+                  {isLearning && <ThemedIcon name="learning" theme={currentTheme} size={12} color="var(--accent-gold)" />}
+                  {isLocked && <ThemedIcon name="locked" theme={currentTheme} size={12} color="var(--text-dim)" />}
                   {isMastered ? (lang === 'vi' ? 'ĐÃ LĨNH HỘI' : 'MASTERED') : (isLearning ? (lang === 'vi' ? 'ĐANG HỌC' : 'LEARNING') : (lang === 'vi' ? 'KHÓA' : 'LOCKED'))}
                 </span>
               </div>

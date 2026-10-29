@@ -1,7 +1,7 @@
 import React from 'react';
 import { ThemeId, ThemeMode, Language } from '../types';
 import { sound } from '../soundEngine';
-import { Volume2, VolumeX, Tv, Sun, Moon, Globe, Gamepad2, Swords, Bot, Sparkles, BookOpen, Compass, CheckSquare } from 'lucide-react';
+import { ThemedIcon } from './ThemedIcon';
 
 interface TopHUDProps {
   currentTheme: ThemeId;
@@ -44,11 +44,11 @@ export const TopHUD: React.FC<TopHUDProps> = ({
   const currentLevelExp = totalExp % 180;
   const progressPercent = Math.min(100, Math.round((currentLevelExp / 180) * 100));
 
-  const themesList: { id: ThemeId; name: { vi: string; en: string }; icon: React.ReactNode }[] = [
-    { id: 'arcade', name: { vi: 'Arcade 16-Bit', en: '16-Bit Arcade' }, icon: <Gamepad2 size={15} /> },
-    { id: 'gameboy', name: { vi: 'Game Boy DMG', en: 'Game Boy 1989' }, icon: <Sparkles size={15} /> },
-    { id: 'cyber', name: { vi: 'Cyber Mecha', en: 'Cyber Mecha' }, icon: <Bot size={15} /> },
-    { id: 'fantasy', name: { vi: 'Dark Fantasy', en: 'Dark Fantasy' }, icon: <Swords size={15} /> }
+  const themesList: { id: ThemeId; name: { vi: string; en: string } }[] = [
+    { id: 'arcade', name: { vi: '🕹️ 16-Bit Arcade', en: '🕹️ 16-Bit Arcade' } },
+    { id: 'gameboy', name: { vi: '👾 Game Boy DMG', en: '👾 Game Boy 1989' } },
+    { id: 'cyber', name: { vi: '🤖 Cyber Mecha', en: '🤖 Cyber Mecha' } },
+    { id: 'fantasy', name: { vi: '⚔️ Dark Fantasy', en: '⚔️ Dark Fantasy' } }
   ];
 
   return (
@@ -153,7 +153,7 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             cursor: 'pointer',
             transition: 'all 0.15s ease'
           }}>
-          <Compass size={15} />
+          <ThemedIcon name="tree" theme={currentTheme} size={16} />
           {lang === 'vi' ? 'Cây Kỹ Năng' : 'Skill Tree'}
         </button>
 
@@ -173,7 +173,7 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             cursor: 'pointer',
             transition: 'all 0.15s ease'
           }}>
-          <BookOpen size={15} />
+          <ThemedIcon name="docs" theme={currentTheme} size={16} />
           {lang === 'vi' ? 'Tài Liệu & Soạn Thảo' : 'Docs & Editor'}
         </button>
 
@@ -193,7 +193,7 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             cursor: 'pointer',
             transition: 'all 0.15s ease'
           }}>
-          <CheckSquare size={15} />
+          <ThemedIcon name="quests" theme={currentTheme} size={16} />
           {lang === 'vi' ? 'Nhiệm Vụ' : 'Quests'}
         </button>
       </nav>
@@ -236,9 +236,15 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             color: 'var(--text-main)',
             border: '1px solid var(--border-color)',
             padding: '6px 9px',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center'
           }}>
-          {themeMode === 'dark' ? <Sun size={15} color="var(--accent-gold)" /> : <Moon size={15} />}
+          {themeMode === 'dark' ? (
+            <ThemedIcon name="sun" theme={currentTheme} size={16} color="var(--accent-gold)" />
+          ) : (
+            <ThemedIcon name="moon" theme={currentTheme} size={16} />
+          )}
         </button>
 
         {/* CRT Scanline Toggle */}
@@ -250,9 +256,11 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             color: isCrtOn ? 'var(--accent-green)' : 'var(--text-muted)',
             border: `1px solid ${isCrtOn ? 'var(--accent-green)' : 'var(--border-color)'}`,
             padding: '6px 9px',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center'
           }}>
-          <Tv size={15} />
+          <ThemedIcon name="tv" theme={currentTheme} size={16} />
         </button>
 
         {/* Audio Mute Toggle */}
@@ -264,9 +272,15 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             color: isMuted ? 'var(--accent-red)' : 'var(--accent-green)',
             border: `1px solid ${isMuted ? 'var(--accent-red)' : 'var(--border-color)'}`,
             padding: '6px 9px',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            display: 'flex',
+            alignItems: 'center'
           }}>
-          {isMuted ? <VolumeX size={15} /> : <Volume2 size={15} />}
+          {isMuted ? (
+            <ThemedIcon name="mute" theme={currentTheme} size={16} />
+          ) : (
+            <ThemedIcon name="volume" theme={currentTheme} size={16} />
+          )}
         </button>
 
         {/* Language Switcher */}
@@ -284,10 +298,10 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             cursor: 'pointer',
             display: 'flex',
             alignItems: 'center',
-            gap: '5px'
+            gap: '6px'
           }}>
-          <Globe size={14} />
-          {lang === 'vi' ? '🇻🇳 VI' : '🇬🇧 EN'}
+          <ThemedIcon name="globe" theme={currentTheme} size={15} />
+          {lang === 'vi' ? 'VI' : 'EN'}
         </button>
       </div>
     </header>

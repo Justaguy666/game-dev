@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
-import { SkillNode, Language } from '../types';
+import { SkillNode, Language, ThemeId } from '../types';
 import { sound } from '../soundEngine';
 import { marked } from 'marked';
-import { Edit3, Eye, Download, CheckSquare, X, Save, Sparkles, Award } from 'lucide-react';
+import { ThemedIcon } from './ThemedIcon';
 
 interface DocumentEditorProps {
   skill: SkillNode;
   onClose: () => void;
   onUpdateSkill: (updated: SkillNode) => void;
   lang: Language;
+  currentTheme: ThemeId;
 }
 
-export const DocumentEditor: React.FC<DocumentEditorProps> = ({ skill, onClose, onUpdateSkill, lang }) => {
+export const DocumentEditor: React.FC<DocumentEditorProps> = ({ skill, onClose, onUpdateSkill, lang, currentTheme }) => {
   const [isEditing, setIsEditing] = useState<boolean>(false);
   const [content, setContent] = useState<string>(skill.content[lang]);
   const [title, setTitle] = useState<string>(skill.title[lang]);
@@ -124,9 +125,22 @@ ${content}
           <span style={{
             fontSize: '12px',
             fontWeight: 700,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
             color: skill.status === 'mastered' ? 'var(--accent-green)' : 'var(--accent-gold)'
           }}>
-            {skill.status === 'mastered' ? (lang === 'vi' ? '🌟 ĐÃ LĨNH HỘI' : '🌟 MASTERED') : (lang === 'vi' ? '⚡ ĐANG HỌC' : '⚡ IN TRAINING')}
+            {skill.status === 'mastered' ? (
+              <>
+                <ThemedIcon name="mastered" theme={currentTheme} size={14} color="var(--accent-green)" />
+                {lang === 'vi' ? 'ĐÃ LĨNH HỘI' : 'MASTERED'}
+              </>
+            ) : (
+              <>
+                <ThemedIcon name="learning" theme={currentTheme} size={14} color="var(--accent-gold)" />
+                {lang === 'vi' ? 'ĐANG HỌC' : 'IN TRAINING'}
+              </>
+            )}
           </span>
         </div>
 
@@ -137,7 +151,7 @@ ${content}
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '5px',
+                gap: '6px',
                 backgroundColor: 'var(--accent-green)',
                 color: '#111',
                 border: 'none',
@@ -145,7 +159,7 @@ ${content}
                 fontWeight: 700,
                 cursor: 'pointer'
               }}>
-              <Save size={14} />
+              <ThemedIcon name="save" theme={currentTheme} size={14} />
               {lang === 'vi' ? 'Lưu' : 'Save'}
             </button>
           ) : (
@@ -154,14 +168,14 @@ ${content}
               style={{
                 display: 'flex',
                 alignItems: 'center',
-                gap: '5px',
+                gap: '6px',
                 backgroundColor: 'var(--bg-surface)',
                 color: 'var(--text-main)',
                 border: '1px solid var(--border-color)',
                 padding: '6px 12px',
                 cursor: 'pointer'
               }}>
-              <Edit3 size={14} />
+              <ThemedIcon name="edit" theme={currentTheme} size={14} />
               {lang === 'vi' ? 'Chỉnh sửa' : 'Edit'}
             </button>
           )}
@@ -174,9 +188,11 @@ ${content}
               color: 'var(--text-main)',
               border: '1px solid var(--border-color)',
               padding: '6px 10px',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center'
             }}>
-            <Download size={15} />
+            <ThemedIcon name="download" theme={currentTheme} size={15} />
           </button>
 
           <button
@@ -187,9 +203,11 @@ ${content}
               color: 'var(--accent-red)',
               border: '1px solid var(--border-color)',
               padding: '6px 10px',
-              cursor: 'pointer'
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center'
             }}>
-            <X size={16} />
+            <ThemedIcon name="close" theme={currentTheme} size={16} />
           </button>
         </div>
       </div>
@@ -221,7 +239,7 @@ ${content}
               marginBottom: '10px',
               fontFamily: 'var(--font-mono)'
             }}>
-              <CheckSquare size={16} />
+              <ThemedIcon name="quests" theme={currentTheme} size={16} />
               {lang === 'vi' ? 'MỤC TIÊU LĨNH HỘI (SKILL OBJECTIVES)' : 'MASTERY OBJECTIVES'}
             </div>
 

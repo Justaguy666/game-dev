@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { SkillNode, Language } from '../types';
+import { SkillNode, Language, ThemeId } from '../types';
 import { sound } from '../soundEngine';
 import { marked } from 'marked';
-import { Search, BookOpen, Edit3, Save, Download, CheckSquare, Sparkles } from 'lucide-react';
+import { ThemedIcon } from './ThemedIcon';
 
 interface DocumentReaderViewProps {
   skills: SkillNode[];
@@ -10,6 +10,7 @@ interface DocumentReaderViewProps {
   onSelectSkillId: (id: string) => void;
   onUpdateSkill: (updated: SkillNode) => void;
   lang: Language;
+  currentTheme: ThemeId;
 }
 
 export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
@@ -17,7 +18,8 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
   selectedSkillId,
   onSelectSkillId,
   onUpdateSkill,
-  lang
+  lang,
+  currentTheme
 }) => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [isEditing, setIsEditing] = useState<boolean>(false);
@@ -88,7 +90,7 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
             border: '1px solid var(--border-color)',
             padding: '6px 10px'
           }}>
-            <Search size={15} color="var(--text-muted)" />
+            <ThemedIcon name="search" theme={currentTheme} size={15} color="var(--text-muted)" />
             <input
               type="text"
               placeholder={lang === 'vi' ? 'Tìm kiếm tài liệu, tag...' : 'Search docs, tags...'}
@@ -168,7 +170,7 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
           alignItems: 'center'
         }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-            <BookOpen size={16} color="var(--accent-gold)" />
+            <ThemedIcon name="docs" theme={currentTheme} size={16} color="var(--accent-gold)" />
             <span style={{ fontWeight: 800, fontSize: '0.95em', color: 'var(--text-main)' }}>
               {activeSkill?.title[lang]}
             </span>
@@ -189,7 +191,7 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
                   fontWeight: 700,
                   cursor: 'pointer'
                 }}>
-                <Save size={14} />
+                <ThemedIcon name="save" theme={currentTheme} size={14} />
                 {lang === 'vi' ? 'Lưu bài' : 'Save'}
               </button>
             ) : (
@@ -205,7 +207,7 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
                   padding: '6px 12px',
                   cursor: 'pointer'
                 }}>
-                <Edit3 size={14} />
+                <ThemedIcon name="edit" theme={currentTheme} size={14} />
                 {lang === 'vi' ? 'Chỉnh sửa' : 'Edit'}
               </button>
             )}
@@ -218,9 +220,11 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
                 color: 'var(--text-main)',
                 border: '1px solid var(--border-color)',
                 padding: '6px 10px',
-                cursor: 'pointer'
+                cursor: 'pointer',
+                display: 'flex',
+                alignItems: 'center'
               }}>
-              <Download size={14} />
+              <ThemedIcon name="download" theme={currentTheme} size={14} />
             </button>
           </div>
         </div>
