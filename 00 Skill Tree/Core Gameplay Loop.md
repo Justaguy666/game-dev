@@ -1,4 +1,4 @@
-﻿---
+---
 tier: 1
 category: Design
 status: mastered
@@ -6,21 +6,21 @@ tags:
   - skill/mastered
 ---
 
-# ðŸ”„ Core Gameplay Loop
+# 🔄 Core Gameplay Loop
 
-<div class="exp-bar" style="--val: 100%;"><span>Ká»¸ NÄ‚NG ÄÃƒ LÄ¨NH Há»˜I (MASTERED)</span></div>
+<div class="exp-bar" style="--val: 100%;"><span>KỸ NĂNG ĐÃ LĨNH HỘI (MASTERED)</span></div>
 
-> [!NOTE] ðŸ“œ YÃªu cáº§u tiÃªn quyáº¿t
-> * NhÃ¡nh tá»«: [[Game Dev Mastery]]
+> [!NOTE] 📜 Yêu cầu tiên quyết
+> * Nhánh từ: [[Game Dev Mastery]]
 
-### ðŸ§  Cáº¥u trÃºc vÃ²ng láº·p 30 giÃ¢y
+### 🧠 Cấu trúc vòng lặp 30 giây
 ```
-[ KhÃ¡m phÃ¡ / HÃ nh Ä‘á»™ng ] â”€â”€â”€> [ Thá»­ thÃ¡ch / Chiáº¿n Ä‘áº¥u ]
-           â–²                                  â”‚
-           â”‚                                  â–¼
-[ NÃ¢ng cáº¥p / Pháº§n thÆ°á»Ÿng ] <â”€â”€â”€ [ Äáº¡t Ä‘Æ°á»£c má»¥c tiÃªu ]
+[ Khám phá / Hành động ] ───> [ Thử thách / Chiến đấu ]
+           ▲                                  │
+           │                                  ▼
+[ Nâng cấp / Phần thưởng ] <─── [ Đạt được mục tiêu ]
 ```
 
-* VÃ²ng láº·p ngáº¯n (30s): Nháº£y, nÃ© Ä‘Ã²n, chÃ©m quÃ¡i.
-* VÃ²ng láº·p trung bÃ¬nh (5-10 phÃºt): VÆ°á»£t 1 mÃ n chÆ¡i, thu tháº­p Ä‘á»§ nguyÃªn liá»‡u.
-* VÃ²ng láº·p dÃ i (toÃ n bá»™ game): NÃ¢ng cáº¥p Ä‘áº§y Ä‘á»§ ká»¹ nÄƒng Ä‘á»ƒ Ä‘á»‘i Ä‘áº§u [[Boss Fight State Machine]].
+* Vòng lặp ngắn (30s): Nhảy, né đòn, chém quái.
+* Vòng lặp trung bình (5-10 phút): Vượt 1 màn chơi, thu thập đủ nguyên liệu.
+* Vòng lặp dài (toàn bộ game): Nâng cấp đầy đủ kỹ năng để đối đầu [[Boss Fight State Machine]].

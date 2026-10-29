@@ -1,4 +1,4 @@
-﻿---
+---
 tier: 5
 category: Boss AI
 status: boss
@@ -6,16 +6,15 @@ tags:
   - skill/boss
 ---
 
-# ðŸ‘¹ Boss Fight State Machine
+# 👹 Boss Fight State Machine
 
 <div class="hp-bar" style="--val: 100%;"><span>BOSS HP: 9999 / 9999</span></div>
 
-> [!WARNING] âš ï¸ BOSS BATTLE MECHANIC
-> * ÄÃ²i há»i káº¿t há»£p: [[Core Gameplay Loop]], [[Kinematics & Movement]], [[Dash & Wall Jump]]
+> [!WARNING] ⚠️ BOSS BATTLE MECHANIC
+> * Đòi hỏi kết hợp: [[Core Gameplay Loop]], [[Kinematics & Movement]], [[Dash & Wall Jump]]
 
-### ðŸ§  CÃ¡c tráº¡ng thÃ¡i cá»§a Boss (States)
-
-1. **Idle / Taunt:** Boss Ä‘á»©ng quan sÃ¡t vÃ  Ä‘áº¿m nhá»‹p cooldown.
-2. **Charge Attack:** Lao tháº³ng vá» phÃ­a ngÆ°á»i chÆ¡i vá»›i váº­n tá»‘c cao.
-3. **Ground Slam:** Nháº£y lÃªn cao vÃ  giÃ¡ng bÃºa xuá»‘ng Ä‘áº¥t táº¡o sÃ³ng cháº¥n Ä‘á»™ng.
-4. **Enrage Phase (DÆ°á»›i 30% HP):** TÄƒng 50% tá»‘c Ä‘á»™ ra chiÃªu vÃ  Ä‘á»•i nháº¡c ná»n 8-bit dá»“n dáº­p.
+### 🧠 Các trạng thái của Boss (States)
+1. **Idle / Taunt:** Boss đứng quan sát và đếm nhịp cooldown.
+2. **Charge Attack:** Lao thẳng về phía người chơi với vận tốc cao.
+3. **Ground Slam:** Nhảy lên cao và giáng búa xuống đất tạo sóng chấn động.
+4. **Enrage Phase (Dưới 30% HP):** Tăng 50% tốc độ ra chiêu và đổi nhạc nền 8-bit dồn dập.
