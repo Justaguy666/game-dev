@@ -5,7 +5,8 @@ export type DomainId = 'root' | 'design' | 'tech' | 'qa' | 'art' | 'audio' | 'pr
 
 export interface GameDevDomain {
   id: DomainId;
-  code: string;
+  code: string; // "00", "01", "02", "03", "04", "05", "06"
+  roman: string; // "00", "I", "II", "III", "IV", "V", "VI"
   name: LocalizedText;
   shortName: LocalizedText;
   description: LocalizedText;
@@ -19,6 +20,7 @@ export const GAME_DEV_DOMAINS: GameDevDomain[] = [
   {
     id: 'root',
     code: '00',
+    roman: '00',
     name: {
       vi: '00. Khởi Nguyên: Nền Tảng Game Dev',
       en: '00. Foundations & Methodology'
@@ -38,10 +40,11 @@ export const GAME_DEV_DOMAINS: GameDevDomain[] = [
   },
   {
     id: 'design',
-    code: '10',
+    code: '01',
+    roman: 'I',
     name: {
-      vi: '10. Thiết Kế Cơ Chế & Trải Nghiệm (Game Design)',
-      en: '10. Game Design & Systems'
+      vi: '01. Thiết Kế Cơ Chế & Trải Nghiệm (Game Design)',
+      en: '01. Game Design & Systems'
     },
     shortName: {
       vi: 'Game Design',
@@ -52,16 +55,17 @@ export const GAME_DEV_DOMAINS: GameDevDomain[] = [
       en: 'MDA framework, 30s Core Loop, systems economy, and visceral Game Feel.'
     },
     iconName: 'design',
-    colorVar: 'var(--accent-gold)',
+    colorVar: '#f59e0b', // Amber
     accentHex: '#f59e0b',
     columnX: 100
   },
   {
     id: 'tech',
-    code: '20',
+    code: '02',
+    roman: 'II',
     name: {
-      vi: '20. Kỹ Thuật Lập Trình & Kiến Trúc (Tech & Architecture)',
-      en: '20. Engineering & Architecture'
+      vi: '02. Kỹ Thuật Lập Trình & Kiến Trúc (Tech & Architecture)',
+      en: '02. Engineering & Architecture'
     },
     shortName: {
       vi: 'Lập Trình Game',
@@ -72,16 +76,17 @@ export const GAME_DEV_DOMAINS: GameDevDomain[] = [
       en: 'DeltaTime loops, 2D kinematics math, FSM/ECS patterns, and Game AI.'
     },
     iconName: 'code',
-    colorVar: 'var(--accent-cyan)',
+    colorVar: '#06b6d4', // Cyan
     accentHex: '#06b6d4',
     columnX: 660
   },
   {
     id: 'qa',
-    code: '30',
+    code: '03',
+    roman: 'III',
     name: {
-      vi: '30. Kiểm Thử, QA & Hiệu Năng (QA & Testing)',
-      en: '30. QA, Testing & Profiling'
+      vi: '03. Kiểm Thử, QA & Hiệu Năng (QA & Testing)',
+      en: '03. QA, Testing & Profiling'
     },
     shortName: {
       vi: 'Kiểm Thử QA',
@@ -92,16 +97,17 @@ export const GAME_DEV_DOMAINS: GameDevDomain[] = [
       en: 'Bug taxonomy, headless simulation bots, CPU/GPU profiling, and playtesting.'
     },
     iconName: 'qa',
-    colorVar: 'var(--accent-red)',
+    colorVar: '#f43f5e', // Rose / Red
     accentHex: '#f43f5e',
     columnX: 1220
   },
   {
     id: 'art',
-    code: '40',
+    code: '04',
+    roman: 'IV',
     name: {
-      vi: '40. Nghệ Thuật Thị Giác & Shader (Art & Visuals)',
-      en: '40. Visual Arts & Technical Art'
+      vi: '04. Nghệ Thuật Thị Giác & Shader (Art & Visuals)',
+      en: '04. Visual Arts & Technical Art'
     },
     shortName: {
       vi: 'Đồ Họa & Art',
@@ -112,16 +118,17 @@ export const GAME_DEV_DOMAINS: GameDevDomain[] = [
       en: 'Silhouette hierarchy, interactive animation dynamics, and shaders.'
     },
     iconName: 'art',
-    colorVar: 'var(--accent-purple)',
+    colorVar: '#a855f7', // Purple
     accentHex: '#a855f7',
     columnX: 1780
   },
   {
     id: 'audio',
-    code: '50',
+    code: '05',
+    roman: 'V',
     name: {
-      vi: '50. Âm Thanh & Thiết Kế Tiếng Động (Audio & SFX)',
-      en: '50. Audio & Sound Design'
+      vi: '05. Âm Thanh & Thiết Kế Tiếng Động (Audio & SFX)',
+      en: '05. Audio & Sound Design'
     },
     shortName: {
       vi: 'Âm Thanh SFX',
@@ -132,16 +139,17 @@ export const GAME_DEV_DOMAINS: GameDevDomain[] = [
       en: 'Sound semiotics, procedural adaptive sound systems, and 3D spatial audio.'
     },
     iconName: 'volume',
-    colorVar: 'var(--accent-green)',
+    colorVar: '#10b981', // Emerald / Green
     accentHex: '#10b981',
     columnX: 2340
   },
   {
     id: 'boss',
-    code: '60',
+    code: '06',
+    roman: 'VI',
     name: {
-      vi: '60. Đỉnh Cao Trận Đấu & Sản Xuất (Boss & Capstone)',
-      en: '60. Capstone & Production'
+      vi: '06. Đỉnh Cao Trận Đấu & Sản Xuất (Boss & Capstone)',
+      en: '06. Capstone & Production'
     },
     shortName: {
       vi: 'Capstone & Boss',
@@ -152,7 +160,7 @@ export const GAME_DEV_DOMAINS: GameDevDomain[] = [
       en: 'Multi-phase boss fight state machines, production scope, and release polish.'
     },
     iconName: 'boss',
-    colorVar: 'var(--accent-gold)',
+    colorVar: '#eab308', // Gold / Orange
     accentHex: '#eab308',
     columnX: 940 // Center between tech and qa
   }

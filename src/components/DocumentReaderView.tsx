@@ -148,17 +148,24 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
                   padding: '3px 7px',
                   fontSize: '0.72em',
                   fontFamily: 'var(--font-mono)',
-                  fontWeight: 700,
+                  fontWeight: isSelected ? 800 : 700,
                   cursor: 'pointer',
-                  border: `1px solid ${isSelected ? d.colorVar : 'var(--border-color)'}`,
-                  backgroundColor: isSelected ? d.colorVar : 'var(--bg-app)',
+                  border: `1px solid ${isSelected ? 'var(--accent-gold)' : 'var(--border-color)'}`,
+                  backgroundColor: isSelected ? 'var(--accent-gold)' : 'var(--bg-app)',
                   color: isSelected ? '#111' : 'var(--text-muted)',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '4px',
                   transition: 'all 0.12s ease'
                 }}>
-                <ThemedIcon name={d.iconName} theme={currentTheme} size={11} color={isSelected ? '#111' : d.colorVar} />
+                <span style={{
+                  display: 'inline-block',
+                  width: '6px',
+                  height: '6px',
+                  borderRadius: '50%',
+                  backgroundColor: isSelected ? '#111' : d.accentHex
+                }} />
+                <ThemedIcon name={d.iconName} theme={currentTheme} size={11} color={isSelected ? '#111' : d.accentHex} />
                 <span>{d.code}</span>
               </button>
             );

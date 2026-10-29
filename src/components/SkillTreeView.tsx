@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { SkillNode, Language, ThemeId } from '../types';
 import { ThemedIcon, IconName } from './ThemedIcon';
 import { sound } from '../soundEngine';
-import { GAME_DEV_DOMAINS, GameDevDomain, DomainId } from '../data/categories';
+import { GAME_DEV_DOMAINS, getDomainForCategory, DomainId } from '../data/categories';
 
 interface SkillTreeViewProps {
   skills: SkillNode[];
@@ -24,12 +24,13 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [selectedDomain, setSelectedDomain] = useState<DomainId | 'all'>('all');
+  const [isLegendExpanded, setIsLegendExpanded] = useState(true);
 
   // Pan interaction
   const handleMouseDown = (e: React.MouseEvent) => {
     // Only drag with left mouse button if not clicking interactive elements
     if (e.button !== 0) return;
-    if ((e.target as HTMLElement).closest('.node-card, .domain-banner, button, input')) return;
+    if ((e.target as HTMLElement).closest('.node-card, .domain-banner, .legend-box, button, input')) return;
     setIsDragging(true);
     setDragStart({ x: e.clientX - pan.x, y: e.clientY - pan.y });
   };
@@ -123,52 +124,52 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
   const pillarBanners = [
     {
       domainId: 'design' as DomainId,
-      code: '10',
-      title: { vi: '10. GAME DESIGN & CƠ CHẾ', en: '10. GAME DESIGN & SYSTEMS' },
+      code: '01',
+      title: { vi: '01. GAME DESIGN & CƠ CHẾ', en: '01. GAME DESIGN & SYSTEMS' },
       subtitle: { vi: 'Core Loop • Cân Bằng • Game Feel', en: 'Core Loop • Systems Balance • Juice' },
       x: 100,
       y: 340,
-      color: 'var(--accent-gold)',
+      color: '#f59e0b',
       icon: 'design' as IconName
     },
     {
       domainId: 'tech' as DomainId,
-      code: '20',
-      title: { vi: '20. LẬP TRÌNH & KIẾN TRÚC', en: '20. TECH & ARCHITECTURE' },
+      code: '02',
+      title: { vi: '02. LẬP TRÌNH & KIẾN TRÚC', en: '02. TECH & ARCHITECTURE' },
       subtitle: { vi: 'DeltaTime • Vector Math • FSM/ECS', en: 'DeltaTime • 2D Math • FSM/ECS • AI' },
       x: 660,
       y: 340,
-      color: 'var(--accent-cyan)',
+      color: '#06b6d4',
       icon: 'code' as IconName
     },
     {
       domainId: 'qa' as DomainId,
-      code: '30',
-      title: { vi: '30. KIỂM THỬ QA & HIỆU NĂNG', en: '30. QA & PERFORMANCE' },
+      code: '03',
+      title: { vi: '03. KIỂM THỬ QA & HIỆU NĂNG', en: '03. QA & PERFORMANCE' },
       subtitle: { vi: 'Bug Taxonomy • Headless Bot • Profiling', en: 'Bug Taxonomy • Headless Bot • Profiling' },
       x: 1220,
       y: 340,
-      color: 'var(--accent-red)',
+      color: '#f43f5e',
       icon: 'qa' as IconName
     },
     {
       domainId: 'art' as DomainId,
-      code: '40',
-      title: { vi: '40. NGHỆ THUẬT & TECHNICAL ART', en: '40. ART & TECHNICAL VISUALS' },
+      code: '04',
+      title: { vi: '04. NGHỆ THUẬT & TECHNICAL ART', en: '04. ART & TECHNICAL VISUALS' },
       subtitle: { vi: 'Silhouette • Diễn Hoạt • Shaders', en: 'Silhouette • Animation • Shaders • UI' },
       x: 1780,
       y: 340,
-      color: 'var(--accent-purple)',
+      color: '#a855f7',
       icon: 'art' as IconName
     },
     {
       domainId: 'audio' as DomainId,
-      code: '50',
-      title: { vi: '50. ÂM THANH & SOUND DESIGN', en: '50. AUDIO & SOUND DESIGN' },
+      code: '05',
+      title: { vi: '05. ÂM THANH & SOUND DESIGN', en: '05. AUDIO & SOUND DESIGN' },
       subtitle: { vi: 'Ký Hiệu Học • Adaptive SFX • 3D Spatial', en: 'Semiotics • Adaptive Audio • 3D Spatial' },
       x: 2340,
       y: 340,
-      color: 'var(--accent-green)',
+      color: '#10b981',
       icon: 'volume' as IconName
     }
   ];
@@ -208,7 +209,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
         backgroundSize: '24px 24px'
       }}>
       
-      {/* Top Floating Domain Filter Bar */}
+      {/* Top Floating Domain Filter Bar (Unified Active Color, Zero Emojis) */}
       <div style={{
         position: 'absolute',
         top: '14px',
@@ -217,31 +218,38 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
         flexWrap: 'wrap',
         gap: '6px',
         zIndex: 50,
-        backgroundColor: 'rgba(var(--bg-surface-rgb, 20, 24, 36), 0.85)',
-        backdropFilter: 'blur(6px)',
+        backgroundColor: 'var(--bg-surface)',
         padding: '6px 10px',
         border: '1px solid var(--border-color)',
         boxShadow: 'var(--card-shadow)'
       }}>
+        {/* All Domains Tab */}
         <button
           onClick={() => handleSelectDomain('all')}
           style={{
             padding: '4px 10px',
             fontFamily: 'var(--font-mono)',
-            fontSize: '0.74em',
-            fontWeight: 800,
+            fontSize: '0.75em',
+            fontWeight: selectedDomain === 'all' ? 800 : 700,
             cursor: 'pointer',
             backgroundColor: selectedDomain === 'all' ? 'var(--accent-gold)' : 'var(--bg-card)',
-            color: selectedDomain === 'all' ? '#111' : 'var(--text-main)',
+            color: selectedDomain === 'all' ? '#111' : 'var(--text-muted)',
             border: `1px solid ${selectedDomain === 'all' ? 'var(--accent-gold)' : 'var(--border-color)'}`,
             display: 'flex',
             alignItems: 'center',
-            gap: '5px',
+            gap: '6px',
             transition: 'all 0.12s ease'
           }}>
-          <span>{lang === 'vi' ? '✨ Tất Cả Nhóm' : '✨ All Domains'}</span>
+          <ThemedIcon
+            name="tree"
+            theme={currentTheme}
+            size={13}
+            color={selectedDomain === 'all' ? '#111' : 'var(--accent-gold)'}
+          />
+          <span>{lang === 'vi' ? 'Tất Cả Nhóm' : 'All Domains'}</span>
         </button>
 
+        {/* Individual Domain Tabs (Unified Active Gold Color) */}
         {GAME_DEV_DOMAINS.map(domain => {
           const isSelected = selectedDomain === domain.id;
           return (
@@ -251,18 +259,30 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
               style={{
                 padding: '4px 8px',
                 fontFamily: 'var(--font-mono)',
-                fontSize: '0.74em',
-                fontWeight: 700,
+                fontSize: '0.75em',
+                fontWeight: isSelected ? 800 : 700,
                 cursor: 'pointer',
-                backgroundColor: isSelected ? domain.colorVar : 'var(--bg-card)',
+                backgroundColor: isSelected ? 'var(--accent-gold)' : 'var(--bg-card)',
                 color: isSelected ? '#111' : 'var(--text-muted)',
-                border: `1px solid ${isSelected ? domain.colorVar : 'var(--border-color)'}`,
+                border: `1px solid ${isSelected ? 'var(--accent-gold)' : 'var(--border-color)'}`,
                 display: 'flex',
                 alignItems: 'center',
-                gap: '5px',
+                gap: '6px',
                 transition: 'all 0.12s ease'
               }}>
-              <ThemedIcon name={domain.iconName} theme={currentTheme} size={12} color={isSelected ? '#111' : domain.colorVar} />
+              <span style={{
+                display: 'inline-block',
+                width: '7px',
+                height: '7px',
+                borderRadius: '50%',
+                backgroundColor: isSelected ? '#111' : domain.accentHex
+              }} />
+              <ThemedIcon
+                name={domain.iconName}
+                theme={currentTheme}
+                size={12}
+                color={isSelected ? '#111' : domain.accentHex}
+              />
               <span>{domain.code} {domain.shortName[lang]}</span>
             </button>
           );
@@ -348,45 +368,128 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
         </div>
       </div>
 
-      {/* Legend Overlay */}
-      <div style={{
-        position: 'absolute',
-        bottom: '16px',
-        left: '16px',
-        backgroundColor: 'var(--bg-surface)',
-        border: '1px solid var(--border-color)',
-        padding: '8px 12px',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '5px',
-        fontSize: '0.76em',
-        fontFamily: 'var(--font-mono)',
-        zIndex: 50,
-        boxShadow: 'var(--card-shadow)'
-      }}>
-        <div style={{
-          fontWeight: 800,
-          color: 'var(--accent-gold)',
-          marginBottom: '2px',
+      {/* Comprehensive Legend Table / Panel (Màu Border & Trạng Thái) */}
+      <div 
+        className="legend-box"
+        style={{
+          position: 'absolute',
+          bottom: '16px',
+          left: '16px',
+          backgroundColor: 'var(--bg-surface)',
+          border: '2px solid var(--border-color)',
+          padding: '10px 12px',
           display: 'flex',
-          alignItems: 'center',
-          gap: '6px'
+          flexDirection: 'column',
+          gap: '8px',
+          fontSize: '0.74em',
+          fontFamily: 'var(--font-mono)',
+          zIndex: 50,
+          boxShadow: 'var(--card-shadow)',
+          maxWidth: '310px'
         }}>
-          <ThemedIcon name="docs" theme={currentTheme} size={12} color="var(--accent-gold)" />
-          <span>{lang === 'vi' ? 'TRẠNG THÁI KỸ NĂNG' : 'SKILL TREE LEGEND'}</span>
+        {/* Legend Header & Collapse Toggle */}
+        <div style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          borderBottom: '1px solid var(--border-color)',
+          paddingBottom: '4px'
+        }}>
+          <div style={{
+            fontWeight: 800,
+            color: 'var(--accent-gold)',
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px'
+          }}>
+            <ThemedIcon name="docs" theme={currentTheme} size={13} color="var(--accent-gold)" />
+            <span>{lang === 'vi' ? 'CHÚ GIẢI & MÀU SẮC VIỀN' : 'LEGEND & BORDER COLORS'}</span>
+          </div>
+
+          <button
+            onClick={() => setIsLegendExpanded(!isLegendExpanded)}
+            title={isLegendExpanded ? 'Thu gọn' : 'Mở rộng'}
+            style={{
+              background: 'none',
+              border: 'none',
+              color: 'var(--text-muted)',
+              cursor: 'pointer',
+              fontSize: '11px',
+              padding: '0 2px'
+            }}>
+            {isLegendExpanded ? '▲' : '▼'}
+          </button>
         </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <ThemedIcon name="mastered" theme={currentTheme} size={12} color="var(--accent-green)" />
-          <span>{lang === 'vi' ? 'Đã lĩnh hội (Mastered)' : 'Mastered'}</span>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <ThemedIcon name="learning" theme={currentTheme} size={12} color="var(--accent-gold)" />
-          <span>{lang === 'vi' ? 'Đang luyện tập (Learning)' : 'In Training'}</span>
-        </div>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-          <ThemedIcon name="locked" theme={currentTheme} size={12} color="var(--border-color)" />
-          <span>{lang === 'vi' ? 'Chưa mở khóa (Locked)' : 'Locked'}</span>
-        </div>
+
+        {isLegendExpanded && (
+          <>
+            {/* Section A: Domain Border Colors */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+              <div style={{ fontSize: '0.68em', color: 'var(--text-dim)', fontWeight: 800, letterSpacing: '0.04em' }}>
+                {lang === 'vi' ? 'MÀU VIỀN CÁC NHÓM CHỦ ĐỀ:' : 'CARD BORDER BY DOMAIN:'}
+              </div>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
+                {GAME_DEV_DOMAINS.map(d => (
+                  <div
+                    key={d.id}
+                    onClick={() => handleSelectDomain(d.id)}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: '8px',
+                      cursor: 'pointer',
+                      padding: '2px 4px',
+                      backgroundColor: selectedDomain === d.id ? 'var(--bg-card)' : 'transparent',
+                      borderRadius: '2px',
+                      transition: 'background 0.1s ease'
+                    }}>
+                    <span style={{
+                      display: 'inline-block',
+                      width: '12px',
+                      height: '12px',
+                      border: `2px solid ${d.accentHex}`,
+                      backgroundColor: 'var(--bg-app)',
+                      boxShadow: `0 0 4px ${d.accentHex}66`
+                    }} />
+                    <span style={{ fontWeight: 800, color: d.accentHex, width: '22px' }}>
+                      {d.code}
+                    </span>
+                    <span style={{ color: 'var(--text-main)', flex: 1 }}>
+                      {d.shortName[lang]}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Section B: Progress Status */}
+            <div style={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '4px',
+              borderTop: '1px solid var(--border-color)',
+              paddingTop: '6px'
+            }}>
+              <div style={{ fontSize: '0.68em', color: 'var(--text-dim)', fontWeight: 800, letterSpacing: '0.04em' }}>
+                {lang === 'vi' ? 'TRẠNG THÁI TIẾN ĐỘ:' : 'PROGRESS STATUS:'}
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', gap: '6px' }}>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <ThemedIcon name="mastered" theme={currentTheme} size={11} color="var(--accent-green)" />
+                  <span style={{ color: 'var(--text-muted)' }}>{lang === 'vi' ? 'Đã xong' : 'Mastered'}</span>
+                </span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <ThemedIcon name="learning" theme={currentTheme} size={11} color="var(--accent-gold)" />
+                  <span style={{ color: 'var(--text-muted)' }}>{lang === 'vi' ? 'Đang học' : 'Learning'}</span>
+                </span>
+                <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <ThemedIcon name="locked" theme={currentTheme} size={11} color="var(--border-color)" />
+                  <span style={{ color: 'var(--text-muted)' }}>{lang === 'vi' ? 'Khóa' : 'Locked'}</span>
+                </span>
+              </div>
+            </div>
+          </>
+        )}
       </div>
 
       {/* SVG Canvas World */}
@@ -487,7 +590,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                 border: `2px solid ${p.color}`,
                 padding: '8px 12px',
                 boxShadow: isFocused ? `0 0 14px ${p.color}44` : 'none',
-                opacity: isFocused ? 1 : 0.4,
+                opacity: isFocused ? 1 : 0.35,
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
                 userSelect: 'none'
@@ -515,24 +618,24 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
           );
         })}
 
-        {/* Node Cards */}
+        {/* Node Cards (Domain Color shown on BORDER) */}
         {skills.map(skill => {
           const isMastered = skill.status === 'mastered';
           const isLearning = skill.status === 'learning';
           const isLocked = skill.status === 'locked';
 
-          const borderColor = isMastered 
-            ? 'var(--accent-green)' 
-            : (isLearning ? 'var(--accent-gold)' : 'var(--border-color)');
+          // Domain defines the card border color
+          const domain = getDomainForCategory(skill.category);
+          const domainBorderColor = domain.accentHex;
 
           const isDomainMatch = selectedDomain === 'all' || 
                                 selectedDomain === skill.category || 
                                 (selectedDomain === 'boss' && (skill.category === 'boss' || skill.category === 'production')) ||
                                 (skill.category === 'root');
 
-          const glow = isDomainMatch && isMastered 
-            ? '0 0 12px rgba(74, 222, 128, 0.4)' 
-            : (isDomainMatch && isLearning ? '0 0 10px rgba(251, 191, 36, 0.35)' : 'none');
+          const glow = isDomainMatch 
+            ? (isMastered ? `0 0 12px rgba(74, 222, 128, 0.4)` : `0 0 8px ${domainBorderColor}44`) 
+            : 'none';
 
           return (
             <div
@@ -547,7 +650,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                 position: 'absolute',
                 left: `${skill.x}px`,
                 top: `${skill.y}px`,
-                border: `2px solid ${borderColor}`,
+                border: `2px solid ${domainBorderColor}`,
                 boxShadow: glow,
                 opacity: isDomainMatch ? 1 : 0.22,
                 transition: 'opacity 0.2s ease, transform 0.15s ease, box-shadow 0.15s ease'
@@ -558,7 +661,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                 <span className="node-card-badge" style={{
                   fontWeight: 800,
                   fontFamily: 'var(--font-display)',
-                  color: isMastered ? 'var(--accent-green)' : (isLearning ? 'var(--accent-gold)' : 'var(--text-dim)')
+                  color: domainBorderColor
                 }}>
                   TIER {skill.tier}
                 </span>
@@ -568,7 +671,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                   display: 'flex',
                   alignItems: 'center',
                   gap: '4px',
-                  color: borderColor
+                  color: isMastered ? 'var(--accent-green)' : (isLearning ? 'var(--accent-gold)' : 'var(--text-dim)')
                 }}>
                   {isMastered && <ThemedIcon name="mastered" theme={currentTheme} size={12} color="var(--accent-green)" />}
                   {isLearning && <ThemedIcon name="learning" theme={currentTheme} size={12} color="var(--accent-gold)" />}
@@ -579,12 +682,15 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
 
               {/* Title with Category Icon */}
               <h3 className="node-card-title">
-                <ThemedIcon name={getCategoryIcon(skill.category)} theme={currentTheme} size={15} color="var(--accent-gold)" />
+                <ThemedIcon name={getCategoryIcon(skill.category)} theme={currentTheme} size={15} color={domainBorderColor} />
                 <span>{skill.title[lang]}</span>
               </h3>
 
               {/* Tags */}
               <div style={{ display: 'flex', gap: '4px', flexWrap: 'wrap' }}>
+                <span className="node-card-tag" style={{ color: domainBorderColor, borderColor: `${domainBorderColor}55` }}>
+                  {domain.code}
+                </span>
                 {skill.tags.slice(0, 2).map(tag => (
                   <span key={tag} className="node-card-tag">#{tag}</span>
                 ))}
@@ -605,8 +711,8 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                   color: 'var(--text-muted)',
                   marginBottom: '3px'
                 }}>
-                  <span>{skill.category.toUpperCase()}</span>
-                  <span style={{ fontWeight: 700, color: borderColor }}>
+                  <span>{domain.shortName[lang].toUpperCase()}</span>
+                  <span style={{ fontWeight: 700, color: domainBorderColor }}>
                     {skill.exp}/{skill.maxExp} XP
                   </span>
                 </div>
@@ -620,7 +726,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                   <div style={{
                     width: `${(skill.exp / skill.maxExp) * 100}%`,
                     height: '100%',
-                    backgroundColor: borderColor,
+                    backgroundColor: isMastered ? 'var(--accent-green)' : domainBorderColor,
                     transition: 'width 0.3s ease'
                   }} />
                 </div>
