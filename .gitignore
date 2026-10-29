@@ -1,0 +1,18 @@
+# Obsidian workspace & layout files (tránh xung đột layout/cửa sổ giữa các máy)
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
+.obsidian/workspace.sync-conflict
+.obsidian/workspace-mobile.sync-conflict
+
+# Cache và index tạm thời
+.obsidian/cache/
+
+# Thùng rác nội bộ của Obsidian
+.trash/
+
+# File tạm hệ điều hành
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.log
