@@ -288,6 +288,7 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
                         fontWeight: 800,
                         color: 'var(--text-main)'
                       }}>
+                        <span style={{ color: dColor, marginRight: '5px' }}>{domain.code}.</span>
                         {domain.name[lang]}
                       </span>
                     </div>

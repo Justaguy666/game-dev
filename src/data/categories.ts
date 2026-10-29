@@ -22,8 +22,8 @@ export const GAME_DEV_DOMAINS: GameDevDomain[] = [
     code: '00',
     roman: '00',
     name: {
-      vi: '00. Khởi Nguyên: Nền Tảng Game Dev',
-      en: '00. Foundations & Methodology'
+      vi: 'Khởi Nguyên: Nền Tảng Game Dev',
+      en: 'Foundations & Methodology'
     },
     shortName: {
       vi: 'Khởi Nguyên',
@@ -43,8 +43,8 @@ export const GAME_DEV_DOMAINS: GameDevDomain[] = [
     code: '01',
     roman: 'I',
     name: {
-      vi: '01. Thiết Kế Cơ Chế & Trải Nghiệm (Game Design)',
-      en: '01. Game Design & Systems'
+      vi: 'Thiết Kế Cơ Chế & Trải Nghiệm (Game Design)',
+      en: 'Game Design & Systems'
     },
     shortName: {
       vi: 'Game Design',
@@ -64,8 +64,8 @@ export const GAME_DEV_DOMAINS: GameDevDomain[] = [
     code: '02',
     roman: 'II',
     name: {
-      vi: '02. Kỹ Thuật Lập Trình & Kiến Trúc (Tech & Architecture)',
-      en: '02. Engineering & Architecture'
+      vi: 'Kỹ Thuật Lập Trình & Kiến Trúc (Tech & Architecture)',
+      en: 'Engineering & Architecture'
     },
     shortName: {
       vi: 'Lập Trình Game',
@@ -85,8 +85,8 @@ export const GAME_DEV_DOMAINS: GameDevDomain[] = [
     code: '03',
     roman: 'III',
     name: {
-      vi: '03. Kiểm Thử, QA & Hiệu Năng (QA & Testing)',
-      en: '03. QA, Testing & Profiling'
+      vi: 'Kiểm Thử, QA & Hiệu Năng (QA & Testing)',
+      en: 'QA, Testing & Profiling'
     },
     shortName: {
       vi: 'Kiểm Thử QA',
@@ -106,8 +106,8 @@ export const GAME_DEV_DOMAINS: GameDevDomain[] = [
     code: '04',
     roman: 'IV',
     name: {
-      vi: '04. Nghệ Thuật Thị Giác & Shader (Art & Visuals)',
-      en: '04. Visual Arts & Technical Art'
+      vi: 'Nghệ Thuật Thị Giác & Shader (Art & Visuals)',
+      en: 'Visual Arts & Technical Art'
     },
     shortName: {
       vi: 'Đồ Họa & Art',
@@ -127,8 +127,8 @@ export const GAME_DEV_DOMAINS: GameDevDomain[] = [
     code: '05',
     roman: 'V',
     name: {
-      vi: '05. Âm Thanh & Thiết Kế Tiếng Động (Audio & SFX)',
-      en: '05. Audio & Sound Design'
+      vi: 'Âm Thanh & Thiết Kế Tiếng Động (Audio & SFX)',
+      en: 'Audio & Sound Design'
     },
     shortName: {
       vi: 'Âm Thanh SFX',
@@ -148,8 +148,8 @@ export const GAME_DEV_DOMAINS: GameDevDomain[] = [
     code: '06',
     roman: 'VI',
     name: {
-      vi: '06. Đỉnh Cao Trận Đấu & Sản Xuất (Boss & Capstone)',
-      en: '06. Capstone & Production'
+      vi: 'Đỉnh Cao Trận Đấu & Sản Xuất (Boss & Capstone)',
+      en: 'Capstone & Production'
     },
     shortName: {
       vi: 'Capstone & Boss',
