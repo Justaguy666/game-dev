@@ -364,87 +364,715 @@ class SoundEngine {
     });
   }
 
-  // 4. Quest Completed / Task Check (Coin Sound)
+  // 4. Quest Completed / Task Check (12 Unique Themed Rewards)
   public playQuestComplete() {
     const ctx = this.getContext();
     if (!ctx) return;
     const now = ctx.currentTime;
     const vol = this.volume;
 
-    // Iconic 2-note Mario Coin (B5 -> E6)
-    const osc = ctx.createOscillator();
-    const gain = ctx.createGain();
-    osc.type = 'square';
+    if (this.currentTheme === 'arcade') {
+      // 16-Bit Arcade: Iconic 2-note Mario/Sonic coin (B5 -> E6)
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(987.77, now);
+      osc.frequency.setValueAtTime(1318.51, now + 0.07);
+      gain.gain.setValueAtTime(0, now);
+      gain.gain.linearRampToValueAtTime(0.3 * vol, now + 0.01);
+      gain.gain.setValueAtTime(0.3 * vol, now + 0.08);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.35);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.36);
+    } else if (this.currentTheme === 'gameboy') {
+      // Game Boy DMG: Chunky 4-bit pulse coin (G5 -> C6)
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(783.99, now);
+      osc.frequency.setValueAtTime(1046.50, now + 0.06);
+      gain.gain.setValueAtTime(0.28 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.24);
+    } else if (this.currentTheme === 'cyber') {
+      // Cyber Mecha: High-tech neural data-upload confirmation chirp
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1760, now);
+      osc.frequency.exponentialRampToValueAtTime(3520, now + 0.05);
+      gain.gain.setValueAtTime(0.3 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.18);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.20);
+    } else if (this.currentTheme === 'fantasy') {
+      // Dark Fantasy RPG: Lute / acoustic harp quest strum
+      const freqs = [440.00, 554.37, 659.25];
+      freqs.forEach((f, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(f, now + i * 0.04);
+        gain.gain.setValueAtTime(0.25 * vol, now + i * 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.04 + 0.3);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + i * 0.04);
+        osc.stop(now + i * 0.04 + 0.32);
+      });
+    } else if (this.currentTheme === 'inkwell') {
+      // 1930s Inkwell: Vintage cartoon bicycle bell / cash register bell
+      const bell = ctx.createOscillator();
+      const gain = ctx.createGain();
+      bell.type = 'sine';
+      bell.frequency.setValueAtTime(1046.50, now);
+      gain.gain.setValueAtTime(0.35 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
 
-    osc.frequency.setValueAtTime(987.77, now); // B5
-    osc.frequency.setValueAtTime(1318.51, now + 0.07); // E6
+      const overtone = ctx.createOscillator();
+      const overGain = ctx.createGain();
+      overtone.type = 'sine';
+      overtone.frequency.setValueAtTime(2093.00, now);
+      overGain.gain.setValueAtTime(0.2 * vol, now);
+      overGain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
 
-    gain.gain.setValueAtTime(0, now);
-    gain.gain.linearRampToValueAtTime(0.3 * vol, now + 0.01);
-    gain.gain.setValueAtTime(0.3 * vol, now + 0.08);
-    gain.gain.exponentialRampToValueAtTime(0.0001, now + 0.35);
+      bell.connect(gain);
+      overtone.connect(overGain);
+      gain.connect(ctx.destination);
+      overGain.connect(ctx.destination);
+      bell.start(now);
+      overtone.start(now);
+      bell.stop(now + 0.36);
+      overtone.stop(now + 0.26);
+    } else if (this.currentTheme === 'synthwave') {
+      // Outrun 1984: 80s arcade neon laser power-up
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(880, now);
+      osc.frequency.exponentialRampToValueAtTime(1760, now + 0.08);
+      osc.frequency.exponentialRampToValueAtTime(1320, now + 0.16);
+      gain.gain.setValueAtTime(0.25 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.30);
+    } else if (this.currentTheme === 'gothic') {
+      // Gothic Eldritch: Heavy cathedral sanctuary bell strike
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(146.83, now); // D3 fundamental
+      gain.gain.setValueAtTime(0.4 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.55);
 
-    osc.connect(gain);
-    gain.connect(ctx.destination);
-    osc.start(now);
-    osc.stop(now + 0.36);
+      const bell = ctx.createOscillator();
+      const bellGain = ctx.createGain();
+      bell.type = 'sine';
+      bell.frequency.setValueAtTime(587.33, now); // D5 chime
+      bellGain.gain.setValueAtTime(0.25 * vol, now);
+      bellGain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+
+      osc.connect(gain);
+      bell.connect(bellGain);
+      gain.connect(ctx.destination);
+      bellGain.connect(ctx.destination);
+      osc.start(now);
+      bell.start(now);
+      osc.stop(now + 0.56);
+      bell.stop(now + 0.46);
+    } else if (this.currentTheme === 'blueprint') {
+      // Blueprint Architect: Technical compass lock & draftsman stamp
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1500, now);
+      osc.frequency.exponentialRampToValueAtTime(440, now + 0.04);
+      gain.gain.setValueAtTime(0.35 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+
+      const table = ctx.createOscillator();
+      const tableGain = ctx.createGain();
+      table.type = 'triangle';
+      table.frequency.setValueAtTime(330, now + 0.02);
+      table.frequency.exponentialRampToValueAtTime(110, now + 0.09);
+      tableGain.gain.setValueAtTime(0.25 * vol, now + 0.02);
+      tableGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+
+      osc.connect(gain);
+      table.connect(tableGain);
+      gain.connect(ctx.destination);
+      tableGain.connect(ctx.destination);
+      osc.start(now);
+      table.start(now + 0.02);
+      osc.stop(now + 0.07);
+      table.stop(now + 0.13);
+    } else if (this.currentTheme === 'ghibli') {
+      // Ghibli Cozy Forest: Magical Totoro acorn music-box chime
+      const notes = [1046.50, 1318.51, 1567.98]; // C6, E6, G6
+      notes.forEach((f, i) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(f, now + i * 0.05);
+        gain.gain.setValueAtTime(0.22 * vol, now + i * 0.05);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.05 + 0.28);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + i * 0.05);
+        osc.stop(now + i * 0.05 + 0.30);
+      });
+    } else if (this.currentTheme === 'psx') {
+      // PSX 32-Bit: PS1 Memory Card "1 BLOCK SAVED" confirmation
+      const bell1 = ctx.createOscillator();
+      const gain1 = ctx.createGain();
+      bell1.type = 'sine';
+      bell1.frequency.setValueAtTime(880, now);
+      gain1.gain.setValueAtTime(0.25 * vol, now);
+      gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
+
+      const bell2 = ctx.createOscillator();
+      const gain2 = ctx.createGain();
+      bell2.type = 'sine';
+      bell2.frequency.setValueAtTime(1760, now + 0.06);
+      gain2.gain.setValueAtTime(0.3 * vol, now + 0.06);
+      gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
+
+      bell1.connect(gain1);
+      bell2.connect(gain2);
+      gain1.connect(ctx.destination);
+      gain2.connect(ctx.destination);
+      bell1.start(now);
+      bell2.start(now + 0.06);
+      bell1.stop(now + 0.22);
+      bell2.stop(now + 0.34);
+    } else if (this.currentTheme === 'persona') {
+      // Persona Acid Pop: Persona Confidant rank-up / All-Out Attack star chime
+      const bass = ctx.createOscillator();
+      const bassGain = ctx.createGain();
+      bass.type = 'sawtooth';
+      bass.frequency.setValueAtTime(220, now);
+      bass.frequency.exponentialRampToValueAtTime(80, now + 0.06);
+      bassGain.gain.setValueAtTime(0.35 * vol, now);
+      bassGain.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
+
+      const star = ctx.createOscillator();
+      const starGain = ctx.createGain();
+      star.type = 'sine';
+      star.frequency.setValueAtTime(1318.51, now + 0.04);
+      star.frequency.exponentialRampToValueAtTime(2637.02, now + 0.12);
+      starGain.gain.setValueAtTime(0.28 * vol, now + 0.04);
+      starGain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+
+      bass.connect(bassGain);
+      star.connect(starGain);
+      bassGain.connect(ctx.destination);
+      starGain.connect(ctx.destination);
+      bass.start(now);
+      star.start(now + 0.04);
+      bass.stop(now + 0.08);
+      star.stop(now + 0.32);
+    } else {
+      // Ukiyo-e Sumi-e: Zen Kagura Shinto temple bell ring & lingering bronze chime
+      const bowl = ctx.createOscillator();
+      const bowlGain = ctx.createGain();
+      bowl.type = 'sine';
+      bowl.frequency.setValueAtTime(587.33, now); // D5
+      bowlGain.gain.setValueAtTime(0.35 * vol, now);
+      bowlGain.gain.exponentialRampToValueAtTime(0.001, now + 0.5);
+
+      const chime = ctx.createOscillator();
+      const chimeGain = ctx.createGain();
+      chime.type = 'triangle';
+      chime.frequency.setValueAtTime(1174.66, now); // D6
+      chimeGain.gain.setValueAtTime(0.22 * vol, now);
+      chimeGain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+
+      bowl.connect(bowlGain);
+      chime.connect(chimeGain);
+      bowlGain.connect(ctx.destination);
+      chimeGain.connect(ctx.destination);
+      bowl.start(now);
+      chime.start(now);
+      bowl.stop(now + 0.52);
+      chime.stop(now + 0.40);
+    }
   }
 
-  // 5. Level Up Fanfare
+  // 5. Level Up Fanfare (12 Distinct Art Style Victory Anthems)
   public playLevelUp() {
     const ctx = this.getContext();
     if (!ctx) return;
     const now = ctx.currentTime;
     const vol = this.volume;
 
-    const notes = [440, 554.37, 659.25, 880, 1108.73];
+    let notes: number[] = [];
+    let oscType: OscillatorType = 'square';
+    let stepTime = 0.06;
+
+    if (this.currentTheme === 'arcade') {
+      // 16-Bit Arcade: Fast staccato C major Capcom victory jingle
+      notes = [523.25, 659.25, 783.99, 1046.50, 783.99, 1046.50];
+      oscType = 'square';
+      stepTime = 0.06;
+    } else if (this.currentTheme === 'gameboy') {
+      // Game Boy 1989: Authentic DMG Pokemon/Zelda fanfare
+      notes = [587.33, 783.99, 987.77, 1174.66, 1567.98];
+      oscType = 'square';
+      stepTime = 0.07;
+    } else if (this.currentTheme === 'cyber') {
+      // Cyber Mecha: Ascending futuristic synthesizer upgrade sweep
+      notes = [440, 660, 880, 1320, 1760, 2640];
+      oscType = 'sawtooth';
+      stepTime = 0.045;
+    } else if (this.currentTheme === 'fantasy') {
+      // Dark Fantasy: Royal brass & triumphant trumpet anthem
+      notes = [293.66, 369.99, 440.00, 587.33, 739.99, 880.00];
+      oscType = 'triangle';
+      stepTime = 0.07;
+    } else if (this.currentTheme === 'inkwell') {
+      // 1930s Inkwell: Bouncy swing jazz triad stinger
+      notes = [261.63, 329.63, 392.00, 440.00, 523.25];
+      oscType = 'sine';
+      stepTime = 0.065;
+    } else if (this.currentTheme === 'synthwave') {
+      // Outrun 1984: D Major 7th analog synth anthem
+      notes = [293.66, 369.99, 440.00, 554.37, 739.99];
+      oscType = 'sawtooth';
+      stepTime = 0.075;
+    } else if (this.currentTheme === 'gothic') {
+      // Gothic Eldritch: Cathedral pipe organ triumph
+      notes = [146.83, 220.00, 293.66, 349.23, 440.00, 587.33];
+      oscType = 'triangle';
+      stepTime = 0.08;
+    } else if (this.currentTheme === 'blueprint') {
+      // Blueprint Architect: Golden ratio harmonic chime cascade
+      notes = [440.00, 554.37, 659.25, 880.00, 1108.73, 1318.51];
+      oscType = 'sine';
+      stepTime = 0.055;
+    } else if (this.currentTheme === 'ghibli') {
+      // Ghibli Cozy Forest: Joe Hisaishi orchestral meadow flourish
+      notes = [523.25, 587.33, 659.25, 783.99, 880.00, 1046.50];
+      oscType = 'sine';
+      stepTime = 0.06;
+    } else if (this.currentTheme === 'psx') {
+      // PSX 32-Bit: Final Fantasy VII / PS1 crystal victory fanfare
+      notes = [392.00, 523.25, 659.25, 783.99, 1046.50, 1318.51];
+      oscType = 'triangle';
+      stepTime = 0.06;
+    } else if (this.currentTheme === 'persona') {
+      // Persona Acid Pop: Funk brass 9th chord blast
+      notes = [349.23, 415.30, 523.25, 622.25, 783.99, 932.33];
+      oscType = 'sawtooth';
+      stepTime = 0.05;
+    } else {
+      // Ukiyo-e Sumi-e: Imperial Gagaku Koto & Ryuteki flute flourish
+      notes = [293.66, 392.00, 440.00, 466.16, 587.33, 783.99];
+      oscType = 'triangle';
+      stepTime = 0.065;
+    }
+
     notes.forEach((freq, idx) => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-      osc.type = this.currentTheme === 'fantasy' ? 'sine' : 'square';
-      osc.frequency.setValueAtTime(freq, now + idx * 0.06);
+      osc.type = oscType;
+      osc.frequency.setValueAtTime(freq, now + idx * stepTime);
 
-      gain.gain.setValueAtTime(0.25 * vol, now + idx * 0.06);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.06 + (idx === 4 ? 0.5 : 0.15));
+      const isLast = idx === notes.length - 1;
+      const dur = isLast ? 0.45 : 0.12;
+      gain.gain.setValueAtTime(0.24 * vol, now + idx * stepTime);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + idx * stepTime + dur);
 
       osc.connect(gain);
       gain.connect(ctx.destination);
-      osc.start(now + idx * 0.06);
-      osc.stop(now + idx * 0.06 + (idx === 4 ? 0.55 : 0.16));
+      osc.start(now + idx * stepTime);
+      osc.stop(now + idx * stepTime + dur + 0.02);
     });
   }
 
-  // 6. Save / Checkpoint
+  // 6. Save / Checkpoint (12 Unique Themed Confirmations)
   public playSave() {
     const ctx = this.getContext();
     if (!ctx) return;
     const now = ctx.currentTime;
     const vol = this.volume;
 
-    const chords = [523.25, 659.25, 783.99, 1046.50];
-    chords.forEach((freq, idx) => {
+    if (this.currentTheme === 'arcade') {
+      // 16-Bit Arcade: Snappy C major checkpoint arpeggio
+      const chords = [523.25, 659.25, 783.99, 1046.50];
+      chords.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'square';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.04);
+        gain.gain.setValueAtTime(0.2 * vol, now + idx * 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.04 + 0.18);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + idx * 0.04);
+        osc.stop(now + idx * 0.04 + 0.20);
+      });
+    } else if (this.currentTheme === 'gameboy') {
+      // Game Boy DMG: SRAM battery memory write beep
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-      osc.type = 'triangle';
-      osc.frequency.setValueAtTime(freq, now + idx * 0.05);
-
-      gain.gain.setValueAtTime(0.2 * vol, now + idx * 0.05);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.05 + 0.25);
-
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(440, now);
+      osc.frequency.setValueAtTime(880, now + 0.06);
+      gain.gain.setValueAtTime(0.25 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
       osc.connect(gain);
       gain.connect(ctx.destination);
-      osc.start(now + idx * 0.05);
-      osc.stop(now + idx * 0.05 + 0.26);
-    });
+      osc.start(now);
+      osc.stop(now + 0.22);
+    } else if (this.currentTheme === 'cyber') {
+      // Cyber Mecha: Sub-bass sync hum + high frequency data pulse
+      const hum = ctx.createOscillator();
+      const humGain = ctx.createGain();
+      hum.type = 'sine';
+      hum.frequency.setValueAtTime(100, now);
+      humGain.gain.setValueAtTime(0.3 * vol, now);
+      humGain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+
+      const pulse = ctx.createOscillator();
+      const pulseGain = ctx.createGain();
+      pulse.type = 'sawtooth';
+      pulse.frequency.setValueAtTime(1200, now + 0.04);
+      pulse.frequency.exponentialRampToValueAtTime(2400, now + 0.12);
+      pulseGain.gain.setValueAtTime(0.2 * vol, now + 0.04);
+      pulseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+
+      hum.connect(humGain);
+      pulse.connect(pulseGain);
+      humGain.connect(ctx.destination);
+      pulseGain.connect(ctx.destination);
+      hum.start(now);
+      pulse.start(now + 0.04);
+      hum.stop(now + 0.26);
+      pulse.stop(now + 0.23);
+    } else if (this.currentTheme === 'fantasy') {
+      // Dark Fantasy RPG: Heavy book closure thud & magic shimmer
+      const thud = ctx.createOscillator();
+      const thudGain = ctx.createGain();
+      thud.type = 'triangle';
+      thud.frequency.setValueAtTime(180, now);
+      thud.frequency.exponentialRampToValueAtTime(60, now + 0.08);
+      thudGain.gain.setValueAtTime(0.3 * vol, now);
+      thudGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+
+      const shimmer = ctx.createOscillator();
+      const shimmerGain = ctx.createGain();
+      shimmer.type = 'sine';
+      shimmer.frequency.setValueAtTime(880, now + 0.05);
+      shimmer.frequency.exponentialRampToValueAtTime(1320, now + 0.25);
+      shimmerGain.gain.setValueAtTime(0.18 * vol, now + 0.05);
+      shimmerGain.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
+
+      thud.connect(thudGain);
+      shimmer.connect(shimmerGain);
+      thudGain.connect(ctx.destination);
+      shimmerGain.connect(ctx.destination);
+      thud.start(now);
+      shimmer.start(now + 0.05);
+      thud.stop(now + 0.14);
+      shimmer.stop(now + 0.33);
+    } else if (this.currentTheme === 'inkwell') {
+      // 1930s Inkwell: Typewriter bell DING! & carriage return slide
+      const bell = ctx.createOscillator();
+      const bellGain = ctx.createGain();
+      bell.type = 'sine';
+      bell.frequency.setValueAtTime(1760, now);
+      bellGain.gain.setValueAtTime(0.35 * vol, now);
+      bellGain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+
+      const slide = ctx.createOscillator();
+      const slideGain = ctx.createGain();
+      slide.type = 'triangle';
+      slide.frequency.setValueAtTime(400, now + 0.08);
+      slide.frequency.exponentialRampToValueAtTime(200, now + 0.18);
+      slideGain.gain.setValueAtTime(0.2 * vol, now + 0.08);
+      slideGain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+
+      bell.connect(bellGain);
+      slide.connect(slideGain);
+      bellGain.connect(ctx.destination);
+      slideGain.connect(ctx.destination);
+      bell.start(now);
+      slide.start(now + 0.08);
+      bell.stop(now + 0.36);
+      slide.stop(now + 0.23);
+    } else if (this.currentTheme === 'synthwave') {
+      // Outrun 1984: Analog tape-head lock & warm chorus chord
+      const chords = [369.99, 440.00, 554.37, 739.99];
+      chords.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(freq, now);
+        gain.gain.setValueAtTime(0.12 * vol, now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now);
+        osc.stop(now + 0.40);
+      });
+    } else if (this.currentTheme === 'gothic') {
+      // Gothic Eldritch: Iron bolt sliding shut & dark covenant bound
+      const bolt = ctx.createOscillator();
+      const boltGain = ctx.createGain();
+      bolt.type = 'triangle';
+      bolt.frequency.setValueAtTime(90, now);
+      bolt.frequency.exponentialRampToValueAtTime(30, now + 0.15);
+      boltGain.gain.setValueAtTime(0.4 * vol, now);
+      boltGain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+
+      const chime = ctx.createOscillator();
+      const chimeGain = ctx.createGain();
+      chime.type = 'sine';
+      chime.frequency.setValueAtTime(220, now + 0.08);
+      chimeGain.gain.setValueAtTime(0.25 * vol, now + 0.08);
+      chimeGain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+
+      bolt.connect(boltGain);
+      chime.connect(chimeGain);
+      boltGain.connect(ctx.destination);
+      chimeGain.connect(ctx.destination);
+      bolt.start(now);
+      chime.start(now + 0.08);
+      bolt.stop(now + 0.32);
+      chime.stop(now + 0.46);
+    } else if (this.currentTheme === 'blueprint') {
+      // Blueprint Architect: Drafting vellum roll & wax seal stamp
+      const roll = ctx.createOscillator();
+      const rollGain = ctx.createGain();
+      roll.type = 'sine';
+      roll.frequency.setValueAtTime(800, now);
+      rollGain.gain.setValueAtTime(0.25 * vol, now);
+      rollGain.gain.exponentialRampToValueAtTime(0.001, now + 0.1);
+
+      const stamp = ctx.createOscillator();
+      const stampGain = ctx.createGain();
+      stamp.type = 'triangle';
+      stamp.frequency.setValueAtTime(554.37, now + 0.06);
+      stamp.frequency.exponentialRampToValueAtTime(1108.73, now + 0.2);
+      stampGain.gain.setValueAtTime(0.25 * vol, now + 0.06);
+      stampGain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+
+      roll.connect(rollGain);
+      stamp.connect(stampGain);
+      rollGain.connect(ctx.destination);
+      stampGain.connect(ctx.destination);
+      roll.start(now);
+      stamp.start(now + 0.06);
+      roll.stop(now + 0.12);
+      stamp.stop(now + 0.3);
+    } else if (this.currentTheme === 'ghibli') {
+      // Ghibli Cozy Forest: Soft water drop harmonic & warm music box chord
+      const chords = [523.25, 659.25, 783.99, 1046.50];
+      chords.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.03);
+        gain.gain.setValueAtTime(0.18 * vol, now + idx * 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.03 + 0.35);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + idx * 0.03);
+        osc.stop(now + idx * 0.03 + 0.37);
+      });
+    } else if (this.currentTheme === 'psx') {
+      // PSX 32-Bit: Optical stepper seek chatter & memory card save beep
+      const seek = ctx.createOscillator();
+      const seekGain = ctx.createGain();
+      seek.type = 'triangle';
+      seek.frequency.setValueAtTime(1200, now);
+      seek.frequency.exponentialRampToValueAtTime(300, now + 0.03);
+      seekGain.gain.setValueAtTime(0.3 * vol, now);
+      seekGain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+
+      const beep = ctx.createOscillator();
+      const beepGain = ctx.createGain();
+      beep.type = 'sine';
+      beep.frequency.setValueAtTime(1046.50, now + 0.05);
+      beep.frequency.setValueAtTime(1567.98, now + 0.12);
+      beepGain.gain.setValueAtTime(0.28 * vol, now + 0.05);
+      beepGain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+
+      seek.connect(seekGain);
+      beep.connect(beepGain);
+      seekGain.connect(ctx.destination);
+      beepGain.connect(ctx.destination);
+      seek.start(now);
+      beep.start(now + 0.05);
+      seek.stop(now + 0.05);
+      beep.stop(now + 0.3);
+    } else if (this.currentTheme === 'persona') {
+      // Persona Acid Pop: Calling card sealed with slap guitar & pop
+      const guitar = ctx.createOscillator();
+      const guitarGain = ctx.createGain();
+      guitar.type = 'sawtooth';
+      guitar.frequency.setValueAtTime(440, now);
+      guitar.frequency.exponentialRampToValueAtTime(110, now + 0.08);
+      guitarGain.gain.setValueAtTime(0.3 * vol, now);
+      guitarGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+
+      const pop = ctx.createOscillator();
+      const popGain = ctx.createGain();
+      pop.type = 'sine';
+      pop.frequency.setValueAtTime(880, now + 0.06);
+      pop.frequency.exponentialRampToValueAtTime(1760, now + 0.18);
+      popGain.gain.setValueAtTime(0.25 * vol, now + 0.06);
+      popGain.gain.exponentialRampToValueAtTime(0.001, now + 0.28);
+
+      guitar.connect(guitarGain);
+      pop.connect(popGain);
+      guitarGain.connect(ctx.destination);
+      popGain.connect(ctx.destination);
+      guitar.start(now);
+      pop.start(now + 0.06);
+      guitar.stop(now + 0.14);
+      pop.stop(now + 0.3);
+    } else {
+      // Ukiyo-e Sumi-e: Vermilion seal stamp on washi scroll & temple bell resonance
+      const stamp = ctx.createOscillator();
+      const stampGain = ctx.createGain();
+      stamp.type = 'triangle';
+      stamp.frequency.setValueAtTime(320, now);
+      stamp.frequency.exponentialRampToValueAtTime(120, now + 0.05);
+      stampGain.gain.setValueAtTime(0.35 * vol, now);
+      stampGain.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
+
+      const bell = ctx.createOscillator();
+      const bellGain = ctx.createGain();
+      bell.type = 'sine';
+      bell.frequency.setValueAtTime(783.99, now + 0.03);
+      bellGain.gain.setValueAtTime(0.25 * vol, now + 0.03);
+      bellGain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+
+      stamp.connect(stampGain);
+      bell.connect(bellGain);
+      stampGain.connect(ctx.destination);
+      bellGain.connect(ctx.destination);
+      stamp.start(now);
+      bell.start(now + 0.03);
+      stamp.stop(now + 0.08);
+      bell.stop(now + 0.47);
+    }
   }
 
-  // 7. Node Click on Skill Tree
-  public playNodeClick() {
-    this.playSelect();
-  }
-
-  // 8. Tab Switch
+  // 7. Tab Switch (12 Distinct Navigation Gestures)
   public playTab() {
+    const ctx = this.getContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    const vol = this.volume;
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    if (this.currentTheme === 'arcade') {
+      // 8-bit page flick
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(550, now);
+      osc.frequency.exponentialRampToValueAtTime(880, now + 0.03);
+      gain.gain.setValueAtTime(0.2 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
+    } else if (this.currentTheme === 'gameboy') {
+      // DMG LCD cursor cycle
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(440, now);
+      osc.frequency.setValueAtTime(660, now + 0.02);
+      gain.gain.setValueAtTime(0.22 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+    } else if (this.currentTheme === 'cyber') {
+      // Futuristic HUD slider
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(900, now);
+      osc.frequency.exponentialRampToValueAtTime(1600, now + 0.04);
+      gain.gain.setValueAtTime(0.22 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+    } else if (this.currentTheme === 'fantasy') {
+      // Ancient parchment page rustle
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(260, now);
+      osc.frequency.exponentialRampToValueAtTime(140, now + 0.05);
+      gain.gain.setValueAtTime(0.25 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+    } else if (this.currentTheme === 'inkwell') {
+      // Cartoon cel flip
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(500, now);
+      osc.frequency.exponentialRampToValueAtTime(750, now + 0.04);
+      gain.gain.setValueAtTime(0.25 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+    } else if (this.currentTheme === 'synthwave') {
+      // Neon grid scanline blip
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(600, now);
+      osc.frequency.exponentialRampToValueAtTime(300, now + 0.04);
+      gain.gain.setValueAtTime(0.2 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
+    } else if (this.currentTheme === 'gothic') {
+      // Heavy leather folio turn
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(160, now);
+      osc.frequency.exponentialRampToValueAtTime(60, now + 0.07);
+      gain.gain.setValueAtTime(0.3 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+    } else if (this.currentTheme === 'blueprint') {
+      // Drafting vellum glide
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(1046, now);
+      osc.frequency.exponentialRampToValueAtTime(523, now + 0.035);
+      gain.gain.setValueAtTime(0.25 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
+    } else if (this.currentTheme === 'ghibli') {
+      // Bamboo sliding screen glide
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(659, now);
+      osc.frequency.exponentialRampToValueAtTime(440, now + 0.05);
+      gain.gain.setValueAtTime(0.25 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+    } else if (this.currentTheme === 'psx') {
+      // PS1 BIOS menu cursor slide
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(900, now);
+      osc.frequency.exponentialRampToValueAtTime(1400, now + 0.03);
+      gain.gain.setValueAtTime(0.25 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
+    } else if (this.currentTheme === 'persona') {
+      // Manga comic panel slash
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(800, now);
+      osc.frequency.exponentialRampToValueAtTime(200, now + 0.04);
+      gain.gain.setValueAtTime(0.25 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
+    } else {
+      // Ukiyo-e Shoji screen paper slide
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(523, now);
+      osc.frequency.exponentialRampToValueAtTime(261, now + 0.05);
+      gain.gain.setValueAtTime(0.28 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.055);
+    }
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.09);
+  }
+
+  // 8. Node Click on Skill Tree
+  public playNodeClick() {
     this.playSelect();
   }
 }
