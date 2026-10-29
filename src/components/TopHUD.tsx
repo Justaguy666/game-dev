@@ -130,7 +130,7 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             letterSpacing: '0.04em'
           }}>
           <ThemedIcon name="brand" theme={currentTheme} size={20} color="var(--accent-gold)" />
-          <span className="brand-text">GAME DEV STUDIO</span>
+          <span className="brand-text">GAME DEV</span>
         </div>
 
         {/* Level & Progress Bar */}
