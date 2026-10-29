@@ -19,12 +19,47 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
   currentTheme
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [zoom, setZoom] = useState(0.80);
-  const [pan, setPan] = useState({ x: -280, y: 30 });
+  const [zoom, setZoom] = useState(0.55);
+  const [pan, setPan] = useState({ x: 20, y: 24 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [selectedDomain, setSelectedDomain] = useState<DomainId | 'all'>('all');
   const [isLegendExpanded, setIsLegendExpanded] = useState(true);
+
+  // Compute optimal panoramic fit view so all 5 pillars & Root are centered
+  const calcFitView = useCallback(() => {
+    if (!containerRef.current) return { zoom: 0.52, pan: { x: 20, y: 24 } };
+    const width = containerRef.current.clientWidth;
+    // Content spans x: 100 to x: 2630 (span = 2530px). Center = 1365px.
+    const idealZoom = Math.min(0.72, Math.max(0.40, parseFloat(((width - 90) / 2580).toFixed(2))));
+    const panX = Math.round((width / 2) - (1365 * idealZoom));
+    return { zoom: idealZoom, pan: { x: panX, y: 24 } };
+  }, []);
+
+  const resetView = useCallback(() => {
+    sound.playClick();
+    const fit = calcFitView();
+    setZoom(fit.zoom);
+    setPan(fit.pan);
+    setSelectedDomain('all');
+  }, [calcFitView]);
+
+  // Center tree on initial load & window resize
+  useEffect(() => {
+    const fit = calcFitView();
+    setZoom(fit.zoom);
+    setPan(fit.pan);
+
+    const handleResize = () => {
+      if (selectedDomain === 'all') {
+        const updated = calcFitView();
+        setZoom(updated.zoom);
+        setPan(updated.pan);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, [calcFitView]);
 
   // Pan interaction
   const handleMouseDown = (e: React.MouseEvent) => {
@@ -51,7 +86,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
     const zoomFactor = e.deltaY < 0 ? 1.1 : 0.9;
-    const newZoom = Math.min(Math.max(0.4, zoom * zoomFactor), 1.8);
+    const newZoom = Math.min(Math.max(0.35, zoom * zoomFactor), 1.8);
 
     if (containerRef.current) {
       const rect = containerRef.current.getBoundingClientRect();
@@ -67,7 +102,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
     }
   };
 
-  // Center tree on mount
+  // Hotkey handlers
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'r' && (e.ctrlKey || e.metaKey)) return;
@@ -77,14 +112,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, []);
-
-  const resetView = () => {
-    sound.playClick();
-    setZoom(0.80);
-    setPan({ x: -280, y: 30 });
-    setSelectedDomain('all');
-  };
+  }, [resetView]);
 
   // Focus on a specific domain column
   const handleSelectDomain = (domainId: DomainId | 'all') => {
@@ -99,10 +127,12 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
     const domain = GAME_DEV_DOMAINS.find(d => d.id === domainId);
     if (domain && containerRef.current) {
       const containerWidth = containerRef.current.clientWidth;
+      const targetZoom = 0.82;
+      setZoom(targetZoom);
       // Center the target column horizontally
-      const targetPanX = (containerWidth / 2) - (domain.columnX * zoom) - (145 * zoom);
+      const targetPanX = (containerWidth / 2) - (domain.columnX * targetZoom) - (145 * targetZoom);
       const targetPanY = 40;
-      setPan({ x: targetPanX, y: targetPanY });
+      setPan({ x: Math.round(targetPanX), y: targetPanY });
     }
   };
 
@@ -182,7 +212,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
       if (!parent) return null;
       return {
         id: `${parent.id}->${child.id}`,
-        from: { x: parent.x + 145, y: parent.y + 110 },
+        from: { x: parent.x + 145, y: parent.y + 160 },
         to: { x: child.x + 145, y: child.y },
         status: child.status,
         childCategory: child.category
@@ -232,9 +262,9 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
             fontSize: '0.75em',
             fontWeight: selectedDomain === 'all' ? 800 : 700,
             cursor: 'pointer',
-            backgroundColor: selectedDomain === 'all' ? 'var(--accent-gold)' : 'var(--bg-card)',
-            color: selectedDomain === 'all' ? '#111' : 'var(--text-muted)',
-            border: `1px solid ${selectedDomain === 'all' ? 'var(--accent-gold)' : 'var(--border-color)'}`,
+            backgroundColor: selectedDomain === 'all' ? 'var(--btn-active-bg)' : 'var(--bg-card)',
+            color: selectedDomain === 'all' ? 'var(--btn-active-text)' : 'var(--text-muted)',
+            border: `1px solid ${selectedDomain === 'all' ? 'var(--btn-active-bg)' : 'var(--border-color)'}`,
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
@@ -244,12 +274,12 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
             name="tree"
             theme={currentTheme}
             size={13}
-            color={selectedDomain === 'all' ? '#111' : 'var(--accent-gold)'}
+            color={selectedDomain === 'all' ? 'var(--btn-active-text)' : 'var(--accent-gold)'}
           />
           <span>{lang === 'vi' ? 'Tất Cả Nhóm' : 'All Domains'}</span>
         </button>
 
-        {/* Individual Domain Tabs (Unified Active Gold Color) */}
+        {/* Individual Domain Tabs (Unified Active Theme Button Color) */}
         {GAME_DEV_DOMAINS.map(domain => {
           const isSelected = selectedDomain === domain.id;
           return (
@@ -262,9 +292,9 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                 fontSize: '0.75em',
                 fontWeight: isSelected ? 800 : 700,
                 cursor: 'pointer',
-                backgroundColor: isSelected ? 'var(--accent-gold)' : 'var(--bg-card)',
-                color: isSelected ? '#111' : 'var(--text-muted)',
-                border: `1px solid ${isSelected ? 'var(--accent-gold)' : 'var(--border-color)'}`,
+                backgroundColor: isSelected ? 'var(--btn-active-bg)' : 'var(--bg-card)',
+                color: isSelected ? 'var(--btn-active-text)' : 'var(--text-muted)',
+                border: `1px solid ${isSelected ? 'var(--btn-active-bg)' : 'var(--border-color)'}`,
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
@@ -275,13 +305,13 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                 width: '7px',
                 height: '7px',
                 borderRadius: '50%',
-                backgroundColor: isSelected ? '#111' : domain.accentHex
+                backgroundColor: isSelected ? 'var(--btn-active-text)' : domain.accentHex
               }} />
               <ThemedIcon
                 name={domain.iconName}
                 theme={currentTheme}
                 size={12}
-                color={isSelected ? '#111' : domain.accentHex}
+                color={isSelected ? 'var(--btn-active-text)' : domain.accentHex}
               />
               <span>{domain.code} {domain.shortName[lang]}</span>
             </button>

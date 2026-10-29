@@ -30,6 +30,8 @@
   --font-mono: 'JetBrains Mono', monospace;
   --card-shadow: 4px 4px 0px rgba(0, 0, 0, 0.7);
   --glow-primary: 0 0 10px rgba(251, 191, 36, 0.4);
+  --btn-active-bg: #fbbf24;
+  --btn-active-text: #0f1016;
 }
 
 .theme-arcade.mode-light {
@@ -52,6 +54,8 @@
   --font-mono: 'JetBrains Mono', monospace;
   --card-shadow: 4px 4px 0px rgba(100, 116, 139, 0.3);
   --glow-primary: 0 0 8px rgba(217, 119, 6, 0.3);
+  --btn-active-bg: #d97706;
+  --btn-active-text: #ffffff;
 }
 
 /* --------------------------------------------------------------------------
@@ -77,6 +81,8 @@
   --font-mono: 'VT323', monospace;
   --card-shadow: 3px 3px 0px #082008;
   --glow-primary: 0 0 8px rgba(155, 188, 15, 0.4);
+  --btn-active-bg: #9bbc0f;
+  --btn-active-text: #0f380f;
 }
 
 .theme-gameboy.mode-light {
@@ -99,6 +105,8 @@
   --font-mono: 'VT323', monospace;
   --card-shadow: 3px 3px 0px #306230;
   --glow-primary: 0 0 6px rgba(15, 56, 15, 0.3);
+  --btn-active-bg: #0f380f;
+  --btn-active-text: #9bbc0f;
 }
 
 /* --------------------------------------------------------------------------
@@ -124,6 +132,8 @@
   --font-mono: 'JetBrains Mono', monospace;
   --card-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
   --glow-primary: 0 0 12px rgba(0, 240, 255, 0.6);
+  --btn-active-bg: #00f0ff;
+  --btn-active-text: #060911;
 }
 
 .theme-cyber.mode-light {
@@ -146,6 +156,8 @@
   --font-mono: 'JetBrains Mono', monospace;
   --card-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
   --glow-primary: 0 0 8px rgba(2, 132, 199, 0.4);
+  --btn-active-bg: #0284c7;
+  --btn-active-text: #ffffff;
 }
 
 /* --------------------------------------------------------------------------
@@ -171,6 +183,8 @@
   --font-mono: 'JetBrains Mono', serif;
   --card-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8);
   --glow-primary: 0 0 14px rgba(197, 160, 89, 0.5);
+  --btn-active-bg: #c5a059;
+  --btn-active-text: #121010;
 }
 
 .theme-fantasy.mode-light {
@@ -193,6 +207,8 @@
   --font-mono: 'JetBrains Mono', serif;
   --card-shadow: 3px 3px 10px rgba(71, 55, 41, 0.25);
   --glow-primary: 0 0 10px rgba(146, 115, 59, 0.35);
+  --btn-active-bg: #92733b;
+  --btn-active-text: #ffffff;
 }
 
 /* --------------------------------------------------------------------------
@@ -397,12 +413,28 @@ textarea:focus-visible {
   color: var(--accent-gold) !important;
 }
 .themed-select-item.is-selected {
-  background-color: var(--accent-gold) !important;
-  color: #111 !important;
+  background-color: var(--btn-active-bg) !important;
+  color: var(--btn-active-text) !important;
 }
 .themed-select-item.is-selected:hover {
-  background-color: var(--accent-gold) !important;
-  color: #111 !important;
+  background-color: var(--btn-active-bg) !important;
+  color: var(--btn-active-text) !important;
+}
+
+/* Button pressed & active states with guaranteed contrast */
+button:active {
+  transform: translateY(1px);
+}
+
+.theme-gameboy button:active {
+  background-color: var(--btn-active-bg) !important;
+  color: var(--btn-active-text) !important;
+}
+
+.theme-gameboy button.btn-active,
+.theme-gameboy .tab-active {
+  background-color: var(--btn-active-bg) !important;
+  color: var(--btn-active-text) !important;
 }
 
 /* CRT Scanlines Overlay (Toggleable) */

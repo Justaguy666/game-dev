@@ -129,11 +129,11 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
               padding: '3px 8px',
               fontSize: '0.72em',
               fontFamily: 'var(--font-mono)',
-              fontWeight: 700,
+              fontWeight: selectedDomain === 'all' ? 800 : 700,
               cursor: 'pointer',
-              border: `1px solid ${selectedDomain === 'all' ? 'var(--accent-gold)' : 'var(--border-color)'}`,
-              backgroundColor: selectedDomain === 'all' ? 'var(--accent-gold)' : 'var(--bg-app)',
-              color: selectedDomain === 'all' ? '#111' : 'var(--text-main)',
+              border: `1px solid ${selectedDomain === 'all' ? 'var(--btn-active-bg)' : 'var(--border-color)'}`,
+              backgroundColor: selectedDomain === 'all' ? 'var(--btn-active-bg)' : 'var(--bg-app)',
+              color: selectedDomain === 'all' ? 'var(--btn-active-text)' : 'var(--text-main)',
               transition: 'all 0.12s ease'
             }}>
             {lang === 'vi' ? 'Tất cả' : 'All'} ({skills.length})
@@ -150,9 +150,9 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
                   fontFamily: 'var(--font-mono)',
                   fontWeight: isSelected ? 800 : 700,
                   cursor: 'pointer',
-                  border: `1px solid ${isSelected ? 'var(--accent-gold)' : 'var(--border-color)'}`,
-                  backgroundColor: isSelected ? 'var(--accent-gold)' : 'var(--bg-app)',
-                  color: isSelected ? '#111' : 'var(--text-muted)',
+                  border: `1px solid ${isSelected ? 'var(--btn-active-bg)' : 'var(--border-color)'}`,
+                  backgroundColor: isSelected ? 'var(--btn-active-bg)' : 'var(--bg-app)',
+                  color: isSelected ? 'var(--btn-active-text)' : 'var(--text-muted)',
                   display: 'flex',
                   alignItems: 'center',
                   gap: '4px',
@@ -163,9 +163,9 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
                   width: '6px',
                   height: '6px',
                   borderRadius: '50%',
-                  backgroundColor: isSelected ? '#111' : d.accentHex
+                  backgroundColor: isSelected ? 'var(--btn-active-text)' : d.accentHex
                 }} />
-                <ThemedIcon name={d.iconName} theme={currentTheme} size={11} color={isSelected ? '#111' : d.accentHex} />
+                <ThemedIcon name={d.iconName} theme={currentTheme} size={11} color={isSelected ? 'var(--btn-active-text)' : d.accentHex} />
                 <span>{d.code}</span>
               </button>
             );
@@ -416,7 +416,7 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
                   alignItems: 'center',
                   gap: '6px',
                   backgroundColor: 'var(--accent-green)',
-                  color: '#111',
+                  color: 'var(--btn-active-text)',
                   border: 'none',
                   padding: '6px 14px',
                   fontWeight: 800,
@@ -424,7 +424,7 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
                   fontSize: '0.80em',
                   cursor: 'pointer'
                 }}>
-                <ThemedIcon name="save" theme={currentTheme} size={14} color="#111" />
+                <ThemedIcon name="save" theme={currentTheme} size={14} color="var(--btn-active-text)" />
                 <span>{lang === 'vi' ? 'Lưu Bài' : 'Save'}</span>
               </button>
             ) : (

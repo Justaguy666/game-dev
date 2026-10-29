@@ -188,9 +188,9 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            backgroundColor: activeView === 'tree' ? 'var(--accent-gold)' : 'var(--bg-card)',
-            color: activeView === 'tree' ? '#111' : 'var(--text-main)',
-            border: '1px solid var(--border-color)',
+            backgroundColor: activeView === 'tree' ? 'var(--btn-active-bg)' : 'var(--bg-card)',
+            color: activeView === 'tree' ? 'var(--btn-active-text)' : 'var(--text-main)',
+            border: `1px solid ${activeView === 'tree' ? 'var(--btn-active-bg)' : 'var(--border-color)'}`,
             padding: '6px 12px',
             fontFamily: 'var(--font-mono)',
             fontSize: '0.82em',
@@ -198,7 +198,7 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             cursor: 'pointer',
             transition: 'all 0.15s ease'
           }}>
-          <ThemedIcon name="tree" theme={currentTheme} size={15} />
+          <ThemedIcon name="tree" theme={currentTheme} size={15} color={activeView === 'tree' ? 'var(--btn-active-text)' : 'var(--accent-gold)'} />
           {lang === 'vi' ? 'Cây Kỹ Năng' : 'Skill Tree'}
         </button>
 
@@ -208,9 +208,9 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            backgroundColor: activeView === 'editor' ? 'var(--accent-gold)' : 'var(--bg-card)',
-            color: activeView === 'editor' ? '#111' : 'var(--text-main)',
-            border: '1px solid var(--border-color)',
+            backgroundColor: activeView === 'editor' ? 'var(--btn-active-bg)' : 'var(--bg-card)',
+            color: activeView === 'editor' ? 'var(--btn-active-text)' : 'var(--text-main)',
+            border: `1px solid ${activeView === 'editor' ? 'var(--btn-active-bg)' : 'var(--border-color)'}`,
             padding: '6px 12px',
             fontFamily: 'var(--font-mono)',
             fontSize: '0.82em',
@@ -218,7 +218,7 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             cursor: 'pointer',
             transition: 'all 0.15s ease'
           }}>
-          <ThemedIcon name="docs" theme={currentTheme} size={15} />
+          <ThemedIcon name="docs" theme={currentTheme} size={15} color={activeView === 'editor' ? 'var(--btn-active-text)' : 'var(--accent-gold)'} />
           {lang === 'vi' ? 'Tài Liệu & Soạn Thảo' : 'Docs & Editor'}
         </button>
 
@@ -228,9 +228,9 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
-            backgroundColor: activeView === 'quests' ? 'var(--accent-gold)' : 'var(--bg-card)',
-            color: activeView === 'quests' ? '#111' : 'var(--text-main)',
-            border: '1px solid var(--border-color)',
+            backgroundColor: activeView === 'quests' ? 'var(--btn-active-bg)' : 'var(--bg-card)',
+            color: activeView === 'quests' ? 'var(--btn-active-text)' : 'var(--text-main)',
+            border: `1px solid ${activeView === 'quests' ? 'var(--btn-active-bg)' : 'var(--border-color)'}`,
             padding: '6px 12px',
             fontFamily: 'var(--font-mono)',
             fontSize: '0.82em',
@@ -238,7 +238,7 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             cursor: 'pointer',
             transition: 'all 0.15s ease'
           }}>
-          <ThemedIcon name="quests" theme={currentTheme} size={15} />
+          <ThemedIcon name="quests" theme={currentTheme} size={15} color={activeView === 'quests' ? 'var(--btn-active-text)' : 'var(--accent-gold)'} />
           {lang === 'vi' ? 'Nhiệm Vụ' : 'Quests'}
         </button>
       </nav>
@@ -294,9 +294,9 @@ export const TopHUD: React.FC<TopHUDProps> = ({
             onClick={() => { sound.playClick(); setIsFontOpen(!isFontOpen); }}
             title={lang === 'vi' ? 'Cài đặt kích thước font chữ' : 'Font Size Settings'}
             style={{
-              backgroundColor: isFontOpen ? 'var(--accent-gold)' : 'var(--bg-card)',
-              color: isFontOpen ? '#111' : 'var(--text-main)',
-              border: '1px solid var(--border-color)',
+              backgroundColor: isFontOpen ? 'var(--btn-active-bg)' : 'var(--bg-card)',
+              color: isFontOpen ? 'var(--btn-active-text)' : 'var(--text-main)',
+              border: `1px solid ${isFontOpen ? 'var(--btn-active-bg)' : 'var(--border-color)'}`,
               padding: '6px 10px',
               fontFamily: 'var(--font-mono)',
               fontSize: '0.80em',
@@ -306,9 +306,9 @@ export const TopHUD: React.FC<TopHUDProps> = ({
               alignItems: 'center',
               gap: '5px'
             }}>
-            <ThemedIcon name="font" theme={currentTheme} size={14} color={isFontOpen ? '#111' : 'var(--accent-gold)'} />
+            <ThemedIcon name="font" theme={currentTheme} size={14} color={isFontOpen ? 'var(--btn-active-text)' : 'var(--accent-gold)'} />
             <span>{Math.round(fontScale * 100)}%</span>
-            <span style={{ fontSize: '8px', color: isFontOpen ? '#111' : 'var(--text-muted)' }}>▼</span>
+            <span style={{ fontSize: '8px', color: isFontOpen ? 'var(--btn-active-text)' : 'var(--text-muted)' }}>▼</span>
           </button>
 
           {isFontOpen && (
@@ -403,8 +403,8 @@ export const TopHUD: React.FC<TopHUDProps> = ({
                         display: 'flex',
                         justifyContent: 'space-between',
                         alignItems: 'center',
-                        backgroundColor: isCurrent ? 'var(--accent-gold)' : 'transparent',
-                        color: isCurrent ? '#111' : 'var(--text-main)',
+                        backgroundColor: isCurrent ? 'var(--btn-active-bg)' : 'transparent',
+                        color: isCurrent ? 'var(--btn-active-text)' : 'var(--text-main)',
                         border: isCurrent ? '1px solid var(--border-color)' : '1px solid transparent'
                       }}>
                       <span>{preset.label[lang]}</span>
@@ -537,7 +537,7 @@ export const TopHUD: React.FC<TopHUDProps> = ({
                   title={lang === 'vi' ? 'Bấm để nghe thử âm' : 'Test sound effect'}
                   style={{
                     backgroundColor: 'var(--accent-green)',
-                    color: '#111',
+                    color: 'var(--btn-active-text)',
                     border: 'none',
                     padding: '3px 6px',
                     fontSize: '0.72em',

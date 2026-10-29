@@ -44,7 +44,7 @@ export const ThemedCheckbox: React.FC<ThemedCheckboxProps> = ({
         boxShadow: checked ? '0 0 6px rgba(74, 222, 128, 0.35)' : 'none'
       }}>
         {checked && (
-          <ThemedIcon name="mastered" theme={theme} size={12} color="#111" />
+          <ThemedIcon name="mastered" theme={theme} size={12} color="var(--btn-active-text)" />
         )}
       </div>
 

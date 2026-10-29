@@ -357,8 +357,8 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
             alignItems: 'center',
             justifyContent: 'center',
             gap: '8px',
-            backgroundColor: 'var(--accent-gold)',
-            color: '#111',
+            backgroundColor: 'var(--btn-active-bg)',
+            color: 'var(--btn-active-text)',
             border: 'none',
             padding: '10px 16px',
             fontFamily: 'var(--font-mono)',
@@ -367,7 +367,7 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
             cursor: 'pointer',
             transition: 'all 0.15s ease'
           }}>
-          <ThemedIcon name="open" theme={currentTheme} size={16} color="#111" />
+          <ThemedIcon name="open" theme={currentTheme} size={16} color="var(--btn-active-text)" />
           <span>{lang === 'vi' ? 'Xem Toàn Bộ Tài Liệu & Soạn Thảo' : 'Open Full Doc & Editor'}</span>
         </button>
       </div>

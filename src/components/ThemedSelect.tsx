@@ -118,8 +118,8 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
                   gap: '10px',
                   padding: '8px 12px',
                   cursor: 'pointer',
-                  backgroundColor: isSelected ? 'var(--accent-gold)' : 'transparent',
-                  color: isSelected ? '#111' : 'var(--text-main)',
+                  backgroundColor: isSelected ? 'var(--btn-active-bg)' : 'transparent',
+                  color: isSelected ? 'var(--btn-active-text)' : 'var(--text-main)',
                   fontFamily: 'var(--font-mono)',
                   fontSize: '0.88em',
                   fontWeight: isSelected ? 800 : 600,
@@ -130,7 +130,7 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
                   name={option.iconName}
                   theme={option.id}
                   size={15}
-                  color={isSelected ? '#111' : 'var(--accent-gold)'}
+                  color={isSelected ? 'var(--btn-active-text)' : 'var(--accent-gold)'}
                 />
                 <span style={{ flex: 1 }}>{option.name[lang]}</span>
                 {isSelected && (
