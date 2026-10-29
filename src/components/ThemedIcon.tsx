@@ -2023,6 +2023,333 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
     }
   }
 
+  // =========================================================================
+  // 8. BLUEPRINT ARCHITECT / INDIE SKETCHBOOK (Technical Cyanotype & CAD)
+  // =========================================================================
+  if (theme === 'blueprint') {
+    switch (name) {
+      case 'tree':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Technical Node Hierarchy Schematic */}
+            <rect x="9" y="2" width="6" height="5" stroke={color} strokeWidth="1.8" fill="none" />
+            <rect x="3" y="15" width="6" height="5" stroke={color} strokeWidth="1.8" fill="none" />
+            <rect x="15" y="15" width="6" height="5" stroke={color} strokeWidth="1.8" fill="none" />
+            <polyline points="12,7 12,11 6,11 6,15" stroke={color} strokeWidth="1.6" fill="none" />
+            <polyline points="12,11 18,11 18,15" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="12" cy="11" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'docs':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Technical Drafting Blueprint Sheet */}
+            <rect x="3" y="3" width="18" height="18" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="3" y1="7" x2="21" y2="7" stroke={color} strokeWidth="1.4" />
+            <line x1="13" y1="17" x2="21" y2="17" stroke={color} strokeWidth="1.4" />
+            <line x1="13" y1="17" x2="13" y2="21" stroke={color} strokeWidth="1.4" />
+            <line x1="6" y1="11" x2="18" y2="11" stroke={color} strokeWidth="1.4" strokeDasharray="2 2" />
+            <line x1="6" y1="14" x2="18" y2="14" stroke={color} strokeWidth="1.4" strokeDasharray="2 2" />
+          </svg>
+        );
+      case 'quests':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Technical 180-Degree Protractor Gauge */}
+            <path d="M4 17h16a8 8 0 00-16 0z" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="12" y1="17" x2="12" y2="10" stroke={color} strokeWidth="1.8" />
+            <line x1="12" y1="9" x2="8" y2="11" stroke={color} strokeWidth="1.4" />
+            <line x1="12" y1="9" x2="16" y2="11" stroke={color} strokeWidth="1.4" />
+            <circle cx="12" cy="17" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'sun':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Solar Azimuth Diagram & Compass Rose */}
+            <circle cx="12" cy="12" r="5" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="1.2" strokeDasharray="2 2" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="6" stroke={color} strokeWidth="1.8" />
+            <line x1="12" y1="18" x2="12" y2="22" stroke={color} strokeWidth="1.8" />
+            <line x1="2" y1="12" x2="6" y2="12" stroke={color} strokeWidth="1.8" />
+            <line x1="18" y1="12" x2="22" y2="12" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'moon':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Lunar Orbital Arc & Coordinate Radius */}
+            <path d="M15 3.5a8.5 8.5 0 00-2 17 8.5 8.5 0 007-4.5 8.5 8.5 0 01-5-12.5z" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="12" y1="12" x2="17" y2="8" stroke={color} strokeWidth="1.2" strokeDasharray="2 2" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'tv':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Technical Orthographic CRT Display */}
+            <rect x="3" y="6" width="18" height="14" rx="1" stroke={color} strokeWidth="2" fill="none" />
+            <rect x="5" y="8" width="11" height="10" stroke={color} strokeWidth="1.4" fill="none" />
+            <line x1="18" y1="9" x2="19.5" y2="9" stroke={color} strokeWidth="1.8" />
+            <line x1="18" y1="13" x2="19.5" y2="13" stroke={color} strokeWidth="1.8" />
+            <line x1="1" y1="3" x2="1" y2="23" stroke={color} strokeWidth="1" strokeDasharray="2 2" />
+            <line x1="23" y1="3" x2="23" y2="23" stroke={color} strokeWidth="1" strokeDasharray="2 2" />
+          </svg>
+        );
+      case 'volume':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Acoustic Waveform Envelope Schematic */}
+            <polygon points="3,8 7,8 12,4 12,20 7,16 3,16" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <path d="M15 8c1.5 1.5 1.5 6.5 0 8M18 5c3 3 3 11 0 14" stroke={color} strokeWidth="1.6" strokeLinecap="round" fill="none" />
+            <line x1="1" y1="12" x2="23" y2="12" stroke={color} strokeWidth="1" strokeDasharray="2 2" />
+          </svg>
+        );
+      case 'mute':
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="3,8 7,8 12,4 12,20 7,16 3,16" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="16" y1="9" x2="22" y2="15" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="22" y1="9" x2="16" y2="15" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'globe':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Geodetic Grid Sphere */}
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <ellipse cx="12" cy="12" rx="4.5" ry="9" stroke={color} strokeWidth="1.5" strokeDasharray="3 1" fill="none" />
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.8" />
+            <line x1="12" y1="3" x2="12" y2="21" stroke={color} strokeWidth="1.5" strokeDasharray="2 2" />
+          </svg>
+        );
+      case 'mastered':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Certified Technical Stamp with Star Pivot */}
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <polygon points="12,5 14,9 19,10 15,13.5 16.5,18 12,15.5 7.5,18 9,13.5 5,10 10,9" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill={color} />
+          </svg>
+        );
+      case 'learning':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Precision Vernier Caliper Gauge */}
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <polyline points="12,6 12,12 16,12" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="3" x2="12" y2="5" stroke={color} strokeWidth="2" />
+            <line x1="21" y1="12" x2="19" y2="12" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'locked':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Cutaway Blueprint Padlock with Internal Tumblers */}
+            <rect x="5" y="10" width="14" height="11" rx="1" stroke={color} strokeWidth="2" fill="none" />
+            <path d="M8 10V6a4 4 0 018 0v4" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="12" y1="13" x2="12" y2="18" stroke={color} strokeWidth="1.8" />
+            <circle cx="12" cy="13" r="1.5" fill={color} />
+            <line x1="7" y1="15" x2="17" y2="15" stroke={color} strokeWidth="1" strokeDasharray="2 2" />
+          </svg>
+        );
+      case 'edit':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 0.5mm Mechanical Drafting Pencil */}
+            <polygon points="4,20 6,16 17,5 20,8 9,19" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <polygon points="4,20 2,22 6,20" fill={color} />
+            <line x1="15" y1="7" x2="18" y2="10" stroke={color} strokeWidth="1.5" />
+            <line x1="7" y1="15" x2="10" y2="18" stroke={color} strokeWidth="1.5" />
+          </svg>
+        );
+      case 'save':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Technical Blueprint Storage Cylinder Tube */}
+            <rect x="4" y="5" width="16" height="14" rx="2" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="8" y1="5" x2="8" y2="19" stroke={color} strokeWidth="1.6" />
+            <line x1="16" y1="5" x2="16" y2="19" stroke={color} strokeWidth="1.6" />
+            <line x1="4" y1="10" x2="20" y2="10" stroke={color} strokeWidth="1.4" strokeDasharray="2 2" />
+          </svg>
+        );
+      case 'download':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Technical Dimension Arrow Vector */}
+            <line x1="12" y1="3" x2="12" y2="15" stroke={color} strokeWidth="2" />
+            <polyline points="7,10 12,15 17,10" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <line x1="4" y1="19" x2="20" y2="19" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="4" y1="17" x2="4" y2="21" stroke={color} strokeWidth="2" />
+            <line x1="20" y1="17" x2="20" y2="21" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'close':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Technical Datum Crosshair */}
+            <line x1="5" y1="5" x2="19" y2="19" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="19" y1="5" x2="5" y2="19" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <circle cx="12" cy="12" r="6" stroke={color} strokeWidth="1" strokeDasharray="2 2" fill="none" />
+          </svg>
+        );
+      case 'search':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Optical Reticle Loupe with Crosshair */}
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16" y1="16" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="11" y1="7" x2="11" y2="15" stroke={color} strokeWidth="1.2" />
+            <line x1="7" y1="11" x2="15" y2="11" stroke={color} strokeWidth="1.2" />
+          </svg>
+        );
+      case 'zoomIn':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16" y1="16" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="11" y1="8" x2="11" y2="14" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="8" y1="11" x2="14" y2="11" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomOut':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="16" y1="16" x2="21" y2="21" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="8" y1="11" x2="14" y2="11" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'reset':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Dimension Radius Radial Arc */}
+            <path d="M20 12a8 8 0 11-2.4-5.7L20 9" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <polyline points="20,4 20,9 15,9" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'brand':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Precision Drafting T-Square and 30-60 Triangle Set */}
+            <line x1="2" y1="5" x2="22" y2="5" stroke={color} strokeWidth="2.5" strokeLinecap="round" />
+            <line x1="12" y1="5" x2="12" y2="21" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <polygon points="5,8 19,8 5,18" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'design':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Precision Drafting Caliper Compass */}
+            <circle cx="12" cy="4" r="2" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="12" y1="6" x2="4" y2="21" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="12" y1="6" x2="20" y2="21" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="8" y1="14" x2="16" y2="14" stroke={color} strokeWidth="1.8" />
+            <circle cx="12" cy="14" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'code':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Logic Gate Circuit Schematic */}
+            <path d="M4 6h5c3 0 5 2 5 6s-2 6-5 6H4z" stroke={color} strokeWidth="2" fill="none" />
+            <line x1="14" y1="12" x2="20" y2="12" stroke={color} strokeWidth="2" />
+            <line x1="2" y1="9" x2="4" y2="9" stroke={color} strokeWidth="2" />
+            <line x1="2" y1="15" x2="4" y2="15" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'qa':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Oscilloscope Bug Trace Schematic */}
+            <circle cx="12" cy="13" r="5" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="6" r="2" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="12" y1="8" x2="12" y2="18" stroke={color} strokeWidth="1.8" />
+            <polyline points="4,13 8,11 10,15 14,11 16,15 20,13" stroke={color} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'art':
+        return (
+          <svg {...commonSvgProps}>
+            {/* French Curve Drafting Stencil Ruler */}
+            <path d="M6 3c5 0 9 4 9 9 0 4-3 7-7 7-3 0-5-2-5-4 0-3 3-5 5-5 2 0 4 1 4 3" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <circle cx="12" cy="6" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'audio':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Sine Wave Frequency Response Graph */}
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.8" strokeDasharray="2 2" />
+            <line x1="3" y1="4" x2="3" y2="20" stroke={color} strokeWidth="1.8" />
+            <path d="M3 12c3-8 6-8 9 0s6 8 9 0" stroke={color} strokeWidth="2.2" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'boss':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Architectural Apex Keystone Elevation */}
+            <polygon points="12,2 20,9 18,21 6,21 4,9" stroke={color} strokeWidth="2" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="21" stroke={color} strokeWidth="1.6" strokeDasharray="2 2" />
+            <polygon points="8,10 16,10 12,17" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'production':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Technical Gear Mechanism with Pitch Circle */}
+            <circle cx="12" cy="12" r="5" stroke={color} strokeWidth="2" fill="none" />
+            <circle cx="12" cy="12" r="8" stroke={color} strokeWidth="1.2" strokeDasharray="2 2" fill="none" />
+            <path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'drag':
+        return (
+          <svg {...commonSvgProps}>
+            {/* 6 Technical Registration Marks */}
+            <circle cx="8" cy="8" r="1.5" fill={color} />
+            <circle cx="16" cy="8" r="1.5" fill={color} />
+            <circle cx="8" cy="12" r="1.5" fill={color} />
+            <circle cx="16" cy="12" r="1.5" fill={color} />
+            <circle cx="8" cy="16" r="1.5" fill={color} />
+            <circle cx="16" cy="16" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'open':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Architectural Floor Plan Door Swing Symbol */}
+            <rect x="3" y="19" width="18" height="2" fill={color} />
+            <line x1="4" y1="19" x2="4" y2="5" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <path d="M4 5a14 14 0 0114 14" stroke={color} strokeWidth="1.8" strokeDasharray="2 2" fill="none" />
+          </svg>
+        );
+      case 'font':
+        return (
+          <svg {...commonSvgProps}>
+            {/* Technical Isometric Letter A with Dimension Endpoints */}
+            <polygon points="12,3 19,21 15,21 13.5,16 10.5,16 9,21 5,21" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="8.5" y1="14" x2="15.5" y2="14" stroke={color} strokeWidth="2" />
+            <line x1="12" y1="1" x2="12" y2="3" stroke={color} strokeWidth="2" />
+          </svg>
+        );
+      case 'langVi':
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="3" y="3" width="18" height="18" stroke={color} strokeWidth="2" fill="none" />
+            <polygon points="12,6 14,10 18,10.5 15,13.5 16,17.5 12,15 8,17.5 9,13.5 6,10.5 10,10" fill={color} />
+          </svg>
+        );
+      case 'langEn':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="2" fill="none" />
+            <ellipse cx="12" cy="12" rx="4.5" ry="9" stroke={color} strokeWidth="1.4" fill="none" />
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.6" />
+          </svg>
+        );
+    }
+  }
+
   // Fallback
   return (
     <svg {...commonSvgProps}>

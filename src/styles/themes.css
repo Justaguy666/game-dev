@@ -365,6 +365,57 @@
 }
 
 /* --------------------------------------------------------------------------
+   8. THEME: BLUEPRINT ARCHITECT / INDIE SKETCHBOOK (TECHNICAL CYANOTYPE)
+   -------------------------------------------------------------------------- */
+.theme-blueprint.mode-dark {
+  --bg-app: #0b1d3a;
+  --bg-surface: #12284d;
+  --bg-card: #18335f;
+  --border-color: #2b569a;
+  --border-highlight: #38bdf8;
+  --text-main: #f0f9ff;
+  --text-muted: #93c5fd;
+  --text-dim: #60a5fa;
+  
+  --accent-gold: #fde047;
+  --accent-cyan: #38bdf8;
+  --accent-green: #4ade80;
+  --accent-red: #f87171;
+  --accent-purple: #c084fc;
+  
+  --font-display: 'Architects Daughter', cursive, monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 0 4px 14px rgba(11, 29, 58, 0.8), inset 0 0 0 1px rgba(56, 189, 248, 0.2);
+  --glow-primary: 0 0 12px rgba(56, 189, 248, 0.5), inset 0 0 8px rgba(56, 189, 248, 0.2);
+  --btn-active-bg: #38bdf8;
+  --btn-active-text: #0b1d3a;
+}
+
+.theme-blueprint.mode-light {
+  --bg-app: #f1f5f9;
+  --bg-surface: #ffffff;
+  --bg-card: #f8fafc;
+  --border-color: #94a3b8;
+  --border-highlight: #0284c7;
+  --text-main: #0f172a;
+  --text-muted: #334155;
+  --text-dim: #64748b;
+  
+  --accent-gold: #b45309;
+  --accent-cyan: #0284c7;
+  --accent-green: #047857;
+  --accent-red: #b91c1c;
+  --accent-purple: #7e22ce;
+  
+  --font-display: 'Architects Daughter', cursive, monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 3px 3px 0px rgba(148, 163, 184, 0.5);
+  --glow-primary: 0 0 8px rgba(2, 132, 199, 0.35);
+  --btn-active-bg: #0284c7;
+  --btn-active-text: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
    GLOBAL LAYOUT & CRT SCANLINES
    -------------------------------------------------------------------------- */
 * {
@@ -452,6 +503,19 @@ body.theme-gothic h2,
 body.theme-gothic h3 {
   font-family: var(--font-display);
   letter-spacing: 0.05em;
+}
+
+body.theme-blueprint {
+  /* 'Architects Daughter' / 'JetBrains Mono' Blueprint Architect */
+  font-size: 1.25rem;
+  letter-spacing: 0.025em;
+}
+
+body.theme-blueprint h1,
+body.theme-blueprint h2,
+body.theme-blueprint h3 {
+  font-family: var(--font-display);
+  letter-spacing: 0.04em;
 }
 
 /* Headings across all themes */
@@ -663,6 +727,38 @@ body.theme-gothic .node-card-title {
   font-size: 1.15em !important;
   line-height: 1.35 !important;
   letter-spacing: 0.04em;
+}
+
+body.theme-blueprint .node-card {
+  border-radius: 0px;
+  border: 1px dashed var(--border-color);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+}
+
+body.theme-blueprint .node-card:hover {
+  transform: translateY(-3px);
+  border-style: solid;
+  border-color: #38bdf8 !important;
+  box-shadow: 0 0 16px rgba(56, 189, 248, 0.45);
+}
+
+body.theme-blueprint .domain-banner {
+  border-radius: 0px;
+  border-style: dashed;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+body.theme-blueprint .domain-banner:hover {
+  transform: translateY(-2px);
+  border-style: solid;
+  box-shadow: 0 0 14px rgba(56, 189, 248, 0.5) !important;
+}
+
+body.theme-blueprint .node-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15em !important;
+  line-height: 1.35 !important;
+  letter-spacing: 0.03em;
 }
 
 /* Markdown body across all themes with comfortable reading typography */

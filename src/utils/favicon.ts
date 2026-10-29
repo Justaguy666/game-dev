@@ -138,6 +138,26 @@ export const THEME_FAVICONS: Record<ThemeId, string> = {
   <!-- Dripping Blood Drops -->
   <rect x="7" y="11" width="2" height="2" fill="#dc2626" />
   <rect x="7" y="14" width="2" height="2" fill="#991b1b" />
+</svg>`,
+
+  blueprint: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16" shape-rendering="crispEdges">
+  <!-- Cyanotype Blueprint Blue Drafting Paper -->
+  <rect width="16" height="16" fill="#0b1d3a" />
+  <!-- Drafting Grid Lines -->
+  <rect x="0" y="4" width="16" height="1" fill="#18335f" />
+  <rect x="0" y="8" width="16" height="1" fill="#18335f" />
+  <rect x="0" y="12" width="16" height="1" fill="#18335f" />
+  <rect x="4" y="0" width="1" height="16" fill="#18335f" />
+  <rect x="8" y="0" width="1" height="16" fill="#18335f" />
+  <rect x="12" y="0" width="1" height="16" fill="#18335f" />
+  <!-- Technical 30-60 Drafting Triangle Ruler -->
+  <polygon points="2,14 14,14 2,2" fill="#132c54" stroke="#38bdf8" stroke-width="1" />
+  <polygon points="4,12 10,12 4,6" fill="#0b1d3a" />
+  <!-- Drafting Compass Pivot Point -->
+  <rect x="1" y="1" width="2" height="2" fill="#fde047" />
+  <!-- Dimension Arrow Marks -->
+  <rect x="14" y="13" width="1" height="2" fill="#f0f9ff" />
+  <rect x="2" y="1" width="1" height="2" fill="#f0f9ff" />
 </svg>`
 };
 

@@ -298,6 +298,35 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
+  // 5. BLUEPRINT ARCHITECT / INDIE SKETCHBOOK PALETTE (Cyanotype Blueprint & Technical Drafting)
+  if (theme === 'blueprint') {
+    if (mode === 'light') {
+      switch (domainId) {
+        case 'root': return '#b45309'; // Technical Amber Ochre
+        case 'design': return '#0284c7'; // Drafting Blueprint Cyan
+        case 'tech': return '#1d4ed8'; // Classic Blueprint Navy
+        case 'qa': return '#b91c1c'; // Red Pen Correction Ink
+        case 'art': return '#7e22ce'; // Drafting Purple Ink
+        case 'audio': return '#047857'; // Circuit Board Green
+        case 'boss':
+        case 'production': return '#c2410c'; // Drafting Terracotta
+        default: return '#b45309';
+      }
+    } else {
+      switch (domainId) {
+        case 'root': return '#fde047'; // Drafting Compass Amber
+        case 'design': return '#38bdf8'; // Blueprint Cyan Line
+        case 'tech': return '#60a5fa'; // Technical CAD Blue
+        case 'qa': return '#f87171'; // Revision Redline
+        case 'art': return '#c084fc'; // Schematic Violet
+        case 'audio': return '#4ade80'; // Oscilloscope Green
+        case 'boss':
+        case 'production': return '#fb923c'; // Construction Warning Orange
+        default: return '#fde047';
+      }
+    }
+  }
+
   // 3. LIGHT MODE (Arcade, Cyber, Fantasy)
   // Clean, high-contrast accessible jewel tones (> 4.5:1)
   if (mode === 'light') {
