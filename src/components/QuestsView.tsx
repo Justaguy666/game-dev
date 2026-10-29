@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import { SkillNode, Language, ThemeId } from '../types';
+import { SkillNode, Language, ThemeId, ThemeMode } from '../types';
 import { sound } from '../soundEngine';
 import { ThemedIcon } from './ThemedIcon';
 import { ThemedCheckbox } from './ThemedCheckbox';
-import { GAME_DEV_DOMAINS, getDomainForCategory, DomainId } from '../data/categories';
+import { GAME_DEV_DOMAINS, getDomainColor, DomainId } from '../data/categories';
 
 interface QuestsViewProps {
   skills: SkillNode[];
@@ -11,6 +11,7 @@ interface QuestsViewProps {
   onOpenSkill: (skill: SkillNode) => void;
   lang: Language;
   currentTheme: ThemeId;
+  themeMode: ThemeMode;
 }
 
 export const QuestsView: React.FC<QuestsViewProps> = ({
@@ -18,7 +19,8 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
   onToggleObjective,
   onOpenSkill,
   lang,
-  currentTheme
+  currentTheme,
+  themeMode
 }) => {
   const [selectedDomain, setSelectedDomain] = useState<DomainId | 'all'>('all');
   const [collapsedDomains, setCollapsedDomains] = useState<Record<string, boolean>>({});
@@ -153,7 +155,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
         </div>
       </div>
 
-      {/* 2. Domain Filter Navigation Bar */}
+      {/* 2. Domain Filter Navigation Bar (Responsive Horizontal Scroll) */}
       <div style={{
         backgroundColor: 'var(--bg-surface)',
         border: '1px solid var(--border-color)',
@@ -161,7 +163,10 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
         boxShadow: 'var(--card-shadow)',
         marginBottom: '24px',
         display: 'flex',
-        flexWrap: 'wrap',
+        flexWrap: 'nowrap',
+        overflowX: 'auto',
+        scrollbarWidth: 'none',
+        maxWidth: '100%',
         gap: '6px'
       }}>
         {/* All Domains Tab */}
@@ -179,6 +184,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
             display: 'flex',
             alignItems: 'center',
             gap: '6px',
+            flexShrink: 0,
             transition: 'all 0.12s ease'
           }}>
           <ThemedIcon
@@ -193,6 +199,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
         {/* Individual Domain Tabs */}
         {domainGroups.map(group => {
           const isSelected = selectedDomain === group.domain.id;
+          const domainColor = getDomainColor(group.domain.id, currentTheme, themeMode);
           return (
             <button
               key={group.domain.id}
@@ -209,6 +216,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                 display: 'flex',
                 alignItems: 'center',
                 gap: '6px',
+                flexShrink: 0,
                 transition: 'all 0.12s ease'
               }}>
               <span style={{
@@ -216,13 +224,13 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                 width: '7px',
                 height: '7px',
                 borderRadius: '50%',
-                backgroundColor: isSelected ? 'var(--btn-active-text)' : group.domain.accentHex
+                backgroundColor: isSelected ? 'var(--btn-active-text)' : domainColor
               }} />
               <ThemedIcon
                 name={group.domain.iconName}
                 theme={currentTheme}
                 size={12}
-                color={isSelected ? 'var(--btn-active-text)' : group.domain.accentHex}
+                color={isSelected ? 'var(--btn-active-text)' : domainColor}
               />
               <span>{group.domain.code} {group.domain.shortName[lang]} ({group.completedCount}/{group.totalCount})</span>
             </button>
@@ -235,13 +243,14 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
         {filteredGroups.map(group => {
           const isCollapsed = !!collapsedDomains[group.domain.id];
           const hasObjectives = group.objectives.length > 0;
+          const domainColor = getDomainColor(group.domain.id, currentTheme, themeMode);
 
           return (
             <div
               key={group.domain.id}
               style={{
                 backgroundColor: 'var(--bg-surface)',
-                border: `2px solid ${group.domain.accentHex}`,
+                border: `2px solid ${domainColor}`,
                 boxShadow: 'var(--card-shadow)',
                 overflow: 'hidden',
                 transition: 'all 0.15s ease'
@@ -256,6 +265,8 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'space-between',
+                  flexWrap: 'wrap',
+                  gap: '12px',
                   cursor: 'pointer',
                   userSelect: 'none'
                 }}>
@@ -264,7 +275,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                     width: '32px',
                     height: '32px',
                     backgroundColor: 'var(--bg-app)',
-                    border: `1px solid ${group.domain.accentHex}`,
+                    border: `1px solid ${domainColor}`,
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
@@ -274,20 +285,20 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                       name={group.domain.iconName}
                       theme={currentTheme}
                       size={17}
-                      color={group.domain.accentHex}
+                      color={domainColor}
                     />
                   </div>
 
                   <div>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                       <span style={{
                         fontFamily: 'var(--font-mono)',
                         fontWeight: 800,
                         fontSize: '0.85em',
-                        color: group.domain.accentHex,
+                        color: domainColor,
                         backgroundColor: 'var(--bg-app)',
                         padding: '1px 6px',
-                        border: `1px solid ${group.domain.accentHex}66`
+                        border: `1px solid ${domainColor}66`
                       }}>
                         {group.domain.code}
                       </span>
@@ -313,7 +324,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                 {/* Right Progress Readout & Collapse Indicator */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                   <div style={{ textAlign: 'right' }}>
-                    <div style={{ fontSize: '0.75em', fontWeight: 800, color: group.domain.accentHex }}>
+                    <div style={{ fontSize: '0.75em', fontWeight: 800, color: domainColor }}>
                       {group.completedCount} / {group.totalCount} {lang === 'vi' ? 'Xong' : 'Done'} ({group.percent}%)
                     </div>
                     <div style={{
@@ -327,7 +338,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                       <div style={{
                         width: `${group.percent}%`,
                         height: '100%',
-                        backgroundColor: group.percent === 100 ? 'var(--accent-green)' : group.domain.accentHex,
+                        backgroundColor: group.percent === 100 ? 'var(--accent-green)' : domainColor,
                         transition: 'width 0.3s ease'
                       }} />
                     </div>
@@ -379,23 +390,25 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                           flexDirection: 'column',
                           gap: '10px'
                         }}>
-                        {/* Skill Card Header */}
+                        {/* Skill Card Header (Responsive flex wrap) */}
                         <div style={{
                           display: 'flex',
                           alignItems: 'center',
                           justifyContent: 'space-between',
                           borderBottom: '1px dashed var(--border-color)',
-                          paddingBottom: '8px'
+                          paddingBottom: '8px',
+                          flexWrap: 'wrap',
+                          gap: '8px'
                         }}>
-                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                             <span style={{
                               fontSize: '0.74em',
                               fontFamily: 'var(--font-mono)',
                               fontWeight: 800,
-                              color: group.domain.accentHex,
+                              color: domainColor,
                               backgroundColor: 'var(--bg-card)',
                               padding: '2px 6px',
-                              border: `1px solid ${group.domain.accentHex}55`
+                              border: `1px solid ${domainColor}55`
                             }}>
                               TIER {skill.tier}
                             </span>
@@ -409,7 +422,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                                 fontSize: '0.92em',
                                 cursor: 'pointer',
                                 textDecoration: 'underline',
-                                textDecorationColor: `${group.domain.accentHex}88`
+                                textDecorationColor: `${domainColor}88`
                               }}>
                               {skill.title[lang]}
                             </span>
@@ -442,8 +455,8 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                                 alignItems: 'center',
                                 gap: '4px',
                                 backgroundColor: 'var(--bg-card)',
-                                color: group.domain.accentHex,
-                                border: `1px solid ${group.domain.accentHex}`,
+                                color: domainColor,
+                                border: `1px solid ${domainColor}`,
                                 padding: '3px 8px',
                                 fontSize: '0.72em',
                                 fontFamily: 'var(--font-mono)',
@@ -451,7 +464,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                                 cursor: 'pointer',
                                 transition: 'all 0.12s ease'
                               }}>
-                              <ThemedIcon name="open" theme={currentTheme} size={11} color={group.domain.accentHex} />
+                              <ThemedIcon name="open" theme={currentTheme} size={11} color={domainColor} />
                               <span>{lang === 'vi' ? 'Mở Bài Đọc' : 'Open Docs'}</span>
                             </button>
                           </div>
@@ -469,7 +482,8 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                                 display: 'flex',
                                 alignItems: 'center',
                                 justifyContent: 'space-between',
-                                transition: 'background 0.12s ease'
+                                transition: 'background 0.12s ease',
+                                gap: '8px'
                               }}>
                               <ThemedCheckbox
                                 checked={obj.completed}
@@ -480,7 +494,8 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                                     color: obj.completed ? 'var(--text-muted)' : 'var(--text-main)',
                                     textDecoration: obj.completed ? 'line-through' : 'none',
                                     fontWeight: obj.completed ? 500 : 700,
-                                    fontSize: '0.90em'
+                                    fontSize: '0.90em',
+                                    wordBreak: 'break-word'
                                   }}>
                                     {obj.text[lang]}
                                   </span>
@@ -493,7 +508,7 @@ export const QuestsView: React.FC<QuestsViewProps> = ({
                                 color: obj.completed ? 'var(--accent-green)' : 'var(--text-muted)',
                                 fontWeight: 700,
                                 flexShrink: 0,
-                                marginLeft: '12px'
+                                marginLeft: '8px'
                               }}>
                                 {obj.completed ? '✓ +XP' : `+${Math.round(skill.maxExp / skill.objectives.length)} XP`}
                               </span>

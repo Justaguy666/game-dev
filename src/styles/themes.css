@@ -472,3 +472,50 @@ button:active {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--accent-gold);
 }
+
+/* ==========================================================================
+   RESPONSIVE DESIGN RULES
+   ========================================================================== */
+
+/* Tablets & Small Laptops (max-width: 1024px) */
+@media (max-width: 1024px) {
+  .top-hud-header {
+    padding: 6px 10px !important;
+    gap: 8px !important;
+  }
+  .brand-text {
+    font-size: 0.85em !important;
+  }
+  .top-hud-nav button {
+    padding: 5px 8px !important;
+    font-size: 0.78em !important;
+  }
+}
+
+/* Mobile & Narrow Screens (max-width: 768px) */
+@media (max-width: 768px) {
+  .top-hud-header {
+    min-height: 52px !important;
+    padding: 6px 8px !important;
+    gap: 6px !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    scrollbar-width: none !important;
+  }
+  .top-hud-header::-webkit-scrollbar {
+    display: none;
+  }
+  .brand-text {
+    display: none !important;
+  }
+  .top-hud-nav button {
+    padding: 4px 6px !important;
+    font-size: 0.72em !important;
+    gap: 4px !important;
+  }
+  .legend-box {
+    max-width: calc(100vw - 28px) !important;
+    left: 8px !important;
+    bottom: 8px !important;
+  }
+}

@@ -100,33 +100,37 @@ export const TopHUD: React.FC<TopHUDProps> = ({
   ];
 
   return (
-    <header style={{
-      backgroundColor: 'var(--bg-surface)',
-      borderBottom: '2px solid var(--border-color)',
-      padding: '8px 16px',
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'space-between',
-      flexWrap: 'wrap',
-      gap: '10px',
-      boxShadow: 'var(--card-shadow)',
-      position: 'sticky',
-      top: 0,
-      zIndex: 1000
-    }}>
+    <header
+      className="top-hud-header"
+      style={{
+        backgroundColor: 'var(--bg-surface)',
+        borderBottom: '2px solid var(--border-color)',
+        padding: '8px 16px',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        flexWrap: 'wrap',
+        gap: '10px',
+        boxShadow: 'var(--card-shadow)',
+        position: 'sticky',
+        top: 0,
+        zIndex: 1000
+      }}>
       {/* Brand & Dev Level */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-        <div style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '8px',
-          fontFamily: 'var(--font-display)',
-          fontSize: '0.88em',
-          color: 'var(--accent-gold)',
-          letterSpacing: '0.04em'
-        }}>
+      <div className="top-hud-brand-wrap" style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+        <div
+          className="top-hud-brand"
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '8px',
+            fontFamily: 'var(--font-display)',
+            fontSize: '0.88em',
+            color: 'var(--accent-gold)',
+            letterSpacing: '0.04em'
+          }}>
           <ThemedIcon name="brand" theme={currentTheme} size={20} color="var(--accent-gold)" />
-          <span>GAME DEV STUDIO</span>
+          <span className="brand-text">GAME DEV STUDIO</span>
         </div>
 
         {/* Level & Progress Bar */}
@@ -184,7 +188,7 @@ export const TopHUD: React.FC<TopHUDProps> = ({
       </div>
 
       {/* Main View Navigation Tabs */}
-      <nav style={{ display: 'flex', gap: '6px' }}>
+      <nav className="top-hud-nav" style={{ display: 'flex', gap: '6px' }}>
         <button
           onClick={() => { sound.playTab(); onViewChange('tree'); }}
           style={{

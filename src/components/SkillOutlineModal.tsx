@@ -1,8 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { SkillNode, Language, ThemeId } from '../types';
+import { SkillNode, Language, ThemeId, ThemeMode } from '../types';
 import { sound } from '../soundEngine';
 import { ThemedIcon, IconName } from './ThemedIcon';
 import { ThemedCheckbox } from './ThemedCheckbox';
+import { getDomainColor } from '../data/categories';
 
 interface SkillOutlineModalProps {
   skill: SkillNode;
@@ -11,6 +12,7 @@ interface SkillOutlineModalProps {
   onOpenFullDoc: (skillId: string) => void;
   lang: Language;
   currentTheme: ThemeId;
+  themeMode: ThemeMode;
 }
 
 export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
@@ -19,13 +21,15 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
   onToggleObjective,
   onOpenFullDoc,
   lang,
-  currentTheme
+  currentTheme,
+  themeMode
 }) => {
   // Draggable position state
-  // Default position: floating top right
+  // Default position: floating top right, responsive to screen width
   const [pos, setPos] = useState<{ x: number; y: number }>(() => {
-    const defaultX = Math.max(20, window.innerWidth - 480);
-    const defaultY = 80;
+    const isMobile = window.innerWidth < 600;
+    const defaultX = isMobile ? 12 : Math.max(20, window.innerWidth - 490);
+    const defaultY = isMobile ? 70 : 80;
     return { x: defaultX, y: defaultY };
   });
 
@@ -116,9 +120,7 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
     }
   };
 
-  const borderColor = skill.status === 'mastered' 
-    ? 'var(--accent-green)' 
-    : (skill.status === 'learning' ? 'var(--accent-gold)' : 'var(--border-color)');
+  const borderColor = getDomainColor(skill.category, currentTheme, themeMode);
 
   return (
     <div
@@ -126,8 +128,8 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
         position: 'fixed',
         left: `${pos.x}px`,
         top: `${pos.y}px`,
-        width: '470px',
-        maxHeight: 'calc(100vh - 100px)',
+        width: 'min(470px, calc(100vw - 24px))',
+        maxHeight: 'calc(100vh - 90px)',
         backgroundColor: 'var(--bg-surface)',
         border: `2px solid ${borderColor}`,
         boxShadow: 'var(--card-shadow), 0 8px 30px rgba(0, 0, 0, 0.65)',

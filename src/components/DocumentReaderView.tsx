@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { SkillNode, Language, ThemeId } from '../types';
+import { SkillNode, Language, ThemeId, ThemeMode } from '../types';
 import { sound } from '../soundEngine';
 import { marked } from 'marked';
 import { ThemedIcon } from './ThemedIcon';
-import { GAME_DEV_DOMAINS, getDomainForCategory, DomainId } from '../data/categories';
+import { GAME_DEV_DOMAINS, getDomainForCategory, getDomainColor, DomainId } from '../data/categories';
 
 interface DocumentReaderViewProps {
   skills: SkillNode[];
@@ -12,6 +12,7 @@ interface DocumentReaderViewProps {
   onUpdateSkill: (updated: SkillNode) => void;
   lang: Language;
   currentTheme: ThemeId;
+  themeMode: ThemeMode;
 }
 
 export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
@@ -20,12 +21,14 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
   onSelectSkillId,
   onUpdateSkill,
   lang,
-  currentTheme
+  currentTheme,
+  themeMode
 }) => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedDomain, setSelectedDomain] = useState<DomainId | 'all'>('all');
   const [collapsedDomains, setCollapsedDomains] = useState<Record<string, boolean>>({});
   const [isEditing, setIsEditing] = useState<boolean>(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(() => window.innerWidth > 768);
 
   const activeSkill = skills.find(s => s.id === selectedSkillId) || skills[0];
   const [content, setContent] = useState<string>(activeSkill?.content[lang] || '');
@@ -105,72 +108,81 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
       height: 'calc(100vh - 65px)',
       overflow: 'hidden'
     }}>
-      {/* Sidebar List */}
-      <aside style={{
-        width: '360px',
-        backgroundColor: 'var(--bg-surface)',
-        borderRight: '2px solid var(--border-color)',
-        display: 'flex',
-        flexDirection: 'column',
-        flexShrink: 0
-      }}>
-        {/* Domain Filter Pills Bar */}
-        <div style={{
-          padding: '10px 12px 6px 12px',
-          borderBottom: '1px solid var(--border-color)',
+      {/* Sidebar List (Responsive Drawer / Panel) */}
+      {isSidebarOpen && (
+        <aside style={{
+          width: '350px',
+          maxWidth: '85vw',
+          backgroundColor: 'var(--bg-surface)',
+          borderRight: '2px solid var(--border-color)',
           display: 'flex',
-          flexWrap: 'wrap',
-          gap: '4px',
-          backgroundColor: 'var(--bg-card)'
+          flexDirection: 'column',
+          flexShrink: 0,
+          zIndex: 40,
+          animation: 'fadeIn 0.12s ease-out'
         }}>
-          <button
-            onClick={() => { sound.playTab(); setSelectedDomain('all'); }}
-            style={{
-              padding: '3px 8px',
-              fontSize: '0.72em',
-              fontFamily: 'var(--font-mono)',
-              fontWeight: selectedDomain === 'all' ? 800 : 700,
-              cursor: 'pointer',
-              border: `1px solid ${selectedDomain === 'all' ? 'var(--btn-active-bg)' : 'var(--border-color)'}`,
-              backgroundColor: selectedDomain === 'all' ? 'var(--btn-active-bg)' : 'var(--bg-app)',
-              color: selectedDomain === 'all' ? 'var(--btn-active-text)' : 'var(--text-main)',
-              transition: 'all 0.12s ease'
-            }}>
-            {lang === 'vi' ? 'Tất cả' : 'All'} ({skills.length})
-          </button>
-          {GAME_DEV_DOMAINS.map(d => {
-            const isSelected = selectedDomain === d.id;
-            return (
-              <button
-                key={d.id}
-                onClick={() => { sound.playTab(); setSelectedDomain(d.id); }}
-                style={{
-                  padding: '3px 7px',
-                  fontSize: '0.72em',
-                  fontFamily: 'var(--font-mono)',
-                  fontWeight: isSelected ? 800 : 700,
-                  cursor: 'pointer',
-                  border: `1px solid ${isSelected ? 'var(--btn-active-bg)' : 'var(--border-color)'}`,
-                  backgroundColor: isSelected ? 'var(--btn-active-bg)' : 'var(--bg-app)',
-                  color: isSelected ? 'var(--btn-active-text)' : 'var(--text-muted)',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '4px',
-                  transition: 'all 0.12s ease'
-                }}>
-                <span style={{
-                  display: 'inline-block',
-                  width: '6px',
-                  height: '6px',
-                  borderRadius: '50%',
-                  backgroundColor: isSelected ? 'var(--btn-active-text)' : d.accentHex
-                }} />
-                <ThemedIcon name={d.iconName} theme={currentTheme} size={11} color={isSelected ? 'var(--btn-active-text)' : d.accentHex} />
-                <span>{d.code}</span>
-              </button>
-            );
-          })}
-        </div>
+          {/* Domain Filter Pills Bar (Responsive Horizontal Scroll) */}
+          <div style={{
+            padding: '10px 12px 6px 12px',
+            borderBottom: '1px solid var(--border-color)',
+            display: 'flex',
+            flexWrap: 'nowrap',
+            overflowX: 'auto',
+            scrollbarWidth: 'none',
+            gap: '4px',
+            backgroundColor: 'var(--bg-card)'
+          }}>
+            <button
+              onClick={() => { sound.playTab(); setSelectedDomain('all'); }}
+              style={{
+                padding: '3px 8px',
+                fontSize: '0.72em',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: selectedDomain === 'all' ? 800 : 700,
+                cursor: 'pointer',
+                border: `1px solid ${selectedDomain === 'all' ? 'var(--btn-active-bg)' : 'var(--border-color)'}`,
+                backgroundColor: selectedDomain === 'all' ? 'var(--btn-active-bg)' : 'var(--bg-app)',
+                color: selectedDomain === 'all' ? 'var(--btn-active-text)' : 'var(--text-main)',
+                flexShrink: 0,
+                transition: 'all 0.12s ease'
+              }}>
+              {lang === 'vi' ? 'Tất cả' : 'All'} ({skills.length})
+            </button>
+            {GAME_DEV_DOMAINS.map(d => {
+              const isSelected = selectedDomain === d.id;
+              const dColor = getDomainColor(d.id, currentTheme, themeMode);
+              return (
+                <button
+                  key={d.id}
+                  onClick={() => { sound.playTab(); setSelectedDomain(d.id); }}
+                  style={{
+                    padding: '3px 7px',
+                    fontSize: '0.72em',
+                    fontFamily: 'var(--font-mono)',
+                    fontWeight: isSelected ? 800 : 700,
+                    cursor: 'pointer',
+                    border: `1px solid ${isSelected ? 'var(--btn-active-bg)' : 'var(--border-color)'}`,
+                    backgroundColor: isSelected ? 'var(--btn-active-bg)' : 'var(--bg-app)',
+                    color: isSelected ? 'var(--btn-active-text)' : 'var(--text-muted)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    flexShrink: 0,
+                    transition: 'all 0.12s ease'
+                  }}>
+                  <span style={{
+                    display: 'inline-block',
+                    width: '6px',
+                    height: '6px',
+                    borderRadius: '50%',
+                    backgroundColor: isSelected ? 'var(--btn-active-text)' : dColor
+                  }} />
+                  <ThemedIcon name={d.iconName} theme={currentTheme} size={11} color={isSelected ? 'var(--btn-active-text)' : dColor} />
+                  <span>{d.code}</span>
+                </button>
+              );
+            })}
+          </div>
 
         {/* Search Input */}
         <div style={{ padding: '10px 12px', borderBottom: '1px solid var(--border-color)' }}>
@@ -356,6 +368,7 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
           )}
         </div>
       </aside>
+      )}
 
       {/* Main Document Content */}
       <main style={{
@@ -376,25 +389,51 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
           flexWrap: 'wrap',
           gap: '10px'
         }}>
-          {/* Breadcrumbs */}
+          {/* Breadcrumbs & Sidebar Toggle */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-            <span style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: '5px',
-              fontSize: '0.74em',
-              fontFamily: 'var(--font-mono)',
-              padding: '3px 8px',
-              backgroundColor: 'var(--bg-card)',
-              border: `1px solid ${activeDomain.colorVar}`,
-              color: activeDomain.colorVar,
-              fontWeight: 800
-            }}>
-              <ThemedIcon name={activeDomain.iconName} theme={currentTheme} size={12} color={activeDomain.colorVar} />
-              <span>{activeDomain.code} {activeDomain.shortName[lang]}</span>
-            </span>
+            <button
+              onClick={() => { sound.playClick(); setIsSidebarOpen(!isSidebarOpen); }}
+              title={isSidebarOpen ? 'Thu gọn danh mục bài viết' : 'Mở danh mục bài viết'}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '5px',
+                padding: '4px 8px',
+                backgroundColor: 'var(--bg-card)',
+                color: 'var(--text-main)',
+                border: '1px solid var(--border-color)',
+                fontSize: '0.74em',
+                fontFamily: 'var(--font-mono)',
+                fontWeight: 700,
+                cursor: 'pointer',
+                transition: 'all 0.12s ease'
+              }}>
+              <span>☰</span>
+              <span>{lang === 'vi' ? (isSidebarOpen ? 'Mục Lục' : 'Mục Lục') : (isSidebarOpen ? 'Index' : 'Index')}</span>
+            </button>
 
-            <span style={{ color: 'var(--text-dim)', fontSize: '0.8em' }}>/</span>
+            {(() => {
+              const domainColor = getDomainColor(activeDomain.id, currentTheme, themeMode);
+              return (
+                <span style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '5px',
+                  fontSize: '0.74em',
+                  fontFamily: 'var(--font-mono)',
+                  padding: '3px 8px',
+                  backgroundColor: 'var(--bg-card)',
+                  border: `1px solid ${domainColor}`,
+                  color: domainColor,
+                  fontWeight: 800
+                }}>
+                  <ThemedIcon name={activeDomain.iconName} theme={currentTheme} size={12} color={domainColor} />
+                  <span>{activeDomain.code} {activeDomain.shortName[lang]}</span>
+                </span>
+              );
+            })()}
+
+            <span style={{ color: 'var(--text-muted)', fontSize: '0.8em' }}>/</span>
 
             <span style={{
               fontWeight: 800,

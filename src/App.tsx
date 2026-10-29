@@ -166,6 +166,7 @@ export const App: React.FC = () => {
             onCloseDetail={() => setActiveDrawerSkill(null)}
             lang={lang}
             currentTheme={currentTheme}
+            themeMode={themeMode}
           />
         )}
 
@@ -177,6 +178,7 @@ export const App: React.FC = () => {
             onUpdateSkill={handleUpdateSkill}
             lang={lang}
             currentTheme={currentTheme}
+            themeMode={themeMode}
           />
         )}
 
@@ -191,6 +193,7 @@ export const App: React.FC = () => {
             }}
             lang={lang}
             currentTheme={currentTheme}
+            themeMode={themeMode}
           />
         )}
 
@@ -207,6 +210,7 @@ export const App: React.FC = () => {
             }}
             lang={lang}
             currentTheme={currentTheme}
+            themeMode={themeMode}
           />
         )}
       </div>

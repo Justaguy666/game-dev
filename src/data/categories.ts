@@ -1,5 +1,5 @@
 import { IconName } from '../components/ThemedIcon';
-import { LocalizedText } from '../types';
+import { LocalizedText, ThemeId, ThemeMode } from '../types';
 
 export type DomainId = 'root' | 'design' | 'tech' | 'qa' | 'art' | 'audio' | 'production' | 'boss';
 
@@ -171,4 +171,73 @@ export const getDomainForCategory = (category: string): GameDevDomain => {
     return GAME_DEV_DOMAINS.find(d => d.id === 'boss') || GAME_DEV_DOMAINS[0];
   }
   return GAME_DEV_DOMAINS.find(d => d.id === category) || GAME_DEV_DOMAINS[0];
+};
+
+/**
+ * Returns a high-contrast, theme-appropriate domain color that guarantees
+ * readability and prevents eye strain across both Light and Dark modes.
+ */
+export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode: ThemeMode): string => {
+  // 1. GAME BOY MONOCHROME PALETTES
+  if (theme === 'gameboy') {
+    if (mode === 'light') {
+      // Background is #9bbc0f (bright yellow-olive).
+      // MUST use deep, dark, high-contrast ink tones (contrast > 7:1) to prevent eye-straining neon glare!
+      switch (domainId) {
+        case 'root': return '#0f380f'; // Darkest DMG forest ink
+        case 'design': return '#263806'; // Deep army olive ink
+        case 'tech': return '#0a3028'; // Deep pine dark teal
+        case 'qa': return '#382206'; // Deep umber ochre
+        case 'art': return '#281438'; // Deep plum shadow
+        case 'audio': return '#0c331a'; // Deep spruce jade
+        case 'boss':
+        case 'production': return '#3a0f18'; // Deep crimson dark ink
+        default: return '#0f380f';
+      }
+    } else {
+      // Background is #0f380f (deep forest green).
+      // Crisp, luminous DMG green & soft tones:
+      switch (domainId) {
+        case 'root': return '#9bbc0f'; // Brightest DMG Green
+        case 'design': return '#d4e840'; // Bright DMG Lime
+        case 'tech': return '#5eead4'; // Soft Mint
+        case 'qa': return '#fde047'; // Warm Yellow
+        case 'art': return '#c084fc'; // Soft Lavender
+        case 'audio': return '#86efac'; // Soft Spring Green
+        case 'boss':
+        case 'production': return '#fda4af'; // Soft Coral
+        default: return '#9bbc0f';
+      }
+    }
+  }
+
+  // 2. LIGHT MODE ACROSS ALL THEMES (Arcade, Cyber, Fantasy)
+  // Background is white or light cream. Colors must be deep and accessible (> 4.5:1).
+  if (mode === 'light') {
+    switch (domainId) {
+      case 'root': return '#b45309'; // Warm deep amber
+      case 'design': return '#c2410c'; // Rust orange
+      case 'tech': return '#0284c7'; // Rich cyan/blue
+      case 'qa': return '#b91c1c'; // Deep ruby red
+      case 'art': return '#7e22ce'; // Royal purple
+      case 'audio': return '#047857'; // Deep emerald
+      case 'boss':
+      case 'production': return '#be123c'; // Deep rose
+      default: return '#b45309';
+    }
+  }
+
+  // 3. DARK MODE ACROSS ALL THEMES (Arcade, Cyber, Fantasy)
+  // Vibrant, luminous retro colors on dark surface
+  switch (domainId) {
+    case 'root': return '#fbbf24'; // Gold
+    case 'design': return '#f59e0b'; // Amber
+    case 'tech': return theme === 'cyber' ? '#00f0ff' : '#38bdf8'; // Cyan
+    case 'qa': return '#f43f5e'; // Rose
+    case 'art': return '#c084fc'; // Lavender Purple
+    case 'audio': return '#34d399'; // Mint Emerald
+    case 'boss':
+    case 'production': return '#fb7185'; // Rose Red
+    default: return '#fbbf24';
+  }
 };
