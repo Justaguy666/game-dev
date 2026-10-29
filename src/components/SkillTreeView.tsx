@@ -11,8 +11,8 @@ interface SkillTreeViewProps {
 }
 
 export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSkill, lang, currentTheme }) => {
-  const [zoom, setZoom] = useState<number>(1);
-  const [pan, setPan] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [zoom, setZoom] = useState<number>(0.85);
+  const [pan, setPan] = useState<{ x: number; y: number }>({ x: -500, y: 30 });
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [dragStart, setDragStart] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
 
@@ -39,8 +39,8 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
 
   const resetView = () => {
     sound.playClick();
-    setZoom(1);
-    setPan({ x: 0, y: 0 });
+    setZoom(0.85);
+    setPan({ x: -500, y: 30 });
   };
 
   // Find connections
@@ -164,8 +164,8 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({ skills, onSelectSk
 
       {/* SVG Canvas World */}
       <div style={{
-        width: '1800px',
-        height: '1400px',
+        width: '2750px',
+        height: '1650px',
         position: 'absolute',
         transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
         transformOrigin: '0 0',

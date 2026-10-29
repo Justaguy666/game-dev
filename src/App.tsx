@@ -8,6 +8,8 @@ import { DocumentEditor } from './components/DocumentEditor';
 import { DocumentReaderView } from './components/DocumentReaderView';
 import { QuestsView } from './components/QuestsView';
 
+const DATA_VERSION = 'v2_tool_agnostic_curriculum';
+
 export const App: React.FC = () => {
   // 1. Persistent State
   const [currentTheme, setCurrentTheme] = useState<ThemeId>(() => {
@@ -28,14 +30,18 @@ export const App: React.FC = () => {
   });
 
   const [skills, setSkills] = useState<SkillNode[]>(() => {
-    const saved = localStorage.getItem('gamedev_skills_data');
-    if (saved) {
-      try {
-        return JSON.parse(saved);
-      } catch (e) {
-        console.error('Failed to parse saved skills', e);
+    const version = localStorage.getItem('gamedev_data_version');
+    if (version === DATA_VERSION) {
+      const saved = localStorage.getItem('gamedev_skills_data');
+      if (saved) {
+        try {
+          return JSON.parse(saved);
+        } catch (e) {
+          console.error('Failed to parse saved skills', e);
+        }
       }
     }
+    localStorage.setItem('gamedev_data_version', DATA_VERSION);
     return INITIAL_SKILLS;
   });
 

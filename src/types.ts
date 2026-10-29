@@ -12,7 +12,7 @@ export interface LocalizedText {
 export interface SkillNode {
   id: string;
   title: LocalizedText;
-  category: 'root' | 'design' | 'tech' | 'art' | 'audio' | 'boss';
+  category: 'root' | 'design' | 'tech' | 'qa' | 'art' | 'audio' | 'production' | 'boss';
   tier: number;
   status: SkillStatus;
   exp: number;
