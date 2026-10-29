@@ -12,6 +12,7 @@ interface SkillTreeViewProps {
   lang: Language;
   currentTheme: ThemeId;
   themeMode: ThemeMode;
+  fontScale?: number;
 }
 
 export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
@@ -19,7 +20,8 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
   onSelectSkill,
   lang,
   currentTheme,
-  themeMode
+  themeMode,
+  fontScale = 1.0
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
@@ -29,6 +31,14 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [selectedDomain, setSelectedDomain] = useState<DomainId | 'all'>('all');
   const [isLegendExpanded, setIsLegendExpanded] = useState(false);
+
+  // Dynamic Y positioning calculated to guarantee parent-child spacing across all font scales
+  const getSkillY = useCallback((skill: SkillNode): number => {
+    if (skill.tier === 0) return 45;
+    const baseT1 = Math.round(480 + Math.max(0, (fontScale - 1.0)) * 100);
+    const dynamicGap = Math.round(400 + Math.max(0, (fontScale - 1.0)) * 220);
+    return Math.round(baseT1 + (skill.tier - 1) * dynamicGap);
+  }, [fontScale]);
 
   // Full-Text Search in Skill Tree
   const [searchQuery, setSearchQuery] = useState('');
@@ -58,12 +68,12 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
     if (!containerRef.current) return;
     const containerWidth = containerRef.current.clientWidth;
     const containerHeight = containerRef.current.clientHeight;
-    const targetZoom = 0.88;
+    const targetZoom = 0.85;
     setZoom(targetZoom);
-    const targetPanX = (containerWidth / 2) - ((skill.x + 145) * targetZoom);
-    const targetPanY = (containerHeight / 2) - ((skill.y + 80) * targetZoom);
+    const targetPanX = (containerWidth / 2) - ((skill.x + 160) * targetZoom);
+    const targetPanY = (containerHeight / 2) - ((getSkillY(skill) + 90) * targetZoom);
     setPan({ x: Math.round(targetPanX), y: Math.round(targetPanY) });
-  }, []);
+  }, [getSkillY]);
 
   const handleNextMatch = () => {
     if (matchingSkills.length === 0) return;
@@ -236,7 +246,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
     }
   };
 
-  // Pillar banners to display on canvas above Tier 1
+  // Pillar banners to display on canvas above Tier 1 (Generous Y spacing from Tier 1 cards)
   const pillarBanners = [
     {
       domainId: 'design' as DomainId,
@@ -244,7 +254,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
       title: { vi: '01. GAME DESIGN & CƠ CHẾ', en: '01. GAME DESIGN & SYSTEMS' },
       subtitle: { vi: 'Core Loop • Cân Bằng • Game Feel', en: 'Core Loop • Systems Balance • Juice' },
       x: 100,
-      y: 340,
+      y: 350,
       color: getDomainColor('design', currentTheme, themeMode),
       icon: 'design' as IconName
     },
@@ -254,7 +264,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
       title: { vi: '02. LẬP TRÌNH & KIẾN TRÚC', en: '02. TECH & ARCHITECTURE' },
       subtitle: { vi: 'DeltaTime • Vector Math • FSM/ECS', en: 'DeltaTime • 2D Math • FSM/ECS • AI' },
       x: 660,
-      y: 340,
+      y: 350,
       color: getDomainColor('tech', currentTheme, themeMode),
       icon: 'code' as IconName
     },
@@ -264,7 +274,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
       title: { vi: '03. KIỂM THỬ QA & HIỆU NĂNG', en: '03. QA & PERFORMANCE' },
       subtitle: { vi: 'Bug Taxonomy • Headless Bot • Profiling', en: 'Bug Taxonomy • Headless Bot • Profiling' },
       x: 1220,
-      y: 340,
+      y: 350,
       color: getDomainColor('qa', currentTheme, themeMode),
       icon: 'qa' as IconName
     },
@@ -274,7 +284,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
       title: { vi: '04. NGHỆ THUẬT & TECHNICAL ART', en: '04. ART & TECHNICAL VISUALS' },
       subtitle: { vi: 'Silhouette • Diễn Hoạt • Shaders', en: 'Silhouette • Animation • Shaders • UI' },
       x: 1780,
-      y: 340,
+      y: 350,
       color: getDomainColor('art', currentTheme, themeMode),
       icon: 'art' as IconName
     },
@@ -284,22 +294,28 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
       title: { vi: '05. ÂM THANH & SOUND DESIGN', en: '05. AUDIO & SOUND DESIGN' },
       subtitle: { vi: 'Ký Hiệu Học • Adaptive SFX • 3D Spatial', en: 'Semiotics • Adaptive Audio • 3D Spatial' },
       x: 2340,
-      y: 340,
+      y: 350,
       color: getDomainColor('audio', currentTheme, themeMode),
       icon: 'volume' as IconName
     }
   ];
 
-  // Find connections
+  // Find connections (Dynamically using getSkillY and 320px center width)
   const connections = skills
     .filter(s => s.parentId)
     .map(child => {
       const parent = skills.find(p => p.id === child.parentId);
       if (!parent) return null;
+      const parentY = getSkillY(parent);
+      const childY = getSkillY(child);
+      const parentHeight = parent.tier === 0
+        ? Math.round(180 + Math.max(0, fontScale - 1.0) * 70)
+        : Math.round(195 + Math.max(0, fontScale - 1.0) * 70);
+
       return {
         id: `${parent.id}->${child.id}`,
-        from: { x: parent.x + 145, y: parent.y + 160 },
-        to: { x: child.x + 145, y: child.y },
+        from: { x: parent.x + 160, y: parentY + parentHeight },
+        to: { x: child.x + 160, y: childY },
         status: child.status,
         childCategory: child.category,
         parentId: parent.id,
@@ -740,8 +756,8 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
 
       {/* SVG Canvas World */}
       <div style={{
-        width: '2800px',
-        height: '2500px',
+        width: '2900px',
+        height: '3200px',
         position: 'absolute',
         transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})`,
         transformOrigin: '0 0',
@@ -754,9 +770,9 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
             style={{
               position: 'absolute',
               left: `${p.x - 12}px`,
-              top: '320px',
-              width: '314px',
-              height: '2150px',
+              top: '335px',
+              width: '344px',
+              height: '2800px',
               backgroundColor: selectedDomain === p.domainId ? 'rgba(255, 255, 255, 0.025)' : 'transparent',
               border: selectedDomain === p.domainId ? `1px dashed ${p.color}` : '1px dashed rgba(255, 255, 255, 0.04)',
               borderRadius: '2px',
@@ -802,20 +818,21 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
         {/* Root Nexus Banner */}
         <div style={{
           position: 'absolute',
-          left: '1180px',
-          top: '2px',
-          width: '360px',
+          left: '1220px',
+          top: '8px',
+          width: '320px',
           textAlign: 'center',
           pointerEvents: 'none'
         }}>
           <span style={{
-            fontSize: '0.74em',
+            fontSize: '0.72em',
             fontFamily: 'var(--font-display)',
             color: getDomainColor('root', currentTheme, themeMode),
             letterSpacing: '0.08em',
             backgroundColor: 'var(--bg-card)',
-            padding: '2px 10px',
-            border: `1px solid ${getDomainColor('root', currentTheme, themeMode)}`
+            padding: '3px 12px',
+            border: `1px solid ${getDomainColor('root', currentTheme, themeMode)}`,
+            display: 'inline-block'
           }}>
             00. NEXUS FOUNDATIONS
           </span>
@@ -833,7 +850,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                 position: 'absolute',
                 left: `${p.x}px`,
                 top: `${p.y}px`,
-                width: '290px',
+                width: '320px',
                 backgroundColor: 'var(--bg-surface)',
                 border: `2px solid ${p.color}`,
                 padding: '8px 12px',
@@ -841,24 +858,31 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                 opacity: isFocused ? 1 : 0.35,
                 cursor: 'pointer',
                 transition: 'all 0.2s ease',
-                userSelect: 'none'
+                userSelect: 'none',
+                zIndex: 2
               }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '3px' }}>
                 <ThemedIcon name={p.icon} theme={currentTheme} size={15} color={p.color} />
                 <span style={{
                   fontFamily: 'var(--font-display)',
-                  fontSize: '0.78em',
+                  fontSize: '0.74em',
                   fontWeight: 800,
                   color: p.color,
-                  letterSpacing: '0.04em'
+                  letterSpacing: '0.03em',
+                  whiteSpace: 'nowrap',
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis'
                 }}>
                   {p.title[lang]}
                 </span>
               </div>
               <div style={{
-                fontSize: '0.70em',
+                fontSize: '0.68em',
                 fontFamily: 'var(--font-mono)',
-                color: 'var(--text-muted)'
+                color: 'var(--text-muted)',
+                whiteSpace: 'nowrap',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
               }}>
                 {p.subtitle[lang]}
               </div>
@@ -896,6 +920,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                     : 'none'));
 
           const cardOpacity = isVisible ? 1 : (isSearchActive ? 0.08 : 0.22);
+          const cardY = getSkillY(skill);
 
           return (
             <div
@@ -909,7 +934,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
               style={{
                 position: 'absolute',
                 left: `${skill.x}px`,
-                top: `${skill.y}px`,
+                top: `${cardY}px`,
                 border: isCurrentMatch ? `2px solid #ffffff` : `2px solid ${domainBorderColor}`,
                 boxShadow: glow,
                 opacity: cardOpacity,

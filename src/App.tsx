@@ -9,7 +9,7 @@ import { DocumentReaderView } from './components/DocumentReaderView';
 import { QuestsView } from './components/QuestsView';
 import { updateThemeFavicon } from './utils/favicon';
 
-const DATA_VERSION = 'v7_generous_tier_spacing_and_card_clean';
+const DATA_VERSION = 'v8_dynamic_spacing_and_card_typography';
 
 export const App: React.FC = () => {
   // 1. Persistent State
@@ -169,6 +169,7 @@ export const App: React.FC = () => {
             lang={lang}
             currentTheme={currentTheme}
             themeMode={themeMode}
+            fontScale={fontScale}
           />
         )}
 

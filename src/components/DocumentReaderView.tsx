@@ -552,7 +552,9 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
           <div style={{
             maxWidth: '920px',
             margin: '0 auto',
-            width: '100%'
+            width: '100%',
+            padding: '0 24px',
+            boxSizing: 'border-box'
           }}>
             {isEditing ? (
               <textarea
