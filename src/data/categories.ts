@@ -530,6 +530,35 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
+  // 13. PAPERCRAFT ORIGAMI / FOLDED PAPER WORLD (Geometric Facets & Washi Colors)
+  if (theme === 'papercraft') {
+    if (mode === 'light') {
+      switch (domainId) {
+        case 'root': return '#d97706'; // Golden Origami Amber
+        case 'design': return '#c2410c'; // Washi Rust Vermilion
+        case 'tech': return '#0284c7'; // Folded Blue Ink
+        case 'qa': return '#dc2626'; // Red Paper Seal
+        case 'art': return '#7e22ce'; // Kyoto Wisteria Purple
+        case 'audio': return '#15803d'; // Bamboo Paper Green
+        case 'boss':
+        case 'production': return '#ea580c'; // Dragon Orange Paper
+        default: return '#d97706';
+      }
+    } else {
+      switch (domainId) {
+        case 'root': return '#f4a261'; // Golden Paper Crane Amber
+        case 'design': return '#e76f51'; // Folded Coral Orange
+        case 'tech': return '#38bdf8'; // Origami Sky Cyan
+        case 'qa': return '#e63946'; // Cinnabar Paper Red
+        case 'art': return '#a855f7'; // Wisteria Paper Purple
+        case 'audio': return '#2ec4b6'; // Folded Jade Mint
+        case 'boss':
+        case 'production': return '#fb8500'; // Origami Dragon Flame
+        default: return '#f4a261';
+      }
+    }
+  }
+
   // 3. LIGHT MODE (Arcade, Cyber, Fantasy)
   // Clean, high-contrast accessible jewel tones (> 4.5:1)
   if (mode === 'light') {

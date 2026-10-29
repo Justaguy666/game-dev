@@ -290,6 +290,24 @@ export const THEME_FAVICONS: Record<ThemeId, string> = {
   <!-- Rosy Clay Cheeks -->
   <circle cx="3.8" cy="10" r="1" fill="#ff6b8b" opacity="0.8" />
   <circle cx="12.2" cy="10" r="1" fill="#ff6b8b" opacity="0.8" />
+</svg>`,
+
+  papercraft: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- Washi Indigo Night Paper Backdrop -->
+  <rect width="16" height="16" fill="#141829" rx="3" />
+  <!-- Left Wing Facet (Folded Paper) -->
+  <polygon points="8,7 1,3 7,11" fill="#f4a261" />
+  <!-- Right Wing Facet (Folded Paper) -->
+  <polygon points="8,7 15,3 9,11" fill="#e76f51" />
+  <!-- Central Body Diamond -->
+  <polygon points="8,4 10,8 8,13 6,8" fill="#f8fafc" />
+  <!-- Beak & Neck (Left Angle Fold) -->
+  <polygon points="6,8 3,7 2,8 5,9" fill="#f4a261" />
+  <!-- Tail (Right Angle Fold) -->
+  <polygon points="10,8 14,9 13,11 9,10" fill="#e76f51" />
+  <!-- Crease fold lines -->
+  <line x1="8" y1="4" x2="8" y2="13" stroke="#cbd5e1" stroke-width="0.8" />
+  <line x1="1" y1="3" x2="15" y2="3" stroke="#ffffff" stroke-width="0.6" opacity="0.6" />
 </svg>`
 };
 

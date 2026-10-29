@@ -773,6 +773,57 @@
 }
 
 /* --------------------------------------------------------------------------
+   16. THEME: PAPERCRAFT ORIGAMI / FOLDED PAPER WORLD (GEOMETRIC FACETS & WASHI)
+   -------------------------------------------------------------------------- */
+.theme-papercraft.mode-dark {
+  --bg-app: #141829;
+  --bg-surface: #1d233a;
+  --bg-card: #272f4e;
+  --border-color: #6366f1;
+  --border-highlight: #f4a261;
+  --text-main: #f8fafc;
+  --text-muted: #cbd5e1;
+  --text-dim: #94a3b8;
+  
+  --accent-gold: #f4a261;
+  --accent-cyan: #38bdf8;
+  --accent-green: #2ec4b6;
+  --accent-red: #e63946;
+  --accent-purple: #a855f7;
+  
+  --font-display: 'Space Grotesk', 'Syne', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 3px 4px 0px #090c17, 0 8px 20px rgba(0, 0, 0, 0.45);
+  --glow-primary: 0 0 12px rgba(244, 162, 97, 0.45);
+  --btn-active-bg: #f4a261;
+  --btn-active-text: #141829;
+}
+
+.theme-papercraft.mode-light {
+  --bg-app: #f7f4ec;
+  --bg-surface: #ede8db;
+  --bg-card: #ffffff;
+  --border-color: #334155;
+  --border-highlight: #d97706;
+  --text-main: #0f172a;
+  --text-muted: #334155;
+  --text-dim: #64748b;
+  
+  --accent-gold: #d97706;
+  --accent-cyan: #0284c7;
+  --accent-green: #15803d;
+  --accent-red: #dc2626;
+  --accent-purple: #7e22ce;
+  
+  --font-display: 'Space Grotesk', 'Syne', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 2px 3px 0px #cbd5e1, 4px 6px 12px rgba(0, 0, 0, 0.07);
+  --glow-primary: 0 0 10px rgba(217, 119, 6, 0.35);
+  --btn-active-bg: #334155;
+  --btn-active-text: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
    GLOBAL LAYOUT & CRT SCANLINES
    -------------------------------------------------------------------------- */
 * {
@@ -1423,6 +1474,58 @@ body.theme-claymation .node-card-title {
   font-size: 1.15em !important;
   line-height: 1.30 !important;
   letter-spacing: 0.02em;
+  font-weight: 700;
+}
+
+body.theme-papercraft .node-card {
+  border-radius: 4px;
+  border-width: 1.5px;
+  transition: transform 0.16s ease, box-shadow 0.16s ease, border-color 0.16s ease;
+}
+
+body.theme-papercraft.mode-dark .node-card {
+  border-color: #6366f1;
+  box-shadow: 3px 4px 0px #090c17, 0 6px 16px rgba(0, 0, 0, 0.45);
+}
+
+body.theme-papercraft.mode-dark .node-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: #f4a261 !important;
+  box-shadow: 4px 6px 0px #090c17, 0 0 16px rgba(244, 162, 97, 0.5);
+}
+
+body.theme-papercraft.mode-light .node-card {
+  border-color: #334155;
+  box-shadow: 2px 3px 0px #cbd5e1, 3px 5px 10px rgba(0, 0, 0, 0.06);
+}
+
+body.theme-papercraft.mode-light .node-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: #d97706 !important;
+  box-shadow: 3px 5px 0px #94a3b8, 4px 8px 16px rgba(0, 0, 0, 0.1);
+}
+
+body.theme-papercraft .domain-banner {
+  border-radius: 4px;
+  border-width: 1.5px;
+  transition: transform 0.16s ease, box-shadow 0.16s ease;
+}
+
+body.theme-papercraft.mode-dark .domain-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 4px 0px #090c17, 0 0 14px rgba(244, 162, 97, 0.45) !important;
+}
+
+body.theme-papercraft.mode-light .domain-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 4px 0px #cbd5e1 !important;
+}
+
+body.theme-papercraft .node-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15em !important;
+  line-height: 1.30 !important;
+  letter-spacing: 0.03em;
   font-weight: 700;
 }
 

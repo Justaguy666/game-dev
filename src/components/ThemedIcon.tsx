@@ -4743,6 +4743,336 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
     }
   }
 
+  if (theme === 'papercraft') {
+    switch (name) {
+      case 'tree': // Origami Folded Geometric Tree
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="11,15 13,15 14,21 10,21" stroke={color} strokeWidth="1.6" fill="none" />
+            <polygon points="12,10 4,16 9,16 6,19 18,19 15,16 20,16" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polygon points="12,3 6,10 18,10" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="3" x2="12" y2="19" stroke={color} strokeWidth="1.2" strokeDasharray="1.5 1.5" />
+          </svg>
+        );
+      case 'docs': // Accordion-Folded Paper Pamphlet / Z-Fold
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="3,6 8,4 8,18 3,20" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polygon points="8,4 16,7 16,21 8,18" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polygon points="16,7 21,5 21,19 16,21" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="10" y1="10" x2="14" y2="11.5" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+            <line x1="10" y1="14" x2="14" y2="15.5" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+          </svg>
+        );
+      case 'quests': // Paper Scroll with Folded Paper Ribbon
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="5" y="4" width="14" height="16" rx="1" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M4 5c0-1.5 1-2 2-2h12c1 0 2 .5 2 2" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M4 19c0 1.5 1 2 2 2h12c1 0 2-.5 2-2" stroke={color} strokeWidth="1.8" fill="none" />
+            <polygon points="5,11 19,7 19,10 5,14" fill={color} opacity="0.3" stroke={color} strokeWidth="1.2" />
+            <polygon points="12,10.5 13.5,12 12,13.5 10.5,12" fill={color} />
+          </svg>
+        );
+      case 'sun': // Kirigami Folded Paper Rosette Sun
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="10,6 14,6 18,10 18,14 14,18 10,18 6,14 6,10" stroke={color} strokeWidth="1.8" fill="none" />
+            <polygon points="12,2 10,6 14,6" stroke={color} strokeWidth="1.4" fill="none" />
+            <polygon points="22,12 18,10 18,14" stroke={color} strokeWidth="1.4" fill="none" />
+            <polygon points="12,22 10,18 14,18" stroke={color} strokeWidth="1.4" fill="none" />
+            <polygon points="2,12 6,10 6,14" stroke={color} strokeWidth="1.4" fill="none" />
+            <circle cx="12" cy="12" r="2" fill={color} />
+          </svg>
+        );
+      case 'moon': // Faceted Origami Crescent Moon
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="18,3 12,5 7,10 7,15 11,20 17,21 13,17 11,13 13,9 18,3" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="5" x2="13" y2="9" stroke={color} strokeWidth="1.2" strokeDasharray="1.5 1.5" />
+            <line x1="7" y1="10" x2="11" y2="13" stroke={color} strokeWidth="1.2" strokeDasharray="1.5 1.5" />
+            <line x1="7" y1="15" x2="13" y2="17" stroke={color} strokeWidth="1.2" strokeDasharray="1.5 1.5" />
+            <polygon points="18,9 19,11 21,11 19.5,12.5 20,14.5 18,13 16,14.5 16.5,12.5 15,11 17,11" fill={color} />
+          </svg>
+        );
+      case 'tv': // Kamishibai Pop-up Theatre Stage
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="3" y="4" width="18" height="14" rx="1.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <polygon points="3,4 7,6 7,16 3,18" stroke={color} strokeWidth="1.4" fill="none" />
+            <polygon points="21,4 17,6 17,16 21,18" stroke={color} strokeWidth="1.4" fill="none" />
+            <polygon points="12,1 6,4 18,4" stroke={color} strokeWidth="1.4" strokeLinejoin="round" fill="none" />
+            <line x1="8" y1="21" x2="16" y2="21" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="12" y1="18" x2="12" y2="21" stroke={color} strokeWidth="1.6" />
+          </svg>
+        );
+      case 'volume': // Folded Paper Cone Megaphone
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="4,9 12,5 12,19 4,15" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="4" y1="12" x2="12" y2="12" stroke={color} strokeWidth="1.2" strokeDasharray="1.5 1.5" />
+            <line x1="3" y1="10" x2="3" y2="14" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <path d="M15 8c2 2 2 6 0 8" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+            <path d="M18 5c4 4 4 10 0 14" stroke={color} strokeWidth="1.8" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'mute': // Paper Megaphone with Cut Scissor Line
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="4,9 12,5 12,19 4,15" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="3" y1="10" x2="3" y2="14" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="16" y1="8" x2="22" y2="16" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="22" y1="8" x2="16" y2="16" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'globe': // Faceted Origami Icosahedron Globe
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,2 21,7 21,17 12,22 3,17 3,7" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polygon points="12,6 18,10 18,15 12,18 6,15 6,10" stroke={color} strokeWidth="1.4" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="6" stroke={color} strokeWidth="1.2" />
+            <line x1="21" y1="7" x2="18" y2="10" stroke={color} strokeWidth="1.2" />
+            <line x1="21" y1="17" x2="18" y2="15" stroke={color} strokeWidth="1.2" />
+            <line x1="12" y1="22" x2="12" y2="18" stroke={color} strokeWidth="1.2" />
+            <line x1="3" y1="17" x2="6" y2="15" stroke={color} strokeWidth="1.2" />
+            <line x1="3" y1="7" x2="6" y2="10" stroke={color} strokeWidth="1.2" />
+          </svg>
+        );
+      case 'mastered': // Origami Shuriken Ninja Star Badge
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,2 14,9 21,9 16,13 18,20 12,16 6,20 8,13 3,9 10,9" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="16" stroke={color} strokeWidth="1.2" strokeDasharray="1.5 1.5" />
+            <line x1="3" y1="9" x2="18" y2="20" stroke={color} strokeWidth="1.2" strokeDasharray="1.5 1.5" />
+            <line x1="21" y1="9" x2="6" y2="20" stroke={color} strokeWidth="1.2" strokeDasharray="1.5 1.5" />
+            <circle cx="12" cy="12" r="2" fill={color} />
+          </svg>
+        );
+      case 'learning': // Origami Folding In-Progress (Square to Crane)
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,2 21,12 12,22 3,12" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="22" stroke={color} strokeWidth="1.4" />
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.2" strokeDasharray="2 2" />
+            <polygon points="12,2 17,7 12,12" stroke={color} strokeWidth="1.4" fill={color} opacity="0.3" />
+            <path d="M17 17a4 4 0 01-5 2" stroke={color} strokeWidth="1.6" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'locked': // Origami Paper Padlock
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M8 11V7a4 4 0 018 0v4" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <polygon points="5,11 19,11 18,21 6,21" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="5" y1="11" x2="18" y2="21" stroke={color} strokeWidth="1.2" strokeDasharray="1.5 1.5" />
+            <circle cx="12" cy="15" r="1.4" fill={color} />
+            <line x1="12" y1="16.4" x2="12" y2="18.5" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
+          </svg>
+        );
+      case 'edit': // Bone Folder Paper Tool & Crease Line
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M19 4c-1-1-3 0-4 1L5 15l-1 5 5-1L19 9c1-1 2-3 0-5z" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="7" y1="17" x2="16" y2="8" stroke={color} strokeWidth="1.4" />
+            <line x1="3" y1="21" x2="8" y2="21" stroke={color} strokeWidth="1.6" strokeDasharray="1.5 1.5" />
+          </svg>
+        );
+      case 'save': // Folded Paper Envelope / Origami Tuck Pouch
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="3" y="6" width="18" height="13" rx="1" stroke={color} strokeWidth="1.8" fill="none" />
+            <polygon points="3,6 12,13 21,6" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="3" y1="19" x2="9" y2="13" stroke={color} strokeWidth="1.4" />
+            <line x1="21" y1="19" x2="15" y2="13" stroke={color} strokeWidth="1.4" />
+            <polygon points="12,11.5 13.5,13 12,14.5 10.5,13" fill={color} />
+          </svg>
+        );
+      case 'download': // Origami Paper Airplane Gliding Downward
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="3,5 21,12 3,19 7,12" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="7" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.5" />
+            <line x1="3" y1="5" x2="14" y2="12" stroke={color} strokeWidth="1.2" strokeDasharray="1.5 1.5" />
+            <line x1="3" y1="19" x2="14" y2="12" stroke={color} strokeWidth="1.2" strokeDasharray="1.5 1.5" />
+          </svg>
+        );
+      case 'close': // Crossed Crafting Scissors Cut X
+        return (
+          <svg {...commonSvgProps}>
+            <line x1="5" y1="5" x2="19" y2="19" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="19" y1="5" x2="5" y2="19" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <circle cx="12" cy="12" r="2.2" stroke={color} strokeWidth="1.5" fill="none" />
+            <circle cx="12" cy="12" r="1" fill={color} />
+          </svg>
+        );
+      case 'search': // Kirigami Cut-Paper Magnifying Glass
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="10,3 15,3 18,7 18,12 15,16 10,16 6,12 6,7" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polygon points="14,15 20,21 17,21 12,16" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="8" y1="8" x2="12" y2="6" stroke={color} strokeWidth="1.5" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomIn': // Paper Magnifier with [+] Crease
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="10,3 15,3 18,7 18,12 15,16 10,16 6,12 6,7" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polygon points="14,15 20,21 17,21 12,16" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="7" x2="12" y2="12" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="9.5" y1="9.5" x2="14.5" y2="9.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomOut': // Paper Magnifier with [-] Crease
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="10,3 15,3 18,7 18,12 15,16 10,16 6,12 6,7" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polygon points="14,15 20,21 17,21 12,16" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="9.5" y1="9.5" x2="14.5" y2="9.5" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        );
+      case 'reset': // Origami Pinwheel (Kazaguruma)
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,12 12,4 18,4" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <polygon points="12,12 20,12 20,18" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <polygon points="12,12 12,20 6,20" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <polygon points="12,12 4,12 4,6" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="12" r="2" fill={color} />
+          </svg>
+        );
+      case 'brand': // Japanese Orizuru Origami Crane
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,10 7,16 12,21 17,16" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polygon points="12,10 2,4 7,16" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polygon points="12,10 22,4 17,16" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polyline points="12,10 12,3 9,4" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <polyline points="12,16 12,22 14,22" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'design': // Precision Craft Knife Cutting Paper Sheet
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="3" y="5" width="13" height="15" rx="1" stroke={color} strokeWidth="1.6" fill="none" />
+            <path d="M5 16c4-1 6-6 8-8" stroke={color} strokeWidth="1.4" strokeDasharray="1.5 1.5" />
+            <path d="M21 3l-7 7-2-1 1-2 7-7c.5-.5 1.5-.5 2 0s.5 1.5 0 2z" stroke={color} strokeWidth="1.6" fill="none" />
+            <polygon points="12,9 9,14 13,11" fill={color} stroke={color} strokeWidth="1" />
+          </svg>
+        );
+      case 'code': // Kirigami Cut-Out Sheet with Code Brackets
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="3" y="4" width="18" height="16" rx="1.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <polygon points="17,4 21,8 17,8" stroke={color} strokeWidth="1.4" fill={color} opacity="0.3" />
+            <polyline points="9,9 6,12 9,15" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <line x1="13" y1="9" x2="11" y2="15" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <polyline points="15,9 18,12 15,15" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'qa': // Origami Paper Boat on Folded Waves
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,4 12,14 17,14" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="4" x2="7" y2="14" stroke={color} strokeWidth="1.8" />
+            <polygon points="4,14 20,14 17,18 7,18" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polyline points="2,21 6,19 10,21 14,19 18,21 22,19" stroke={color} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+          </svg>
+        );
+      case 'art': // Craft Scissors Snipping Dashed Cutline
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="6" cy="7" r="2.8" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="6" cy="17" r="2.8" stroke={color} strokeWidth="1.6" fill="none" />
+            <line x1="8.5" y1="8" x2="19" y2="14" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="8.5" y1="16" x2="19" y2="10" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <circle cx="12" cy="12" r="1.2" fill={color} />
+            <line x1="19" y1="12" x2="23" y2="12" stroke={color} strokeWidth="1.8" strokeDasharray="1.5 1.5" />
+          </svg>
+        );
+      case 'audio': // Furin Bell with Fluttering Washi Paper Slip
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M7 8c0-3 2.5-5 5-5s5 2 5 5v2H7V8z" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="12" y1="1" x2="12" y2="3" stroke={color} strokeWidth="1.6" />
+            <line x1="6" y1="10" x2="18" y2="10" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="12" y1="10" x2="12" y2="14" stroke={color} strokeWidth="1.4" />
+            <circle cx="12" cy="14" r="1.2" fill={color} />
+            <polygon points="10,15 14,14 13.5,23 9.5,22" stroke={color} strokeWidth="1.4" strokeLinejoin="round" fill="none" />
+            <line x1="11.5" y1="17" x2="11.5" y2="20" stroke={color} strokeWidth="1.2" />
+          </svg>
+        );
+      case 'boss': // Origami Samurai Kabuto Helmet
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M6 14c0-3 3-6 6-6s6 3 6 6v3H6v-3z" stroke={color} strokeWidth="1.8" fill="none" />
+            <path d="M12 8L7 2l2 4-3 1 4 2" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <path d="M12 8l5-6-2 4 3 1-4 2" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <circle cx="12" cy="8" r="1.8" fill={color} />
+            <line x1="4" y1="18" x2="20" y2="18" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="6" y1="21" x2="18" y2="21" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'production': // Pop-Up Book with 3D Folded Castle
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="2,17 12,20 22,17 12,14" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="14" x2="12" y2="20" stroke={color} strokeWidth="1.5" />
+            <rect x="9" y="7" width="6" height="9" stroke={color} strokeWidth="1.6" fill="none" />
+            <polygon points="12,2 9,6 15,6" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <line x1="9" y1="12" x2="5" y2="16" stroke={color} strokeWidth="1.4" strokeDasharray="1.5 1.5" />
+            <line x1="15" y1="12" x2="19" y2="16" stroke={color} strokeWidth="1.4" strokeDasharray="1.5 1.5" />
+          </svg>
+        );
+      case 'drag': // Origami Paper Fortune Teller (4 Directional Flaps)
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="4" y="4" width="16" height="16" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="4" y1="4" x2="20" y2="20" stroke={color} strokeWidth="1.4" />
+            <line x1="20" y1="4" x2="4" y2="20" stroke={color} strokeWidth="1.4" />
+            <polygon points="12,4 20,12 12,20 4,12" stroke={color} strokeWidth="1.4" fill="none" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'open': // Unfolding Origami Box with Flaps
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="5" y="10" width="14" height="10" rx="1" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="12" y1="10" x2="12" y2="20" stroke={color} strokeWidth="1.5" />
+            <polygon points="5,10 2,5 10,7" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <polygon points="19,10 22,5 14,7" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <polygon points="12,3 13,6 16,6 13.5,8 14.5,11 12,9 9.5,11 10.5,8 8,6 11,6" fill={color} />
+          </svg>
+        );
+      case 'font': // Folded Origami Letters [A]
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,3 6,19 10,19 12,13 14,13 16,19 20,19" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polygon points="12,7 9.5,13 14.5,13" stroke={color} strokeWidth="1.4" fill="none" />
+            <line x1="12" y1="3" x2="12" y2="7" stroke={color} strokeWidth="1.4" strokeDasharray="1 1" />
+          </svg>
+        );
+      case 'langVi': // Origami 5-Point Star Medallion
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,2 14.5,8.5 21.5,9 16,13.5 18,20.5 12,16.5 6,20.5 8,13.5 2.5,9 9.5,8.5" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="12" y1="12" x2="12" y2="2" stroke={color} strokeWidth="1.2" />
+            <line x1="12" y1="12" x2="21.5" y2="9" stroke={color} strokeWidth="1.2" />
+            <line x1="12" y1="12" x2="18" y2="20.5" stroke={color} strokeWidth="1.2" />
+            <line x1="12" y1="12" x2="6" y2="20.5" stroke={color} strokeWidth="1.2" />
+            <line x1="12" y1="12" x2="2.5" y2="9" stroke={color} strokeWidth="1.2" />
+          </svg>
+        );
+      case 'langEn': // Origami Paper Boat
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,3 12,14 18,14" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <polygon points="12,5 6,14 12,14" stroke={color} strokeWidth="1.6" strokeLinejoin="round" fill="none" />
+            <polygon points="3,14 21,14 17,19 7,19" stroke={color} strokeWidth="1.8" strokeLinejoin="round" fill="none" />
+            <line x1="2" y1="21" x2="22" y2="21" stroke={color} strokeWidth="1.5" strokeDasharray="2 2" strokeLinecap="round" />
+          </svg>
+        );
+    }
+  }
+
 // Fallback
   return (
     <svg {...commonSvgProps}>

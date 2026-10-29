@@ -110,6 +110,12 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
       name: { vi: 'Claymation Đất Nặn', en: 'Claymation Clay' },
       iconName: 'art',
       palette: ['#ffa07a', '#ffd166', '#4cc9f0', '#06d6a0']
+    },
+    {
+      id: 'papercraft',
+      name: { vi: 'Origami Gấp Giấy', en: 'Papercraft Origami' },
+      iconName: 'design',
+      palette: ['#e63946', '#f4a261', '#38bdf8', '#2ec4b6']
     }
   ];
 
@@ -300,7 +306,7 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
               border: '1px solid var(--border-color)',
               color: 'var(--accent-gold)'
             }}>
-              15 STYLES
+              16 STYLES
             </span>
           </div>
 

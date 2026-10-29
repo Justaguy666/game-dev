@@ -363,6 +363,33 @@ class SoundEngine {
       squish.start(now);
       plop.stop(now + 0.05);
       squish.stop(now + 0.035);
+    } else if (this.currentTheme === 'papercraft') {
+      // Papercraft Origami: Sharp Crisp Paper Fold Crease & Snip
+      const crease = ctx.createOscillator();
+      const creaseGain = ctx.createGain();
+      crease.type = 'triangle';
+      crease.frequency.setValueAtTime(2200, now);
+      crease.frequency.exponentialRampToValueAtTime(700, now + 0.02);
+
+      creaseGain.gain.setValueAtTime(0.35 * vol, now);
+      creaseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.025);
+
+      const friction = ctx.createOscillator();
+      const frictionGain = ctx.createGain();
+      friction.type = 'sine';
+      friction.frequency.setValueAtTime(3200, now);
+      friction.frequency.exponentialRampToValueAtTime(1200, now + 0.015);
+      frictionGain.gain.setValueAtTime(0.2 * vol, now);
+      frictionGain.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
+
+      crease.connect(creaseGain);
+      friction.connect(frictionGain);
+      creaseGain.connect(ctx.destination);
+      frictionGain.connect(ctx.destination);
+      crease.start(now);
+      friction.start(now);
+      crease.stop(now + 0.03);
+      friction.stop(now + 0.025);
     } else {
       // Fantasy: Resonant wooden snap
       const osc = ctx.createOscillator();
@@ -390,8 +417,8 @@ class SoundEngine {
 
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
-    osc.type = this.currentTheme === 'claymation' ? 'sine' : (this.currentTheme === 'pipboy' ? 'sawtooth' : (this.currentTheme === 'vaporwave' ? 'square' : (this.currentTheme === 'ukiyoe' ? 'sine' : (this.currentTheme === 'persona' ? 'sine' : (this.currentTheme === 'psx' ? 'triangle' : (this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'gothic' || this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'fantasy' || this.currentTheme === 'inkwell' ? 'sine' : 'triangle')))))))));
-    osc.frequency.setValueAtTime(this.currentTheme === 'claymation' ? 440 : (this.currentTheme === 'pipboy' ? 1760 : (this.currentTheme === 'vaporwave' ? 1200 : (this.currentTheme === 'ukiyoe' ? 1567.98 : (this.currentTheme === 'persona' ? 987.77 : (this.currentTheme === 'psx' ? 1200 : (this.currentTheme === 'ghibli' ? 880 : (this.currentTheme === 'blueprint' ? 1046.50 : (this.currentTheme === 'gothic' ? 146.83 : (this.currentTheme === 'synthwave' ? 740 : (this.currentTheme === 'cyber' ? 880 : (this.currentTheme === 'inkwell' ? 620 : 330))))))))))), now);
+    osc.type = this.currentTheme === 'papercraft' ? 'triangle' : (this.currentTheme === 'claymation' ? 'sine' : (this.currentTheme === 'pipboy' ? 'sawtooth' : (this.currentTheme === 'vaporwave' ? 'square' : (this.currentTheme === 'ukiyoe' ? 'sine' : (this.currentTheme === 'persona' ? 'sine' : (this.currentTheme === 'psx' ? 'triangle' : (this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'gothic' || this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'fantasy' || this.currentTheme === 'inkwell' ? 'sine' : 'triangle'))))))))));
+    osc.frequency.setValueAtTime(this.currentTheme === 'papercraft' ? 1400 : (this.currentTheme === 'claymation' ? 440 : (this.currentTheme === 'pipboy' ? 1760 : (this.currentTheme === 'vaporwave' ? 1200 : (this.currentTheme === 'ukiyoe' ? 1567.98 : (this.currentTheme === 'persona' ? 987.77 : (this.currentTheme === 'psx' ? 1200 : (this.currentTheme === 'ghibli' ? 880 : (this.currentTheme === 'blueprint' ? 1046.50 : (this.currentTheme === 'gothic' ? 146.83 : (this.currentTheme === 'synthwave' ? 740 : (this.currentTheme === 'cyber' ? 880 : (this.currentTheme === 'inkwell' ? 620 : 330)))))))))))), now);
 
     gain.gain.setValueAtTime(0.1 * vol, now);
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
@@ -409,7 +436,9 @@ class SoundEngine {
     const now = ctx.currentTime;
     const vol = this.volume;
 
-    const notes = this.currentTheme === 'claymation'
+    const notes = this.currentTheme === 'papercraft'
+      ? [523.25, 659.25, 783.99, 1046.50] // Origami Paper Crane Unfold & Japanese Furin Wind Chime (C5, E5, G5, C6)
+      : (this.currentTheme === 'claymation'
       ? [392.00, 523.25, 659.25, 783.99] // Claymation Wooden Marimba / Xylophone Bounce Arpeggio (G4, C5, E5, G5)
       : (this.currentTheme === 'pipboy'
       ? [587.33, 880.00, 1174.66, 1760.00] // RobCo Terminal / V.A.T.S. Tactical Selection Chirp (D5, A5, D6, A6)
@@ -433,12 +462,12 @@ class SoundEngine {
                         ? [600, 900, 1200]
                         : (this.currentTheme === 'fantasy' 
                             ? [330, 440, 550] 
-                            : (this.currentTheme === 'inkwell' ? [440, 554, 659, 880] : [523, 659, 784]))))))))))));
+                            : (this.currentTheme === 'inkwell' ? [440, 554, 659, 880] : [523, 659, 784])))))))))))));
 
     notes.forEach((freq, idx) => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-      osc.type = this.currentTheme === 'claymation' ? 'sine' : (this.currentTheme === 'pipboy' ? 'square' : (this.currentTheme === 'vaporwave' ? 'sine' : (this.currentTheme === 'ukiyoe' ? 'triangle' : (this.currentTheme === 'persona' ? 'sawtooth' : (this.currentTheme === 'psx' ? 'sine' : (this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'gothic' ? 'triangle' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'arcade' ? 'square' : 'triangle'))))))))));
+      osc.type = this.currentTheme === 'papercraft' ? 'triangle' : (this.currentTheme === 'claymation' ? 'sine' : (this.currentTheme === 'pipboy' ? 'square' : (this.currentTheme === 'vaporwave' ? 'sine' : (this.currentTheme === 'ukiyoe' ? 'triangle' : (this.currentTheme === 'persona' ? 'sawtooth' : (this.currentTheme === 'psx' ? 'sine' : (this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'gothic' ? 'triangle' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'arcade' ? 'square' : 'triangle')))))))))));
       osc.frequency.setValueAtTime(freq, now + idx * 0.04);
 
       gain.gain.setValueAtTime(0.2 * vol, now + idx * 0.04);
@@ -451,7 +480,7 @@ class SoundEngine {
     });
   }
 
-  // 4. Quest Completed / Task Check (15 Unique Themed Rewards)
+  // 4. Quest Completed / Task Check (16 Unique Themed Rewards)
   public playQuestComplete() {
     const ctx = this.getContext();
     if (!ctx) return;
@@ -726,6 +755,21 @@ class SoundEngine {
         osc.start(now + idx * 0.045);
         osc.stop(now + idx * 0.045 + 0.30);
       });
+    } else if (this.currentTheme === 'papercraft') {
+      // Papercraft Origami: Pop-up book unfolding flourish / paper confetti fanfare (A4, C#5, E5, A5, C#6)
+      const notes = [440.00, 554.37, 659.25, 880.00, 1108.73];
+      notes.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.04);
+        gain.gain.setValueAtTime(0.24 * vol, now + idx * 0.04);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.04 + 0.32);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + idx * 0.04);
+        osc.stop(now + idx * 0.04 + 0.34);
+      });
     } else {
       // Ukiyo-e Sumi-e: Zen Kagura Shinto temple bell ring & lingering bronze chime
       const bowl = ctx.createOscillator();
@@ -753,7 +797,7 @@ class SoundEngine {
     }
   }
 
-  // 5. Level Up Fanfare (15 Distinct Art Style Victory Anthems)
+  // 5. Level Up Fanfare (16 Distinct Art Style Victory Anthems)
   public playLevelUp() {
     const ctx = this.getContext();
     if (!ctx) return;
@@ -834,6 +878,11 @@ class SoundEngine {
       notes = [261.63, 329.63, 392.00, 523.25, 659.25, 783.99, 1046.50]; // C4, E4, G4, C5, E5, G5, C6
       oscType = 'triangle';
       stepTime = 0.05;
+    } else if (this.currentTheme === 'papercraft') {
+      // Papercraft Origami: Paper Mario / Tearaway Pop-Up Theatre Victory Fanfare
+      notes = [349.23, 440.00, 523.25, 698.46, 880.00, 1046.50]; // F4, A4, C5, F5, A5, C6
+      oscType = 'triangle';
+      stepTime = 0.055;
     } else {
       // Ukiyo-e Sumi-e: Imperial Gagaku Koto & Ryuteki flute flourish
       notes = [293.66, 392.00, 440.00, 466.16, 587.33, 783.99];
@@ -859,7 +908,7 @@ class SoundEngine {
     });
   }
 
-  // 6. Save / Checkpoint (15 Unique Themed Confirmations)
+  // 6. Save / Checkpoint (16 Unique Themed Confirmations)
   public playSave() {
     const ctx = this.getContext();
     if (!ctx) return;
@@ -1206,6 +1255,32 @@ class SoundEngine {
       click1.stop(now + 0.03);
       click2.stop(now + 0.075);
       stamp.stop(now + 0.18);
+    } else if (this.currentTheme === 'papercraft') {
+      // Papercraft Origami: Bone folder origami crease press & pop-up fold tuck
+      const crease = ctx.createOscillator();
+      const creaseGain = ctx.createGain();
+      crease.type = 'triangle';
+      crease.frequency.setValueAtTime(1600, now);
+      crease.frequency.exponentialRampToValueAtTime(400, now + 0.035);
+      creaseGain.gain.setValueAtTime(0.3 * vol, now);
+      creaseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
+
+      const fold = ctx.createOscillator();
+      const foldGain = ctx.createGain();
+      fold.type = 'sine';
+      fold.frequency.setValueAtTime(523.25, now + 0.04);
+      fold.frequency.exponentialRampToValueAtTime(1046.50, now + 0.16);
+      foldGain.gain.setValueAtTime(0.25 * vol, now + 0.04);
+      foldGain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+
+      crease.connect(creaseGain);
+      fold.connect(foldGain);
+      creaseGain.connect(ctx.destination);
+      foldGain.connect(ctx.destination);
+      crease.start(now);
+      fold.start(now + 0.04);
+      crease.stop(now + 0.05);
+      fold.stop(now + 0.28);
     } else {
       // Ukiyo-e Sumi-e: Vermilion seal stamp on washi scroll & temple bell resonance
       const stamp = ctx.createOscillator();
@@ -1234,7 +1309,7 @@ class SoundEngine {
     }
   }
 
-  // 7. Tab Switch (15 Distinct Navigation Gestures)
+  // 7. Tab Switch (16 Distinct Navigation Gestures)
   public playTab() {
     const ctx = this.getContext();
     if (!ctx) return;
@@ -1342,6 +1417,13 @@ class SoundEngine {
       osc.frequency.exponentialRampToValueAtTime(180, now + 0.04);
       gain.gain.setValueAtTime(0.28 * vol, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
+    } else if (this.currentTheme === 'papercraft') {
+      // Papercraft: Crisp paper page turn / origami fold flip
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(800, now);
+      osc.frequency.exponentialRampToValueAtTime(300, now + 0.035);
+      gain.gain.setValueAtTime(0.26 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.04);
     } else {
       // Ukiyo-e Shoji screen paper slide
       osc.type = 'triangle';
