@@ -872,6 +872,55 @@
   --btn-active-text: #ffffff;
 }
 
+/* 18. Vector Arcade 1982 / Oscilloscope Wireframe */
+.theme-vector82.mode-dark {
+  --bg-app: #030508;
+  --bg-surface: #070c14;
+  --bg-card: #0a1220;
+  --border-color: #00ff66;
+  --border-highlight: #00f5ff;
+  --text-main: #ffffff;
+  --text-muted: #80ffb3;
+  --text-dim: #33d6ff;
+  
+  --accent-gold: #ffe600;
+  --accent-cyan: #00f5ff;
+  --accent-green: #00ff66;
+  --accent-red: #ff0055;
+  --accent-purple: #d946ef;
+  
+  --font-display: 'Share Tech Mono', 'Orbitron', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 0 0 14px rgba(0, 255, 102, 0.25), inset 0 0 12px rgba(0, 255, 102, 0.08);
+  --glow-primary: 0 0 16px rgba(0, 255, 102, 0.65), 0 0 28px rgba(0, 245, 255, 0.4);
+  --btn-active-bg: #00ff66;
+  --btn-active-text: #030508;
+}
+
+.theme-vector82.mode-light {
+  --bg-app: #f4f6fa;
+  --bg-surface: #e9edf5;
+  --bg-card: #ffffff;
+  --border-color: #0a2540;
+  --border-highlight: #059669;
+  --text-main: #051329;
+  --text-muted: #1e293b;
+  --text-dim: #475569;
+  
+  --accent-gold: #b45309;
+  --accent-cyan: #0284c7;
+  --accent-green: #059669;
+  --accent-red: #dc2626;
+  --accent-purple: #7e22ce;
+  
+  --font-display: 'Share Tech Mono', 'Orbitron', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 3px 3px 0px #0a2540, 0 4px 10px rgba(10, 37, 64, 0.08);
+  --glow-primary: 0 0 10px rgba(10, 37, 64, 0.3);
+  --btn-active-bg: #0a2540;
+  --btn-active-text: #ffffff;
+}
+
 /* --------------------------------------------------------------------------
    GLOBAL LAYOUT & CRT SCANLINES
    -------------------------------------------------------------------------- */
@@ -1629,6 +1678,59 @@ body.theme-solarpunk .node-card-title {
   line-height: 1.30 !important;
   letter-spacing: 0.02em;
   font-weight: 700;
+}
+
+body.theme-vector82 .node-card {
+  border-radius: 2px;
+  border-width: 1.5px;
+  transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
+}
+
+body.theme-vector82.mode-dark .node-card {
+  border-color: #00ff66;
+  box-shadow: 0 0 12px rgba(0, 255, 102, 0.22), inset 0 0 10px rgba(0, 255, 102, 0.05);
+}
+
+body.theme-vector82.mode-dark .node-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: #00f5ff !important;
+  box-shadow: 0 0 20px rgba(0, 245, 255, 0.55), 0 0 30px rgba(0, 255, 102, 0.35), inset 0 0 14px rgba(0, 245, 255, 0.15);
+}
+
+body.theme-vector82.mode-light .node-card {
+  border-color: #0a2540;
+  box-shadow: 3px 3px 0px #0a2540;
+}
+
+body.theme-vector82.mode-light .node-card:hover {
+  transform: translateY(-3px) scale(1.01);
+  border-color: #059669 !important;
+  box-shadow: 4px 4px 0px #059669, 0 4px 12px rgba(5, 150, 105, 0.2);
+}
+
+body.theme-vector82 .domain-banner {
+  border-radius: 2px;
+  border-width: 1.5px;
+  transition: transform 0.14s ease, box-shadow 0.14s ease;
+}
+
+body.theme-vector82.mode-dark .domain-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 18px rgba(0, 255, 102, 0.6) !important;
+}
+
+body.theme-vector82.mode-light .domain-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px #0a2540 !important;
+}
+
+body.theme-vector82 .node-card-title {
+  font-family: var(--font-display);
+  font-size: 1.15em !important;
+  line-height: 1.30 !important;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  text-transform: uppercase;
 }
 
 /* Markdown body across all themes with comfortable reading typography */

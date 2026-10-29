@@ -416,6 +416,19 @@ class SoundEngine {
       shimmer.start(now);
       prism.stop(now + 0.04);
       shimmer.stop(now + 0.025);
+    } else if (this.currentTheme === 'vector82') {
+      // Vector Arcade 1982: High-voltage vector beam deflection coil flyback zap
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(3200, now);
+      osc.frequency.exponentialRampToValueAtTime(600, now + 0.02);
+      gain.gain.setValueAtTime(0.3 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.025);
+      osc.connect(gain);
+      gain.connect(ctx.destination);
+      osc.start(now);
+      osc.stop(now + 0.03);
     } else {
       // Fantasy: Resonant wooden snap
       const osc = ctx.createOscillator();
@@ -443,8 +456,8 @@ class SoundEngine {
 
     const osc = ctx.createOscillator();
     const gain = ctx.createGain();
-    osc.type = this.currentTheme === 'solarpunk' ? 'sine' : (this.currentTheme === 'papercraft' ? 'triangle' : (this.currentTheme === 'claymation' ? 'sine' : (this.currentTheme === 'pipboy' ? 'sawtooth' : (this.currentTheme === 'vaporwave' ? 'square' : (this.currentTheme === 'ukiyoe' ? 'sine' : (this.currentTheme === 'persona' ? 'sine' : (this.currentTheme === 'psx' ? 'triangle' : (this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'gothic' || this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'fantasy' || this.currentTheme === 'inkwell' ? 'sine' : 'triangle')))))))))));
-    osc.frequency.setValueAtTime(this.currentTheme === 'solarpunk' ? 1760 : (this.currentTheme === 'papercraft' ? 1400 : (this.currentTheme === 'claymation' ? 440 : (this.currentTheme === 'pipboy' ? 1760 : (this.currentTheme === 'vaporwave' ? 1200 : (this.currentTheme === 'ukiyoe' ? 1567.98 : (this.currentTheme === 'persona' ? 987.77 : (this.currentTheme === 'psx' ? 1200 : (this.currentTheme === 'ghibli' ? 880 : (this.currentTheme === 'blueprint' ? 1046.50 : (this.currentTheme === 'gothic' ? 146.83 : (this.currentTheme === 'synthwave' ? 740 : (this.currentTheme === 'cyber' ? 880 : (this.currentTheme === 'inkwell' ? 620 : 330))))))))))))), now);
+    osc.type = this.currentTheme === 'vector82' ? 'sawtooth' : (this.currentTheme === 'solarpunk' ? 'sine' : (this.currentTheme === 'papercraft' ? 'triangle' : (this.currentTheme === 'claymation' ? 'sine' : (this.currentTheme === 'pipboy' ? 'sawtooth' : (this.currentTheme === 'vaporwave' ? 'square' : (this.currentTheme === 'ukiyoe' ? 'sine' : (this.currentTheme === 'persona' ? 'sine' : (this.currentTheme === 'psx' ? 'triangle' : (this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'gothic' || this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'fantasy' || this.currentTheme === 'inkwell' ? 'sine' : 'triangle'))))))))))));
+    osc.frequency.setValueAtTime(this.currentTheme === 'vector82' ? 2200 : (this.currentTheme === 'solarpunk' ? 1760 : (this.currentTheme === 'papercraft' ? 1400 : (this.currentTheme === 'claymation' ? 440 : (this.currentTheme === 'pipboy' ? 1760 : (this.currentTheme === 'vaporwave' ? 1200 : (this.currentTheme === 'ukiyoe' ? 1567.98 : (this.currentTheme === 'persona' ? 987.77 : (this.currentTheme === 'psx' ? 1200 : (this.currentTheme === 'ghibli' ? 880 : (this.currentTheme === 'blueprint' ? 1046.50 : (this.currentTheme === 'gothic' ? 146.83 : (this.currentTheme === 'synthwave' ? 740 : (this.currentTheme === 'cyber' ? 880 : (this.currentTheme === 'inkwell' ? 620 : 330)))))))))))))), now);
 
     gain.gain.setValueAtTime(0.1 * vol, now);
     gain.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
@@ -462,7 +475,9 @@ class SoundEngine {
     const now = ctx.currentTime;
     const vol = this.volume;
 
-    const notes = this.currentTheme === 'solarpunk'
+    const notes = this.currentTheme === 'vector82'
+      ? [440.00, 880.00, 1760.00, 3520.00] // Tempest Superzapper / Asteroids Vector DAC QuadraScan Arpeggio (A4, A5, A6, A7)
+      : (this.currentTheme === 'solarpunk'
       ? [523.25, 659.25, 739.99, 987.77] // Glass Conservatory Prism Chime & Solar Lydian Mode Arpeggio (C5, E5, F#5, B5)
       : (this.currentTheme === 'papercraft'
       ? [523.25, 659.25, 783.99, 1046.50] // Origami Paper Crane Unfold & Japanese Furin Wind Chime (C5, E5, G5, C6)
@@ -490,12 +505,12 @@ class SoundEngine {
                         ? [600, 900, 1200]
                         : (this.currentTheme === 'fantasy' 
                             ? [330, 440, 550] 
-                            : (this.currentTheme === 'inkwell' ? [440, 554, 659, 880] : [523, 659, 784]))))))))))))));
+                            : (this.currentTheme === 'inkwell' ? [440, 554, 659, 880] : [523, 659, 784])))))))))))))));
 
     notes.forEach((freq, idx) => {
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-      osc.type = this.currentTheme === 'solarpunk' ? 'sine' : (this.currentTheme === 'papercraft' ? 'triangle' : (this.currentTheme === 'claymation' ? 'sine' : (this.currentTheme === 'pipboy' ? 'square' : (this.currentTheme === 'vaporwave' ? 'sine' : (this.currentTheme === 'ukiyoe' ? 'triangle' : (this.currentTheme === 'persona' ? 'sawtooth' : (this.currentTheme === 'psx' ? 'sine' : (this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'gothic' ? 'triangle' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'arcade' ? 'square' : 'triangle'))))))))))));
+      osc.type = this.currentTheme === 'vector82' ? 'sawtooth' : (this.currentTheme === 'solarpunk' ? 'sine' : (this.currentTheme === 'papercraft' ? 'triangle' : (this.currentTheme === 'claymation' ? 'sine' : (this.currentTheme === 'pipboy' ? 'square' : (this.currentTheme === 'vaporwave' ? 'sine' : (this.currentTheme === 'ukiyoe' ? 'triangle' : (this.currentTheme === 'persona' ? 'sawtooth' : (this.currentTheme === 'psx' ? 'sine' : (this.currentTheme === 'ghibli' ? 'sine' : (this.currentTheme === 'blueprint' ? 'sine' : (this.currentTheme === 'gothic' ? 'triangle' : (this.currentTheme === 'synthwave' ? 'sawtooth' : (this.currentTheme === 'arcade' ? 'square' : 'triangle')))))))))))));
       osc.frequency.setValueAtTime(freq, now + idx * 0.04);
 
       gain.gain.setValueAtTime(0.2 * vol, now + idx * 0.04);
@@ -508,7 +523,7 @@ class SoundEngine {
     });
   }
 
-  // 4. Quest Completed / Task Check (17 Unique Themed Rewards)
+  // 4. Quest Completed / Task Check (18 Unique Themed Rewards)
   public playQuestComplete() {
     const ctx = this.getContext();
     if (!ctx) return;
@@ -813,6 +828,21 @@ class SoundEngine {
         osc.start(now + idx * 0.04);
         osc.stop(now + idx * 0.04 + 0.40);
       });
+    } else if (this.currentTheme === 'vector82') {
+      // Vector Arcade 1982: Rapid chirping DAC high-score arpeggio & vector reward chime (A5, C#6, E6, A6)
+      const notes = [880.00, 1108.73, 1318.51, 1760.00];
+      notes.forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = 'sawtooth';
+        osc.frequency.setValueAtTime(freq, now + idx * 0.035);
+        gain.gain.setValueAtTime(0.25 * vol, now + idx * 0.035);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.035 + 0.16);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start(now + idx * 0.035);
+        osc.stop(now + idx * 0.035 + 0.18);
+      });
     } else {
       // Ukiyo-e Sumi-e: Zen Kagura Shinto temple bell ring & lingering bronze chime
       const bowl = ctx.createOscillator();
@@ -840,7 +870,7 @@ class SoundEngine {
     }
   }
 
-  // 5. Level Up Fanfare (17 Distinct Art Style Victory Anthems)
+  // 5. Level Up Fanfare (18 Distinct Art Style Victory Anthems)
   public playLevelUp() {
     const ctx = this.getContext();
     if (!ctx) return;
@@ -931,6 +961,11 @@ class SoundEngine {
       notes = [440.00, 554.37, 659.25, 830.61, 880.00, 1108.73, 1318.51]; // A4, C#5, E5, G#5, A5, C#6, E6
       oscType = 'sine';
       stepTime = 0.055;
+    } else if (this.currentTheme === 'vector82') {
+      // Vector Arcade 1982: 1982 Atari Tempest Level Warp & Star Wars Vector Victory Fanfare
+      notes = [261.63, 329.63, 392.00, 523.25, 659.25, 783.99, 1046.50]; // C4, E4, G4, C5, E5, G5, C6
+      oscType = 'sawtooth';
+      stepTime = 0.048;
     } else {
       // Ukiyo-e Sumi-e: Imperial Gagaku Koto & Ryuteki flute flourish
       notes = [293.66, 392.00, 440.00, 466.16, 587.33, 783.99];
@@ -956,7 +991,7 @@ class SoundEngine {
     });
   }
 
-  // 6. Save / Checkpoint (17 Unique Themed Confirmations)
+  // 6. Save / Checkpoint (18 Unique Themed Confirmations)
   public playSave() {
     const ctx = this.getContext();
     if (!ctx) return;
@@ -1365,6 +1400,32 @@ class SoundEngine {
       bowl.stop(now + 0.58);
       overtone.stop(now + 0.48);
       prism.stop(now + 0.38);
+    } else if (this.currentTheme === 'vector82') {
+      // Vector Arcade 1982: Vector DAC lock chirp & beam recalibration zap
+      const zap = ctx.createOscillator();
+      const zapGain = ctx.createGain();
+      zap.type = 'sawtooth';
+      zap.frequency.setValueAtTime(400, now);
+      zap.frequency.exponentialRampToValueAtTime(1600, now + 0.08);
+      zapGain.gain.setValueAtTime(0.3 * vol, now);
+      zapGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+
+      const sub = ctx.createOscillator();
+      const subGain = ctx.createGain();
+      sub.type = 'sine';
+      sub.frequency.setValueAtTime(120, now + 0.04);
+      sub.frequency.exponentialRampToValueAtTime(40, now + 0.16);
+      subGain.gain.setValueAtTime(0.3 * vol, now + 0.04);
+      subGain.gain.exponentialRampToValueAtTime(0.001, now + 0.22);
+
+      zap.connect(zapGain);
+      sub.connect(subGain);
+      zapGain.connect(ctx.destination);
+      subGain.connect(ctx.destination);
+      zap.start(now);
+      sub.start(now + 0.04);
+      zap.stop(now + 0.14);
+      sub.stop(now + 0.24);
     } else {
       // Ukiyo-e Sumi-e: Vermilion seal stamp on washi scroll & temple bell resonance
       const stamp = ctx.createOscillator();
@@ -1393,7 +1454,7 @@ class SoundEngine {
     }
   }
 
-  // 7. Tab Switch (17 Distinct Navigation Gestures)
+  // 7. Tab Switch (18 Distinct Navigation Gestures)
   public playTab() {
     const ctx = this.getContext();
     if (!ctx) return;
@@ -1515,6 +1576,13 @@ class SoundEngine {
       osc.frequency.exponentialRampToValueAtTime(600, now + 0.04);
       gain.gain.setValueAtTime(0.26 * vol, now);
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.045);
+    } else if (this.currentTheme === 'vector82') {
+      // Vector Arcade 1982: Oscilloscope vector line draw swoop / beam deflection flick
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(1500, now);
+      osc.frequency.exponentialRampToValueAtTime(300, now + 0.03);
+      gain.gain.setValueAtTime(0.25 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
     } else {
       // Ukiyo-e Shoji screen paper slide
       osc.type = 'triangle';

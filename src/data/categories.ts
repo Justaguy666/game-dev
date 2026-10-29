@@ -588,6 +588,35 @@ export const getDomainColor = (domainId: DomainId | string, theme: ThemeId, mode
     }
   }
 
+  // 15. VECTOR ARCADE 1982 / OSCILLOSCOPE WIREFRAME (QuadraScan & Laser CRT Vectors)
+  if (theme === 'vector82') {
+    if (mode === 'light') {
+      switch (domainId) {
+        case 'root': return '#b45309'; // Oscilloscope Amber
+        case 'design': return '#c2410c'; // Vector Beam Orange
+        case 'tech': return '#0369a1'; // CRT Electron Cyan
+        case 'qa': return '#dc2626'; // Laser Red Alert
+        case 'art': return '#7e22ce'; // Tempest Vector Purple
+        case 'audio': return '#059669'; // Battlezone Phosphor Green
+        case 'boss':
+        case 'production': return '#9f1239'; // High-Voltage Crimson
+        default: return '#b45309';
+      }
+    } else {
+      switch (domainId) {
+        case 'root': return '#ffe600'; // Pure Vector Beam Yellow
+        case 'design': return '#ff9900'; // Vector Laser Orange
+        case 'tech': return '#00f5ff'; // QuadraScan Laser Cyan
+        case 'qa': return '#ff0055'; // Vector Collision Red
+        case 'art': return '#d946ef'; // Tempest Beam Magenta
+        case 'audio': return '#00ff66'; // Phosphor Vector Green
+        case 'boss':
+        case 'production': return '#ff3366'; // Superzapper Crimson
+        default: return '#ffe600';
+      }
+    }
+  }
+
   // 3. LIGHT MODE (Arcade, Cyber, Fantasy)
   // Clean, high-contrast accessible jewel tones (> 4.5:1)
   if (mode === 'light') {

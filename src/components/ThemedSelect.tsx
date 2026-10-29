@@ -122,6 +122,12 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
       name: { vi: 'Solarpunk Sinh Thái', en: 'Solarpunk Biophilic' },
       iconName: 'brand',
       palette: ['#10b981', '#fbbf24', '#38bdf8', '#34d399']
+    },
+    {
+      id: 'vector82',
+      name: { vi: 'Vector Arcade 1982', en: 'Vector Arcade 1982' },
+      iconName: 'tv',
+      palette: ['#00ff66', '#00f5ff', '#ffe600', '#ff0055']
     }
   ];
 
@@ -312,7 +318,7 @@ export const ThemedSelect: React.FC<ThemedSelectProps> = ({ currentTheme, onThem
               border: '1px solid var(--border-color)',
               color: 'var(--accent-gold)'
             }}>
-              17 STYLES
+              18 STYLES
             </span>
           </div>
 

@@ -5408,6 +5408,366 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
     }
   }
 
+  if (theme === 'vector82') {
+    switch (name) {
+      case 'tree': // 3D Wireframe Vector Tree Cone
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,2 5,17 19,17" stroke={color} strokeWidth="1.6" fill="none" strokeLinejoin="round" />
+            <line x1="12" y1="2" x2="12" y2="21" stroke={color} strokeWidth="1.4" />
+            <line x1="8.5" y1="9.5" x2="15.5" y2="9.5" stroke={color} strokeWidth="1.2" />
+            <line x1="6.8" y1="13.5" x2="17.2" y2="13.5" stroke={color} strokeWidth="1.2" />
+            <line x1="10" y1="17" x2="10" y2="21" stroke={color} strokeWidth="1.6" />
+            <line x1="14" y1="17" x2="14" y2="21" stroke={color} strokeWidth="1.6" />
+            <circle cx="12" cy="2" r="1.2" fill={color} />
+            <circle cx="5" cy="17" r="1" fill={color} />
+            <circle cx="19" cy="17" r="1" fill={color} />
+          </svg>
+        );
+      case 'docs': // 3D Isometric Wireframe Cube Data Matrix
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,3 20,7.5 12,12 4,7.5" stroke={color} strokeWidth="1.6" fill="none" strokeLinejoin="round" />
+            <polygon points="4,7.5 12,12 12,21 4,16.5" stroke={color} strokeWidth="1.6" fill="none" strokeLinejoin="round" />
+            <polygon points="12,12 20,7.5 20,16.5 12,21" stroke={color} strokeWidth="1.6" fill="none" strokeLinejoin="round" />
+            <circle cx="12" cy="12" r="1.2" fill={color} />
+            <circle cx="12" cy="3" r="1" fill={color} />
+            <circle cx="20" cy="7.5" r="1" fill={color} />
+            <circle cx="4" cy="7.5" r="1" fill={color} />
+            <circle cx="12" cy="21" r="1" fill={color} />
+          </svg>
+        );
+      case 'quests': // Circular Vector Radar Scope with Targets
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="12" cy="12" r="5" stroke={color} strokeWidth="1.2" fill="none" strokeDasharray="2 2" />
+            <line x1="12" y1="3" x2="12" y2="21" stroke={color} strokeWidth="1.2" />
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.2" />
+            <line x1="12" y1="12" x2="19" y2="5" stroke={color} strokeWidth="1.6" />
+            <circle cx="15" cy="8" r="1.5" fill={color} />
+            <circle cx="8" cy="16" r="1.2" fill={color} />
+          </svg>
+        );
+      case 'sun': // 12-Point Vector Star Polygon
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="4" stroke={color} strokeWidth="1.6" fill="none" />
+            <path d="M12 2v4m0 12v4M2 12h4m12 0h4" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <path d="M5 5l3 3m8 8l3 3M5 19l3-3m8-8l3-3" stroke={color} strokeWidth="1.4" strokeLinecap="round" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'moon': // Wireframe Geodesic Crescent Mesh
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M19 4a8.5 8.5 0 11-8 15 9 9 0 008-15z" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="12" y1="5.5" x2="8" y2="12" stroke={color} strokeWidth="1.2" />
+            <line x1="8" y1="12" x2="12" y2="18.5" stroke={color} strokeWidth="1.2" />
+            <line x1="15" y1="7.5" x2="11" y2="14" stroke={color} strokeWidth="1.2" />
+            <circle cx="8" cy="12" r="1.2" fill={color} />
+            <circle cx="12" cy="5.5" r="1" fill={color} />
+            <circle cx="12" cy="18.5" r="1" fill={color} />
+          </svg>
+        );
+      case 'tv': // 1982 Vectrex Arcade Console / Oscilloscope Monitor
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="3" y="3" width="18" height="18" rx="2" stroke={color} strokeWidth="1.8" fill="none" />
+            <rect x="5.5" y="5.5" width="13" height="10" rx="1.5" stroke={color} strokeWidth="1.4" fill="none" />
+            <path d="M7 10.5l3-2.5 3 4 4-3.5" stroke={color} strokeWidth="1.6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+            <circle cx="8" cy="18" r="1.2" fill={color} />
+            <circle cx="12" cy="18" r="1.2" fill={color} />
+            <circle cx="16" cy="18" r="1.2" fill={color} />
+          </svg>
+        );
+      case 'volume': // Wireframe Vector Speaker Cone
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="4,9 9,9 14,4 14,20 9,15 4,15" stroke={color} strokeWidth="1.8" fill="none" strokeLinejoin="round" />
+            <line x1="9" y1="9" x2="9" y2="15" stroke={color} strokeWidth="1.2" />
+            <path d="M17 8c1.5 1.5 2 2.5 2 4s-.5 2.5-2 4" stroke={color} strokeWidth="1.6" strokeLinecap="round" fill="none" />
+            <path d="M20 5c3 2.5 3.5 4.5 3.5 7s-.5 4.5-3.5 7" stroke={color} strokeWidth="1.6" strokeLinecap="round" fill="none" />
+          </svg>
+        );
+      case 'mute': // Wireframe Speaker with Laser Cut Line
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="4,9 9,9 14,4 14,20 9,15 4,15" stroke={color} strokeWidth="1.8" fill="none" strokeLinejoin="round" />
+            <line x1="17" y1="8" x2="22" y2="16" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="22" y1="8" x2="17" y2="16" stroke={color} strokeWidth="2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'globe': // 3D Wireframe Vector Sphere
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="1.8" fill="none" />
+            <ellipse cx="12" cy="12" rx="9" ry="3.5" stroke={color} strokeWidth="1.2" fill="none" />
+            <ellipse cx="12" cy="12" rx="3.5" ry="9" stroke={color} strokeWidth="1.2" fill="none" />
+            <line x1="12" y1="3" x2="12" y2="21" stroke={color} strokeWidth="1.2" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'mastered': // Rotating Vector Tesseract Star
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,2 19,5 22,12 19,19 12,22 5,19 2,12 5,5" stroke={color} strokeWidth="1.8" fill="none" strokeLinejoin="round" />
+            <polygon points="12,7 17,12 12,17 7,12" stroke={color} strokeWidth="1.4" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="7" stroke={color} strokeWidth="1.2" />
+            <line x1="22" y1="12" x2="17" y2="12" stroke={color} strokeWidth="1.2" />
+            <line x1="12" y1="22" x2="12" y2="17" stroke={color} strokeWidth="1.2" />
+            <line x1="2" y1="12" x2="7" y2="12" stroke={color} strokeWidth="1.2" />
+            <circle cx="12" cy="12" r="1.8" fill={color} />
+          </svg>
+        );
+      case 'learning': // Vector Target Lock Diamond
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,3 21,12 12,21 3,12" stroke={color} strokeWidth="1.8" fill="none" strokeLinejoin="round" />
+            <line x1="12" y1="7" x2="12" y2="17" stroke={color} strokeWidth="1.4" />
+            <line x1="7" y1="12" x2="17" y2="12" stroke={color} strokeWidth="1.4" />
+            <circle cx="12" cy="12" r="2.2" stroke={color} strokeWidth="1.2" fill="none" />
+            <circle cx="12" cy="12" r="1" fill={color} />
+          </svg>
+        );
+      case 'locked': // 3D Wireframe Vector Padlock
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M7 11V7a5 5 0 0110 0v4" stroke={color} strokeWidth="2" strokeLinecap="round" fill="none" />
+            <polygon points="5,11 19,11 18,21 6,21" stroke={color} strokeWidth="1.8" fill="none" strokeLinejoin="round" />
+            <line x1="5" y1="11" x2="18" y2="21" stroke={color} strokeWidth="1.2" />
+            <circle cx="12" cy="16" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'edit': // Vector Light Pen / Drafting Stylus
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M17 3l4 4L8 20l-5 1 1-5L17 3z" stroke={color} strokeWidth="1.8" fill="none" strokeLinejoin="round" />
+            <line x1="14" y1="6" x2="18" y2="10" stroke={color} strokeWidth="1.4" />
+            <line x1="3" y1="21" x2="7" y2="21" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
+            <circle cx="4" cy="20" r="1" fill={color} />
+          </svg>
+        );
+      case 'save': // 1982 5.25" Wireframe Floppy Disk
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="4" y="4" width="16" height="16" rx="1.5" stroke={color} strokeWidth="1.8" fill="none" />
+            <circle cx="12" cy="12" r="3.5" stroke={color} strokeWidth="1.6" fill="none" />
+            <circle cx="12" cy="12" r="1.2" fill={color} />
+            <line x1="12" y1="15.5" x2="12" y2="18" stroke={color} strokeWidth="1.6" strokeLinecap="round" />
+            <rect x="18" y="7" width="2" height="3" fill={color} />
+          </svg>
+        );
+      case 'download': // Diving Asteroids Vector Chevron Arrow
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,18 4,10 8,10 8,4 16,4 16,10 20,10" stroke={color} strokeWidth="1.8" fill="none" strokeLinejoin="round" />
+            <line x1="4" y1="21" x2="20" y2="21" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <circle cx="12" cy="18" r="1.2" fill={color} />
+          </svg>
+        );
+      case 'close': // Crossed Vector Laser Beams
+        return (
+          <svg {...commonSvgProps}>
+            <line x1="5" y1="5" x2="19" y2="19" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <line x1="19" y1="5" x2="5" y2="19" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+            <circle cx="12" cy="12" r="2.5" stroke={color} strokeWidth="1.4" fill="none" />
+            <circle cx="12" cy="12" r="1" fill={color} />
+          </svg>
+        );
+      case 'search': // Vector Crosshair Reticle
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="11" y1="2" x2="11" y2="6" stroke={color} strokeWidth="1.6" />
+            <line x1="11" y1="16" x2="11" y2="20" stroke={color} strokeWidth="1.6" />
+            <line x1="2" y1="11" x2="6" y2="11" stroke={color} strokeWidth="1.6" />
+            <line x1="16" y1="11" x2="20" y2="11" stroke={color} strokeWidth="1.6" />
+            <line x1="16" y1="16" x2="22" y2="22" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomIn': // Vector Crosshair with [+]
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="11" y1="7" x2="11" y2="15" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="7" y1="11" x2="15" y2="11" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="16" y1="16" x2="22" y2="22" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'zoomOut': // Vector Crosshair with [-]
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="11" cy="11" r="7" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="7" y1="11" x2="15" y2="11" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="16" y1="16" x2="22" y2="22" stroke={color} strokeWidth="2.2" strokeLinecap="round" />
+          </svg>
+        );
+      case 'reset': // Vector Oscilloscope Lissajous Knot (Infinity Loop)
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M12 12c-3-4-6-4-8-2s-2 6 1 8 6 0 7-3c1 3 4 5 7 3s3-6 1-8-5 2-8 2z" stroke={color} strokeWidth="1.8" fill="none" strokeLinecap="round" />
+            <circle cx="6" cy="12" r="1.2" fill={color} />
+            <circle cx="18" cy="12" r="1.2" fill={color} />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'brand': // Legendary Asteroids Vector Ship with Thrust Flame
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,2 20,18 12,14 4,18" stroke={color} strokeWidth="1.8" fill="none" strokeLinejoin="round" />
+            <line x1="12" y1="2" x2="12" y2="14" stroke={color} strokeWidth="1.4" />
+            <polyline points="9,16 12,22 15,16" stroke={color} strokeWidth="1.6" fill="none" strokeLinecap="round" />
+            <circle cx="12" cy="2" r="1.2" fill={color} />
+            <circle cx="20" cy="18" r="1" fill={color} />
+            <circle cx="4" cy="18" r="1" fill={color} />
+          </svg>
+        );
+      case 'design': // 3D Isometric Cube with XYZ Coordinate Axes
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,4 20,8.5 12,13 4,8.5" stroke={color} strokeWidth="1.6" fill="none" strokeLinejoin="round" />
+            <line x1="12" y1="13" x2="12" y2="22" stroke={color} strokeWidth="1.8" />
+            <line x1="4" y1="8.5" x2="4" y2="17.5" stroke={color} strokeWidth="1.4" />
+            <line x1="20" y1="8.5" x2="20" y2="17.5" stroke={color} strokeWidth="1.4" />
+            <line x1="4" y1="17.5" x2="12" y2="22" stroke={color} strokeWidth="1.6" />
+            <line x1="20" y1="17.5" x2="12" y2="22" stroke={color} strokeWidth="1.6" />
+            <circle cx="12" cy="13" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'code': // Dual-Channel Oscilloscope Vector Waveform
+        return (
+          <svg {...commonSvgProps}>
+            <rect x="3" y="4" width="18" height="16" rx="1.5" stroke={color} strokeWidth="1.6" fill="none" />
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1" strokeDasharray="1.5 1.5" />
+            {/* Channel 1: Sine wave */}
+            <path d="M4 12c2-6 4-6 6 0s4 6 6 0" stroke={color} strokeWidth="1.8" fill="none" strokeLinecap="round" />
+            {/* Channel 2: Square pulse */}
+            <polyline points="4,16 9,16 9,8 14,8 14,16 19,16" stroke={color} strokeWidth="1.4" fill="none" opacity="0.6" />
+          </svg>
+        );
+      case 'qa': // Battlezone 1980 Wireframe Vector Tank
+        return (
+          <svg {...commonSvgProps}>
+            {/* Tank turret & chassis wireframe */}
+            <polygon points="7,14 17,14 19,19 5,19" stroke={color} strokeWidth="1.6" fill="none" strokeLinejoin="round" />
+            <polygon points="8,10 16,10 17,14 7,14" stroke={color} strokeWidth="1.6" fill="none" strokeLinejoin="round" />
+            {/* Cannon pointing high */}
+            <line x1="12" y1="10" x2="12" y2="3" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            {/* Radar crosshair overlay */}
+            <line x1="2" y1="12" x2="4" y2="12" stroke={color} strokeWidth="1.8" />
+            <line x1="20" y1="12" x2="22" y2="12" stroke={color} strokeWidth="1.8" />
+          </svg>
+        );
+      case 'art': // 3D Wireframe Icosahedron / Vector Prism
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,2 21,7 21,17 12,22 3,17 3,7" stroke={color} strokeWidth="1.8" fill="none" strokeLinejoin="round" />
+            <polygon points="12,7 18,12 12,17 6,12" stroke={color} strokeWidth="1.4" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="7" stroke={color} strokeWidth="1.2" />
+            <line x1="21" y1="7" x2="18" y2="12" stroke={color} strokeWidth="1.2" />
+            <line x1="21" y1="17" x2="18" y2="12" stroke={color} strokeWidth="1.2" />
+            <line x1="12" y1="22" x2="12" y2="17" stroke={color} strokeWidth="1.2" />
+            <line x1="3" y1="17" x2="6" y2="12" stroke={color} strokeWidth="1.2" />
+            <line x1="3" y1="7" x2="6" y2="12" stroke={color} strokeWidth="1.2" />
+          </svg>
+        );
+      case 'audio': // Oscilloscope Vector Waveform with Measurement Graticule
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="1.8" fill="none" />
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1" strokeDasharray="1.5 1.5" />
+            <line x1="12" y1="3" x2="12" y2="21" stroke={color} strokeWidth="1" strokeDasharray="1.5 1.5" />
+            <path d="M5 12c1.5-6 3-6 4.5 0s3 6 4.5 0 3-6 4.5 0" stroke={color} strokeWidth="1.8" fill="none" strokeLinecap="round" />
+          </svg>
+        );
+      case 'boss': // Giant Wireframe Vector Dreadnought / Tempest Spiker
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,2 22,9 18,22 12,18 6,22 2,9" stroke={color} strokeWidth="1.8" fill="none" strokeLinejoin="round" />
+            <polygon points="12,7 17,11 15,17 12,15 9,17 7,11" stroke={color} strokeWidth="1.4" fill="none" />
+            <line x1="12" y1="2" x2="12" y2="7" stroke={color} strokeWidth="1.4" />
+            <circle cx="12" cy="11" r="1.8" fill={color} />
+          </svg>
+        );
+      case 'production': // Battlezone 1980 Perspective Wireframe Terrain Horizon
+        return (
+          <svg {...commonSvgProps}>
+            <line x1="2" y1="13" x2="22" y2="13" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            {/* Wireframe vector mountain */}
+            <polyline points="4,13 8,6 12,13 16,9 20,13" stroke={color} strokeWidth="1.6" fill="none" strokeLinejoin="round" />
+            {/* Perspective grid lines converging to horizon */}
+            <line x1="12" y1="13" x2="2" y2="22" stroke={color} strokeWidth="1.4" />
+            <line x1="12" y1="13" x2="7" y2="22" stroke={color} strokeWidth="1.4" />
+            <line x1="12" y1="13" x2="12" y2="22" stroke={color} strokeWidth="1.4" />
+            <line x1="12" y1="13" x2="17" y2="22" stroke={color} strokeWidth="1.4" />
+            <line x1="12" y1="13" x2="22" y2="22" stroke={color} strokeWidth="1.4" />
+          </svg>
+        );
+      case 'drag': // 4-Directional Vector Crosshair with Arrows
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M12 2l3 3h-2v4h-2V5H9l3-3z" stroke={color} strokeWidth="1.4" fill="none" strokeLinejoin="round" />
+            <path d="M22 12l-3 3v-2h-4v-2h4V9l3 3z" stroke={color} strokeWidth="1.4" fill="none" strokeLinejoin="round" />
+            <path d="M12 22l-3-3h2v-4h2v4h2l-3 3z" stroke={color} strokeWidth="1.4" fill="none" strokeLinejoin="round" />
+            <path d="M2 12l3-3v2h4v2H5v2l-3-3z" stroke={color} strokeWidth="1.4" fill="none" strokeLinejoin="round" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'open': // 3D Wireframe Box Exploding Open
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="4,11 12,7 20,11 12,15" stroke={color} strokeWidth="1.8" fill="none" strokeLinejoin="round" />
+            <line x1="4" y1="11" x2="4" y2="19" stroke={color} strokeWidth="1.6" />
+            <line x1="12" y1="15" x2="12" y2="22" stroke={color} strokeWidth="1.8" />
+            <line x1="20" y1="11" x2="20" y2="19" stroke={color} strokeWidth="1.6" />
+            <line x1="4" y1="19" x2="12" y2="22" stroke={color} strokeWidth="1.6" />
+            <line x1="20" y1="19" x2="12" y2="22" stroke={color} strokeWidth="1.6" />
+            {/* Floating top lid polygon */}
+            <polygon points="12,2 20,6 12,9 4,6" stroke={color} strokeWidth="1.6" fill="none" strokeLinejoin="round" />
+          </svg>
+        );
+      case 'font': // 1982 Vector Stroke Font [V & X]
+        return (
+          <svg {...commonSvgProps}>
+            {/* Vector V */}
+            <polyline points="4,6 8,18 12,6" stroke={color} strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" fill="none" />
+            <circle cx="4" cy="6" r="1" fill={color} />
+            <circle cx="8" cy="18" r="1" fill={color} />
+            <circle cx="12" cy="6" r="1" fill={color} />
+            {/* Vector X */}
+            <line x1="15" y1="6" x2="21" y2="18" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="21" y1="6" x2="15" y2="18" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <circle cx="18" cy="12" r="1" fill={color} />
+          </svg>
+        );
+      case 'langVi': // 5-Point Wireframe Vector Star with Radar Ring
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="1.4" fill="none" strokeDasharray="2 2" />
+            <polygon points="12,3 14.5,8.5 20.5,9 16,13.5 17.5,19.5 12,16 6.5,19.5 8,13.5 3.5,9 9.5,8.5" stroke={color} strokeWidth="1.8" fill="none" strokeLinejoin="round" />
+            <circle cx="12" cy="12" r="1.5" fill={color} />
+          </svg>
+        );
+      case 'langEn': // 1979 Lunar Lander Wireframe Module
+        return (
+          <svg {...commonSvgProps}>
+            {/* Ascent stage cabin */}
+            <polygon points="8,5 16,5 18,10 6,10" stroke={color} strokeWidth="1.6" fill="none" strokeLinejoin="round" />
+            {/* Descent stage */}
+            <rect x="6" y="10" width="12" height="5" stroke={color} strokeWidth="1.6" fill="none" />
+            {/* 4 Landing legs with footpads */}
+            <line x1="6" y1="15" x2="2" y2="21" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="18" y1="15" x2="22" y2="21" stroke={color} strokeWidth="1.8" strokeLinecap="round" />
+            <line x1="1" y1="21" x2="4" y2="21" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            <line x1="20" y1="21" x2="23" y2="21" stroke={color} strokeWidth="2" strokeLinecap="round" />
+            {/* Rocket thrust plume */}
+            <polyline points="10,15 12,19 14,15" stroke={color} strokeWidth="1.4" fill="none" />
+          </svg>
+        );
+    }
+  }
+
 // Fallback
   return (
     <svg {...commonSvgProps}>

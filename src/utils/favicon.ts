@@ -327,6 +327,22 @@ export const THEME_FAVICONS: Record<ThemeId, string> = {
   <!-- Sprouting Biophilic Living Leaf -->
   <path d="M8,13 C6.5,10 6.5,8 8,7 C9.5,8 9.5,10 8,13 Z" fill="#10b981" />
   <path d="M8,11 C9.5,9.5 10.5,9.5 11,10.5 C10,11.5 9,11.5 8,11 Z" fill="#34d399" />
+</svg>`,
+
+  vector82: `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="16" height="16">
+  <!-- Deep Pitch-Black CRT Vector Vacuum -->
+  <rect width="16" height="16" fill="#030508" rx="2" />
+  <!-- Wireframe Vector Spacecraft (Asteroids / Tempest Blaster) -->
+  <polygon points="8,2 14,13 8,10 2,13" fill="none" stroke="#00ff66" stroke-width="1.2" stroke-linejoin="round" />
+  <!-- Center electron vector spine -->
+  <line x1="8" y1="2" x2="8" y2="10" stroke="#00f5ff" stroke-width="0.9" />
+  <!-- Glowing vector vertices -->
+  <circle cx="8" cy="2" r="1" fill="#ffffff" />
+  <circle cx="14" cy="13" r="0.8" fill="#00ff66" />
+  <circle cx="2" cy="13" r="0.8" fill="#00ff66" />
+  <circle cx="8" cy="10" r="0.8" fill="#00f5ff" />
+  <!-- Vector laser thruster flame -->
+  <polyline points="6,11 8,15 10,11" fill="none" stroke="#ffe600" stroke-width="1" stroke-linecap="round" />
 </svg>`
 };
 
