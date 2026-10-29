@@ -1,0 +1,242 @@
+/* ==========================================================================
+   GAME DEV STUDIO - MULTI-THEME ART SYSTEM (4 GAME ART STYLES)
+   ========================================================================== */
+
+:root {
+  --radius-sharp: 0px;
+  --transition-speed: 0.18s;
+}
+
+/* --------------------------------------------------------------------------
+   1. THEME: 16-BIT ARCADE / RETRO RPG
+   -------------------------------------------------------------------------- */
+.theme-arcade.mode-dark {
+  --bg-app: #0f1016;
+  --bg-surface: #161824;
+  --bg-card: #1e2030;
+  --border-color: #3b3f58;
+  --border-highlight: #7aa2f7;
+  --text-main: #d5dbed;
+  --text-muted: #8890b0;
+  --text-dim: #565f89;
+  
+  --accent-gold: #fbbf24;
+  --accent-cyan: #38bdf8;
+  --accent-green: #4ade80;
+  --accent-red: #f43f5e;
+  --accent-purple: #a855f7;
+  
+  --font-display: 'Press Start 2P', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 4px 4px 0px rgba(0, 0, 0, 0.7);
+  --glow-primary: 0 0 10px rgba(251, 191, 36, 0.4);
+}
+
+.theme-arcade.mode-light {
+  --bg-app: #eaedf6;
+  --bg-surface: #ffffff;
+  --bg-card: #f8fafc;
+  --border-color: #cbd5e1;
+  --border-highlight: #3b82f6;
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --text-dim: #94a3b8;
+  
+  --accent-gold: #d97706;
+  --accent-cyan: #0284c7;
+  --accent-green: #16a34a;
+  --accent-red: #e11d48;
+  --accent-purple: #9333ea;
+  
+  --font-display: 'Press Start 2P', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 4px 4px 0px rgba(100, 116, 139, 0.3);
+  --glow-primary: 0 0 8px rgba(217, 119, 6, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   2. THEME: GAME BOY CLASSIC (POCKET 4-SHADE MONOCHROME)
+   -------------------------------------------------------------------------- */
+.theme-gameboy.mode-dark {
+  --bg-app: #0f380f;
+  --bg-surface: #1e4d1e;
+  --bg-card: #306230;
+  --border-color: #8bac0f;
+  --border-highlight: #9bbc0f;
+  --text-main: #9bbc0f;
+  --text-muted: #8bac0f;
+  --text-dim: #306230;
+  
+  --accent-gold: #9bbc0f;
+  --accent-cyan: #8bac0f;
+  --accent-green: #9bbc0f;
+  --accent-red: #306230;
+  --accent-purple: #8bac0f;
+  
+  --font-display: 'VT323', monospace;
+  --font-mono: 'VT323', monospace;
+  --card-shadow: 3px 3px 0px #082008;
+  --glow-primary: 0 0 8px rgba(155, 188, 15, 0.4);
+}
+
+.theme-gameboy.mode-light {
+  --bg-app: #9bbc0f;
+  --bg-surface: #8bac0f;
+  --bg-card: #9bbc0f;
+  --border-color: #306230;
+  --border-highlight: #0f380f;
+  --text-main: #0f380f;
+  --text-muted: #306230;
+  --text-dim: #8bac0f;
+  
+  --accent-gold: #0f380f;
+  --accent-cyan: #306230;
+  --accent-green: #0f380f;
+  --accent-red: #0f380f;
+  --accent-purple: #306230;
+  
+  --font-display: 'VT323', monospace;
+  --font-mono: 'VT323', monospace;
+  --card-shadow: 3px 3px 0px #306230;
+  --glow-primary: 0 0 6px rgba(15, 56, 15, 0.3);
+}
+
+/* --------------------------------------------------------------------------
+   3. THEME: CYBER MECHA / SCI-FI HUD
+   -------------------------------------------------------------------------- */
+.theme-cyber.mode-dark {
+  --bg-app: #060911;
+  --bg-surface: #0d121f;
+  --bg-card: #131b2e;
+  --border-color: #1e3050;
+  --border-highlight: #00f0ff;
+  --text-main: #e2f1ff;
+  --text-muted: #7ca1c7;
+  --text-dim: #435b78;
+  
+  --accent-gold: #ffbe0b;
+  --accent-cyan: #00f0ff;
+  --accent-green: #05ffa1;
+  --accent-red: #ff0055;
+  --accent-purple: #b5179e;
+  
+  --font-display: 'Orbitron', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+  --glow-primary: 0 0 12px rgba(0, 240, 255, 0.6);
+}
+
+.theme-cyber.mode-light {
+  --bg-app: #edf3fa;
+  --bg-surface: #ffffff;
+  --bg-card: #f8fafc;
+  --border-color: #cbd5e1;
+  --border-highlight: #0284c7;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --text-dim: #94a3b8;
+  
+  --accent-gold: #d97706;
+  --accent-cyan: #0284c7;
+  --accent-green: #059669;
+  --accent-red: #dc2626;
+  --accent-purple: #7c3aed;
+  
+  --font-display: 'Orbitron', monospace;
+  --font-mono: 'JetBrains Mono', monospace;
+  --card-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);
+  --glow-primary: 0 0 8px rgba(2, 132, 199, 0.4);
+}
+
+/* --------------------------------------------------------------------------
+   4. THEME: DARK FANTASY / ELDEN RUNIC RPG
+   -------------------------------------------------------------------------- */
+.theme-fantasy.mode-dark {
+  --bg-app: #121010;
+  --bg-surface: #1a1616;
+  --bg-card: #241f1f;
+  --border-color: #4a3c31;
+  --border-highlight: #c5a059;
+  --text-main: #ede3d2;
+  --text-muted: #b5a48e;
+  --text-dim: #736453;
+  
+  --accent-gold: #c5a059;
+  --accent-cyan: #78a1bb;
+  --accent-green: #6b8e23;
+  --accent-red: #a82020;
+  --accent-purple: #7c5c7d;
+  
+  --font-display: 'Cinzel', serif;
+  --font-mono: 'JetBrains Mono', serif;
+  --card-shadow: 4px 4px 12px rgba(0, 0, 0, 0.8);
+  --glow-primary: 0 0 14px rgba(197, 160, 89, 0.5);
+}
+
+.theme-fantasy.mode-light {
+  --bg-app: #f4ece1;
+  --bg-surface: #fcf8f2;
+  --bg-card: #efe5d5;
+  --border-color: #c4b59f;
+  --border-highlight: #92733b;
+  --text-main: #2b221a;
+  --text-muted: #6e5e4f;
+  --text-dim: #9e8d7c;
+  
+  --accent-gold: #92733b;
+  --accent-cyan: #3d6a8a;
+  --accent-green: #476318;
+  --accent-red: #8f1b1b;
+  --accent-purple: #624263;
+  
+  --font-display: 'Cinzel', serif;
+  --font-mono: 'JetBrains Mono', serif;
+  --card-shadow: 3px 3px 10px rgba(71, 55, 41, 0.25);
+  --glow-primary: 0 0 10px rgba(146, 115, 59, 0.35);
+}
+
+/* --------------------------------------------------------------------------
+   GLOBAL LAYOUT & CRT SCANLINES
+   -------------------------------------------------------------------------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  font-family: var(--font-mono);
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* CRT Scanlines Overlay (Toggleable) */
+.crt-enabled::before {
+  content: " ";
+  display: block;
+  position: fixed;
+  top: 0; left: 0; bottom: 0; right: 0;
+  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+  background-size: 100% 4px;
+  z-index: 99999;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+/* Custom Pixel Scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background: var(--bg-app);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border: 1px solid var(--bg-surface);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-gold);
+}
