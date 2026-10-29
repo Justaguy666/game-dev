@@ -3,6 +3,7 @@ import { ThemeId, ThemeMode, Language } from '../types';
 import { sound } from '../soundEngine';
 import { ThemedIcon } from './ThemedIcon';
 import { ThemedSelect } from './ThemedSelect';
+import { LanguageSelect } from './LanguageSelect';
 
 interface TopHUDProps {
   currentTheme: ThemeId;
@@ -11,6 +12,7 @@ interface TopHUDProps {
   onThemeModeToggle: () => void;
   lang: Language;
   onLangToggle: () => void;
+  onLangChange?: (lang: Language) => void;
   fontScale: number;
   onFontScaleChange: (scale: number) => void;
   isCrtOn: boolean;
@@ -28,6 +30,7 @@ export const TopHUD: React.FC<TopHUDProps> = ({
   onThemeModeToggle,
   lang,
   onLangToggle,
+  onLangChange,
   fontScale,
   onFontScaleChange,
   isCrtOn,
@@ -552,26 +555,18 @@ export const TopHUD: React.FC<TopHUDProps> = ({
           )}
         </div>
 
-        {/* Language Switcher */}
-        <button
-          onClick={() => { sound.playClick(); onLangToggle(); }}
-          title="Chuyển đổi Tiếng Việt / English"
-          style={{
-            backgroundColor: 'var(--bg-card)',
-            color: 'var(--accent-gold)',
-            border: '1px solid var(--border-color)',
-            padding: '5px 9px',
-            fontFamily: 'var(--font-mono)',
-            fontSize: '0.80em',
-            fontWeight: 800,
-            cursor: 'pointer',
-            display: 'flex',
-            alignItems: 'center',
-            gap: '5px'
-          }}>
-          <ThemedIcon name="globe" theme={currentTheme} size={14} />
-          {lang === 'vi' ? 'VI' : 'EN'}
-        </button>
+        {/* Language Switcher Themed Dropdown */}
+        <LanguageSelect
+          currentLang={lang}
+          onLanguageChange={(newLang) => {
+            if (onLangChange) {
+              onLangChange(newLang);
+            } else if (newLang !== lang) {
+              onLangToggle();
+            }
+          }}
+          currentTheme={currentTheme}
+        />
       </div>
     </header>
   );

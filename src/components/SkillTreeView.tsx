@@ -455,7 +455,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
           <>
             {/* Section A: Domain Border Colors */}
             <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-              <div style={{ fontSize: '0.68em', color: 'var(--text-dim)', fontWeight: 800, letterSpacing: '0.04em' }}>
+              <div style={{ fontSize: '0.68em', color: 'var(--text-muted)', fontWeight: 800, letterSpacing: '0.04em' }}>
                 {lang === 'vi' ? 'MÀU VIỀN CÁC NHÓM CHỦ ĐỀ:' : 'CARD BORDER BY DOMAIN:'}
               </div>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '3px' }}>
@@ -500,7 +500,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
               borderTop: '1px solid var(--border-color)',
               paddingTop: '6px'
             }}>
-              <div style={{ fontSize: '0.68em', color: 'var(--text-dim)', fontWeight: 800, letterSpacing: '0.04em' }}>
+              <div style={{ fontSize: '0.68em', color: 'var(--text-muted)', fontWeight: 800, letterSpacing: '0.04em' }}>
                 {lang === 'vi' ? 'TRẠNG THÁI TIẾN ĐỘ:' : 'PROGRESS STATUS:'}
               </div>
               <div style={{ display: 'flex', justifyContent: 'space-between', gap: '6px' }}>
@@ -513,7 +513,7 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                   <span style={{ color: 'var(--text-muted)' }}>{lang === 'vi' ? 'Đang học' : 'Learning'}</span>
                 </span>
                 <span style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                  <ThemedIcon name="locked" theme={currentTheme} size={11} color="var(--border-color)" />
+                  <ThemedIcon name="locked" theme={currentTheme} size={11} color="var(--text-muted)" />
                   <span style={{ color: 'var(--text-muted)' }}>{lang === 'vi' ? 'Khóa' : 'Locked'}</span>
                 </span>
               </div>
@@ -701,11 +701,11 @@ export const SkillTreeView: React.FC<SkillTreeViewProps> = ({
                   display: 'flex',
                   alignItems: 'center',
                   gap: '4px',
-                  color: isMastered ? 'var(--accent-green)' : (isLearning ? 'var(--accent-gold)' : 'var(--text-dim)')
+                  color: isMastered ? 'var(--accent-green)' : (isLearning ? 'var(--accent-gold)' : 'var(--text-muted)')
                 }}>
                   {isMastered && <ThemedIcon name="mastered" theme={currentTheme} size={12} color="var(--accent-green)" />}
                   {isLearning && <ThemedIcon name="learning" theme={currentTheme} size={12} color="var(--accent-gold)" />}
-                  {isLocked && <ThemedIcon name="locked" theme={currentTheme} size={12} color="var(--text-dim)" />}
+                  {isLocked && <ThemedIcon name="locked" theme={currentTheme} size={12} color="var(--text-muted)" />}
                   {isMastered ? (lang === 'vi' ? 'ĐÃ LĨNH HỘI' : 'MASTERED') : (isLearning ? (lang === 'vi' ? 'ĐANG HỌC' : 'LEARNING') : (lang === 'vi' ? 'KHÓA' : 'LOCKED'))}
                 </span>
               </div>

@@ -17,8 +17,8 @@
   --border-color: #3b3f58;
   --border-highlight: #7aa2f7;
   --text-main: #d5dbed;
-  --text-muted: #8890b0;
-  --text-dim: #565f89;
+  --text-muted: #9ba5c9;
+  --text-dim: #707a9e;
   
   --accent-gold: #fbbf24;
   --accent-cyan: #38bdf8;
@@ -40,9 +40,9 @@
   --bg-card: #f8fafc;
   --border-color: #cbd5e1;
   --border-highlight: #3b82f6;
-  --text-main: #1e293b;
-  --text-muted: #64748b;
-  --text-dim: #94a3b8;
+  --text-main: #0f172a;
+  --text-muted: #334155;
+  --text-dim: #475569;
   
   --accent-gold: #d97706;
   --accent-cyan: #0284c7;
@@ -64,12 +64,12 @@
 .theme-gameboy.mode-dark {
   --bg-app: #0f380f;
   --bg-surface: #1e4d1e;
-  --bg-card: #306230;
+  --bg-card: #285428;
   --border-color: #8bac0f;
   --border-highlight: #9bbc0f;
   --text-main: #9bbc0f;
-  --text-muted: #8bac0f;
-  --text-dim: #306230;
+  --text-muted: #9bbc0f;
+  --text-dim: #8bac0f;
   
   --accent-gold: #9bbc0f;
   --accent-cyan: #8bac0f;
@@ -92,8 +92,8 @@
   --border-color: #306230;
   --border-highlight: #0f380f;
   --text-main: #0f380f;
-  --text-muted: #306230;
-  --text-dim: #8bac0f;
+  --text-muted: #1a421a;
+  --text-dim: #306230;
   
   --accent-gold: #0f380f;
   --accent-cyan: #306230;
@@ -119,8 +119,8 @@
   --border-color: #1e3050;
   --border-highlight: #00f0ff;
   --text-main: #e2f1ff;
-  --text-muted: #7ca1c7;
-  --text-dim: #435b78;
+  --text-muted: #9bc0e7;
+  --text-dim: #6080a8;
   
   --accent-gold: #ffbe0b;
   --accent-cyan: #00f0ff;
@@ -142,9 +142,9 @@
   --bg-card: #f8fafc;
   --border-color: #cbd5e1;
   --border-highlight: #0284c7;
-  --text-main: #0f172a;
-  --text-muted: #475569;
-  --text-dim: #94a3b8;
+  --text-main: #090e17;
+  --text-muted: #334155;
+  --text-dim: #475569;
   
   --accent-gold: #d97706;
   --accent-cyan: #0284c7;
@@ -170,8 +170,8 @@
   --border-color: #4a3c31;
   --border-highlight: #c5a059;
   --text-main: #ede3d2;
-  --text-muted: #b5a48e;
-  --text-dim: #736453;
+  --text-muted: #c9b9a1;
+  --text-dim: #998774;
   
   --accent-gold: #c5a059;
   --accent-cyan: #78a1bb;
@@ -193,9 +193,9 @@
   --bg-card: #efe5d5;
   --border-color: #c4b59f;
   --border-highlight: #92733b;
-  --text-main: #2b221a;
-  --text-muted: #6e5e4f;
-  --text-dim: #9e8d7c;
+  --text-main: #1a120b;
+  --text-muted: #4a3c2e;
+  --text-dim: #6b5a49;
   
   --accent-gold: #92733b;
   --accent-cyan: #3d6a8a;
@@ -349,7 +349,8 @@ nav button {
   padding: 1px 6px;
   background-color: var(--bg-app);
   border: 1px solid var(--border-color);
-  color: var(--text-dim);
+  color: var(--text-muted);
+  font-weight: 700;
   font-family: var(--font-mono);
 }
 
@@ -365,6 +366,12 @@ body.theme-gameboy .node-card-title {
 
 body.theme-gameboy .node-card-desc {
   font-size: 1.05em !important;
+  color: var(--text-main) !important;
+}
+
+body.theme-gameboy .node-card-tag {
+  color: var(--text-main) !important;
+  border-color: var(--border-color) !important;
 }
 
 /* Markdown body across all themes */

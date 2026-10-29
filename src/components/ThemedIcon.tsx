@@ -32,7 +32,9 @@ export type IconName =
   | 'production'
   | 'drag'
   | 'open'
-  | 'font';
+  | 'font'
+  | 'langVi'
+  | 'langEn';
 
 interface ThemedIconProps {
   name: IconName;
@@ -316,6 +318,28 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
             <rect x="7" y="11" width="10" height="3" fill={color} />
           </svg>
         );
+      case 'langVi':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="2" y="4" width="20" height="16" fill="none" stroke={color} strokeWidth="2" />
+            <rect x="11" y="7" width="2" height="2" fill={color} />
+            <rect x="8" y="9" width="8" height="2" fill={color} />
+            <rect x="9" y="11" width="6" height="2" fill={color} />
+            <rect x="10" y="13" width="4" height="2" fill={color} />
+            <rect x="9" y="15" width="2" height="2" fill={color} />
+            <rect x="13" y="15" width="2" height="2" fill={color} />
+          </svg>
+        );
+      case 'langEn':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="6" y="2" width="12" height="20" fill="none" stroke={color} strokeWidth="2" />
+            <rect x="2" y="6" width="20" height="12" fill="none" stroke={color} strokeWidth="2" />
+            <rect x="4" y="4" width="16" height="16" fill="none" stroke={color} strokeWidth="2" />
+            <rect x="2" y="11" width="20" height="2" fill={color} />
+            <rect x="11" y="2" width="2" height="20" fill={color} />
+          </svg>
+        );
     }
   }
 
@@ -537,6 +561,25 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
         return (
           <svg {...commonSvgProps} shapeRendering="crispEdges">
             <path d="M8 3h8v3h2v15h-4v-6h-4v6H6V6h2V3zm2 6h4V6h-4v3z" fill={color} />
+          </svg>
+        );
+      case 'langVi':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <rect x="3" y="3" width="18" height="18" fill="none" stroke={color} strokeWidth="2" />
+            <rect x="11" y="6" width="2" height="3" fill={color} />
+            <rect x="7" y="9" width="10" height="2" fill={color} />
+            <rect x="9" y="11" width="6" height="2" fill={color} />
+            <rect x="8" y="13" width="3" height="3" fill={color} />
+            <rect x="13" y="13" width="3" height="3" fill={color} />
+          </svg>
+        );
+      case 'langEn':
+        return (
+          <svg {...commonSvgProps} shapeRendering="crispEdges">
+            <path d="M7 2h10v2h4v4h2v8h-2v4h-4v2H7v-2H3v-4H1V8h2V4h4V2zm1 3H6v2H4v8h2v2h2v2h8v-2h2v-2h2V7h-2V5h-2V3H8v2z" fill={color} />
+            <rect x="3" y="11" width="18" height="2" fill={color} />
+            <rect x="11" y="3" width="2" height="18" fill={color} />
           </svg>
         );
     }
@@ -783,6 +826,23 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
             <line x1="10" y1="14" x2="14" y2="14" stroke={color} strokeWidth="2" />
           </svg>
         );
+      case 'langVi':
+        return (
+          <svg {...commonSvgProps}>
+            <polygon points="12,2 21,7 21,17 12,22 3,17 3,7" fill="none" stroke={color} strokeWidth="1.8" />
+            <polygon points="12,6 13.8,10.2 18.2,10.5 14.8,13.4 15.8,17.7 12,15.2 8.2,17.7 9.2,13.4 5.8,10.5 10.2,10.2" fill={color} />
+            <circle cx="12" cy="12" r="1.5" fill="var(--bg-app)" />
+          </svg>
+        );
+      case 'langEn':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="1.8" fill="none" />
+            <ellipse cx="12" cy="12" rx="4.5" ry="9" stroke={color} strokeWidth="1.5" fill="none" />
+            <line x1="3" y1="12" x2="21" y2="12" stroke={color} strokeWidth="1.5" />
+            <ellipse cx="12" cy="12" rx="9" ry="3.5" stroke={color} strokeWidth="1" strokeDasharray="3 2" fill="none" />
+          </svg>
+        );
     }
   }
 
@@ -1007,6 +1067,23 @@ export const ThemedIcon: React.FC<ThemedIconProps> = ({
         return (
           <svg {...commonSvgProps}>
             <path d="M12 2l7 20h-3l-2-6h-4l-2 6H5l7-20zm0 6l-1.5 5h3L12 8z" fill={color} />
+          </svg>
+        );
+      case 'langVi':
+        return (
+          <svg {...commonSvgProps}>
+            <path d="M12 2C7 2 4 4 4 9c0 7 8 13 8 13s8-6 8-13c0-5-3-7-8-7z" fill="none" stroke={color} strokeWidth="1.8" />
+            <polygon points="12,6 13.5,9.5 17,9.8 14.2,12.2 15,15.8 12,13.8 9,15.8 9.8,12.2 7,9.8 10.5,9.5" fill={color} />
+          </svg>
+        );
+      case 'langEn':
+        return (
+          <svg {...commonSvgProps}>
+            <circle cx="12" cy="12" r="9" stroke={color} strokeWidth="1.8" fill="none" />
+            <ellipse cx="12" cy="12" rx="9" ry="4" stroke={color} strokeWidth="1.5" fill="none" />
+            <line x1="12" y1="3" x2="12" y2="21" stroke={color} strokeWidth="1.5" />
+            <polygon points="12,1 14,4 10,4" fill={color} />
+            <polygon points="12,23 14,20 10,20" fill={color} />
           </svg>
         );
     }

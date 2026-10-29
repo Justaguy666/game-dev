@@ -143,6 +143,7 @@ export const App: React.FC = () => {
         onThemeModeToggle={() => setThemeMode(m => m === 'dark' ? 'light' : 'dark')}
         lang={lang}
         onLangToggle={() => setLang(l => l === 'vi' ? 'en' : 'vi')}
+        onLangChange={setLang}
         fontScale={fontScale}
         onFontScaleChange={setFontScale}
         isCrtOn={isCrtOn}

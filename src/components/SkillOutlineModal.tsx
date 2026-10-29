@@ -173,7 +173,7 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
           }}>
             {skill.status === 'mastered' && <ThemedIcon name="mastered" theme={currentTheme} size={11} color="var(--accent-green)" />}
             {skill.status === 'learning' && <ThemedIcon name="learning" theme={currentTheme} size={11} color="var(--accent-gold)" />}
-            {skill.status === 'locked' && <ThemedIcon name="locked" theme={currentTheme} size={11} color="var(--text-dim)" />}
+            {skill.status === 'locked' && <ThemedIcon name="locked" theme={currentTheme} size={11} color="var(--text-muted)" />}
             {skill.status === 'mastered' ? (lang === 'vi' ? 'ĐÃ LĨNH HỘI' : 'MASTERED') : (skill.status === 'learning' ? (lang === 'vi' ? 'ĐANG HỌC' : 'LEARNING') : (lang === 'vi' ? 'KHÓA' : 'LOCKED'))}
           </span>
         </div>
@@ -322,7 +322,7 @@ export const SkillOutlineModal: React.FC<SkillOutlineModalProps> = ({
                     theme={currentTheme}
                     label={
                       <span style={{
-                        color: obj.completed ? 'var(--text-dim)' : 'var(--text-main)',
+                        color: obj.completed ? 'var(--text-muted)' : 'var(--text-main)',
                         textDecoration: obj.completed ? 'line-through' : 'none',
                         fontSize: '0.94em'
                       }}>
