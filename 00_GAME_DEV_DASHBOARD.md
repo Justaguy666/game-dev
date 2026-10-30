@@ -27,6 +27,7 @@ tags:
 | :--- | :--- | :--- |
 | 🌟 [[Game Dev Mastery]] | Nốt gốc của Cây Kỹ Năng tri thức | Click để bắt đầu |
 | 🗺️ [[🗺️ Skill Tree Visual Map.canvas\|Canvas Cây Kỹ Năng]] | Bản đồ tương tác trực quan 2D | Kéo thả & xem liên kết |
+| 🕹️ **Physics & Mechanics Lab** | Phòng thí nghiệm vật lý tương tác (Coyote Time, Vector Ballistics, Collisions) | Tab `Vật Lý Lab` trên Web App |
 | 🕸️ **Graph View** | Biểu đồ mạng nhện toàn bộ Vault | Bấm `Ctrl + G` |
 
 ---

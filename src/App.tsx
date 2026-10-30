@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ThemeId, ThemeMode, Language, SkillNode } from './types';
+import { ThemeId, ThemeMode, Language, SkillNode, ActiveView } from './types';
 import { INITIAL_SKILLS } from './data/skillsData';
 import { sound } from './soundEngine';
 import { TopHUD } from './components/TopHUD';
@@ -7,9 +7,10 @@ import { SkillTreeView } from './components/SkillTreeView';
 import { SkillOutlineModal } from './components/SkillOutlineModal';
 import { DocumentReaderView } from './components/DocumentReaderView';
 import { QuestsView } from './components/QuestsView';
+import { PhysicsLabView } from './components/PhysicsLabView';
 import { updateThemeFavicon } from './utils/favicon';
 
-const DATA_VERSION = 'v9_spacious_nodes_and_max_font_support';
+const DATA_VERSION = 'v10_interactive_physics_playground';
 
 export const App: React.FC = () => {
   // 1. Persistent State
@@ -55,9 +56,10 @@ export const App: React.FC = () => {
     return INITIAL_SKILLS;
   });
 
-  const [activeView, setActiveView] = useState<'tree' | 'editor' | 'quests'>('tree');
+  const [activeView, setActiveView] = useState<ActiveView>('tree');
   const [activeDrawerSkill, setActiveDrawerSkill] = useState<SkillNode | null>(null);
   const [selectedReaderSkillId, setSelectedReaderSkillId] = useState<string>('root-game-dev');
+  const [playgroundInitialMode, setPlaygroundInitialMode] = useState<import('./types').PlaygroundMode>('platformer');
 
   // Save changes to localStorage and update theme favicon
   useEffect(() => {
@@ -182,6 +184,10 @@ export const App: React.FC = () => {
             lang={lang}
             currentTheme={currentTheme}
             themeMode={themeMode}
+            onOpenPhysicsLab={(mode) => {
+              if (mode) setPlaygroundInitialMode(mode);
+              setActiveView('playground');
+            }}
           />
         )}
 
@@ -197,6 +203,15 @@ export const App: React.FC = () => {
             lang={lang}
             currentTheme={currentTheme}
             themeMode={themeMode}
+          />
+        )}
+
+        {activeView === 'playground' && (
+          <PhysicsLabView
+            currentTheme={currentTheme}
+            themeMode={themeMode}
+            lang={lang}
+            initialMode={playgroundInitialMode}
           />
         )}
 

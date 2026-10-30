@@ -27,6 +27,7 @@ tags:
 | :--- | :--- | :--- |
 | 🌟 [[Game Dev Mastery]] | Root node of the knowledge skill tree | Click to start |
 | 🗺️ [[🗺️ Skill Tree Visual Map.canvas\|Canvas Skill Map]] | 2D interactive visual graph | Drag, drop & inspect links |
+| 🕹️ **Physics & Mechanics Lab** | Interactive physics playground (Coyote Time, Vector Ballistics, Collisions) | Tab `Physics Lab` on Web App |
 | 🕸️ **Graph View** | Vault-wide networked mind map | Press `Ctrl + G` |
 
 ---

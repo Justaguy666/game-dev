@@ -1602,6 +1602,144 @@ class SoundEngine {
   public playNodeClick() {
     this.playSelect();
   }
+
+  // 9. Jump sound (themed)
+  public playJump() {
+    const ctx = this.getContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    const vol = this.volume;
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    if (this.currentTheme === 'arcade') {
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(160, now);
+      osc.frequency.exponentialRampToValueAtTime(540, now + 0.1);
+      gain.gain.setValueAtTime(0.22 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+    } else if (this.currentTheme === 'gameboy') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(140, now);
+      osc.frequency.linearRampToValueAtTime(420, now + 0.1);
+      gain.gain.setValueAtTime(0.25 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.11);
+    } else if (this.currentTheme === 'cyber' || this.currentTheme === 'synthwave') {
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(260, now);
+      osc.frequency.exponentialRampToValueAtTime(820, now + 0.08);
+      gain.gain.setValueAtTime(0.2 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
+    } else if (this.currentTheme === 'inkwell') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(280, now);
+      osc.frequency.exponentialRampToValueAtTime(750, now + 0.12);
+      gain.gain.setValueAtTime(0.26 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
+    } else {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(200, now);
+      osc.frequency.exponentialRampToValueAtTime(480, now + 0.1);
+      gain.gain.setValueAtTime(0.22 * vol, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+    }
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.15);
+  }
+
+  // 10. Land / Impact Thud
+  public playLand() {
+    const ctx = this.getContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    const vol = this.volume;
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(120, now);
+    osc.frequency.exponentialRampToValueAtTime(35, now + 0.06);
+
+    gain.gain.setValueAtTime(0.2 * vol, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.08);
+  }
+
+  // 11. Physics Elastic Bounce
+  public playBounce() {
+    const ctx = this.getContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    const vol = this.volume;
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(240, now);
+    osc.frequency.exponentialRampToValueAtTime(520, now + 0.03);
+    osc.frequency.exponentialRampToValueAtTime(300, now + 0.08);
+
+    gain.gain.setValueAtTime(0.22 * vol, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.1);
+  }
+
+  // 12. Score / Target Hit Chime
+  public playScore() {
+    const ctx = this.getContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    const vol = this.volume;
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(523.25, now); // C5
+    osc.frequency.setValueAtTime(783.99, now + 0.06); // G5
+    osc.frequency.setValueAtTime(1046.50, now + 0.12); // C6
+
+    gain.gain.setValueAtTime(0.24 * vol, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.28);
+  }
+
+  // 13. Cannon Shoot sound
+  public playShoot() {
+    const ctx = this.getContext();
+    if (!ctx) return;
+    const now = ctx.currentTime;
+    const vol = this.volume;
+
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    osc.type = this.currentTheme === 'cyber' ? 'sawtooth' : 'triangle';
+    osc.frequency.setValueAtTime(320, now);
+    osc.frequency.exponentialRampToValueAtTime(60, now + 0.08);
+
+    gain.gain.setValueAtTime(0.26 * vol, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+    osc.start(now);
+    osc.stop(now + 0.1);
+  }
 }
 
 export const sound = new SoundEngine();

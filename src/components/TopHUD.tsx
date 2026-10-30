@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { ThemeId, ThemeMode, Language } from '../types';
+import { ThemeId, ThemeMode, Language, ActiveView } from '../types';
 import { sound } from '../soundEngine';
 import { ThemedIcon } from './ThemedIcon';
 import { ThemedSelect } from './ThemedSelect';
@@ -17,8 +17,8 @@ interface TopHUDProps {
   onFontScaleChange: (scale: number) => void;
   isCrtOn: boolean;
   onCrtToggle: () => void;
-  activeView: 'tree' | 'editor' | 'quests';
-  onViewChange: (view: 'tree' | 'editor' | 'quests') => void;
+  activeView: ActiveView;
+  onViewChange: (view: ActiveView) => void;
   totalExp: number;
   maxExp: number;
 }
@@ -247,6 +247,26 @@ export const TopHUD: React.FC<TopHUDProps> = ({
           }}>
           <ThemedIcon name="quests" theme={currentTheme} size={15} color={activeView === 'quests' ? 'var(--btn-active-text)' : 'var(--accent-gold)'} />
           {lang === 'vi' ? 'Nhiệm Vụ' : 'Quests'}
+        </button>
+
+        <button
+          onClick={() => { sound.playTab(); onViewChange('playground'); }}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: '6px',
+            backgroundColor: activeView === 'playground' ? 'var(--btn-active-bg)' : 'var(--bg-card)',
+            color: activeView === 'playground' ? 'var(--btn-active-text)' : 'var(--text-main)',
+            border: `1px solid ${activeView === 'playground' ? 'var(--btn-active-bg)' : 'var(--border-color)'}`,
+            padding: '6px 12px',
+            fontFamily: 'var(--font-mono)',
+            fontSize: '0.82em',
+            fontWeight: 700,
+            cursor: 'pointer',
+            transition: 'all 0.15s ease'
+          }}>
+          <span style={{ fontSize: '13px' }}>🕹️</span>
+          {lang === 'vi' ? 'Vật Lý Lab' : 'Physics Lab'}
         </button>
       </nav>
 

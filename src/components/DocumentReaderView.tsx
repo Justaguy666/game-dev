@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react';
-import { SkillNode, Language, ThemeId, ThemeMode } from '../types';
+import { SkillNode, Language, ThemeId, ThemeMode, PlaygroundMode } from '../types';
 import { sound } from '../soundEngine';
 import { marked } from 'marked';
 import { ThemedIcon } from './ThemedIcon';
@@ -14,6 +14,7 @@ interface DocumentReaderViewProps {
   lang: Language;
   currentTheme: ThemeId;
   themeMode: ThemeMode;
+  onOpenPhysicsLab?: (mode?: PlaygroundMode) => void;
 }
 
 export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
@@ -23,7 +24,8 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
   onUpdateSkill,
   lang,
   currentTheme,
-  themeMode
+  themeMode,
+  onOpenPhysicsLab
 }) => {
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [selectedDomain, setSelectedDomain] = useState<DomainId | 'all'>('all');
@@ -577,10 +579,70 @@ export const DocumentReaderView: React.FC<DocumentReaderViewProps> = ({
                 }}
               />
             ) : (
-              <div
-                className="markdown-body"
-                dangerouslySetInnerHTML={{ __html: renderedHtml }}
-              />
+              <>
+                {/* Physics Interactive Playground Launcher Banner */}
+                {onOpenPhysicsLab && (
+                  activeSkill?.id === 'prog-math-physics' ||
+                  activeSkill?.id === 'design-game-feel' ||
+                  activeSkill?.id === 'prog-game-loop' ||
+                  activeSkill?.tags.some(t => ['physics', 'math', 'vectors', 'kinematics', 'game-feel', 'movement', 'platformer'].includes(t))
+                ) && (
+                  <div style={{
+                    backgroundColor: 'var(--bg-card)',
+                    border: '2px solid var(--accent-gold)',
+                    boxShadow: 'var(--card-shadow)',
+                    padding: '14px 18px',
+                    marginBottom: '26px',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    flexWrap: 'wrap',
+                    gap: '12px'
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <span style={{ fontSize: '26px' }}>🕹️</span>
+                      <div>
+                        <div style={{ fontFamily: 'var(--font-display)', fontSize: '0.84em', color: 'var(--accent-gold)' }}>
+                          {lang === 'vi' ? 'MÔ PHỎNG VẬT LÝ TƯƠNG TÁC ĐÃ SẴN SÀNG!' : 'INTERACTIVE PHYSICS LAB AVAILABLE!'}
+                        </div>
+                        <div style={{ fontSize: '0.78em', color: 'var(--text-dim)', marginTop: '3px' }}>
+                          {lang === 'vi'
+                            ? 'Trực quan hóa Coyote Time, Jump Buffer, Quỹ đạo Vector và Phản xạ va chạm theo theme hiện tại.'
+                            : 'Visualize Coyote Time, Jump Buffer, Vector Ballistics & Elastic Collisions with active theme.'}
+                        </div>
+                      </div>
+                    </div>
+
+                    <button
+                      onClick={() => {
+                        sound.playSelect();
+                        const targetMode = activeSkill?.id === 'prog-math-physics' ? 'ballistics' : 'platformer';
+                        onOpenPhysicsLab(targetMode);
+                      }}
+                      style={{
+                        backgroundColor: 'var(--btn-active-bg)',
+                        color: 'var(--btn-active-text)',
+                        border: 'none',
+                        padding: '8px 18px',
+                        fontFamily: 'var(--font-mono)',
+                        fontSize: '0.82em',
+                        fontWeight: 800,
+                        cursor: 'pointer',
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '6px'
+                      }}>
+                      <span>🧪</span>
+                      <span>{lang === 'vi' ? 'Vào Thử Nghiệm Ngay →' : 'Launch in Lab →'}</span>
+                    </button>
+                  </div>
+                )}
+
+                <div
+                  className="markdown-body"
+                  dangerouslySetInnerHTML={{ __html: renderedHtml }}
+                />
+              </>
             )}
           </div>
         </div>

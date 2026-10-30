@@ -1,6 +1,8 @@
 export type ThemeId = 'arcade' | 'gameboy' | 'fantasy' | 'cyber' | 'inkwell' | 'synthwave' | 'gothic' | 'blueprint' | 'ghibli' | 'psx' | 'persona' | 'ukiyoe' | 'vaporwave' | 'pipboy' | 'claymation' | 'papercraft' | 'solarpunk' | 'vector82';
 export type ThemeMode = 'dark' | 'light';
 export type Language = 'vi' | 'en';
+export type ActiveView = 'tree' | 'editor' | 'quests' | 'playground';
+export type PlaygroundMode = 'platformer' | 'ballistics' | 'collision';
 
 export type SkillStatus = 'mastered' | 'learning' | 'locked';
 
